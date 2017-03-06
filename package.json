@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "primo-explore-feedback": "0.0.2",
+    "primo-explore-feedback": "0.0.4",
     "primo-explore-custom-actions": "1.0.2"
   }
 }
