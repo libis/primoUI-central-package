@@ -6,6 +6,30 @@ var app = angular.module('centralCustom', []);
 
 var feedbackServiceURL = 'https://services.libis.be/feedback';
 
+/*
+ * Add Home Icon after the library logo 
+ * Tom vanmechelen
+ */
+
+app.controller('prmLogoAfterController', [function () {
+    var vm = this;
+    var vid = window.appConfig['vid'];
+    vm.getHomePageLink = getHomePageLink;
+    function getHomePageLink() {
+        return '/primo-explore/search?vid=' + vid;
+    }
+
+    vm.goToHomePage = goToHomePage;
+    function goToHomePage() {
+        document.location.href = '/primo-explore/search?vid=' + vid;
+    }
+}]);
+
+app.component('prmLogoAfter', {
+    bindings: { parentCtrl: '<' },
+    controller: 'prmLogoAfterController',
+    template: '\n<div id="fixed-buttons-holder"\n    ng-class ="{\'fixed-to-top\': $ctrl.fixedToTop()}"\n    layout="row"\n    layout-align="center center"\n    class ="layout-align-center-center layout-row"\n>\n<a class ="md-icon-button button-over-dark md-button md-primoExplore-theme" id="home-button" aria-label="Go to startpage" ng-click=\'$ctrl.goToHomePage()\'  href="{{$ctrl.getHomePageLink()}}" >\n<md-icon class ="md-primoExplore-theme">\n<svg id="prm_home" width="100%" height="100%" viewBox="0 0 24 24" y="0" xmlns="http://www.w3.org/2000/svg" fit="" preserveAspectRatio="xMidYMid meet" focusable="false">\n    <path d="M10,20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>\n    <path d="M0 0h24v24H0z" fill="none"/>\n    </svg>\n    </md-icon>\n</a>\n</div>\n'
+});
 insertActions([{
     name: "PNX",
     type: 'template',
@@ -75,97 +99,6 @@ app.component('prmBriefResultAfter', {
     var code = angular.element('<add-source-icon></add-source-icon>');
     $element.parent().parent().find('div').append($compile(code)($scope));
 }]);
-
-function insertActions(actions) {
-    app.service('customActionService', function () {
-        return {
-            actions: [],
-            processCustomAction: function processCustomAction(prmActionCtrl, action) {
-                action.slug = action.name.replace(/\s+/g, ''); // remove whitespace
-                action.iconname = action.slug.toLowerCase();
-                action.index = Object.keys(prmActionCtrl.actionListService.actionsToIndex).length - 1; // ignore "none" and RISPushTo
-                this.actions.push(action);
-                return action;
-            },
-            setCustomAction: function setCustomAction(prmActionCtrl, action) {
-                prmActionCtrl.actionLabelNamesMap[action.slug] = action.name;
-                prmActionCtrl.actionIconNamesMap[action.slug] = action.iconname;
-                prmActionCtrl.actionIcons[action.iconname] = {
-                    icon: action.icon.name,
-                    iconSet: action.icon.set,
-                    type: "svg"
-                };
-                if (!prmActionCtrl.actionListService.actionsToIndex[action.slug]) {
-                    // ensure we aren't duplicating the entry
-                    prmActionCtrl.actionListService.requiredActionsList[action.index] = action.slug;
-                    prmActionCtrl.actionListService.actionsToDisplay.unshift(action.slug);
-                    prmActionCtrl.actionListService.actionsToIndex[action.slug] = action.index;
-                }
-                if (action.type === 'template') {
-                    if (action.hasOwnProperty('templateVar')) {
-                        action.action = action.action.replace(/{\d}/g, function (r) {
-                            return action.templateVar[r.replace(/[^\d]/g, '')];
-                        });
-                    }
-                    action.action = action.action.replace(/{recordId}/g, function (r) {
-                        return prmActionCtrl.item.pnx.search.recordid[0];
-                    });
-
-                    //replace a pnx.xxx.xxx[0] pattern ex. pnx.search.recordid[0]
-                    var pnxProperties = action.action.match(/\{(pnx\..*?)\}/g) || [];
-                    pnxProperties.forEach(function (p) {
-                        var valueForP = p.replace(/[{}]/g, '').split('.').reduce(function (o, i) {
-                            try {
-                                var h = /(.*)(\[\d\])/.exec(i);
-
-                                if (h instanceof Array) {
-                                    return o[h[1]][h[2].replace(/[^\d]/g, '')];
-                                }
-
-                                return o[i];
-                            } catch (e) {
-                                return '';
-                            }
-                        }, prmActionCtrl.item);
-                        action.action = action.action.replace(p, valueForP);
-                    });
-                }
-                prmActionCtrl.onToggle[action.slug] = function () {
-                    window.open(action.action, '_blank'); // opens the url in a new window
-                };
-            },
-            setCustomActionContainer: function setCustomActionContainer(mdTabsCtrl, action) {// for further review...
-            },
-            getCustomActions: function getCustomActions() {
-                return this.actions;
-            }
-        };
-    }).component('prmActionListAfter', {
-        require: {
-            prmActionCtrl: '^prmActionList'
-        },
-        controller: 'customActionController'
-    }).component('prmActionContainerAfter', {
-        require: {
-            mdTabsCtrl: '^mdTabs'
-        },
-        controller: 'customActionContainerController'
-    }).controller('customActionController', ['$scope', 'customActionService', function ($scope, customActionService) {
-        var vm = this;
-        vm.$onInit = function () {
-            console.log(vm.prmActionCtrl);
-            actions.forEach(function (action) {
-                var processedAction = customActionService.processCustomAction(vm.prmActionCtrl, action);
-                customActionService.setCustomAction(vm.prmActionCtrl, processedAction);
-            });
-        };
-    }]).controller('customActionContainerController', ['$scope', 'customActionService', function ($scope, customActionService) {
-        var vm = this;
-        vm.$onInit = function () {
-            console.log(vm.mdTabsCtrl);
-        };
-    }]);
-}
 
 app.component('prmMainMenuAfter', {
     bindings: {
@@ -303,4 +236,113 @@ app.component('prmMainMenuAfter', {
         self.session = session(uSms);
     }]
 });
+
+angular.module('viewCustom').component('prmFullViewAfter', {
+    bindings: {
+        parentCtrl: '<'
+    },
+    controller: ['sectionOrdering', function (sectionOrdering) {
+        var ctrl = this;
+
+        ctrl.$onInit = function () {
+            sectionOrdering(ctrl.parentCtrl.services);
+        };
+    }]
+});
+angular.module('viewCustom').factory('sectionOrdering', function () {
+    return function (sections) {
+        if (!sections) return false;
+
+        var numSections = sections.length;
+        if (!(numSections > 0)) return false;
+
+        // Check if there is a 'details' section.
+        var filterResult = sections.filter(function (s) {
+            return s.serviceName === 'details';
+        });
+        if (filterResult.length !== 1) return false;
+        var detailsSection = filterResult[0];
+
+        var index = sections.indexOf(detailsSection);
+
+        // Remove the 'details' section from the array.
+        sections.splice(index, 1);
+
+        // Append the 'details' section to the array.
+        sections.splice(numSections, 0, detailsSection);
+
+        return true;
+    };
+});
+function insertActions(actions) {
+    app.service('customActionService', function () {
+        return {
+            actions: [],
+            processCustomAction: function processCustomAction(prmActionCtrl, action) {
+                action.slug = action.name.replace(/\s+/g, ''); // remove whitespace
+                action.iconname = action.slug.toLowerCase();
+                action.index = Object.keys(prmActionCtrl.actionListService.actionsToIndex).length - 1; // ignore "none" and RISPushTo
+                this.actions.push(action);
+                return action;
+            },
+            setCustomAction: function setCustomAction(prmActionCtrl, action) {
+                prmActionCtrl.actionLabelNamesMap[action.slug] = action.name;
+                prmActionCtrl.actionIconNamesMap[action.slug] = action.iconname;
+                prmActionCtrl.actionIcons[action.iconname] = {
+                    icon: action.icon.name,
+                    iconSet: action.icon.set,
+                    type: "svg"
+                };
+                if (!prmActionCtrl.actionListService.actionsToIndex[action.slug]) {
+                    // ensure we aren't duplicating the entry
+                    prmActionCtrl.actionListService.requiredActionsList[action.index] = action.slug;
+                    prmActionCtrl.actionListService.actionsToDisplay.unshift(action.slug);
+                    prmActionCtrl.actionListService.actionsToIndex[action.slug] = action.index;
+                }
+                if (action.type === 'template') {
+                    if (action.hasOwnProperty('templateVar')) {
+                        action.action = action.action.replace(/{\d}/g, function (r) {
+                            return action.templateVar[r.replace(/[^\d]/g, '')];
+                        });
+                    }
+                    action.action = action.action.replace(/{recordId}/g, function (r) {
+                        return prmActionCtrl.item.pnx.search.recordid[0];
+                    });
+                }
+                prmActionCtrl.onToggle[action.slug] = function () {
+                    window.open(action.action, '_blank'); // opens the url in a new window
+                };
+            },
+            setCustomActionContainer: function setCustomActionContainer(mdTabsCtrl, action) {// for further review...
+            },
+            getCustomActions: function getCustomActions() {
+                return this.actions;
+            }
+        };
+    }).component('prmActionListAfter', {
+        require: {
+            prmActionCtrl: '^prmActionList'
+        },
+        controller: 'customActionController'
+    }).component('prmActionContainerAfter', {
+        require: {
+            mdTabsCtrl: '^mdTabs'
+        },
+        controller: 'customActionContainerController'
+    }).controller('customActionController', ['$scope', 'customActionService', function ($scope, customActionService) {
+        var vm = this;
+        vm.$onInit = function () {
+            console.log(vm.prmActionCtrl);
+            actions.forEach(function (action) {
+                var processedAction = customActionService.processCustomAction(vm.prmActionCtrl, action);
+                customActionService.setCustomAction(vm.prmActionCtrl, processedAction);
+            });
+        };
+    }]).controller('customActionContainerController', ['$scope', 'customActionService', function ($scope, customActionService) {
+        var vm = this;
+        vm.$onInit = function () {
+            console.log(vm.mdTabsCtrl);
+        };
+    }]);
+}
 })();

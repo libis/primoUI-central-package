@@ -1,0 +1,14 @@
+prm-search-bookmark-filter #fixed-buttons-holder.fixed-to-top {
+        flex-direction: column-reverse;
+}
+.primo-scrollbar::-webkit-scrollbar-thumb, md-dialog-content::-webkit-scrollbar-thumb {
+    background-color: #BAC4D1;
+}
+
+.primo-scrollbar::-webkit-scrollbar-thumb:hover, md-dialog-content::-webkit-scrollbar-thumb:hover {
+    background-color: #A7B0BC;
+}
+
+.primo-scrollbar::-webkit-scrollbar-track, md-dialog-content::-webkit-scrollbar-track {
+    background-color: #53738c;
+}

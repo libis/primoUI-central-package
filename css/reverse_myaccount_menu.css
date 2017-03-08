@@ -1,0 +1,17 @@
+/* 
+From: Primo [mailto:primo-bounces@exlibrisusers.org] On Behalf Of Gabriele Höfler
+Sent: Tuesday, February 28, 2017 15:19
+To: Ex Libris user community discussion list for Primo <primo@exlibrisusers.org>
+Subject: Re: [Primo] New Primo UI - login and logout behaviour
+*/
+
+prm-user-area md-fab-toolbar.md-left md-fab-actions {
+  flex-direction: row !important;
+}
+
+prm-user-area div.md-fab-action-item:nth-child(1) {
+  margin-left: auto !important;
+}
+
+
+

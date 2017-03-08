@@ -1,0 +1,25 @@
+add-source-icon {
+    display: inline-block;
+    margin-left: 1em;
+    margin-top: -2px;
+}
+
+
+add-source-icon div.sourceid img.source-icon {
+    display: inline-block;
+    max-height: 18px;
+    width: auto;
+    height: auto;
+    transform: none;
+    min-width: auto;
+    min-height: auto;
+    vertical-align: bottom;
+}
+
+add-source-icon div.sourceid span.source-text {
+    font-size:small;
+    margin-left: 0.4em;
+    text-transform: none;
+    letter-spacing: normal;
+}
+

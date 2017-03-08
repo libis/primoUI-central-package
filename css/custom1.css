@@ -1,3 +1,97 @@
+/* homeIcon */
+prm-topbar prm-logo, prm-topbar prm-logo, prm-logo-after {
+        display: flex;
+}
+add-source-icon {
+    display: inline-block;
+    margin-left: 1em;
+    margin-top: -2px;
+}
+
+
+add-source-icon div.sourceid img.source-icon {
+    display: inline-block;
+    max-height: 18px;
+    width: auto;
+    height: auto;
+    transform: none;
+    min-width: auto;
+    min-height: auto;
+    vertical-align: bottom;
+}
+
+add-source-icon div.sourceid span.source-text {
+    font-size:small;
+    margin-left: 0.4em;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+
+/* Facets on the Left Side */
+
+prm-search > md-content.padded-container  {
+    display: -webkit-flex; !* Safari *!
+    -webkit-flex-flow: row-reverse wrap; !* Safari 6.1+ *!
+    display: flex;
+    flex-flow: row-reverse wrap;
+}
+.flex-gt-md-25.sidebar{
+    webkit-flex: 0 0 15%;
+    flex: 0 0 15%;
+}
+.main{
+    webkit-flex: 0 0 65%;
+    flex: 0 0 65%;
+}
+.layout-row>.flex-gt-lg-10{
+    webkit-flex: 0 0 16%;
+    flex: 0 0 16%;
+    max-width: none;
+}
+prm-search-bookmark-filter #fixed-buttons-holder.fixed-to-top {
+        flex-direction: column-reverse;
+}
+.primo-scrollbar::-webkit-scrollbar-thumb, md-dialog-content::-webkit-scrollbar-thumb {
+    background-color: #BAC4D1;
+}
+
+.primo-scrollbar::-webkit-scrollbar-thumb:hover, md-dialog-content::-webkit-scrollbar-thumb:hover {
+    background-color: #A7B0BC;
+}
+
+.primo-scrollbar::-webkit-scrollbar-track, md-dialog-content::-webkit-scrollbar-track {
+    background-color: #53738c;
+}
+prm-linked-user-selector .toolbar-select-input ._md-select-value > span._md-select-icon {
+    color :#45aab4; 
+}
+
+
+
+prm-linked-user-selector md-input-container ._md-select-value:hover {
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    padding-bottom: 0;
+}
+/* 
+From: Primo [mailto:primo-bounces@exlibrisusers.org] On Behalf Of Gabriele Höfler
+Sent: Tuesday, February 28, 2017 15:19
+To: Ex Libris user community discussion list for Primo <primo@exlibrisusers.org>
+Subject: Re: [Primo] New Primo UI - login and logout behaviour
+*/
+
+prm-user-area md-fab-toolbar.md-left md-fab-actions {
+  flex-direction: row !important;
+}
+
+prm-user-area div.md-fab-action-item:nth-child(1) {
+  margin-left: auto !important;
+}
+
+
+
+
 prm-main-menu > div {
   display: flex;
 }

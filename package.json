@@ -1,5 +1,5 @@
 {
-  "name": "CENTRAL_PACKAGE",
+  "name": "central_package",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,6 +11,15 @@
   "license": "ISC",
   "devDependencies": {
     "primo-explore-feedback": "0.0.4",
-    "primo-explore-custom-actions": "1.0.2"
-  }
+    "primo-explore-custom-actions": "1.0.2",
+    "primo-explore-section-ordering": "git://github.com/muratseyhan/primo-explore-section-ordering.git"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/libis/primoUI-central-package.git"
+  },
+  "bugs": {
+    "url": "https://github.com/libis/primoUI-central-package/issues"
+  },
+  "homepage": "https://github.com/libis/primoUI-central-package#readme"
 }

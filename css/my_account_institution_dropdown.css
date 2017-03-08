@@ -1,0 +1,11 @@
+prm-linked-user-selector .toolbar-select-input ._md-select-value > span._md-select-icon {
+    color :#45aab4; 
+}
+
+
+
+prm-linked-user-selector md-input-container ._md-select-value:hover {
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    padding-bottom: 0;
+}
