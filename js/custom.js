@@ -100,6 +100,44 @@ app.component('prmBriefResultAfter', {
     $element.parent().parent().find('div').append($compile(code)($scope));
 }]);
 
+app.component('prmFullViewAfter', {
+    bindings: {
+        parentCtrl: '<'
+    },
+    controller: ['sectionOrdering', function (sectionOrdering) {
+        var ctrl = this;
+
+        ctrl.$onInit = function () {
+            sectionOrdering(ctrl.parentCtrl.services);
+        };
+    }]
+});
+app.factory('sectionOrdering', function () {
+    return function (sections) {
+        if (!sections) return false;
+
+        var numSections = sections.length;
+        if (!(numSections > 0)) return false;
+
+        // Check if there is a 'details' section.
+        var filterResult = sections.filter(function (s) {
+            return s.serviceName === 'details';
+        });
+        if (filterResult.length !== 1) return false;
+        var detailsSection = filterResult[0];
+
+        var index = sections.indexOf(detailsSection);
+
+        // Remove the 'details' section from the array.
+        sections.splice(index, 1);
+
+        // Append the 'details' section to the array.
+        sections.splice(numSections, 0, detailsSection);
+
+        return true;
+    };
+});
+
 app.component('prmMainMenuAfter', {
     bindings: {
         parentCtrl: '<'
@@ -237,43 +275,6 @@ app.component('prmMainMenuAfter', {
     }]
 });
 
-angular.module('viewCustom').component('prmFullViewAfter', {
-    bindings: {
-        parentCtrl: '<'
-    },
-    controller: ['sectionOrdering', function (sectionOrdering) {
-        var ctrl = this;
-
-        ctrl.$onInit = function () {
-            sectionOrdering(ctrl.parentCtrl.services);
-        };
-    }]
-});
-angular.module('viewCustom').factory('sectionOrdering', function () {
-    return function (sections) {
-        if (!sections) return false;
-
-        var numSections = sections.length;
-        if (!(numSections > 0)) return false;
-
-        // Check if there is a 'details' section.
-        var filterResult = sections.filter(function (s) {
-            return s.serviceName === 'details';
-        });
-        if (filterResult.length !== 1) return false;
-        var detailsSection = filterResult[0];
-
-        var index = sections.indexOf(detailsSection);
-
-        // Remove the 'details' section from the array.
-        sections.splice(index, 1);
-
-        // Append the 'details' section to the array.
-        sections.splice(numSections, 0, detailsSection);
-
-        return true;
-    };
-});
 function insertActions(actions) {
     app.service('customActionService', function () {
         return {
