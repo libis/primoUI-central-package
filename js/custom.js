@@ -28,7 +28,7 @@ app.controller('prmLogoAfterController', [function () {
 app.component('prmLogoAfter', {
     bindings: { parentCtrl: '<' },
     controller: 'prmLogoAfterController',
-    template: '\n<div id="fixed-buttons-holder"\n    ng-class ="{\'fixed-to-top\': $ctrl.fixedToTop()}"\n    layout="row"\n    layout-align="center center"\n    class ="layout-align-center-center layout-row"\n>\n<a class ="md-icon-button button-over-dark md-button md-primoExplore-theme" id="home-button" aria-label="Go to startpage" ng-click=\'$ctrl.goToHomePage()\'  href="{{$ctrl.getHomePageLink()}}" >\n<md-icon class ="md-primoExplore-theme">\n<svg id="prm_home" width="100%" height="100%" viewBox="0 0 24 24" y="0" xmlns="http://www.w3.org/2000/svg" fit="" preserveAspectRatio="xMidYMid meet" focusable="false">\n    <path d="M10,20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>\n    <path d="M0 0h24v24H0z" fill="none"/>\n    </svg>\n    </md-icon>\n</a>\n</div>\n'
+    template: '\n<div id="home-buttons-holder"\n    ng-class ="{\'fixed-to-top\': $ctrl.fixedToTop()}"\n    layout="row"\n    layout-align="center center"\n    class ="layout-align-center-center layout-row"\n>\n<a class ="md-icon-button button-over-dark md-button md-primoExplore-theme" id="home-button" aria-label="Go to startpage" ng-click=\'$ctrl.goToHomePage()\'  href="{{$ctrl.getHomePageLink()}}" >\n<md-icon class ="md-primoExplore-theme">\n<svg id="prm_home" width="100%" height="100%" viewBox="0 0 24 24" y="0" xmlns="http://www.w3.org/2000/svg" fit="" preserveAspectRatio="xMidYMid meet" focusable="false">\n    <path d="M10,20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>\n    <path d="M0 0h24v24H0z" fill="none"/>\n    </svg>\n    </md-icon>\n</a>\n</div>\n'
 });
 insertActions([{
     name: "PNX",
@@ -62,7 +62,6 @@ app.component('addSourceIcon', {
 }).controller('addSourceIconController', ['$scope', function ($scope) {
     var self = this;
     var parentCtrl = $scope.$parent.$ctrl.parentCtrl;
-
     var iconConf = [{
         'sourceid': 'lirias',
         'iconUrl': '//limo.libis.be/primo_library/libweb/libis/images/lirias.jpg',
@@ -104,6 +103,22 @@ app.component('prmFullViewAfter', {
     bindings: {
         parentCtrl: '<'
     },
+    controller: 'prmFullViewAfterController',
+    template: '\n        <prm-full-view-after-section-ordering parent-ctrl ="$ctrl.parentCtrl" ></prm-full-view-after-section-ordering>\n        <prm-full-view-after-altmetrics parent-ctrl ="$ctrl.parentCtrl" ></prm-full-view-after-altmetrics>\n        '
+});
+
+app.controller('prmFullViewAfterController', ['$scope', '$element', '$compile', function ($scope, $element, $compile) {
+    var vm = this;
+    /*
+    vm.$postLink = function() {
+        // Usually safe to do DOM manipulation
+    }
+    */
+}]);
+app.component('prmFullViewAfterSectionOrdering', {
+    bindings: {
+        parentCtrl: '<'
+    },
     controller: ['sectionOrdering', function (sectionOrdering) {
         var ctrl = this;
 
@@ -112,6 +127,7 @@ app.component('prmFullViewAfter', {
         };
     }]
 });
+
 app.factory('sectionOrdering', function () {
     return function (sections) {
         if (!sections) return false;
@@ -325,25 +341,29 @@ function insertActions(actions) {
             prmActionCtrl: '^prmActionList'
         },
         controller: 'customActionController'
-    }).component('prmActionContainerAfter', {
-        require: {
-            mdTabsCtrl: '^mdTabs'
-        },
-        controller: 'customActionContainerController'
     }).controller('customActionController', ['$scope', 'customActionService', function ($scope, customActionService) {
         var vm = this;
         vm.$onInit = function () {
-            console.log(vm.prmActionCtrl);
+            // console.log(vm.prmActionCtrl);
             actions.forEach(function (action) {
                 var processedAction = customActionService.processCustomAction(vm.prmActionCtrl, action);
                 customActionService.setCustomAction(vm.prmActionCtrl, processedAction);
             });
         };
-    }]).controller('customActionContainerController', ['$scope', 'customActionService', function ($scope, customActionService) {
+    }]);
+    /*
+    .component('prmActionContainerAfter', {
+             require: {
+                 mdTabsCtrl: '^mdTabs',
+          },
+          controller: 'customActionContainerController'
+     })
+    .controller('customActionContainerController', ['$scope','customActionService', function($scope, customActionService) {
         var vm = this;
-        vm.$onInit = function () {
+        vm.$onInit = function() {
             console.log(vm.mdTabsCtrl);
         };
     }]);
+    */
 }
 })();

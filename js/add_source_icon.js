@@ -11,7 +11,6 @@ app.component('addSourceIcon', {
 }).controller('addSourceIconController', ['$scope', function($scope) {
     var self = this;
     var parentCtrl = $scope.$parent.$ctrl.parentCtrl;
-
     var iconConf = [{
         'sourceid': 'lirias',
         'iconUrl': '//limo.libis.be/primo_library/libweb/libis/images/lirias.jpg',

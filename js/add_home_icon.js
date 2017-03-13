@@ -22,7 +22,7 @@ app.component('prmLogoAfter',{
     bindings: {parentCtrl: '<'},
     controller: 'prmLogoAfterController',
     template: `
-<div id="fixed-buttons-holder"
+<div id="home-buttons-holder"
     ng-class ="{'fixed-to-top': $ctrl.fixedToTop()}"
     layout="row"
     layout-align="center center"
