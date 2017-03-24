@@ -30,25 +30,6 @@ app.component('prmLogoAfter', {
     controller: 'prmLogoAfterController',
     template: '\n<div id="home-buttons-holder"\n    ng-class ="{\'fixed-to-top\': $ctrl.fixedToTop()}"\n    layout="row"\n    layout-align="center center"\n    class ="layout-align-center-center layout-row"\n>\n<a class ="md-icon-button button-over-dark md-button md-primoExplore-theme" id="home-button" aria-label="Go to startpage" ng-click=\'$ctrl.goToHomePage()\'  href="{{$ctrl.getHomePageLink()}}" >\n<md-icon class ="md-primoExplore-theme">\n<svg id="prm_home" width="100%" height="100%" viewBox="0 0 24 24" y="0" xmlns="http://www.w3.org/2000/svg" fit="" preserveAspectRatio="xMidYMid meet" focusable="false">\n    <path d="M10,20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>\n    <path d="M0 0h24v24H0z" fill="none"/>\n    </svg>\n    </md-icon>\n</a>\n</div>\n'
 });
-insertActions([{
-    name: "PNX",
-    type: 'template',
-    icon: {
-        set: 'action',
-        name: 'ic_stars_24px'
-    },
-    action: "/primo_library/libweb/jqp/record/{pnx.control.recordid}.pnx"
-}, {
-    name: "XML",
-    type: 'template',
-    templateVar: ['.xml'],
-    icon: {
-        set: 'action',
-        name: 'ic_stars_24px'
-    },
-    action: "/primo_library/libweb/jqp/record/{pnx.control.recordid}.xml"
-}]);
-
 /*
  * Add Icon of source to briefdisplay
  * Tom Vanmechelen
@@ -115,43 +96,21 @@ app.controller('prmFullViewAfterController', ['$scope', '$element', '$compile', 
     }
     */
 }]);
-app.component('prmFullViewAfterSectionOrdering', {
+app.component('prmUserAreaAfter', {
     bindings: {
         parentCtrl: '<'
     },
-    controller: ['sectionOrdering', function (sectionOrdering) {
-        var ctrl = this;
+    controller: function controller($compile, $scope, $templateCache, $element) {
+        console.log(this);
+        console.log($scope);
+        console.log($element);
+        console.log($element.parent());
 
-        ctrl.$onInit = function () {
-            sectionOrdering(ctrl.parentCtrl.services);
-        };
-    }]
-});
+        $templateCache.put('components/search/topbar/userArea/user-area.html', '\n          <div layout=\'row\' layout-align="center center">\n            <prm-authentication layout="flex" [is-logged-in]="$ctrl.userName().length > 0"></prm-authentication>\n            <prm-change-lang aria-label="{{\'eshelf.signin.title\' | translate}}" ng-if="$ctrl.displayLanguage" label-type="icon"></prm-change-lang>\n            <prm-library-card-menu></prm-library-card-menu>\n          </div>');
 
-app.factory('sectionOrdering', function () {
-    return function (sections) {
-        if (!sections) return false;
-
-        var numSections = sections.length;
-        if (!(numSections > 0)) return false;
-
-        // Check if there is a 'details' section.
-        var filterResult = sections.filter(function (s) {
-            return s.serviceName === 'details';
-        });
-        if (filterResult.length !== 1) return false;
-        var detailsSection = filterResult[0];
-
-        var index = sections.indexOf(detailsSection);
-
-        // Remove the 'details' section from the array.
-        sections.splice(index, 1);
-
-        // Append the 'details' section to the array.
-        sections.splice(numSections, 0, detailsSection);
-
-        return true;
-    };
+        $compile($element.parent())($scope);
+        //$scope.$apply();
+    }
 });
 
 app.component('prmMainMenuAfter', {
@@ -291,79 +250,41 @@ app.component('prmMainMenuAfter', {
     }]
 });
 
-function insertActions(actions) {
-    app.service('customActionService', function () {
-        return {
-            actions: [],
-            processCustomAction: function processCustomAction(prmActionCtrl, action) {
-                action.slug = action.name.replace(/\s+/g, ''); // remove whitespace
-                action.iconname = action.slug.toLowerCase();
-                action.index = Object.keys(prmActionCtrl.actionListService.actionsToIndex).length - 1; // ignore "none" and RISPushTo
-                this.actions.push(action);
-                return action;
-            },
-            setCustomAction: function setCustomAction(prmActionCtrl, action) {
-                prmActionCtrl.actionLabelNamesMap[action.slug] = action.name;
-                prmActionCtrl.actionIconNamesMap[action.slug] = action.iconname;
-                prmActionCtrl.actionIcons[action.iconname] = {
-                    icon: action.icon.name,
-                    iconSet: action.icon.set,
-                    type: "svg"
-                };
-                if (!prmActionCtrl.actionListService.actionsToIndex[action.slug]) {
-                    // ensure we aren't duplicating the entry
-                    prmActionCtrl.actionListService.requiredActionsList[action.index] = action.slug;
-                    prmActionCtrl.actionListService.actionsToDisplay.unshift(action.slug);
-                    prmActionCtrl.actionListService.actionsToIndex[action.slug] = action.index;
-                }
-                if (action.type === 'template') {
-                    if (action.hasOwnProperty('templateVar')) {
-                        action.action = action.action.replace(/{\d}/g, function (r) {
-                            return action.templateVar[r.replace(/[^\d]/g, '')];
-                        });
-                    }
-                    action.action = action.action.replace(/{recordId}/g, function (r) {
-                        return prmActionCtrl.item.pnx.search.recordid[0];
-                    });
-                }
-                prmActionCtrl.onToggle[action.slug] = function () {
-                    window.open(action.action, '_blank'); // opens the url in a new window
-                };
-            },
-            setCustomActionContainer: function setCustomActionContainer(mdTabsCtrl, action) {// for further review...
-            },
-            getCustomActions: function getCustomActions() {
-                return this.actions;
-            }
+angular.module('viewCustom').component('prmFullViewAfter', {
+    bindings: {
+        parentCtrl: '<'
+    },
+    controller: ['sectionOrdering', function (sectionOrdering) {
+        var ctrl = this;
+
+        ctrl.$onInit = function () {
+            sectionOrdering(ctrl.parentCtrl.services);
         };
-    }).component('prmActionListAfter', {
-        require: {
-            prmActionCtrl: '^prmActionList'
-        },
-        controller: 'customActionController'
-    }).controller('customActionController', ['$scope', 'customActionService', function ($scope, customActionService) {
-        var vm = this;
-        vm.$onInit = function () {
-            // console.log(vm.prmActionCtrl);
-            actions.forEach(function (action) {
-                var processedAction = customActionService.processCustomAction(vm.prmActionCtrl, action);
-                customActionService.setCustomAction(vm.prmActionCtrl, processedAction);
-            });
-        };
-    }]);
-    /*
-    .component('prmActionContainerAfter', {
-             require: {
-                 mdTabsCtrl: '^mdTabs',
-          },
-          controller: 'customActionContainerController'
-     })
-    .controller('customActionContainerController', ['$scope','customActionService', function($scope, customActionService) {
-        var vm = this;
-        vm.$onInit = function() {
-            console.log(vm.mdTabsCtrl);
-        };
-    }]);
-    */
-}
+    }]
+});
+angular.module('viewCustom').factory('sectionOrdering', function () {
+    return function (sections) {
+        if (!sections) return false;
+
+        var numSections = sections.length;
+        if (!(numSections > 0)) return false;
+
+        // Check if there is a 'details' section.
+        var filterResult = sections.filter(function (s) {
+            return s.serviceName === 'details';
+        });
+        if (filterResult.length !== 1) return false;
+        var detailsSection = filterResult[0];
+
+        var index = sections.indexOf(detailsSection);
+
+        // Remove the 'details' section from the array.
+        sections.splice(index, 1);
+
+        // Append the 'details' section to the array.
+        sections.splice(numSections, 0, detailsSection);
+
+        return true;
+    };
+});
 })();
