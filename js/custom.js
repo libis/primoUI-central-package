@@ -250,7 +250,7 @@ app.component('prmMainMenuAfter', {
     }]
 });
 
-angular.module('viewCustom').component('prmFullViewAfter', {
+angular.module('viewCustom').component('prmFullViewAfterSectionOrdering', {
     bindings: {
         parentCtrl: '<'
     },
