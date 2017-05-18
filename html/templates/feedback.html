@@ -1,0 +1,39 @@
+<md-dialog id='lbsFeedbackForm' aria-label='feedback'>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Feedback</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancelFeedback()">
+                <md-icon md-svg-icon="navigation:ic_close_24px" aria-label="Close dialog"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <form name='feedbackForm'>
+        <div class="md-dialog-content">
+            <input type="hidden" name='subject' ng-model='feedback.subject'>
+            <md-input-container class="md-block">
+                <label>EMail</label>
+                <input type="email" name='replyTo' title='Your email. So we can keep you up to date' placeholder='john.doe@kuleuven.be' required ng-model='feedback.replyTo' ng-pattern="/^.+@.+\..+$/">
+                <div ng-if='feedbackForm.replyTo.$error.required' role="alert">
+                  <div>eMail is mandatory</div>
+                </div>
+                <div ng-if='feedbackForm.replyTo.$error.email' role="error">
+                  <div>Please enter a valid eMail adress</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Description</label>
+                <textarea name="message" placeholder="Describe what the problem is" md-maxlength="500" required md-no-asterisk rows="5" cols="80" ng-model="feedback.message"></textarea>
+                <div ng-if='feedbackForm.message.$error.required' role="alert">
+                  <div>Message is mandatory</div>
+                </div>
+            </md-input-container>
+        </div>
+      </form>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <md-button class="md-raised" ng-click="cancelFeedback()">Cancel</md-button>
+        <md-button class="md-raised md-primary " ng-click='sendFeedback()'>Submit</md-button>
+    </md-dialog-actions>
+</md-dialog>

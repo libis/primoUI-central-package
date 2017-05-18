@@ -63,6 +63,10 @@ prm-search > md-content.padded-container  {
     flex: 0 0 16%;
     max-width: none;
 }
+prm-main-menu > div {
+  display: flex;
+}
+
 prm-linked-user-selector .toolbar-select-input ._md-select-value > span._md-select-icon {
     color :#45aab4; 
 }
@@ -74,6 +78,16 @@ prm-linked-user-selector md-input-container ._md-select-value:hover {
     border-bottom-style: solid;
     padding-bottom: 0;
 }
+.md-button[id=payFinesNow] {
+	color: white;
+	background-color: tomato;
+}
+.md-button[id=payFinesNow]:hover {
+		background-color: tomato;
+		filter:brightness(80%);
+		color: white;
+}
+
 /* 
 From: Primo [mailto:primo-bounces@exlibrisusers.org] On Behalf Of Gabriele Höfler
 Sent: Tuesday, February 28, 2017 15:19
@@ -91,7 +105,3 @@ prm-user-area div.md-fab-action-item:nth-child(1) {
 
 
 
-
-prm-main-menu > div {
-  display: flex;
-}

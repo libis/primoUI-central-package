@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "primo-explore-feedback": "git://github.com/mehmetc/primo-explore-feedback.git",
+    "primo-explore-dom": "0.0.6",
     "primo-explore-section-ordering": "git://github.com/muratseyhan/primo-explore-section-ordering.git"
   },
   "repository": {
