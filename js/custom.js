@@ -80,7 +80,7 @@ app.component('prmBriefResultAfter', {
 }]);
 
 app.run(function ($templateCache) {
-  $templateCache.put('feedback.html', '<md-dialog id=\'lbsFeedbackForm\' aria-label=\'feedback\'>\n    <md-toolbar>\n        <div class="md-toolbar-tools">\n            <h2>Feedback</h2>\n            <span flex></span>\n            <md-button class="md-icon-button" ng-click="cancelFeedback()">\n                <md-icon md-svg-icon="navigation:ic_close_24px" aria-label="Close dialog"></md-icon>\n            </md-button>\n        </div>\n    </md-toolbar>\n    <md-dialog-content>\n      <form name=\'feedbackForm\'>\n        <div class="md-dialog-content">\n            <input type="hidden" name=\'subject\' ng-model=\'feedback.subject\'>\n            <md-input-container class="md-block">\n                <label>EMail</label>\n                <input type="email" name=\'replyTo\' title=\'Your email. So we can keep you up to date\' placeholder=\'john.doe@kuleuven.be\' required ng-model=\'feedback.replyTo\' ng-pattern="/^.+@.+\\..+$/">\n                <div ng-if=\'feedbackForm.replyTo.$error.required\' role="alert">\n                  <div>eMail is mandatory</div>\n                </div>\n                <div ng-if=\'feedbackForm.replyTo.$error.email\' role="error">\n                  <div>Please enter a valid eMail adress</div>\n                </div>\n            </md-input-container>\n            <md-input-container>\n                <label>Description</label>\n                <textarea name="message" placeholder="Describe what the problem is" md-maxlength="500" required md-no-asterisk rows="5" cols="80" ng-model="feedback.message"></textarea>\n                <div ng-if=\'feedbackForm.message.$error.required\' role="alert">\n                  <div>Message is mandatory</div>\n                </div>\n            </md-input-container>\n        </div>\n      </form>\n    </md-dialog-content>\n    <md-dialog-actions layout="row">\n        <md-button class="md-raised" ng-click="cancelFeedback()">Cancel</md-button>\n        <md-button class="md-raised md-primary " ng-click=\'sendFeedback()\'>Submit</md-button>\n    </md-dialog-actions>\n</md-dialog>\n');
+  $templateCache.put('feedback.html', '<md-dialog id=\'lbsFeedbackForm\' aria-label=\'feedback\'>\n    <md-toolbar>\n        <div class="md-toolbar-tools">\n            <h2>Feedback</h2>\n            <span flex></span>\n            <md-button class="md-icon-button" ng-click="cancelFeedback()">\n                <md-icon md-svg-icon="navigation:ic_close_24px" aria-label="Close dialog"></md-icon>\n            </md-button>\n        </div>\n    </md-toolbar>\n    <md-dialog-content>\n      <form name=\'feedbackForm\'>\n        <div class="md-dialog-content">\n            <input type="hidden" name=\'subject\' ng-model=\'feedback.subject\'>\n            <md-input-container class="md-block">\n                <label>EMail</label>\n                <input type="email" name=\'replyTo\' title=\'Your email. So we can keep you up to date\' placeholder=\'john.doe@kuleuven.be\' required ng-model=\'feedback.replyTo\' ng-pattern="/^.+@.+\\..+$/">\n                <div ng-if=\'feedbackForm.replyTo.$error.required\' role="alert">\n                  <div>eMail is mandatory</div>\n                </div>\n                <div ng-if=\'feedbackForm.replyTo.$error.email\' role="error">\n                  <div style=\'color:tomato;\'>Please enter a valid eMail adress</div>\n                </div>\n            </md-input-container>\n            <md-input-container>\n                <label>Description</label>\n                <textarea name="message" placeholder="Describe what the problem is" md-maxlength="500" required md-no-asterisk rows="5" cols="80" ng-model="feedback.message"></textarea>\n                <div ng-if=\'feedbackForm.message.$error.required\' role="error">\n                  <div style=\'color:tomato;\'>Message is mandatory</div>\n                </div>\n            </md-input-container>\n        </div>\n      </form>\n    </md-dialog-content>\n    <md-dialog-actions layout="row">\n        <md-button class="md-raised" ng-click="cancelFeedback()">Cancel</md-button>\n        <md-button class="md-raised md-primary " ng-click=\'sendFeedback()\'>Submit</md-button>\n    </md-dialog-actions>\n</md-dialog>\n');
   $templateCache.put('main_menu_after.html', '<div class="top-nav-bar-links buttons-group" id="main menu" layout="row" role="list" layout-align="center center" flex="100">\n  <md-button tabindex="0" role="listitem" tabindex="0" ng-href="" class="zero-margin flex-button multi-line-button button-over-dark"\n             layout="column" layout-align="center center" (click)="$ctrl.showFeedbackForm($event)">\n\n      <span class="item-content" translate="mainmenu.label.feedback"></span>\n      <md-tooltip md-direction="down" md-delay="400" class="multi-row-tooltip slide-tooltip-anim">\n        <span class="item-description popover animate-popover" translate="nui.mainmenu.description.feedback"></span>\n      </md-tooltip>\n  </md-button>\n</div>\n');
   $templateCache.put('pay_my_fines.html', '<div layout="row" layout-align="center center" ng-show=\'$ctrl.showPayMyFines\'>\n    <a id=\'payFinesNow\' class="md-button md-raised md-secundary" target=\'_blank\' href=\'https://services.libis.be/pay_my_fines\'>Pay fines</a>\n</div>\n');
 });
@@ -336,6 +336,45 @@ app.component('prmUserAreaAfter', {
   },
   controller: 'prmUserAreaAfterController'
 });
+angular.module('centralCustom').component('prmFullViewAfter', {
+  bindings: {
+    parentCtrl: '<'
+  },
+  controller: ['sectionOrdering', function (sectionOrdering) {
+    var ctrl = this;
+
+    ctrl.$onInit = function () {
+      sectionOrdering(ctrl.parentCtrl.services);
+    };
+  }]
+});
+
+angular.module('centralCustom').factory('sectionOrdering', function () {
+  return function (sections) {
+    if (!sections) return false;
+
+    var numSections = sections.length;
+    if (!(numSections > 0)) return false;
+
+    // Check if there is a 'details' section.
+    var filterResult = sections.filter(function (s) {
+      return s.serviceName === 'details';
+    });
+    if (filterResult.length !== 1) return false;
+    var detailsSection = filterResult[0];
+
+    var index = sections.indexOf(detailsSection);
+
+    // Remove the 'details' section from the array.
+    sections.splice(index, 1);
+
+    // Append the 'details' section to the array.
+    sections.splice(numSections, 0, detailsSection);
+
+    return true;
+  };
+});
+
 (function e(t, n, r) {
   function s(o, u) {
     if (!n[o]) {
@@ -454,7 +493,7 @@ app.component('prmUserAreaAfter', {
          * @return {string}
          */
         get: function get() {
-          return "0.0.6";
+          return "0.0.7";
         }
       }, {
         key: 'explore',
@@ -863,6 +902,9 @@ app.component('prmUserAreaAfter', {
                 if (data.status == 'ok') {
                   var fines = data.data.fines;
                   resolve(fines.fine);
+                } else {
+                  console.log('No fines');
+                  resolve([]);
                 }
               } catch (error) {
                 resolve([]);
@@ -1732,43 +1774,4 @@ app.component('prmUserAreaAfter', {
       }
     }).call(undefined);
   }, {}] }, {}, [1]);
-
-angular.module('centralCustom').component('prmFullViewAfter', {
-  bindings: {
-    parentCtrl: '<'
-  },
-  controller: ['sectionOrdering', function (sectionOrdering) {
-    var ctrl = this;
-
-    ctrl.$onInit = function () {
-      sectionOrdering(ctrl.parentCtrl.services);
-    };
-  }]
-});
-
-angular.module('centralCustom').factory('sectionOrdering', function () {
-  return function (sections) {
-    if (!sections) return false;
-
-    var numSections = sections.length;
-    if (!(numSections > 0)) return false;
-
-    // Check if there is a 'details' section.
-    var filterResult = sections.filter(function (s) {
-      return s.serviceName === 'details';
-    });
-    if (filterResult.length !== 1) return false;
-    var detailsSection = filterResult[0];
-
-    var index = sections.indexOf(detailsSection);
-
-    // Remove the 'details' section from the array.
-    sections.splice(index, 1);
-
-    // Append the 'details' section to the array.
-    sections.splice(numSections, 0, detailsSection);
-
-    return true;
-  };
-});
 })();

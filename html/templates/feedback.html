@@ -19,14 +19,14 @@
                   <div>eMail is mandatory</div>
                 </div>
                 <div ng-if='feedbackForm.replyTo.$error.email' role="error">
-                  <div>Please enter a valid eMail adress</div>
+                  <div style='color:tomato;'>Please enter a valid eMail adress</div>
                 </div>
             </md-input-container>
             <md-input-container>
                 <label>Description</label>
                 <textarea name="message" placeholder="Describe what the problem is" md-maxlength="500" required md-no-asterisk rows="5" cols="80" ng-model="feedback.message"></textarea>
-                <div ng-if='feedbackForm.message.$error.required' role="alert">
-                  <div>Message is mandatory</div>
+                <div ng-if='feedbackForm.message.$error.required' role="error">
+                  <div style='color:tomato;'>Message is mandatory</div>
                 </div>
             </md-input-container>
         </div>
