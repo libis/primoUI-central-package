@@ -336,6 +336,7 @@ app.component('prmUserAreaAfter', {
   },
   controller: 'prmUserAreaAfterController'
 });
+ /*
 angular.module('centralCustom').component('prmFullViewAfter', {
   bindings: {
     parentCtrl: '<'
@@ -348,7 +349,7 @@ angular.module('centralCustom').component('prmFullViewAfter', {
     };
   }]
 });
-
+*/
 angular.module('centralCustom').factory('sectionOrdering', function () {
   return function (sections) {
     if (!sections) return false;
