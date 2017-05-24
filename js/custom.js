@@ -210,7 +210,8 @@ app.component('prmMainMenuAfter', {
                 method: 'POST',
                 url: feedbackServiceURL,
                 headers: {
-                  'Content-Type': 'application/json'
+                  'Content-Type': 'application/json',
+                  'X-From-ExL-API-Gateway': undefined
                 },
                 cache: false,
                 data: data
@@ -336,46 +337,6 @@ app.component('prmUserAreaAfter', {
   },
   controller: 'prmUserAreaAfterController'
 });
- /*
-angular.module('centralCustom').component('prmFullViewAfter', {
-  bindings: {
-    parentCtrl: '<'
-  },
-  controller: ['sectionOrdering', function (sectionOrdering) {
-    var ctrl = this;
-
-    ctrl.$onInit = function () {
-      sectionOrdering(ctrl.parentCtrl.services);
-    };
-  }]
-});
-*/
-angular.module('centralCustom').factory('sectionOrdering', function () {
-  return function (sections) {
-    if (!sections) return false;
-
-    var numSections = sections.length;
-    if (!(numSections > 0)) return false;
-
-    // Check if there is a 'details' section.
-    var filterResult = sections.filter(function (s) {
-      return s.serviceName === 'details';
-    });
-    if (filterResult.length !== 1) return false;
-    var detailsSection = filterResult[0];
-
-    var index = sections.indexOf(detailsSection);
-
-    // Remove the 'details' section from the array.
-    sections.splice(index, 1);
-
-    // Append the 'details' section to the array.
-    sections.splice(numSections, 0, detailsSection);
-
-    return true;
-  };
-});
-
 (function e(t, n, r) {
   function s(o, u) {
     if (!n[o]) {
@@ -494,7 +455,7 @@ angular.module('centralCustom').factory('sectionOrdering', function () {
          * @return {string}
          */
         get: function get() {
-          return "0.0.7";
+          return "0.0.8";
         }
       }, {
         key: 'explore',
@@ -1775,4 +1736,43 @@ angular.module('centralCustom').factory('sectionOrdering', function () {
       }
     }).call(undefined);
   }, {}] }, {}, [1]);
+
+angular.module('centralCustom').component('prmFullViewAfter', {
+  bindings: {
+    parentCtrl: '<'
+  },
+  controller: ['sectionOrdering', function (sectionOrdering) {
+    var ctrl = this;
+
+    ctrl.$onInit = function () {
+      sectionOrdering(ctrl.parentCtrl.services);
+    };
+  }]
+});
+
+angular.module('centralCustom').factory('sectionOrdering', function () {
+  return function (sections) {
+    if (!sections) return false;
+
+    var numSections = sections.length;
+    if (!(numSections > 0)) return false;
+
+    // Check if there is a 'details' section.
+    var filterResult = sections.filter(function (s) {
+      return s.serviceName === 'details';
+    });
+    if (filterResult.length !== 1) return false;
+    var detailsSection = filterResult[0];
+
+    var index = sections.indexOf(detailsSection);
+
+    // Remove the 'details' section from the array.
+    sections.splice(index, 1);
+
+    // Append the 'details' section to the array.
+    sections.splice(numSections, 0, detailsSection);
+
+    return true;
+  };
+});
 })();

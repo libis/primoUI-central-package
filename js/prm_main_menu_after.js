@@ -61,7 +61,8 @@ app.component('prmMainMenuAfter', {
                               method: 'POST',
                               url: feedbackServiceURL,
                               headers: {
-                                  'Content-Type': 'application/json'
+                                  'Content-Type': 'application/json',
+                                  'X-From-ExL-API-Gateway': undefined
                               },
                               cache: false,
                               data: data
