@@ -5,43 +5,23 @@
 var app = angular.module('centralCustom', []);
 var feedbackServiceURL = 'https://services.libis.be/feedback';
 
+/*
+ * Add Home Icon after the library logo 
+ * Tom vanmechelen
+ */
 
-    /*
-     * Add Home Icon after the library logo 
-     * And Language dependant library logo
-     * add library-logo-<locale>.png to the custom/<view>/img directory
-     * Tom vanmechelen
-     */
+app.controller('prmLogoAfterController', [function () {
+  var vm = this;
+  var vid = window.appConfig['vid'];
+  vm.getHomePageLink = getHomePageLink;
+  function getHomePageLink() {
+    return '/primo-explore/search?vid=' + vid;
+  }
 
-app.controller('prmLogoAfterController', ['$scope', '$element', '$compile', '$http', function ($scope, $element, $compile, $http) {
-
-    var self = this;
-    var vid = window.appConfig['vid'];
-    var libraryLogo = window.appConfig.customization.libraryLogo;
-    var locale = window.Primo.explore.helper.userSessionManagerService().i18nService.getLanguage();
-    var localeLibraryLogo = 'custom/' + vid + '/img/library-logo-' + locale + '.png';
-
-    if (libraryLogo !== localeLibraryLogo) {
-        window.appConfig.customization.libraryLogo = localeLibraryLogo;
-        $http({
-            method: 'GET',
-            url: localeLibraryLogo
-        }).then(function (response) {
-            $compile($element.parent())($scope);
-        }, function (response) {
-            // console.log('keep using original img')
-        });
-    }
-
-    self.getHomePageLink = getHomePageLink;
-    function getHomePageLink() {
-        return '/primo-explore/search?vid=' + vid;
-    }
-
-    self.goToHomePage = goToHomePage;
-    function goToHomePage() {
-        document.location.href = '/primo-explore/search?vid=' + vid;
-    }
+  vm.goToHomePage = goToHomePage;
+  function goToHomePage() {
+    document.location.href = '/primo-explore/search?vid=' + vid;
+  }
 }]);
 
 app.component('prmLogoAfter', {
