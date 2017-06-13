@@ -1,0 +1,5 @@
+/* Hide de Browse in the top menu*/
+
+prm-main-menu a[aria-label="Browse"] {
+    display:none;
+}
