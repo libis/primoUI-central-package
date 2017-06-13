@@ -1,5 +1,8 @@
 /* Facets on the Left Side */
-
+/* Is nu een configuration optie in de Backend :
+   https://knowledge.exlibrisgroup.com/Primo/Product_Documentation/New_Primo_User_Interface/New_UI_Customization_-_Best_Practices#Moving_the_Facets_to_the_Left_Side
+*/
+/*
 prm-search > md-content.padded-container  {
     display: -webkit-flex; !* Safari *!
     -webkit-flex-flow: row-reverse wrap; !* Safari 6.1+ *!
@@ -19,3 +22,4 @@ prm-search > md-content.padded-container  {
     flex: 0 0 16%;
     max-width: none;
 }
+*/

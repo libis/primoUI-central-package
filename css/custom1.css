@@ -28,22 +28,11 @@ add-source-icon div.sourceid span.source-text {
 }
 
 
-prm-search-bookmark-filter #fixed-buttons-holder.fixed-to-top {
-        flex-direction: column-reverse;
-}
-.primo-scrollbar::-webkit-scrollbar-thumb, md-dialog-content::-webkit-scrollbar-thumb {
-    background-color: #BAC4D1;
-}
-
-.primo-scrollbar::-webkit-scrollbar-thumb:hover, md-dialog-content::-webkit-scrollbar-thumb:hover {
-    background-color: #A7B0BC;
-}
-
-.primo-scrollbar::-webkit-scrollbar-track, md-dialog-content::-webkit-scrollbar-track {
-    background-color: #53738c;
-}
 /* Facets on the Left Side */
-
+/* Is nu een configuration optie in de Backend :
+   https://knowledge.exlibrisgroup.com/Primo/Product_Documentation/New_Primo_User_Interface/New_UI_Customization_-_Best_Practices#Moving_the_Facets_to_the_Left_Side
+*/
+/*
 prm-search > md-content.padded-container  {
     display: -webkit-flex; !* Safari *!
     -webkit-flex-flow: row-reverse wrap; !* Safari 6.1+ *!
@@ -63,9 +52,32 @@ prm-search > md-content.padded-container  {
     flex: 0 0 16%;
     max-width: none;
 }
+*/
+prm-search-bookmark-filter #fixed-buttons-holder.fixed-to-top {
+        flex-direction: column-reverse;
+}
+.primo-scrollbar::-webkit-scrollbar-thumb, md-dialog-content::-webkit-scrollbar-thumb {
+    background-color: #BAC4D1;
+}
+
+.primo-scrollbar::-webkit-scrollbar-thumb:hover, md-dialog-content::-webkit-scrollbar-thumb:hover {
+    background-color: #A7B0BC;
+}
+
+.primo-scrollbar::-webkit-scrollbar-track, md-dialog-content::-webkit-scrollbar-track {
+    background-color: #53738c;
+}
 prm-main-menu > div {
   display: flex;
 }
+
+/* Hide de Browse in the top menu*/
+
+prm-main-menu a[aria-label*="Browse"].md-button.flex-button {
+    display:none;
+    padding:0;
+}
+
 
 prm-linked-user-selector .toolbar-select-input ._md-select-value > span._md-select-icon {
     color :#45aab4; 
