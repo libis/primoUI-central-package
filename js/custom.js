@@ -2,25 +2,47 @@
 "use strict";
 'use strict';
 
+var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 var app = angular.module('centralCustom', []);
 var feedbackServiceURL = 'https://services.libis.be/feedback';
 
 /*
  * Add Home Icon after the library logo 
+ * And Language dependant library logo
+ * add library-logo-<locale>.png to the custom/<view>/img directory
  * Tom vanmechelen
  */
 
-app.controller('prmLogoAfterController', [function () {
-  var vm = this;
+app.controller('prmLogoAfterController', ['$scope', '$element', '$compile', '$http', function ($scope, $element, $compile, $http) {
+
+  var self = this;
   var vid = window.appConfig['vid'];
-  vm.getHomePageLink = getHomePageLink;
-  function getHomePageLink() {
-    return '/primo-explore/search?vid=' + vid;
+  var libraryLogo = window.appConfig.customization.libraryLogo;
+  var locale = window.Primo.explore.helper.userSessionManagerService().i18nService.getLanguage();
+  var localeLibraryLogo = 'custom/' + vid + '/img/library-logo-' + locale + '.png';
+
+  if (libraryLogo !== localeLibraryLogo) {
+    $http({
+      method: 'GET',
+      url: localeLibraryLogo
+    }).then(function (response) {
+      window.appConfig.customization.libraryLogo = localeLibraryLogo;
+      $compile($element.parent())($scope);
+    }, function (response) {
+      // console.log('keep using original img')
+      window.appConfig.customization.libraryLogo = libraryLogo;
+    });
   }
 
-  vm.goToHomePage = goToHomePage;
+  self.getHomePageLink = getHomePageLink;
+  function getHomePageLink() {
+    return '/primo-explore/search?vid=' + vid + "&lang=" + locale;
+  }
+
+  self.goToHomePage = goToHomePage;
   function goToHomePage() {
-    document.location.href = '/primo-explore/search?vid=' + vid;
+    document.location.href = '/primo-explore/search?vid=' + vid + "&lang=" + locale;
   }
 }]);
 
@@ -84,6 +106,82 @@ app.run(function ($templateCache) {
   $templateCache.put('main_menu_after.html', '<div class="top-nav-bar-links buttons-group" id="main menu" layout="row" role="list" layout-align="center center" flex="100">\n  <md-button tabindex="0" role="listitem" tabindex="0" ng-href="" class="zero-margin flex-button multi-line-button button-over-dark"\n             layout="column" layout-align="center center" (click)="$ctrl.showFeedbackForm($event)">\n\n      <span class="item-content" translate="mainmenu.label.feedback"></span>\n      <md-tooltip md-direction="down" md-delay="400" class="multi-row-tooltip slide-tooltip-anim">\n        <span class="item-description popover animate-popover" translate="nui.mainmenu.description.feedback"></span>\n      </md-tooltip>\n  </md-button>\n</div>\n');
   $templateCache.put('pay_my_fines.html', '<div layout="row" layout-align="center center" ng-show=\'$ctrl.showPayMyFines\'>\n    <a id=\'payFinesNow\' class="md-button md-raised md-secundary" target=\'_blank\' href=\'https://services.libis.be/pay_my_fines\'>Pay fines</a>\n</div>\n');
 });
+app.factory('FeedService', ['$http', function ($http) {
+  var feedAntiCache = "?&t=" + new Date().getTime() + randomNum;
+  var randomNum = Math.floor(Math.random() * 10000 + 1);
+  var feeddaysold = 60;
+
+  var dm = new Date();
+  dm.setHours(24, 0, 0, 0);
+
+  var api_endpoint = 'https://services.libis.be/feed_aggregator?';
+  function readFeedConfig(url) {
+    return $http({ url: url, headers: { "X-From-ExL-API-Gateway": undefined } });
+  }
+  function readFeed(url) {
+    return $http({ url: api_endpoint + url, headers: { "X-From-ExL-API-Gateway": undefined } });
+  }
+  function parseFeed(conf) {
+    return readFeed(conf.feedUrl).then(function (res) {
+      console.log(conf.feedUrl);
+      console.log(conf.feedFilter);
+      var patt = /^entry\.|^item\./i;
+      var filteredResults = res.data.items.filter(function (item, index) {
+        var retval = false;
+        if (item.pubDate === "") {
+          item.pubDate = dm;
+          res.data.items[index].pubDate = dm;
+        }
+        /* no filter configured */
+        if (conf.feedFilter.length === 0) {
+          retval = true;
+        }
+        conf.feedFilter.forEach(function (f) {
+          if (patt.test(f.param)) {
+            var ff = f.param.replace(patt, "");
+            if (Array.isArray(item[ff])) {
+              if (item[ff].indexOf(f.value) != -1) {
+                retval = true;
+              }
+            } else {
+              if (item[ff] == f.value) {
+                retval = true;
+              }
+            }
+          }
+        });
+        /* filter old items */
+        if (feeddaysold < Math.ceil(dm.getTime() - new Date(item.pubDate).getTime()) / (1000 * 60 * 60 * 24)) {
+          retval = false;
+        }
+
+        return retval;
+      });
+      return filteredResults;
+    });
+  }
+  function sortFeed(feeds) {
+    //return feeds.sort(compareDates);
+    return feeds.sort(function (a, b) {
+      var dateA = new Date(a.pubDate);
+      var dateB = new Date(b.pubDate);
+      if (dateA.getTime() === dm.getTime()) {
+        dateA = new Date(0);
+      }
+      if (dateB.getTime() === dm.getTime()) {
+        dateB = new Date(0);
+      }
+      return dateB - dateA;
+    });
+  }
+
+  return {
+    readFeedConfig: readFeedConfig,
+    readFeed: readFeed,
+    parseFeed: parseFeed,
+    sortFeed: sortFeed
+  };
+}]);
 app.component('prmFinesOverviewAfter', {
   bindings: {
     parentCtrl: '<'
@@ -287,7 +385,7 @@ app.factory('sectionOrdering', function () {
         sections.splice(sections.indexOf(linksSection[0]), 1); //remove
         sections.splice(numSections, 0, linksSection[0]); //add to the end
     }
-     // Move the 'details' section.
+      // Move the 'details' section.
     var detailsSection = sections.filter(function (s) {
         return s.serviceName === 'details';
     });
@@ -295,7 +393,7 @@ app.factory('sectionOrdering', function () {
         sections.splice(sections.indexOf(detailsSection[0]), 1); //remove
         sections.splice(numSections, 0, detailsSection[0]); //add to the end
     }
-     // Move the 'action_list' section.
+      // Move the 'action_list' section.
     var detailsSection = sections.filter(function (s) {
         return s.serviceName === 'action_list';
     });
@@ -303,7 +401,7 @@ app.factory('sectionOrdering', function () {
         sections.splice(sections.indexOf(detailsSection[0]), 1); //remove
         sections.splice(numSections, 0, detailsSection[0]); //add to the end
     }
-     // Move the 'virtualBrowse' section.
+      // Move the 'virtualBrowse' section.
     var browseSection = sections.filter(function (s) {
         return s.serviceName === 'virtualBrowse';
     });
@@ -311,7 +409,7 @@ app.factory('sectionOrdering', function () {
         sections.splice(sections.indexOf(browseSection[0]), 1); //remove
         sections.splice(numSections, 0, browseSection[0]); //add to the end
     }
-     // drop the 'more' section.
+      // drop the 'more' section.
     var displayResult = sections.filter(function (s) {
         return s.serviceName === 'display';
     });
@@ -321,21 +419,6 @@ app.factory('sectionOrdering', function () {
     */
     return true;
   };
-});
-app.controller('prmUserAreaAfterController', ['$scope', '$element', '$location', '$mdDialog', '$compile', '$templateCache', function ($scope, $element, $location, $mdDialog, $compile, $templateCache) {
-  var self = this;
-  self.$onInit = function () {
-    $compile($element.parent())($scope);
-  };
-
-  $templateCache.put('components/search/topbar/userArea/user-area.html', '\n            <div layout=\'row\' layout-align="center center">\n            <prm-change-lang aria-label="{{\'eshelf.signin.title\' | translate}}" ng-if="$ctrl.displayLanguage && !$ctrl.userName()" label-type="icon"></prm-change-lang>\n            <prm-authentication layout="flex"[is-logged-in]="$ctrl.userName().length > 0"></prm-authentication>\n            <prm-library-card-menu ng-if="$ctrl.userName()"></prm-library-card-menu>\n             ');
-}]);
-
-app.component('prmUserAreaAfter', {
-  bindings: {
-    parentCtrl: '<'
-  },
-  controller: 'prmUserAreaAfterController'
 });
 (function e(t, n, r) {
   function s(o, u) {
@@ -668,14 +751,15 @@ app.component('prmUserAreaAfter', {
         value: function ctrl() {
           var scope = this.scope();
           if (scope) {
+            var scopeChild = scope.$$childTail;
             if (Object.keys(scope).includes('$ctrl')) {
               return scope.$ctrl;
             } else if (Object.keys(scope).includes('ctrl')) {
               return scope.ctrl;
-            } else if (scope.$$childTail && Object.keys(scope.$$childTail).includes('$ctrl')) {
-              return scope.$$childTail.$ctrl;
-            } else if (scope.$$childTail && Object.keys(scope.$$childTail).includes('ctrl')) {
-              return scope.$$childTail.ctrl;
+            } else if (scopeChild && Object.keys(scopeChild).includes('$ctrl')) {
+              return scopeChild.$ctrl;
+            } else if (scopeChild && Object.keys(scopeChild).includes('ctrl')) {
+              return scopeChild.ctrl;
             } else {
               console.error('No $ctrl defined');
             }
@@ -995,6 +1079,12 @@ app.component('prmUserAreaAfter', {
       value: true
     });
 
+    var _typeof = typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol" ? function (obj) {
+      return typeof obj === 'undefined' ? 'undefined' : _typeof2(obj);
+    } : function (obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === 'undefined' ? 'undefined' : _typeof2(obj);
+    };
+
     var _createClass = function () {
       function defineProperties(target, props) {
         for (var i = 0; i < props.length; i++) {
@@ -1019,6 +1109,7 @@ app.component('prmUserAreaAfter', {
         //vmUi.active = false;
         vmUi._injectDOMElement();
         vmUi.module = vmUi._createModule();
+
         angular.bootstrap(document.querySelector('#explorerUi'), ['explorerUi']);
         vmUi.scope = angular.element(document.querySelector('#explorerUi')).scope();
       }
@@ -1027,7 +1118,7 @@ app.component('prmUserAreaAfter', {
         key: '_createModule',
         value: function _createModule() {
           var vmUi = this;
-          return angular.module("explorerUi", ['ngMaterial']).component("explorerUi", {
+          return angular.module("explorerUi", ['ngMaterial', 'angularLoad']).component("explorerUi", {
             templateUrl: 'nuDashboard.html',
             controller: ['$http', '$scope', function ($http, $scope) {
               var ctrl = this;
@@ -1060,10 +1151,12 @@ app.component('prmUserAreaAfter', {
                   ctrl.selectedComponentElementIdx = index;
                   ctrl.selectedComponentElementCount = ctrl.selectedComponent.length;
                   ctrl.selectedComponentElement = ctrl.selectedComponent[index];
+                  ctrl.selectedComponentElementProperties = ctrl.selectedComponentElementCtrlKeys();
                 } else {
                   ctrl.selectedComponentElementIdx = 0;
                   ctrl.selectedComponentElementCount = 0;
                   ctrl.selectedComponentElement = null;
+                  ctrl.selectedComponentElementProperties = [];
                 }
               };
 
@@ -1080,14 +1173,100 @@ app.component('prmUserAreaAfter', {
                 ctrl.refreshComponents();
               };
 
-              ctrl.selectedComponentElementCtrlKeys = function () {
+              ctrl.rselectedComponentElementCtrlKeys = function () {
                 if (ctrl.selectedComponentElement) {
-                  var keys = ctrl.selectedComponentElement.ctrl();
-                  if (keys) {
-                    return Object.keys(keys);
+                  var selectedCtrl = ctrl.selectedComponentElement.ctrl();
+                  if (selectedCtrl) {
+                    return Object.keys(selectedCtrl); //.map((d) => {return {key: d, value:'', type:''}});
                   }
                 }
                 return [];
+              };
+
+              ctrl.selectedComponentElementCtrlKeys = function () {
+                var sce = [];
+                if (ctrl.selectedComponentElement) {
+                  var selectedCtrl = ctrl.selectedComponentElement.ctrl();
+                  if (selectedCtrl) {
+                    var _iteratorNormalCompletion = true;
+                    var _didIteratorError = false;
+                    var _iteratorError = undefined;
+
+                    try {
+                      for (var _iterator = Object.keys(selectedCtrl)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        var key = _step.value;
+
+                        if (selectedCtrl.hasOwnProperty(key)) {
+                          switch (_typeof(selectedCtrl[key])) {
+                            case 'string':
+                              sce.push({
+                                key: key,
+                                value: '"' + selectedCtrl[key] + '"',
+                                type: 'string'
+                              });
+                              break;
+                            case 'boolean':
+                              sce.push({
+                                key: key,
+                                value: '' + selectedCtrl[key],
+                                type: 'boolean'
+                              });
+                              break;
+                            case 'number':
+                              sce.push({
+                                key: key,
+                                value: '' + selectedCtrl[key],
+                                type: 'number'
+                              });
+                              break;
+                            case 'undefined':
+                              sce.push({
+                                key: key,
+                                value: "Undefined",
+                                type: 'undefined'
+                              });
+                              break;
+                            case 'null':
+                              sce.push({
+                                key: key,
+                                value: "Null",
+                                type: 'null'
+                              });
+                              break;
+                            default:
+                              try {
+                                sce.push({
+                                  key: key,
+                                  value: '' + selectedCtrl[key].constructor.name,
+                                  type: _typeof(selectedCtrl[key])
+                                });
+                              } catch (e) {
+                                sce.push({
+                                  key: key,
+                                  value: '' + _typeof(selectedCtrl[key]),
+                                  type: _typeof(selectedCtrl[key])
+                                });
+                              }
+                          }
+                        }
+                      }
+                    } catch (err) {
+                      _didIteratorError = true;
+                      _iteratorError = err;
+                    } finally {
+                      try {
+                        if (!_iteratorNormalCompletion && _iterator.return) {
+                          _iterator.return();
+                        }
+                      } finally {
+                        if (_didIteratorError) {
+                          throw _iteratorError;
+                        }
+                      }
+                    }
+                  }
+                }
+                return sce;
               };
 
               ctrl.selectedComponentElementPrev = function () {
@@ -1153,7 +1332,7 @@ app.component('prmUserAreaAfter', {
           }).config(function ($mdIconProvider) {
             $mdIconProvider.iconSet('primo-ui', 'img/svg/svg-primo-ui.svg', 18);
           }).run(function ($templateCache) {
-            $templateCache.put('nuDashboard.html', '<style>\n    .f18 {\n        min-height: 18px;\n        min-width: 18px;\n        height: 18px;\n        width: 18px;\n    }\n</style>\n\n<div id=\'explorerUiContainer\' ng-show="$ctrl.isActive()" style=\'position:absolute;top:10px;height:90vh;background-color:white;z-index:1000000;\'>\n    <md-sidenav class="md-sidenav-left" md-component-id="primo-explorer" md-is-locked-open="$mdMedia(\'gt-md\')" md-whiteframe="4" style="height:100%;">\n        <header id=\'explorerUiHeader\' ng-mousedown=\'$ctrl.headerMove($event)\'>\n            <md-toolbar>\n                <div class="md-toolbar-tools">\n                    <h2 flex md-truncate>PrimoExplorer {{$ctrl.version}}</h2>\n                    <md-button class=\'md-icon-button\' ng-click="$ctrl.toggle()" aria-label="Close" title=\'Close\'>\n                        <md-icon md-svg-icon="primo-ui:close"></md-icon>\n                    </md-button>\n                </div>\n            </md-toolbar>\n        </header>\n\n        <section id=\'pe-components\'>\n            <div flex id=\'pe-components-list\' ng-hide=\'$ctrl.selectedComponentDetailShow\'>\n                <section style=\'background-color:#eee;\'>\n                    <div layout=\'row\'>\n                        <md-button ng-click=\'$ctrl.refreshComponents()\'>Reload</md-button>\n                        <md-input-container flex md-no-float>\n                            <label>Filter</label>\n                            <input ng-model="$ctrl.componentFilter">\n                        </md-input-container>\n                    </div>\n                </section>\n                <md-content style="height:90%;">\n                    <md-list class="md-dense">\n                        <md-list-item ng-repeat="component in $ctrl.components | filter:$ctrl.componentFilter" ng-click="$ctrl.loadComponent(component)">\n                            <span>{{component}}</span>\n                            <md-divider ng-if="!$last"></md-divider>\n                        </md-list-item>\n                    </md-list>\n                </md-content>\n            </div>\n\n            <div flex id=\'pe-components-detail\' ng-show=\'$ctrl.selectedComponentDetailShow\'>\n                <section style=\'height:100%\'>\n                    <md-toolbar class=\'md-hue-2\' style="font-size: 0.8em;min-height: 2.5em;height:2.5em;">\n                        <div class="md-toolbar-tools" style="font-size: 0.8em;min-height: 2.5em;height:2.5em;">\n\n                            <md-button class=\'md-icon-button\' ng-click="$ctrl.selectedComponentDetailShow = false" aria-label="Back" title="Back">\n                                <md-icon class="f18" md-svg-icon="primo-ui:chevron-left"></md-icon>\n                            </md-button>\n\n                              <h2 flex md-truncate>{{$ctrl.selectedComponentName}}</h2>\n\n                            <md-button class=\'md-icon-button\' ng-click="$ctrl.blink()" aria-label="Blink component" title="Blink component">\n                                <md-icon class="f18" md-svg-icon="primo-ui:bell"></md-icon>\n                            </md-button>\n                            <md-button class=\'md-icon-button\' ng-click="$ctrl.pushToConsole()" aria-label="Push to console" title="Push to console">\n                                <md-icon class="f18" md-svg-icon="primo-ui:open-in-new"></md-icon>\n                            </md-button>\n                        </div>\n                    </md-toolbar>\n                    <section style="background-color:#eee;">\n                        <div layout="row" layout-align="center center">\n                            <md-button class=\'md-icon-button\' ng-click="$ctrl.selectedComponentElementPrev()" aria-label="Previous element" title="Previous element">\n                                <md-icon class="f18" md-svg-icon="primo-ui:chevron-left"></md-icon>\n                            </md-button>\n                            <div layout-align="center center">\n                                <div>{{$ctrl.selectedComponentElementIdx+1}}/{{$ctrl.selectedComponentElementCount}}</div>\n                            </div>\n                            <md-button class=\'md-icon-button\' ng-click="$ctrl.selectedComponentElementNext()" aria-label="Next element" title="Next element">\n                                <md-icon class="f18" md-svg-icon="primo-ui:chevron-right"></md-icon>\n                            </md-button>\n                        </div>\n                        <div layout="row" layout-align="center center">\n                          <div flex md-truncate style="font-size:10px;">css({{$ctrl.selectedComponentElement.cssPath}})</div>\n                        </div>\n                    </section>\n                    <section>\n                        <md-list>\n                          <md-list-item ng-repeat="key in $ctrl.selectedComponentElementCtrlKeys()">\n                              {{key}}\n                          </md-list-item>\n                        </md-list>\n                    </section>\n                </section>\n            </div>\n        </section>\n    </md-sidenav>\n</div>\n');
+            $templateCache.put('nuDashboard.html', '<style>\n    .f18 {\n        min-height: 18px;\n        min-width: 18px;\n        height: 18px;\n        width: 18px;\n    }\n</style>\n<!-- $mdMedia(\'gt-md\') -->\n<div id=\'explorerUiContainer\' ng-show="$ctrl.isActive()" style=\'position:absolute;top:10px;height:90vh;background-color:white;z-index:1000000;\'>\n    <md-sidenav class="md-sidenav-left" md-component-id="primo-explorer" md-is-locked-open="true" md-whiteframe="4" style="height:100%;">\n        <header id=\'explorerUiHeader\' ng-mousedown=\'$ctrl.headerMove($event)\'>\n            <md-toolbar>\n                <div class="md-toolbar-tools">\n                    <h2 flex md-truncate>PrimoExplorer {{$ctrl.version}}</h2>\n                    <md-button class=\'md-icon-button\' ng-click="$ctrl.toggle()" aria-label="Close" title=\'Close\'>\n                        <md-icon md-svg-icon="primo-ui:close"></md-icon>\n                    </md-button>\n                </div>\n            </md-toolbar>\n        </header>\n\n        <section id=\'pe-components\'>\n            <div flex id=\'pe-components-list\' ng-hide=\'$ctrl.selectedComponentDetailShow\'>\n                <section style=\'background-color:#eee;\'>\n                    <div layout=\'row\'>\n                        <md-button ng-click=\'$ctrl.refreshComponents()\'>Reload</md-button>\n                        <md-input-container flex md-no-float>\n                            <label>Filter</label>\n                            <input ng-model="$ctrl.componentFilter">\n                        </md-input-container>\n                    </div>\n                </section>\n                <md-content style="height:90%;">\n                    <md-list class="md-dense">\n                        <md-list-item ng-repeat="component in $ctrl.components | filter:$ctrl.componentFilter" ng-click="$ctrl.loadComponent(component);$event.stopPropagation();">\n                            <span>{{component}}</span>\n                            <md-divider ng-if="!$last"></md-divider>\n                        </md-list-item>\n                    </md-list>\n                </md-content>\n            </div>\n\n            <div flex id=\'pe-components-detail\' ng-show=\'$ctrl.selectedComponentDetailShow\'>\n                <section style=\'height:100%\'>\n                    <md-toolbar class=\'md-hue-2\' style="font-size: 0.8em;min-height: 2.5em;height:2.5em;">\n                        <div class="md-toolbar-tools" style="font-size: 0.8em;min-height: 2.5em;height:2.5em;">\n\n                            <md-button class=\'md-icon-button\' ng-click="$ctrl.selectedComponentDetailShow = false" aria-label="Back" title="Back">\n                                <md-icon class="f18" md-svg-icon="primo-ui:chevron-left"></md-icon>\n                            </md-button>\n\n                              <h2 flex md-truncate>{{$ctrl.selectedComponentName}}</h2>\n\n                            <md-button class=\'md-icon-button\' ng-click="$ctrl.blink()" aria-label="Blink component" title="Blink component">\n                                <md-icon class="f18" md-svg-icon="primo-ui:bell"></md-icon>\n                            </md-button>\n                            <md-button class=\'md-icon-button\' ng-click="$ctrl.pushToConsole()" aria-label="Push to console" title="Push to console">\n                                <md-icon class="f18" md-svg-icon="primo-ui:open-in-new"></md-icon>\n                            </md-button>\n                        </div>\n                    </md-toolbar>\n                    <section style="background-color:#eee;">\n                        <div layout="row" layout-align="center center">\n                            <md-button class=\'md-icon-button\' ng-click="$ctrl.selectedComponentElementPrev()" aria-label="Previous element" title="Previous element">\n                                <md-icon class="f18" md-svg-icon="primo-ui:chevron-left"></md-icon>\n                            </md-button>\n                            <div layout-align="center center">\n                                <div>{{$ctrl.selectedComponentElementIdx+1}}/{{$ctrl.selectedComponentElementCount}}</div>\n                            </div>\n                            <md-button class=\'md-icon-button\' ng-click="$ctrl.selectedComponentElementNext()" aria-label="Next element" title="Next element">\n                                <md-icon class="f18" md-svg-icon="primo-ui:chevron-right"></md-icon>\n                            </md-button>\n                        </div>\n                        <div layout="row" layout-align="center center">\n                            <input flex style="font-size:10px;text-align:center;" type="text" name="" value="{{$ctrl.selectedComponentElement.cssPath}}">\n                        </div>\n                    </section>\n                    <section>\n                        <md-list>\n                          <md-list-item ng-repeat="property in $ctrl.selectedComponentElementProperties">\n                            <span>{{property.key}}:</span>\n                            <span class="md-secondary" style="overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">{{property.value}}</span>\n                          </md-list-item>\n                        </md-list>\n                    </section>\n                </section>\n            </div>\n        </section>\n    </md-sidenav>\n</div>\n');
           });
         }
       }, {
@@ -1736,43 +1915,4 @@ app.component('prmUserAreaAfter', {
       }
     }).call(undefined);
   }, {}] }, {}, [1]);
-
-angular.module('centralCustom').component('prmFullViewAfter', {
-  bindings: {
-    parentCtrl: '<'
-  },
-  controller: ['sectionOrdering', function (sectionOrdering) {
-    var ctrl = this;
-
-    ctrl.$onInit = function () {
-      sectionOrdering(ctrl.parentCtrl.services);
-    };
-  }]
-});
-
-angular.module('centralCustom').factory('sectionOrdering', function () {
-  return function (sections) {
-    if (!sections) return false;
-
-    var numSections = sections.length;
-    if (!(numSections > 0)) return false;
-
-    // Check if there is a 'details' section.
-    var filterResult = sections.filter(function (s) {
-      return s.serviceName === 'details';
-    });
-    if (filterResult.length !== 1) return false;
-    var detailsSection = filterResult[0];
-
-    var index = sections.indexOf(detailsSection);
-
-    // Remove the 'details' section from the array.
-    sections.splice(index, 1);
-
-    // Append the 'details' section to the array.
-    sections.splice(numSections, 0, detailsSection);
-
-    return true;
-  };
-});
 })();

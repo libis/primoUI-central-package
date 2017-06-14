@@ -14,26 +14,27 @@ app.controller('prmLogoAfterController', ['$scope', '$element', '$compile', '$ht
     var localeLibraryLogo = 'custom/' + vid + '/img/library-logo-' + locale + '.png';
 
     if (libraryLogo !== localeLibraryLogo) {
-        window.appConfig.customization.libraryLogo = localeLibraryLogo;
         $http({
             method: 'GET',
             url: localeLibraryLogo,
         }).then(function (response) {
+            window.appConfig.customization.libraryLogo = localeLibraryLogo;
             $compile($element.parent())($scope)
         }, function (response) {
             // console.log('keep using original img')
+            window.appConfig.customization.libraryLogo = libraryLogo;
         });
 
     }
 
     self.getHomePageLink = getHomePageLink;
     function getHomePageLink() {
-        return '/primo-explore/search?vid=' + vid;
+        return '/primo-explore/search?vid=' + vid + "&lang=" + locale;
     }
 
     self.goToHomePage = goToHomePage;
     function goToHomePage() {
-        document.location.href = '/primo-explore/search?vid=' + vid;
+        document.location.href = '/primo-explore/search?vid=' + vid + "&lang=" + locale;
     }
 
 
