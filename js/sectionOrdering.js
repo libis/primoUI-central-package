@@ -15,6 +15,7 @@ app.factory('sectionOrdering', function () {
           'links',
           'virtualBrowse',
           'action_list',
+          'tags',
           'details',
           'display',
           'altmetrics',

@@ -335,7 +335,7 @@ app.factory('sectionOrdering', function () {
 
     var sectionToRemoveArray = [];
 
-    var sectionOrderArray = ['brief', 'citationTrails', 'activate', 'getit_link2', 'links', 'virtualBrowse', 'action_list', 'details', 'display', 'altmetrics', 'journaltoc'];
+    var sectionOrderArray = ['brief', 'citationTrails', 'activate', 'getit_link2', 'links', 'virtualBrowse', 'action_list', 'tags', 'details', 'display', 'altmetrics', 'journaltoc'];
 
     /* 
      * brief          : top description
