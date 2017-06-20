@@ -1,0 +1,65 @@
+<md-dialog aria-label="Search tips">
+    <md-dialog-content id="searchtips">
+
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Search tips</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="closeDialog()">
+                    <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-content>
+            <md-list class="md-dense" flex>
+                <md-list-item>
+                    <div class="md-list-item-text">
+                        For phrases use quotes: "global warming"
+                    </div>
+                </md-list-item>
+                <md-list-item>
+                    <div class="md-list-item-text">
+                        For truncated searches use an asterisk: gun* will retrieve gun, guns, gunners, gunnery, gunning, etc.
+                    </div>
+                </md-list-item>
+                <md-list-item>
+                    <div class="md-list-item-text">
+                        As a wildcard for one character, use ?:  wom?n will retrieve woman and women.
+                    </div>
+                </md-list-item>
+
+                <md-list-item>
+                    <div class="md-list-item-text">
+                        To exclude a term use NOT (in uppercase): celtic NOT Irish
+                    </div>
+                </md-list-item>
+                <md-list-item>
+                    <div class="md-list-item-text">
+                        To group terms use brackets: Shakespeare (tragedy OR sonnet). OR is in uppercase
+                   </div>
+                </md-list-item>
+            </md-list>
+<!--
+            <md-list class="md-dense" flex>
+                <md-list-item>
+                    <div class="demo-dialog-content">
+                        For users of Internet Explorer:<br/>
+                        Limo should be viewed with version 9 or higher.<br />
+                        If you have an earlier version, it is a good idea to upgrade your browser. <br />
+
+                    </div>
+                </md-list-item>
+            </md-list>
+-->
+            <md-dialog-actions>
+                <div layout="row" class="demo-dialog-button">
+                    <md-button md-autofocus flex class="md-primary" ng-click="closeDialog()">
+                        Close
+                    </md-button>
+                </div>
+            </md-dialog-actions>
+        </md-content>
+    </md-dialog-content>
+</md-dialog>
+

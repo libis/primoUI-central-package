@@ -1,0 +1,63 @@
+<md-dialog aria-label=Zoektips">
+    <md-dialog-content id="searchtips">
+
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Zoektips</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="closeDialog()">
+                    <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-content>
+            <md-list class="md-dense" flex>
+                <md-list-item>
+                    <div class="md-list-item-text">
+                        Gebruik "" om te zoeken op exacte woordcombinatie: "global warming"
+                    </div>
+                    </md-list-item>
+                    <md-list-item>
+                        <div class="md-list-item-text">
+                            Gebruik een * of ? om te zoeken op delen van woorden:
+                            <p style="padding-left:1em;">
+                                gun* vindt gun, guns, gunners, gunnery, gunning, enz.<br />
+                                wom?n vindt woman en women
+                            </p>
+                        </div>
+                    </md-list-item>
+                    <md-list-item>
+                        <div class="md-list-item-text">
+                            Gebruik NOT (in hoofdletters) om een zoekterm uit te sluiten: celtic NOT Irish
+                        </div>
+                    </md-list-item>
+                    <md-list-item>
+                        <div class="md-list-item-text">
+                            Gebruik haakjes om termen te groeperen: Shakespeare (tragedy OR sonnet). OR is in hoofletters
+                        </div>
+                    </md-list-item>
+            </md-list>
+            <!--
+            <md-list class="md-dense" flex>
+                <md-list-item>
+                    <div class="demo-dialog-content">
+
+                        Voor gebruikers van Internet Explorer:<br />
+                        Limo wordt best bekeken via version 9 of hoger.<br />
+                        Gelieve uw browser te upgraden indien u over een lagere versie beschikt.<br />
+                        </div>
+                    </md-list-item>
+            </md-list>
+-->
+            <md-dialog-actions>
+                <div layout="row" class="demo-dialog-button">
+                    <md-button md-autofocus flex class="md-primary" ng-click="closeDialog()">
+                        Sluiten
+                    </md-button>
+                </div>
+            </md-dialog-actions>
+        </md-content>
+    </md-dialog-content>
+</md-dialog>
+
