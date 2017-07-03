@@ -1,0 +1,58 @@
+﻿
+<md-dialog aria-label=Aanmelden">
+    <md-dialog-content id="Aanmelden">
+
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Sign in</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="closeDialog()">
+                    <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-content style="padding:1em;">
+          
+            <div class="flexbox-parent">
+                <div layout="row" layout-align="left center">
+                    <div class="md-title">Sign in to get the most out of Limo </div>
+                    <div>
+                        <md-button md-autofocus class="md-raised md-primary"
+                                   onclick="javascript:angular.element(document.querySelectorAll('prm-authentication button')[0]).triggerHandler('click');" id="mimic_signin"
+                                   style="box-shadow: 0 2px 5px 0 rgba(0,0,0,.26)">Sign In</md-button>
+
+                    </div>
+                </div>
+
+                <div class="md-title">
+                    Do not show this message again:
+                </div>
+                <div>
+                    <md-radio-group ng-model="primoPromoteLogin" ng-change="changePromoteOption()">
+                        <md-radio-button value="alwaysSignin" aria-label="Always Sign In automaticaly">
+                            I always want to get redirected to the sign in page.
+                        </md-radio-button>
+                        <md-radio-button value="neverSignin" aria-label="Never Sign In automaticaly">
+                            I will use the sign in option when I think it's relavant
+                        </md-radio-button>
+                        <md-radio-button value="maybeSignin" aria-label="Ask again next time">
+                            I don't know yet. Show this message the next time I use Limo.
+                        </md-radio-button>
+                    </md-radio-group>
+                </div>
+
+                <md-dialog-actions>
+                    <div layout="row" class="demo-dialog-button">
+                        <md-button md-autofocus flex class="md-primary" ng-click="closeDialog()">
+                            Close
+                        </md-button>
+                    </div>
+                </md-dialog-actions>
+
+
+
+</md-content>
+    </md-dialog-content>
+</md-dialog>
+

@@ -11,13 +11,13 @@ app.factory('sectionOrdering', function () {
           'brief',
           'citationTrails',
           'activate',
+          'display',
           'getit_link2',
           'links',
           'virtualBrowse',
           'action_list',
-          'tags',
           'details',
-          'display',
+          'tags',
           'altmetrics',
           'journaltoc'
         ];
@@ -31,8 +31,8 @@ app.factory('sectionOrdering', function () {
          * links          : links
          * virtualBrowse  : virtualBrowse
          * details        : details
-         * display        : More ???
-         * 
+         * display        : More ??? getit_link1_0 ???
+         * tags           : tags
          */
 
         for (var serviceName in sectionOrderArray) {

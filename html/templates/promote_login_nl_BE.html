@@ -1,0 +1,58 @@
+﻿
+<md-dialog aria-label=Aanmelden">
+    <md-dialog-content id="Aanmelden">
+
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Aanmelden</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="closeDialog()">
+                    <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-content style="padding:1em;">
+
+            <div class="flexbox-parent">
+                <div layout="row" layout-align="left center">
+                    <div class="md-title">Bedankt om me hierop te attenderen. Ik zal onmiddellijk </div>
+                    <div>
+                        <md-button md-autofocus class="md-raised md-primary"
+                                   onclick="javascript:angular.element(document.querySelectorAll('prm-authentication button')[0]).triggerHandler('click');" id="mimic_signin"
+                                   style="box-shadow: 0 2px 5px 0 rgba(0,0,0,.26)">Aanmelden</md-button>
+
+                    </div>
+                </div>
+
+                <div class="md-title">
+                    Deze boodschap niet meer tonen:
+                </div>
+                <div>
+                    <md-radio-group ng-model="primoPromoteLogin" ng-change="changePromoteOption()">
+                        <md-radio-button value="alwaysSignin" aria-label="Always Sign In automaticaly">
+                            Ik ben slim! Vanaf heden wil ik steeds worden doorverwijzen naar het login scherm of automatisch worden aangemeld.
+                        </md-radio-button>
+                        <md-radio-button value="neverSignin" aria-label="Never Sign In automaticaly">
+                            Ik weet de aanmeldknop wel te vinden in deze interface en beslis zelf wanneer ik zal aanmelden.
+                        </md-radio-button>
+                        <md-radio-button value="maybeSignin" aria-label="Ask again next time">
+                            Ik weet het nog niet zeker. Toon deze boodschap volgende keer opnieuw.
+                        </md-radio-button>
+                    </md-radio-group>
+                </div>
+
+                <md-dialog-actions>
+                    <div layout="row" class="demo-dialog-button">
+                        <md-button md-autofocus flex class="md-primary" ng-click="closeDialog()">
+                            Sluiten
+                        </md-button>
+                    </div>
+                </md-dialog-actions>
+
+
+
+        </md-content>
+    </md-dialog-content>
+</md-dialog>
+
