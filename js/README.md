@@ -52,3 +52,19 @@ export let homeIconConfig = {
 ```javascript
 import {homeIconConfig} from './components/prmLogoAfter/homeIcon'
 ```
+
+2) bind to element
+```javascript
+{name: 'home-icon', config: homeIconConfig, enabled: true, appendTo: 'prm-logo-after'},
+```
+* name = the sub element in the after element
+* config = the imported configuration object
+* enabled = true/false should the component be created
+* appendTo = The component should be created in this after component.
+
+This results in:
+```html
+  <prm-logo-after parentCtrl='$ctrl'>
+    <home-icon parentCtrl='$ctrl'></home-icon>
+  </prm-logo-after>
+```
