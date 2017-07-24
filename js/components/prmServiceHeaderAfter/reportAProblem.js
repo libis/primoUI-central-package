@@ -1,0 +1,105 @@
+import reportAProblemHTML from './reportAProblem.html'
+import reportAProblemDialogHTML from './reportAProblemDialog.html'
+
+class ReportAProblemController {
+  constructor($element, $compile, $scope, $mdDialog, $mdToast, $http) {
+    let self = this;
+    if (/^nui\.getit\./.test(this.parentCtrl.parentCtrl.title)) {
+      $element.parent().parent().find('h4').after($compile(reportAProblemHTML)($scope));
+
+
+      Primo.user.then(user => {
+        self.user = user;
+        Primo.view.then(view => {
+          self.view = view;
+
+          self.showReportAProblemForm = ($event) => {
+            $mdDialog.show({
+              parent: angular.element(document.body),
+              clickOutsideToClose: true,
+              fullscreen: false,
+              targetEvent: $event,
+              template: reportAProblemDialogHTML,
+              controller: function($scope, $mdDialog) {
+                $scope.report = {
+                  replyTo: self.user.email,
+                  message: '',
+                  subject: 'report a problem'
+                }
+                $scope.cancelReport = function() {
+                  $mdDialog.cancel();
+                }
+                $scope.sendReport = function(answer) {
+                  let data = {
+                    recordid: self.currentRecord.pnx.control.recordid[0],
+                    index: 0,
+                    page: 0,
+                    scope: '',
+                    searchType: '',
+                    sessionId: '',
+                    tab: '',
+                    title: '',
+                    type: 'resource_problem',
+                    subject: $scope.report.subject,
+                    view: self.view.code,
+                    inst: self.view.institution.code,
+                    loggedIn: self.user.isLoggedIn(),
+                    onCampus: self.user.isOnCampus(),
+                    user: self.user.name,
+                    fe: '',
+                    ip: self.view.ip.address,
+                    message: $scope.report.message,
+                    replyTo: $scope.report.replyTo || self.user.email,
+                    userAgent: navigator.userAgent
+                  };
+                  if ($scope.report.replyTo.length > 0 && $scope.report.message.length > 0) {
+                    $mdDialog.hide();
+
+                    $http({
+                      method: 'POST',
+                      url: "https://services.libis.be/report_a_problem",
+                      headers: {
+                        'Content-Type': 'application/json',
+                        'X-From-ExL-API-Gateway': undefined
+                      },
+                      cache: false,
+                      data: data
+                    }).then(function(response) {
+                      $mdToast.showSimple('Thank you for your feedback!');
+                    }, function(response) {
+                      $mdToast.showSimple('Unable to submit feedback.');
+                    });
+                  }
+                }
+              }
+            });
+
+
+          }; //showReportAProblemForm
+        });
+      });
+    }
+  }
+
+  get currentRecord() {
+    let selector = 'prm-full-view-service-container'; //'prm-full-view-service-container'
+    let element = angular.element(document.querySelector(selector));
+    if (element) {
+      let elementCtrl = element.controller(selector);
+      console.log(elementCtrl);
+      return elementCtrl.item;
+    }
+
+    return null;
+  }
+}
+
+ReportAProblemController.$inject = ['$element', '$compile', '$scope', '$mdDialog', '$mdToast', '$http'];
+
+export let reportAProblemConfig = {
+  bindings: {
+    parentCtrl: '<'
+  },
+  controller: ReportAProblemController,
+  template: ''
+}

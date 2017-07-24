@@ -1,0 +1,40 @@
+<!-- translations in CODE TABLES -> View Labels -->
+<md-dialog id='lbsReportAProblemForm' aria-label='Report a problem'>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2><span translate="lbs.nui.details.report_a_problem"></span></h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancelReport()">
+                <md-icon md-svg-icon="navigation:ic_close_24px" aria-label="Close dialog"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <form name='reportAProblemForm'>
+        <div class="md-dialog-content">
+            <input type="hidden" name='subject' ng-model='report.subject'>
+            <md-input-container class="md-block">
+                <label><span translate="lbs.nui.details.email"></span></label>
+                <input type="email" name='replyTo' title="{{ 'lbs.nui.details.email.why' | translate}}" placeholder='john.doe@kuleuven.be' required ng-model='report.replyTo' ng-pattern="/^.+@.+\..+$/">
+                <div ng-if='reportAProblemForm.replyTo.$error.required' role="alert">
+                  <div style='color:tomato;'><span translate="lbs.nui.details.email.mandatory"></span></div>
+                </div>
+                <div ng-if='reportAProblemForm.replyTo.$error.email' role="error">
+                  <div style='color:tomato;'><span translate="lbs.nui.details.email.mandatory.error"></span></div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label><span translate="lbs.nui.details.message.description.label"></span></label>
+                <textarea name="message" placeholder="{{ 'lbs.nui.details.message.description' | translate }}" md-maxlength="5000" required md-no-asterisk rows="5" cols="80" ng-model="report.message"></textarea>
+                <div ng-if='reportAProblemForm.message.$error.required' role="error">
+                  <div style='color:tomato;'><span translate="lbs.nui.details.message.mandatory"></span></div>
+                </div>
+            </md-input-container>
+        </div>
+      </form>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <md-button class="md-raised" ng-click="cancelReport()">Cancel</md-button>
+        <md-button class="md-raised md-primary " ng-click='sendReport()'>Submit</md-button>
+    </md-dialog-actions>
+</md-dialog>

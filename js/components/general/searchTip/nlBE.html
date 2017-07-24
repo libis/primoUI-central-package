@@ -1,51 +1,48 @@
-﻿<md-dialog aria-label=Zoektips">
+<md-dialog aria-label="Zoektips">
     <md-dialog-content id="searchtips">
-
         <md-toolbar>
             <div class="md-toolbar-tools">
-                <h2>Trucs & astuces</h2>
+                <h2>Zoektips</h2>
                 <span flex></span>
                 <md-button class="md-icon-button" ng-click="closeDialog()">
                     <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
                 </md-button>
             </div>
         </md-toolbar>
-
         <md-content>
             <md-list class="md-dense" flex>
                 <md-list-item>
                     <div class="md-list-item-text">
-                        utilisez des guillemets pour les phrases/expressions exactes: "réchauffement global"
+                        Gebruik "" om te zoeken op exacte woordcombinatie: "global warming"
                     </div>
                     </md-list-item>
                     <md-list-item>
                         <div class="md-list-item-text">
-                            utilisez un astérisque pour les recherches tronquées: vin* donnera vinage, vinaigre, vinasse, vineux etc.
+                            Gebruik een * of ? om te zoeken op delen van woorden:
+                            <p style="padding-left:1em;">
+                                gun* vindt gun, guns, gunners, gunnery, gunning, enz.<br />
+                                wom?n vindt woman en women
+                            </p>
                         </div>
                     </md-list-item>
                     <md-list-item>
                         <div class="md-list-item-text">
-                            utilisez ? comme caractère de remplacement: fe?me donnera femme et ferme
+                            Gebruik NOT (in hoofdletters) om een zoekterm uit te sluiten: celtic NOT Irish
                         </div>
                     </md-list-item>
                     <md-list-item>
                         <div class="md-list-item-text">
-                            utilisez NOT (en capitales) pour exclure un mot: celtique NOT irlandais
+                            Gebruik haakjes om termen te groeperen: Shakespeare (tragedy OR sonnet). OR is in hoofletters
                         </div>
                     </md-list-item>
-                <md-list-item>
-                    <div class="md-list-item-text">
-                        utilisez des parenthèses pour grouper les termes: Shakespeare (tragédie OR sonnet). OR est écrit en capitales
-                    </div>
-                </md-list-item>
             </md-list>
             <!--
             <md-list class="md-dense" flex>
                 <md-list-item>
                     <div class="demo-dialog-content">
-                Pour les utilisateurs d'Internet Explorer:<br/>
-Il est recommandé d'utiliser la version 9 ou ultérieure.<br/>
-Si vous avez une version plus ancienne, il est conseillé de mettre à jour votre navigateur.<br/>
+                        Voor gebruikers van Internet Explorer:<br />
+                        Limo wordt best bekeken via version 9 of hoger.<br />
+                        Gelieve uw browser te upgraden indien u over een lagere versie beschikt.<br />
                         </div>
                     </md-list-item>
             </md-list>
@@ -60,4 +57,3 @@ Si vous avez une version plus ancienne, il est conseillé de mettre à jour votr
         </md-content>
     </md-dialog-content>
 </md-dialog>
-

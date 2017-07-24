@@ -1,0 +1,30 @@
+<style>
+  div.sourceid {
+    display: inline-flex;
+    margin-left: 1em;
+    margin-top: -2px;
+  }
+
+  div.sourceid img.source-icon {
+      display: inline-block;
+      max-height: 18px;
+      width: auto;
+      height: auto;
+      transform: none;
+      min-width: auto;
+      min-height: auto;
+      vertical-align: bottom;
+  }
+
+  div.sourceid span.source-text {
+      font-size:small;
+      margin-left: 0.4em;
+      text-transform: none;
+      letter-spacing: normal;
+  }
+</style>
+
+<div ng-if="$ctrl.sourceid" class="sourceid">
+  <img src="{{$ctrl.icon.iconUrl}}" class="source-icon">
+  <span class="source-text">{{$ctrl.icon.iconText}}</span>
+</div>

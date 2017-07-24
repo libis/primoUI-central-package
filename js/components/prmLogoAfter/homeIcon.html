@@ -1,0 +1,22 @@
+<style>
+  prm-topbar prm-logo, prm-topbar prm-logo, prm-logo-after, home-icon{
+          display: flex;
+  }
+</style>
+
+<div id="home-buttons-holder"
+     ng-class="{'fixed-to-top': $ctrl.fixedToTop()}"
+     layout="row"
+     layout-align="center center"
+     class="layout-align-center-center layout-row">
+  <a class="md-icon-button button-over-dark md-button md-primoExplore-theme" id="home-button"
+     aria-label="Go to startpage"
+     href="{{ $ctrl.homePageLink }}">
+    <md-icon class="md-primoExplore-theme">
+      <svg id="prm_home" width="100%" height="100%" viewBox="0 0 24 24" y="0" xmlns="http://www.w3.org/2000/svg" fit="" preserveAspectRatio="xMidYMid meet" focusable="false">
+    <path d="M10,20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+    </svg>
+    </md-icon>
+  </a>
+</div>

@@ -1,0 +1,127 @@
+.full-view-inner-container{
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+}
+
+#citationTrails{
+  -webkit-box-ordinal-group: 0;
+  -moz-box-ordinal-group: 0;
+  -ms-flex-order: 0;
+  -webkit-order: 0;
+  order: 0;
+}
+
+/*view online*/
+#getit_link1_0{
+  -webkit-box-ordinal-group: 1;
+  -moz-box-ordinal-group: 1;
+  -ms-flex-order: 1;
+  -webkit-order: 1;
+  order: 1;
+}
+
+/*Where to find it?*/
+#links{
+  -webkit-box-ordinal-group: 1;
+  -moz-box-ordinal-group: 1;
+  -ms-flex-order: 1;
+  -webkit-order: 1;
+  order: 1;
+}
+
+
+#getit_link1_1{
+  -webkit-box-ordinal-group: 2;
+  -moz-box-ordinal-group: 2;
+  -ms-flex-order: 2;
+  -webkit-order: 2;
+  order: 2;
+}
+
+/*Send to*/
+#action_list{
+  -webkit-box-ordinal-group: 3;
+  -moz-box-ordinal-group: 3;
+  -ms-flex-order: 3;
+  -webkit-order: 3;
+  order: 3;
+}
+
+
+#details{
+  -webkit-box-ordinal-group: 4;
+  -moz-box-ordinal-group: 4;
+  -ms-flex-order: 4;
+  -webkit-order: 4;
+  order: 4;
+}
+
+#tags{
+  -webkit-box-ordinal-group: 6;
+  -moz-box-ordinal-group: 6;
+  -ms-flex-order: 6;
+  -webkit-order: 6;
+  order: 6;
+}
+
+/*?????*/
+#getit_link2{
+  -webkit-box-ordinal-group: 0;
+  -moz-box-ordinal-group: 0;
+  -ms-flex-order: 0;
+  -webkit-order: 0;
+  order: 0;
+}
+
+
+#services-index {
+  display:flex;
+  flex-direction: column;
+}
+
+/*send to*/
+button[aria-label='Export'],
+button[aria-label='Send to'],
+button[aria-label='Envoyer à'],
+button[orderIndex='1']{
+  order: 4;
+}
+
+/*view online*/
+button[aria-label='Bekijk online'],
+button[aria-label='View Online'],
+button[aria-label='Consulter'],
+button[orderIndex='2']{
+  order: 2;
+}
+
+/*details*/
+button[aria-label='Details'],
+button[aria-label='Détails'],
+button[orderIndex='3']{
+  order: 5;
+}
+
+/*links*/
+button[aria-label='Links'],
+button[aria-label='Liens'],
+button[orderIndex='4']{
+  order: 3;
+}
+
+/*citations*/
+button[aria-label='Citaties'],
+button[aria-label='Citations'],
+button[orderIndex='5']{
+  order: 1;
+}
+
+/*tags*/
+button[aria-label='Tags'],
+button[orderIndex='6']{
+  order: 6;
+}

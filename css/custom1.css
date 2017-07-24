@@ -1,33 +1,23 @@
-/* homeIcon */
-prm-topbar prm-logo, prm-topbar prm-logo, prm-logo-after {
-        display: flex;
-}
-add-source-icon {
-    display: inline-block;
-    margin-left: 1em;
-    margin-top: -2px;
+/*split ref code and title*/
+.media-delimiter::after {
+    content: "\A";
+    white-space: pre;
 }
 
-
-add-source-icon div.sourceid img.source-icon {
-    display: inline-block;
-    max-height: 18px;
-    width: auto;
-    height: auto;
-    transform: none;
-    min-width: auto;
-    min-height: auto;
-    vertical-align: bottom;
+prm-search-bookmark-filter #fixed-buttons-holder.fixed-to-top {
+        flex-direction: column-reverse;
+}
+.primo-scrollbar::-webkit-scrollbar-thumb, md-dialog-content::-webkit-scrollbar-thumb {
+    background-color: #BAC4D1;
 }
 
-add-source-icon div.sourceid span.source-text {
-    font-size:small;
-    margin-left: 0.4em;
-    text-transform: none;
-    letter-spacing: normal;
+.primo-scrollbar::-webkit-scrollbar-thumb:hover, md-dialog-content::-webkit-scrollbar-thumb:hover {
+    background-color: #A7B0BC;
 }
 
-
+.primo-scrollbar::-webkit-scrollbar-track, md-dialog-content::-webkit-scrollbar-track {
+    background-color: #53738c;
+}
 /* Facets on the Left Side */
 /* Is nu een configuration optie in de Backend :
    https://knowledge.exlibrisgroup.com/Primo/Product_Documentation/New_Primo_User_Interface/New_UI_Customization_-_Best_Practices#Moving_the_Facets_to_the_Left_Side
@@ -53,31 +43,11 @@ prm-search > md-content.padded-container  {
     max-width: none;
 }
 */
-prm-search-bookmark-filter #fixed-buttons-holder.fixed-to-top {
-        flex-direction: column-reverse;
-}
-.primo-scrollbar::-webkit-scrollbar-thumb, md-dialog-content::-webkit-scrollbar-thumb {
-    background-color: #BAC4D1;
-}
-
-.primo-scrollbar::-webkit-scrollbar-thumb:hover, md-dialog-content::-webkit-scrollbar-thumb:hover {
-    background-color: #A7B0BC;
-}
-
-.primo-scrollbar::-webkit-scrollbar-track, md-dialog-content::-webkit-scrollbar-track {
-    background-color: #53738c;
-}
-prm-main-menu > div {
-  display: flex;
-}
-
 /* Hide de Browse in the top menu*/
 
-prm-main-menu a[aria-label*="Browse"].md-button.flex-button {
+prm-main-menu a[aria-label="Browse"] {
     display:none;
-    padding:0;
 }
-
 
 prm-linked-user-selector .toolbar-select-input ._md-select-value > span._md-select-icon {
     color :#45aab4; 
@@ -90,14 +60,132 @@ prm-linked-user-selector md-input-container ._md-select-value:hover {
     border-bottom-style: solid;
     padding-bottom: 0;
 }
-.md-button[id=payFinesNow] {
-	color: white;
-	background-color: tomato;
+.full-view-inner-container{
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
 }
-.md-button[id=payFinesNow]:hover {
-		background-color: tomato;
-		filter:brightness(80%);
-		color: white;
+
+#citationTrails{
+  -webkit-box-ordinal-group: 0;
+  -moz-box-ordinal-group: 0;
+  -ms-flex-order: 0;
+  -webkit-order: 0;
+  order: 0;
+}
+
+/*view online*/
+#getit_link1_0{
+  -webkit-box-ordinal-group: 1;
+  -moz-box-ordinal-group: 1;
+  -ms-flex-order: 1;
+  -webkit-order: 1;
+  order: 1;
+}
+
+/*Where to find it?*/
+#links{
+  -webkit-box-ordinal-group: 1;
+  -moz-box-ordinal-group: 1;
+  -ms-flex-order: 1;
+  -webkit-order: 1;
+  order: 1;
+}
+
+
+#getit_link1_1{
+  -webkit-box-ordinal-group: 2;
+  -moz-box-ordinal-group: 2;
+  -ms-flex-order: 2;
+  -webkit-order: 2;
+  order: 2;
+}
+
+/*Send to*/
+#action_list{
+  -webkit-box-ordinal-group: 3;
+  -moz-box-ordinal-group: 3;
+  -ms-flex-order: 3;
+  -webkit-order: 3;
+  order: 3;
+}
+
+
+#details{
+  -webkit-box-ordinal-group: 4;
+  -moz-box-ordinal-group: 4;
+  -ms-flex-order: 4;
+  -webkit-order: 4;
+  order: 4;
+}
+
+#tags{
+  -webkit-box-ordinal-group: 6;
+  -moz-box-ordinal-group: 6;
+  -ms-flex-order: 6;
+  -webkit-order: 6;
+  order: 6;
+}
+
+/*?????*/
+#getit_link2{
+  -webkit-box-ordinal-group: 0;
+  -moz-box-ordinal-group: 0;
+  -ms-flex-order: 0;
+  -webkit-order: 0;
+  order: 0;
+}
+
+
+#services-index {
+  display:flex;
+  flex-direction: column;
+}
+
+/*send to*/
+button[aria-label='Export'],
+button[aria-label='Send to'],
+button[aria-label='Envoyer à'],
+button[orderIndex='1']{
+  order: 4;
+}
+
+/*view online*/
+button[aria-label='Bekijk online'],
+button[aria-label='View Online'],
+button[aria-label='Consulter'],
+button[orderIndex='2']{
+  order: 2;
+}
+
+/*details*/
+button[aria-label='Details'],
+button[aria-label='Détails'],
+button[orderIndex='3']{
+  order: 5;
+}
+
+/*links*/
+button[aria-label='Links'],
+button[aria-label='Liens'],
+button[orderIndex='4']{
+  order: 3;
+}
+
+/*citations*/
+button[aria-label='Citaties'],
+button[aria-label='Citations'],
+button[orderIndex='5']{
+  order: 1;
+}
+
+/*tags*/
+button[aria-label='Tags'],
+button[orderIndex='6']{
+  order: 6;
 }
 
 /* 

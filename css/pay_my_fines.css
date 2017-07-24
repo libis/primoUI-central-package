@@ -1,9 +1,0 @@
-.md-button[id=payFinesNow] {
-	color: white;
-	background-color: tomato;
-}
-.md-button[id=payFinesNow]:hover {
-		background-color: tomato;
-		filter:brightness(80%);
-		color: white;
-}

@@ -1,0 +1,16 @@
+<style>
+  .md-button[id=payFinesNow] {
+    color: white;
+    background-color: tomato;
+  }
+
+  .md-button[id=payFinesNow]:hover {
+    background-color: tomato;
+    filter: brightness(80%);
+    color: white;
+  }
+</style>
+
+<div layout="row" layout-align="center center" ng-show='$ctrl.showPayMyFines'>
+  <a id='payFinesNow' class="md-button md-raised md-secundary" target='_blank' href='https://services.libis.be/pay_my_fines'>Pay fines</a>
+</div>
