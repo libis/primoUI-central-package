@@ -1,0 +1,7 @@
+<div layout="row" class="bar alert-bar" layout-align="center center">
+  <span class="bar-text" ng-bind-html="ctrl.message" style="display:flex"></span>
+  <md-divider></md-divider>
+  <md-button aria-label="{{::('nui.message.dismiss' | translate)}}" (click)="ctrl.onClose()" class="dismiss-alert-button zero-margin" ng-class="md-icon-button">
+    <span translate="nui.message.dismiss" hide-xs></span>
+  </md-button>
+</div>

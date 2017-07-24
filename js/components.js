@@ -10,6 +10,7 @@
 import './utils'
 
 /* import your component configuration*/
+import {experimentConfig} from './components/prmLogoAfter/experiment'
 import {homeIconConfig} from './components/prmLogoAfter/homeIcon'
 import {sourceIconConfig} from './components/prmBriefResultAfter/sourceIcon'
 import {pnxXmlConfig} from './components/prmSearchResultThumbnailContainerAfter/pnxXml'
@@ -17,7 +18,7 @@ import {payMyFinesConfig} from './components/prmFinesOverviewAfter/payMyFines'
 import {feedbackConfig} from './components/prmMainMenuAfter/feedback'
 import {searchTipConfig} from './components/general/searchTip'
 import {reportAProblemConfig} from './components/prmServiceHeaderAfter/reportAProblem'
-import {experimentConfig} from './components/prmLogoAfter/experiment'
+import {finesMessageConfig} from './components/prmTopBarBefore/finesMessage'
 
 export default class AfterComponents {
 
@@ -35,15 +36,16 @@ export default class AfterComponents {
         </prm-logo-after>
     */
     return [
+      {name: 'libis-experiment', config: experimentConfig, enabled: false, appendTo: 'prm-logo-after'},
       {name: 'home-icon', config: homeIconConfig, enabled: true, appendTo: 'prm-logo-after'},
       {name: 'source-icon', config: sourceIconConfig, enabled: true, appendTo: 'prm-brief-result-after'},
       {name: 'pnx-xml', config: pnxXmlConfig, enabled: true, appendTo: 'prm-brief-result-container-after'},
       {name: 'pay-my-fines', config: payMyFinesConfig, enabled: true, appendTo: 'prm-fines-overview-after'},
       {name: 'feedback', config: feedbackConfig, enabled: true, appendTo: 'prm-main-menu-after'},
       {name: 'report-a-problem', config: reportAProblemConfig, enabled: true, appendTo: 'prm-service-header-after'},
-      {name: 'libis-experiment', config: experimentConfig, enabled: true, appendTo: 'prm-logo-after'},
-      {name: 'prm-searchtips', config: searchTipConfig, enabled: true, appendTo: null}
-    ].filter((m) => m.enabled);    
+      {name: 'prm-searchtips', config: searchTipConfig, enabled: true, appendTo: null},
+      {name: 'fines-message', config: finesMessageConfig, enabled: true, appendTo: 'prm-top-bar-before'},
+    ].filter((m) => m.enabled);
   }
 
 }

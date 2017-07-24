@@ -12,6 +12,7 @@ import Helper from './primo-explore-dom/js/primo/explore/helper'
 import Components from './components'
 
 import {feedService} from './factories/feedService'
+import {messageService} from './factories/messageService'
 
 //make Primo public
 window.Primo = Primo;
@@ -34,7 +35,8 @@ let app = angular.module('centralCustom',[])
                  .run(($templateCache) => {
                    //$templateCache.put('components/search/fullView/full-view.html', fullViewHTML);
                  })
-                 .factory('FeedService', feedService);
+                 .factory('FeedService', feedService)
+                 .service('MessageService', messageService);
 
 
 //Contains the after component selectors that will be injected

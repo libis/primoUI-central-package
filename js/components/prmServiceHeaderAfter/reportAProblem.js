@@ -7,6 +7,7 @@ class ReportAProblemController {
     if (/^nui\.getit\./.test(this.parentCtrl.parentCtrl.title)) {
       $element.parent().parent().find('h4').after($compile(reportAProblemHTML)($scope));
 
+      let recordData = self.currentRecord;
 
       Primo.user.then(user => {
         self.user = user;
@@ -31,14 +32,15 @@ class ReportAProblemController {
                 }
                 $scope.sendReport = function(answer) {
                   let data = {
-                    recordid: self.currentRecord.pnx.control.recordid[0],
+                    recordId: recordData.pnx.control.recordid[0],
                     index: 0,
                     page: 0,
                     scope: '',
+                    query: '',
                     searchType: '',
-                    sessionId: '',
+                    sessionId: user.id,
                     tab: '',
-                    title: '',
+                    title: recordData.pnx.display.title[0],
                     type: 'resource_problem',
                     subject: $scope.report.subject,
                     view: self.view.code,

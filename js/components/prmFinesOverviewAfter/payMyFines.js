@@ -3,7 +3,7 @@ import payMyFinesHTML from './payMyFines.html'
 class PayMyFinesController {
   constructor() {
     var self = this;
-    this.showPayMyFines = false;
+    this.showPayMyFines = false;  
   }
 
   $onInit() {
