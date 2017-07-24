@@ -6,9 +6,11 @@ gulp run --view CENTRAL_PACKAGE --browserify --proxy http://limo.q.libis.be
 ```
 
 ## Important
-install `npm install babel-plugin-transform-html-import-to-string`
+install `npm install babel-plugin-transform-html-import-to-string --save-dev`
 and add it to `gulp/tasks/buildCustomJs.js` in primo-explore-devenv
 
+
+Patch file for `buildCustomJs.js`
 ```bash
 diff --git a/gulp/tasks/buildCustomJs.js b/gulp/tasks/buildCustomJs.js
 index 11f2f90..b4d5f8c 100644
