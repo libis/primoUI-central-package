@@ -43,8 +43,7 @@ export default class AfterComponents {
       {name: 'report-a-problem', config: reportAProblemConfig, enabled: true, appendTo: 'prm-service-header-after'},
       {name: 'libis-experiment', config: experimentConfig, enabled: true, appendTo: 'prm-logo-after'},
       {name: 'prm-searchtips', config: searchTipConfig, enabled: true, appendTo: null}
-    ].filter((m) => m.enabled);
-    //prm-search-result-thumbnail-container-after
+    ].filter((m) => m.enabled);    
   }
 
 }
