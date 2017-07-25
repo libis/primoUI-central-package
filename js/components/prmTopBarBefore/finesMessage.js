@@ -7,7 +7,7 @@ class FinesMessageController{
         //TODO:extract html to its own file. find out how to resolve {{}}
         MessageService.show(`
           <span style="align-self:center;">You have ${user.fines.length} unpayed fine(s).</span>
-          <a id='payFinesNow' class="md-button md-raised md-secundary" target='_blank' href='https://services.libis.be/pay_my_fines'>Pay fine(s)</a>
+          <a style="background-color: tomato;color: white;" class="md-button md-raised md-secundary" target='_blank' href='https://services.libis.be/pay_my_fines'>Pay fine(s)</a>
         `);
 
       }
