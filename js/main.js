@@ -12,7 +12,7 @@ import Helper from './primo-explore-dom/js/primo/explore/helper'
 import Components from './components'
 
 import {feedService} from './factories/feedService'
-import {messageService} from './factories/messageService'
+import MessageService from './factories/messageService'
 
 //make Primo public
 window.Primo = Primo;
@@ -30,13 +30,13 @@ window.setTimeout(function() {
 }, 2000);
 
 //Create the centralCustom module;
-let app = angular.module('centralCustom',[])
+let app = angular.module('centralCustom',['ngMaterial'])
                  .constant('feedbackServiceURL', 'https://services.libis.be/feedback')
                  .run(($templateCache) => {
                    //$templateCache.put('components/search/fullView/full-view.html', fullViewHTML);
                  })
                  .factory('FeedService', feedService)
-                 .service('MessageService', messageService);
+                 .service('MessageService', MessageService);
 
 
 //Contains the after component selectors that will be injected

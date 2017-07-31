@@ -19,6 +19,7 @@ import {feedbackConfig} from './components/prmMainMenuAfter/feedback'
 import {searchTipConfig} from './components/general/searchTip'
 import {reportAProblemConfig} from './components/prmServiceHeaderAfter/reportAProblem'
 import {finesMessageConfig} from './components/prmTopBarBefore/finesMessage'
+import {generalMessageConfig} from './components/prmTopBarBefore/generalMessage'
 
 export default class AfterComponents {
 
@@ -45,6 +46,7 @@ export default class AfterComponents {
       {name: 'report-a-problem', config: reportAProblemConfig, enabled: true, appendTo: 'prm-service-header-after'},
       {name: 'prm-searchtips', config: searchTipConfig, enabled: true, appendTo: null},
       {name: 'fines-message', config: finesMessageConfig, enabled: true, appendTo: 'prm-top-bar-before'},
+      {name: 'announcement', config: generalMessageConfig, enabled: true, appendTo: 'prm-top-bar-before'}
     ].filter((m) => m.enabled);
   }
 

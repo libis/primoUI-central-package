@@ -1,25 +1,45 @@
 import messageServiceHTML from './messageService.html'
 
-export let messageService = ['$mdToast', '$sce', ($mdToast, $sce) => {
-  return {
-    show: (message, hideDelay = 0) => {
+export default class MessageService {
+  constructor($mdToast, $sce, $translate) {
+    this.mdToast = $mdToast;
+    this.sce = $sce;
+    this.translate = $translate;
+  }
+
+  show(message = '', hideDelay = 0) {
+    let self = this;
+
+    if (message.length == 0) {
+      // code table entries can not have empty descriptions.
+      // message <= 1 will not be displayed!!!!
+      let messageKey = 'lbs.generalMessage';
+      message = this.translate.instant(messageKey);
+      message = (message == messageKey || message <= 1) ? '' : message;
+    }
+
+    if (message.length > 0) {
       let toastConfig = {
+        parent: document.body,
         controllerAs: 'ctrl',
         controller: function() {
           this.onClose = () => {
-            $mdToast.hide();
+            self.mdToast.hide();
           };
 
-          this.message = $sce.trustAsHtml(message);
+          this.message = self.sce.trustAsHtml(message);
         },
         template: messageServiceHTML,
         position: 'top center',
         hideDelay: hideDelay
       }
 
-      console.log(toastConfig);
-
-      return $mdToast.show(toastConfig);
+      self.mdToast.show(toastConfig);
+    } else {
+      console.log('No message to display');
     }
   }
-}];
+
+}
+
+MessageService.$inject = ['$mdToast', '$sce', '$translate'];
