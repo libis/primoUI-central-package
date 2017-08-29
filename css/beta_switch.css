@@ -10,7 +10,7 @@ beta-switch div#beta-switch > span[data-ribbon] {
     cursor: pointer;    
     background-color: #fbca04;   
      color: #222;    
-     padding: 6px;    
+     padding: 0px;    
      display: inline-block;   
      border-radius: 3px;      
      margin: 5px 0;       

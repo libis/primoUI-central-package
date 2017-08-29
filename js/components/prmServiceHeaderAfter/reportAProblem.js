@@ -75,8 +75,6 @@ class ReportAProblemController {
                 }
               }
             });
-
-
           }; //showReportAProblemForm
         });
       });
@@ -91,7 +89,6 @@ class ReportAProblemController {
       console.log(elementCtrl);
       return elementCtrl.item;
     }
-
     return null;
   }
 }
