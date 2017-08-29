@@ -1,43 +1,9 @@
-
-        
-        <md-switch ng-model="useBeta" aria-label="use Beta version" ng-class="md-primary" ng-change="onChangeUseBeta()" ng-show='showBetaSwitch'>
-          Use the Beta version
-        </md-switch>
-
-<style>
-  
-/* 
- * The bar:
- */
-
- md-switch ._md-label {
-     color:hsla(0,0%,100%,.65);
- }
-
- md-switch ._md-bar {
-    background-color: hsla(0,0%,100%,.65);; /* set not selected bar color */
-}
-
-md-switch.md-checked ._md-bar {
-    background-color: pink; /* set selected bar color */
-}
-
-
-/* 
- * The switch:
- */
-
-md-switch ._md-thumb {
-    /* color: rgb(158,158,158); */ /* not selected switch color */
-    color: hsla(0,0%,100%,.65);
-}
-
-md-switch.md-checked ._md-thumb {
-    background-color: rgb(255,255,255); /* selected switch color */
-}
-
-md-switch[disabled] ._md-thumb {
-    background-color: rgb(255,255,255); /* disabled switch color */
-}
-
-            </style>
+<div id="beta-switch">
+    <span data-ribbon="Beta">
+        <span>   
+            <md-switch ng-model="useBeta" aria-label="use Beta version" ng-class="md-primary" ng-change="onChangeUseBeta()" ng-show='showBetaSwitch'>
+          Try the Beta version
+            </md-switch>
+        </span>
+    </span>
+</div>
