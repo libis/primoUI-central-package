@@ -1,0 +1,15 @@
+
+prm-logo, prm-logo-after {
+    display: flex;
+}
+
+prm-logo prm-logo-after, div#home-buttons-holder {
+    height: 100%
+}
+
+prm-logo-after a.md-primoExplore-theme.md-button.md-icon-button {
+  min-width: 40px;
+}
+prm-logo .product-logo {
+    display: inline-block;
+}
