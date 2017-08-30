@@ -6,7 +6,7 @@ class BetaSwitchController {
     self.$scope = $scope;
 
     $scope.showBetaSwitch = true;
-    $scope.useBeta = true;
+    $scope.useBeta = true;  
 
     $scope.onChangeUseBeta = function () {
       if (! $scope.useBeta){

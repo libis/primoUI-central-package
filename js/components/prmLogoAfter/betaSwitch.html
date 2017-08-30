@@ -1,9 +1,7 @@
 <div id="beta-switch">
     <span data-ribbon="Beta">
-        <span>   
-            <md-switch ng-model="useBeta" aria-label="use Beta version" ng-class="md-primary" ng-change="onChangeUseBeta()" ng-show='showBetaSwitch'>
-          Try the Beta version
-            </md-switch>
+        <span ng-click="useBeta=false; onChangeUseBeta();"> 
+                <span translate="lbs.nui.default.nui.beta_switch"></span>
         </span>
     </span>
 </div>
