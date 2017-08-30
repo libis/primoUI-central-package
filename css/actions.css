@@ -1,0 +1,16 @@
+
+prm-action-list div#scrollActionList {
+    align-items: baseline;
+}
+
+
+
+prm-action-list div#scrollActionList li.md-nav-item {
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+prm-action-list div#scrollActionList li.md-nav-item > button > span > div > span {
+    white-space: normal;
+}
