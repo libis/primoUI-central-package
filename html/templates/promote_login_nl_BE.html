@@ -24,37 +24,15 @@
 
 </div>
 
-
-
-                <!--
-                    <div class="md-title">Bedankt om me hierop te attenderen. Ik zal onmiddellijk </div>
-                    <div>
-                        <md-button md-autofocus class="md-raised md-primary"
-                                   onclick="javascript:angular.element(document.querySelectorAll('prm-authentication button')[0]).triggerHandler('click');" id="mimic_signin"
-                                   style="box-shadow: 0 2px 5px 0 rgba(0,0,0,.26)">Aanmelden</md-button>
-
-                    </div>
-                  -->
                 </div>
 
-                <div class="md-title" style="margin-top:0.7em">
-                      Toon deze boodschap niet meer:
-                </div>
-                <div>
-                    <md-radio-group ng-model="primoPromoteLogin" ng-change="changePromoteOption()">
-                        <md-radio-button value="alwaysSignin" aria-label="Always Sign In automaticaly">
-                          Ga meteen naar de loginpagina bij starten van Limo. Wanneer ik al aangemeld ben via de
-                          Centrale KU Leuven loginpagina ben ik automatisch ook aangemeld in Limo.
-                        </md-radio-button>
-                        <!--
-                        <md-radio-button value="neverSignin" aria-label="Never Sign In automaticaly">
-                            Ik weet de aanmeldknop wel te vinden in deze interface en beslis zelf wanneer ik zal aanmelden.
-                        </md-radio-button>
-                        <md-radio-button value="maybeSignin" aria-label="Ask again next time">
-                            Ik weet het nog niet zeker. Toon deze boodschap volgende keer opnieuw.
-                        </md-radio-button>
-                      -->
-                    </md-radio-group>
+                <div layout="row" layout-align="left center" style="padding:14px;">
+
+                        <md-checkbox ng-change="changePromoteOption()" ng-model="primoPromoteLogin" ng-true-value="'alwaysSignin'" aria-label="Always Sign In automaticaly?">
+                                Breng me volgende keer onmiddellijk naar de login pagina en toon deze boodschap niet meer.<br/>
+                                (Ik zal automatisch aangemeld zijn als ik reed ben ingelogd via de KU Leuven Central Login.)
+                        </md-checkbox>
+
                 </div>
                 <div>
                   <md-button  md-autofocus flex class="md-primary" ng-click="closeDialog()"    style="box-shadow: 0 2px 5px 0 rgba(0,0,0,.26); margin-right: 0;">

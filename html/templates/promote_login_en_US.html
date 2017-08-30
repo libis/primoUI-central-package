@@ -21,43 +21,31 @@
                                  onclick="javascript:angular.element(document.querySelectorAll('prm-authentication button')[0]).triggerHandler('click');" id="mimic_signin"
                                  style="box-shadow: 0 2px 5px 0 rgba(0,0,0,.26); margin-right: 0;">Sign In</md-button>
                     to get complete results and to request items </div>
+                </div>
+
+                <div layout="row" layout-align="left center" style="padding:14px;">
                     <!--
-                    <div>
-                        <md-button md-autofocus class="md-raised md-primary"
-                                   onclick="javascript:angular.element(document.querySelectorAll('prm-authentication button')[0]).triggerHandler('click');" id="mimic_signin"
-                                   style="box-shadow: 0 2px 5px 0 rgba(0,0,0,.26)">Sign In</md-button>
-
-                    </div>
-                  -->
-                </div>
-
-                <div class="md-title" style="margin-top:0.7em">
-                    Do not show this message again:
-                </div>
-
-
-                <div>
                     <md-radio-group ng-model="primoPromoteLogin" ng-change="changePromoteOption()">
                         <md-radio-button value="alwaysSignin" aria-label="Always Sign In automaticaly">
-                          Redirect me to the Sign In page. I will be automatically signed in when I am already
-                          authenticated via the KU Leuven Central Login.
+                            Next time, bring me to the Sign In page and do not show this message again
+                            (I will be automatically signed in when I am already logged in via the KU Leuven Central Login.) 
                         </md-radio-button>
-                        <!--
-                        <md-radio-button value="neverSignin" aria-label="Never Sign In automaticaly">
-                            I will use the sign in option when I think it's relevant
-                        </md-radio-button>
-                        <md-radio-button value="maybeSignin" aria-label="Ask again next time">
-                            I don't know yet. Show this message the next time I use Limo.
-                        </md-radio-button>
-                      -->
                     </md-radio-group>
+                -->
+
+                    <md-checkbox ng-change="changePromoteOption()" ng-model="primoPromoteLogin" ng-true-value="'alwaysSignin'" aria-label="Always Sign In automaticaly?">
+                        Next time, bring me to the Sign In page and do not show this message again.<br/>
+                        (I will be automatically signed in when I am already logged in via the KU Leuven Central Login.) 
+                    </md-checkbox>
+
+
+
                       </div>
                           <div>
                     <md-button  md-autofocus flex class="md-primary" ng-click="closeDialog()"    style="box-shadow: 0 2px 5px 0 rgba(0,0,0,.26); margin-right: 0;">
                       Continue as guest
                     </md-button>
                      – Limited access for non-KU Leuven users
-
                 </div>
 
                 <md-dialog-actions>
@@ -67,9 +55,6 @@
                         </md-button>
                     </div>
                 </md-dialog-actions>
-
-
-
-</md-content>
+        </md-content>
     </md-dialog-content>
 </md-dialog>
