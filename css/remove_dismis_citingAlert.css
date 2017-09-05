@@ -1,0 +1,4 @@
+/*  Remove dismis citingAlert */
+prm-alert-bar[\[alert-object\]*='citingAlert'] button.md-button {
+ display:none;
+}

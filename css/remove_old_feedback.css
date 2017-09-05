@@ -1,0 +1,4 @@
+/* Remove old Feedback link (moet wel nog blijven staan in de 'oude' UI */
+prm-main-menu div#mainMenu a[aria-label='Feedback'] {
+ display:none;
+}
