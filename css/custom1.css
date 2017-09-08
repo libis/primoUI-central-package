@@ -1,3 +1,19 @@
+
+prm-action-list div#scrollActionList {
+    align-items: baseline;
+}
+
+
+
+prm-action-list div#scrollActionList li.md-nav-item {
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+prm-action-list div#scrollActionList li.md-nav-item > button > span > div > span {
+    white-space: normal;
+}
 /*split ref code and title*/
 
 beta-switch div#beta-switch {
@@ -91,6 +107,20 @@ beta-switch md-switch[disabled] ._md-thumb {
     white-space: pre;
 }
 
+prm-search-bookmark-filter #fixed-buttons-holder.fixed-to-top {
+        flex-direction: column-reverse;
+}
+.primo-scrollbar::-webkit-scrollbar-thumb, md-dialog-content::-webkit-scrollbar-thumb {
+    background-color: #BAC4D1;
+}
+
+.primo-scrollbar::-webkit-scrollbar-thumb:hover, md-dialog-content::-webkit-scrollbar-thumb:hover {
+    background-color: #A7B0BC;
+}
+
+.primo-scrollbar::-webkit-scrollbar-track, md-dialog-content::-webkit-scrollbar-track {
+    background-color: #53738c;
+}
 /* Facets on the Left Side */
 /* Is nu een configuration optie in de Backend :
    https://knowledge.exlibrisgroup.com/Primo/Product_Documentation/New_Primo_User_Interface/New_UI_Customization_-_Best_Practices#Moving_the_Facets_to_the_Left_Side
@@ -116,20 +146,6 @@ prm-search > md-content.padded-container  {
     max-width: none;
 }
 */
-prm-search-bookmark-filter #fixed-buttons-holder.fixed-to-top {
-        flex-direction: column-reverse;
-}
-.primo-scrollbar::-webkit-scrollbar-thumb, md-dialog-content::-webkit-scrollbar-thumb {
-    background-color: #BAC4D1;
-}
-
-.primo-scrollbar::-webkit-scrollbar-thumb:hover, md-dialog-content::-webkit-scrollbar-thumb:hover {
-    background-color: #A7B0BC;
-}
-
-.primo-scrollbar::-webkit-scrollbar-track, md-dialog-content::-webkit-scrollbar-track {
-    background-color: #53738c;
-}
 /* Hide de Browse in the top menu*/
 
 prm-main-menu a[aria-label="Browse"].md-button.flex-button {
@@ -163,6 +179,16 @@ prm-linked-user-selector md-input-container ._md-select-value:hover {
     border-bottom-style: solid;
     padding-bottom: 0;
 }
+/*  Remove dismis citingAlert */
+prm-alert-bar[\[alert-object\]*='citingAlert'] button.md-button {
+ display:none;
+}
+
+/* Remove old Feedback link (moet wel nog blijven staan in de 'oude' UI */
+prm-main-menu div#mainMenu a[aria-label='Feedback'] {
+ display:none;
+}
+
 .full-view-inner-container{
   display: -webkit-box;
   display: -moz-box;

@@ -32,6 +32,11 @@ window.setTimeout(function() {
 //Create the centralCustom module;
 let app = angular.module('centralCustom',['ngMaterial'])
                  .constant('feedbackServiceURL', 'https://services.libis.be/feedback')
+                 .config(($sceDelegateProvider) => {
+                   $sceDelegateProvider.resourceUrlWhitelist([
+                     '**'
+                   ]);
+                 })
                  .run(($templateCache) => {
                    //$templateCache.put('components/search/fullView/full-view.html', fullViewHTML);
                  })

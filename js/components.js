@@ -20,7 +20,7 @@ import {feedbackConfig} from './components/prmMainMenuAfter/feedback'
 import {searchTipConfig} from './components/general/searchTip'
 import {reportAProblemConfig} from './components/prmServiceHeaderAfter/reportAProblem'
 import {finesMessageConfig} from './components/prmTopBarBefore/finesMessage'
-import {generalMessageConfig} from './components/prmTopBarBefore/generalMessage'
+import {announcementsConfig} from './components/prmTopBarBefore/announcements'
 import {promoteLoginConfig} from './components/prmPromoteLogin/PromoteLogin'
 
 export default class AfterComponents {
@@ -45,12 +45,12 @@ export default class AfterComponents {
       {name: 'source-icon', config: sourceIconConfig, enabled: true, appendTo: 'prm-brief-result-after'},
       {name: 'pnx-xml', config: pnxXmlConfig, enabled: true, appendTo: 'prm-brief-result-container-after'},
       {name: 'pay-my-fines', config: payMyFinesConfig, enabled: true, appendTo: 'prm-fines-overview-after'},
-      {name: 'feedback', config: feedbackConfig, enabled: true, appendTo: 'prm-main-menu-after'},
+      {name: 'feedback', config: feedbackConfig, enabled: true, appendTo: 'prm-main-menu-after'},      
       {name: 'report-a-problem', config: reportAProblemConfig, enabled: true, appendTo: 'prm-service-header-after'},
       {name: 'prm-searchtips', config: searchTipConfig, enabled: true, appendTo: null},
       {name: 'fines-message', config: finesMessageConfig, enabled: true, appendTo: 'prm-top-bar-before'},
-      {name: 'announcement', config: generalMessageConfig, enabled: true, appendTo: 'prm-top-bar-before'},
-      {name: 'promote-login', config: promoteLoginConfig, enabled: true, appendTo: 'prm-personal-info-after'}
+      {name: 'promote-login', config: promoteLoginConfig, enabled: true, appendTo: 'prm-personal-info-after'},
+      {name: 'announcement', config: announcementsConfig, enabled: true, appendTo: 'prm-top-bar-before'}
     ].filter((m) => m.enabled);
   }
 }
