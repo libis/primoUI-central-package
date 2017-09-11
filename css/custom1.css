@@ -1,4 +1,24 @@
-/*split ref code and title*/
+
+prm-action-list div#scrollActionList {
+    align-items: baseline;
+}
+
+
+
+prm-action-list div#scrollActionList li.md-nav-item {
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+prm-action-list div#scrollActionList li.md-nav-item > button > span > div > span {
+    white-space: normal;
+}
+/* beta-switch */
+
+beta-switch {
+    margin: auto 0;
+}
 
 beta-switch div#beta-switch {
     display:inline-block; 
@@ -163,6 +183,16 @@ prm-linked-user-selector md-input-container ._md-select-value:hover {
     border-bottom-style: solid;
     padding-bottom: 0;
 }
+/*  Remove dismis citingAlert */
+prm-alert-bar[\[alert-object\]*='citingAlert'] button.md-button {
+ display:none;
+}
+
+/* Remove old Feedback link (moet wel nog blijven staan in de 'oude' UI */
+prm-main-menu div#mainMenu a[aria-label='Feedback'] {
+ display:none;
+}
+
 .full-view-inner-container{
   display: -webkit-box;
   display: -moz-box;

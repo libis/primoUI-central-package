@@ -1,4 +1,8 @@
-/*split ref code and title*/
+/* beta-switch */
+
+beta-switch {
+    margin: auto 0;
+}
 
 beta-switch div#beta-switch {
     display:inline-block; 
