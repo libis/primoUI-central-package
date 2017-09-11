@@ -1,20 +1,22 @@
 import messageServiceHTML from './messageService.html'
 
 export default class MessageService {
-  constructor($mdToast, $sce, $translate) {
+  constructor($mdToast, $sce, $translate, $timeout) {
     this.mdToast = $mdToast;
     this.sce = $sce;
     this.translate = $translate;
+    this.timeout = $timeout;
   }
 
   show(message = '', hideDelay = 0) {
     let self = this;
 
+    this.timeout(function(){
     if (message.length == 0) {
       // code table entries can not have empty descriptions.
       // message <= 1 will not be displayed!!!!
       let messageKey = 'lbs.generalMessage';
-      message = this.translate.instant(messageKey);
+      message = self.translate.instant(messageKey);
       message = (message == messageKey || message <= 1) ? '' : message;
     }
 
@@ -38,8 +40,9 @@ export default class MessageService {
     } else {
       console.log('No message to display');
     }
+  }, 2000);
   }
 
 }
 
-MessageService.$inject = ['$mdToast', '$sce', '$translate'];
+MessageService.$inject = ['$mdToast', '$sce', '$translate', '$timeout'];
