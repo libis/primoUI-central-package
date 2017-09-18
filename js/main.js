@@ -13,6 +13,7 @@ import Components from './components'
 
 import {feedService} from './factories/feedService'
 import MessageService from './factories/messageService'
+import FeedbackService from './factories/feedbackService'
 
 //make Primo public
 window.Primo = Primo;
@@ -41,7 +42,8 @@ let app = angular.module('centralCustom',['ngMaterial'])
                    //$templateCache.put('components/search/fullView/full-view.html', fullViewHTML);
                  })
                  .factory('FeedService', feedService)
-                 .service('MessageService', MessageService);
+                 .service('MessageService', MessageService)
+                 .service('FeedbackService', FeedbackService);
 
 
 //Contains the after component selectors that will be injected

@@ -1,10 +1,10 @@
 class AnnouncementsController {
-  constructor(MessageService) {
-    MessageService.show();
+  constructor($scope, MessageService) {
+    MessageService.show('', $scope);
   }
 }
 
-AnnouncementsController.$inject = ['MessageService'];
+AnnouncementsController.$inject = ['$scope', 'MessageService'];
 
 export let announcementsConfig = {
   bindings: {parentCtrl: '<'},
