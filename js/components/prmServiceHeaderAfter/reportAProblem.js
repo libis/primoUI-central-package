@@ -67,9 +67,11 @@ class ReportAProblemController {
                       cache: false,
                       data: data
                     }).then(function(response) {
-                      $mdToast.showSimple('Thank you for your feedback!');
+                      let message = self.translate.instant('lbs.nui.feedback.success') || 'Thank you for your feedback!';
+                      MessageService.show(message, {scope:$scope, hideDelay: 5000});
                     }, function(response) {
-                      $mdToast.showSimple('Unable to submit feedback.');
+                      let message = self.translate.instant('lbs.nui.feedback.fail') || 'Unable to submit feedback.';
+                      MessageService.show(message, {scope:$scope, hideDelay: 5000});                      
                     });
                   }
                 }

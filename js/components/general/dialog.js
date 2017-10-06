@@ -1,7 +1,8 @@
 export default class DialogController {
-  constructor($scope, $mdDialog, $http, feedbackServiceURL) {
+  constructor($scope, $mdDialog, $mdToast, $http, feedbackServiceURL) {
     this.scope = $scope;
     this.mdDialog = $mdDialog;
+    this.mdToast = $mdToast;
     this.http = $http;
     this.feedbackServiceURL = feedbackServiceURL;
 
@@ -10,8 +11,6 @@ export default class DialogController {
     $scope.cancelFeedback = () => {
       this.mdDialog.cancel();
     }
-
-
 
     $scope.sendFeedback = this.sendFeedback;
     $scope.sendFeedback = (answer) => {
@@ -72,4 +71,4 @@ export default class DialogController {
 
 }
 
-DialogController.$inject = ['$scope', '$mdDialog', '$http', 'feedbackServiceURL'];
+DialogController.$inject = ['$scope', '$mdDialog', '$mdToast', '$http', 'feedbackServiceURL'];

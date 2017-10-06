@@ -1,1 +1,63 @@
-this is a test!!!
+<md-dialog id='lbsFeedbackForm' aria-label='feedback'>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>
+        <span translate="lbs.nui.survey.title"></span>
+      </h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="cancelFeedback()">
+        <md-icon md-svg-icon="navigation:ic_close_24px" aria-label="Close dialog"></md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content>
+    <form name='feedbackAnnouncementForm' style="padding:20px;background-color:white;">
+      <input type="hidden" name='subject' ng-model='feedback.subject'>
+      <p><span translate="lbs.nui.survey.email"></span></p>
+      <md-input-container class="md-block">
+        <input type="email" name='replyTo' title="{{ 'lbs.nui.details.email.why' | translate}}" placeholder='john.doe@kuleuven.be' required ng-model='feedback.replyTo' ng-pattern="/^.+@.+\..+$/">
+        <div ng-if='feedbackAnnouncementForm.replyTo.$error.required' role="alert">
+          <div style='color:tomato;'><span translate="lbs.nui.details.email.mandatory"></span></div>
+        </div>
+        <div ng-if='feedbackAnnouncementForm.replyTo.$error.email' role="error">
+          <div style='color:tomato;'><span translate="lbs.nui.details.email.mandatory.error"></span></div>
+        </div>
+      </md-input-container>
+
+      <br /><br />
+
+      <p><span translate="lbs.nui.survey.description"></span></p>
+      <div>
+        <ol>
+          <li>
+            <p><span translate="lbs.nui.survey.q1"></span></p>
+            <md-radio-group ng-model="feedback.answers[0]" class="md-block">
+              <md-radio-button value="1"><span translate="lbs.nui.survey.q1.a1"></span></md-radio-button>
+              <md-radio-button value="2"><span translate="lbs.nui.survey.q1.a2"></span></md-radio-button>
+              <md-radio-button value="3"><span translate="lbs.nui.survey.q1.a3"></span></md-radio-button>
+              <md-radio-button value="4"><span translate="lbs.nui.survey.q1.a4"></span></md-radio-button>
+            </md-radio-group>
+          </li>
+          <li>
+            <p><span translate="lbs.nui.survey.q2"></span></p>
+            <md-radio-group ng-model='feedback.answers[1]' class="md-block">
+              <md-radio-button value="1"><span translate="lbs.nui.survey.q2.a1"></span></md-radio-button>
+              <md-radio-button value="2"><span translate="lbs.nui.survey.q2.a2"></span></md-radio-button>
+            </md-radio-group>
+          </li>
+          <li>
+            <p><span translate="lbs.nui.survey.q3"></span></p>
+            <md-input-container class="md-block" class="md-block">
+              <textarea ng-model="feedback.answers[2]" md-maxlength="5000" rows="5" style="border: 1px dashed gray;padding: 5px;"></textarea>
+            </md-input-container>
+          </li>
+        </ol>
+      </div>
+    </form>
+
+  </md-dialog-content>
+  <md-dialog-actions layout="row">
+    <md-button class="md-raised" ng-click="cancelFeedback()"><span translate="lbs.nui.survey.cancel"></span></md-button>
+    <md-button class="md-raised md-primary" ng-click='sendFeedback()'><span translate="lbs.nui.survey.submit"></span></md-button>
+  </md-dialog-actions>
+</md-dialog>

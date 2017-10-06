@@ -189,7 +189,9 @@ prm-alert-bar[\[alert-object\]*='citingAlert'] button.md-button {
 }
 
 /* Remove old Feedback link (moet wel nog blijven staan in de 'oude' UI */
-prm-main-menu div#mainMenu a[aria-label='Feedback'] {
+prm-main-menu div#mainMenu a[aria-label='Feedback'], 
+prm-main-menu div#mainMenu a[aria-label='Réactions'] 
+{
  display:none;
 }
 

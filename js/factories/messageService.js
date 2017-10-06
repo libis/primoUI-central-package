@@ -32,7 +32,7 @@ export default class MessageService {
           controllerAs: 'ctrl',
           controller: function() {
             this.actionLabel = actionLabel;
-            
+
             this.onClose = () => {
               self.mdToast.hide();
             };
@@ -40,6 +40,7 @@ export default class MessageService {
             if (action) {
               this.onAction = ($event = null) => {
                  action.call(this);
+                 self.mdToast.hide();
               }
             }
 

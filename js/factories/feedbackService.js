@@ -7,11 +7,16 @@ export default class FeedbackService {
     this.mdDialog = $mdDialog;
   }
 
-  show($event = null, feedbackDialogHTML = null, data = {}) {
+  show($event = null, feedbackDialogHTML = null, feedbackDialogController = null) {
     let self = this;
     if (feedbackDialogHTML == null) {
       console.log('default dialog instantiated');
       feedbackDialogHTML = feedbackServiceHTML;
+    }
+
+    if (feedbackDialogController == null) {
+      console.log('default dialog controller instantiated');
+      feedbackDialogController = DialogController;
     }
 
     this.mdDialog.show({
@@ -20,7 +25,7 @@ export default class FeedbackService {
       fullscreen: false,
       targetEvent: $event,
       template: feedbackDialogHTML,
-      controller: DialogController
+      controller: feedbackDialogController
     });
   }
 }
