@@ -67,4 +67,4 @@ export default class feedbackAnnouncementDialogController {
   }
 }
 
-feedbackAnnouncementDialogController.$inject = ['$scope', '$mdDialog', '$mdToast', '$http', 'feedbackServiceURL', 'MessageService'];
+feedbackAnnouncementDialogController.$inject = ['$scope', '$mdDialog', '$mdToast', '$translate', '$http', 'feedbackServiceURL', 'MessageService'];

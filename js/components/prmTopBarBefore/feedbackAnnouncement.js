@@ -3,21 +3,31 @@ import feedbackAnnouncementDialogHTML from './feedbackAnnouncementDialog.html'
 import feedbackAnnouncementDialogController from './feedbackAnnouncementDialog'
 
 class FeedbackAnnouncementController {
-  constructor($scope, FeedbackService, MessageService, actionIcons) {
-    MessageService.show(feedbackAnnouncementHTML,
-                        {scope: $scope, hideDelay:0, actionLabel:'Feedback', action:
-                          ($event) => {
-                            FeedbackService.show($event, feedbackAnnouncementDialogHTML, feedbackAnnouncementDialogController);
-                          }
-                        }
-                       );
+  constructor($scope, $translate, $timeout, FeedbackService, MessageService, actionIcons) {
+
+    $timeout(() => {
+      let message = $translate.instant('lbs.nui.survey.announcement');
+
+      MessageService.show(feedbackAnnouncementHTML.replace('{{message}}', message), {
+        scope: $scope,
+        hideDelay: 0,
+        actionLabel: $translate.instant('mainmenu.label.feedback') || 'Feedback',
+        action:
+          ($event) => {
+            FeedbackService.show($event, feedbackAnnouncementDialogHTML, feedbackAnnouncementDialogController);
+          }
+      });
+    }, 2000);
+
   }
 }
 
-FeedbackAnnouncementController.$inject = ['$scope', 'FeedbackService', 'MessageService', 'actionIcons'];
+FeedbackAnnouncementController.$inject = ['$scope', '$translate', '$timeout', 'FeedbackService', 'MessageService', 'actionIcons'];
 
 export let feedbackAnnouncementConfig = {
-  bindings: {parentCtrl: '<'},
+  bindings: {
+    parentCtrl: '<'
+  },
   controller: FeedbackAnnouncementController,
   template: ''
 }
