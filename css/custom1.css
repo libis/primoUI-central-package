@@ -14,60 +14,71 @@ prm-action-list div#scrollActionList li.md-nav-item {
 prm-action-list div#scrollActionList li.md-nav-item > button > span > div > span {
     white-space: normal;
 }
+@media (orientation: portrait) and (max-width: 600px) {
+  .lbs-message-service {
+    display:none;
+  }
+}
+
 /* beta-switch */
+@media (orientation: portrait) and (max-width: 600px) {
+  beta-switch {
+    display:none;
+  }
+}
 
 beta-switch {
     margin: auto 0;
 }
 
 beta-switch div#beta-switch {
-    display:inline-block; 
-    color: black; 
+    display:inline-block;
+    color: black;
     text-align: center;
 }
 
 beta-switch div#beta-switch > span[data-ribbon] {
-    cursor: pointer;    
-    background-color: #5c92bd;   
-     color: #eee;    
-     padding: 6px;    
-     display: inline-block;   
-     border-radius: 3px;      
-     margin: 5px 0;       
+    cursor: pointer;
+    background-color: #5c92bd;
+     color: #eee;
+     padding: 6px;
+     display: inline-block;
+     border-radius: 3px;
+     margin: 5px 0;
      position: relative;
      box-sizing: border-box;
      /*padding-right: 25px;*/
      font-weight: 500;
-     text-align:center; 
+     text-align:center;
      text-decoration: none;
      white-space: nowrap;
 }
 
 beta-switch div#beta-switch > span[data-ribbon]:hover {
-    color: #fff; 
+    color: #fff;
 }
 
 beta-switch md-switch {
     margin:0
 }
-/* This is the Bate Ribbon 
+/* This is the Bate Ribbon
 beta-switch [data-ribbon]:after{
-    content: attr(data-ribbon);   
-    position: absolute; 
-    color:#fff;  
-    top: 3px; 
+    content: attr(data-ribbon);
+    position: absolute;
+    color:#fff;
+    top: 3px;
     right: -15px;
-    font-size: 10px; 
-    height: 0;   
-    border-bottom: 14px solid #5c92bd;   
-    border-left: 14px solid transparent;  
+    font-size: 10px;
+    height: 0;
+    border-bottom: 14px solid #5c92bd;
+    border-left: 14px solid transparent;
     border-right: 14px solid transparent;
     transform: rotate(45deg);
     line-height: 15px;
 }
 */
 
-/* 
+/*
  * The bar:
  */
  beta-switch md-switch ._md-label {
@@ -85,7 +96,7 @@ beta-switch md-switch.md-checked ._md-bar {
     background-color: pink;
     /* set selected bar color */
 }
-/* 
+/*
 * The switch:
 */
 
