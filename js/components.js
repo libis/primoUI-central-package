@@ -50,7 +50,7 @@ export default class AfterComponents {
       {name: 'report-a-problem', config: reportAProblemConfig, enabled: true, appendTo: 'prm-service-header-after'},
       {name: 'prm-searchtips', config: searchTipConfig, enabled: true, appendTo: null},
       {name: 'fines-message', config: finesMessageConfig, enabled: true, appendTo: 'prm-top-bar-before'},
-      {name: 'promote-login', config: promoteLoginConfig, enabled: true, appendTo: 'prm-personal-info-after'},
+      {name: 'promote-login', config: promoteLoginConfig, enabled: true, appendTo: 'prm-explore-main-after'},
       {name: 'announcement', config: announcementsConfig, enabled: true, appendTo: 'prm-top-bar-before'},
       {name: 'announcement-feedback', config: feedbackAnnouncementConfig, enabled:true, appendTo: 'prm-top-bar-before'}
     ].filter((m) => m.enabled);
