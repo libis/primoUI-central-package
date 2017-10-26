@@ -23,6 +23,8 @@ import {finesMessageConfig} from './components/prmTopBarBefore/finesMessage'
 import {announcementsConfig} from './components/prmTopBarBefore/announcements'
 import {promoteLoginConfig} from './components/prmPromoteLogin/PromoteLogin'
 import {feedbackAnnouncementConfig} from './components/prmTopBarBefore/feedbackAnnouncement'
+import {staticAfterConfig} from './components/prmFullViewAfter/staticAfter'
+
 
 export default class AfterComponents {
 
@@ -40,19 +42,20 @@ export default class AfterComponents {
         </prm-logo-after>
     */
     return [
-      {name: 'libis-experiment', config: experimentConfig, enabled: false, appendTo: 'prm-logo-after'},
-      {name: 'home-icon', config: homeIconConfig, enabled: true, appendTo: 'prm-logo-after'},
-      {name: 'beta-switch', config: betaSwitchConfig, enabled: true, appendTo: 'prm-logo-after'},
-      {name: 'source-icon', config: sourceIconConfig, enabled: true, appendTo: 'prm-brief-result-after'},
-      {name: 'pnx-xml', config: pnxXmlConfig, enabled: true, appendTo: 'prm-brief-result-container-after'},
-      {name: 'pay-my-fines', config: payMyFinesConfig, enabled: true, appendTo: 'prm-fines-overview-after'},
-      {name: 'feedback', config: feedbackConfig, enabled: true, appendTo: 'prm-main-menu-after'},
-      {name: 'report-a-problem', config: reportAProblemConfig, enabled: true, appendTo: 'prm-service-header-after'},
-      {name: 'prm-searchtips', config: searchTipConfig, enabled: true, appendTo: null},
-      {name: 'fines-message', config: finesMessageConfig, enabled: true, appendTo: 'prm-top-bar-before'},
-      {name: 'promote-login', config: promoteLoginConfig, enabled: true, appendTo: 'prm-explore-main-after'},
-      {name: 'announcement', config: announcementsConfig, enabled: true, appendTo: 'prm-top-bar-before'},
-      {name: 'announcement-feedback', config: feedbackAnnouncementConfig, enabled:true, appendTo: 'prm-top-bar-before'}
-    ].filter((m) => m.enabled);
+      {name: 'libis-experiment', config: experimentConfig, enabled: false, appendTo: 'prm-logo-after', enableInView: '.*'},
+      {name: 'home-icon', config: homeIconConfig, enabled: true, appendTo: 'prm-logo-after', enableInView: '.*'},
+      {name: 'beta-switch', config: betaSwitchConfig, enabled: true, appendTo: 'prm-logo-after', enableInView: '.*'},
+      {name: 'source-icon', config: sourceIconConfig, enabled: true, appendTo: 'prm-brief-result-after', enableInView: '.*'},
+      {name: 'pnx-xml', config: pnxXmlConfig, enabled: true, appendTo: 'prm-brief-result-container-after', enableInView: '.*'},
+      {name: 'pay-my-fines', config: payMyFinesConfig, enabled: true, appendTo: 'prm-fines-overview-after', enableInView: '.*'},
+      {name: 'feedback', config: feedbackConfig, enabled: true, appendTo: 'prm-main-menu-after', enableInView: '.*'},
+      {name: 'report-a-problem', config: reportAProblemConfig, enabled: true, appendTo: 'prm-service-header-after', enableInView: '.*'},
+      {name: 'prm-searchtips', config: searchTipConfig, enabled: true, appendTo: null, enableInView: '.*'},
+      {name: 'fines-message', config: finesMessageConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '^KULeuven'},
+      {name: 'promote-login', config: promoteLoginConfig, enabled: true, appendTo: 'prm-explore-main-after', enableInView:  '^KULeuven'},
+      {name: 'announcement', config: announcementsConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '.*'},
+      {name: 'announcement-feedback', config: feedbackAnnouncementConfig, enabled:true, appendTo: 'prm-top-bar-before', enableInView: '.*'},
+      {name: 'static-after', config: staticAfterConfig, enabled: true, appendTo: 'prm-full-view-after', enableInView: '^KULeuven'}
+    ].filter( (component) => ( component.enabled && new RegExp(component.enableInView).test(window.appConfig.vid) ) );
   }
 }

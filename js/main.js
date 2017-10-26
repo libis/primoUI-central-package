@@ -53,15 +53,20 @@ let afterComponents = {};
 //injected
 console.log('Loading centralCustom components');
 Components.all.forEach((component) => {
-  if (component.appendTo) {
-    let elements = afterComponents[component.appendTo] || [];
-    elements.push(component.name);
-    afterComponents[component.appendTo] = elements;
-  }
+  console.log(component.name)
+  if (component.enabled) {
+    if (component.appendTo) {
+      let elements = afterComponents[component.appendTo] || [];
+      //elements.push(component.name);
+      elements.push({ 'name': component.name, 'enableInView': component.enableInView });
+      afterComponents[component.appendTo] = elements;
 
-  console.log(`\t\t${component.name}`);
-  app.component(component.name.toCamelCase(), component.config);
+    }
+    app.constant('afterComponents', afterComponents);
+    app.component(component.name.toCamelCase(), component.config);
+  }
 });
+
 
 //Inject place holders into the after components
 Object.keys(afterComponents).forEach((component,i) => {
@@ -71,6 +76,6 @@ Object.keys(afterComponents).forEach((component,i) => {
     bindings:{
       parentCtrl: '<'
     },
-    template: subComponents.map(m => `<${m} parent-ctrl="$ctrl"></${m}>`).join("")
+    template: subComponents.map(m => `<${m.name} parent-ctrl="$ctrl"></${m.name}>`).join("")
   });
 });
