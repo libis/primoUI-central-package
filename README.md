@@ -6,31 +6,21 @@ gulp run --view CENTRAL_PACKAGE --browserify --proxy http://limo.q.libis.be
 ```
 
 ## Important
-* `npm install babel-plugin-transform-html-import-to-string --save-dev`
-and add it to `primo-explore-devenv/gulp/tasks/buildCustomJs.js`.
+This project depends on [primo-explore-dom](https://github.com/mehmetc/primo-explore-dom). 
 
+* How to download [primo-explore-dom](https://github.com/mehmetc/primo-explore-dom) and create a symlink from the __js__ directory
 ```bash
-diff --git a/gulp/tasks/buildCustomJs.js b/gulp/tasks/buildCustomJs.js
-index 11f2f90..b4d5f8c 100644
---- a/gulp/tasks/buildCustomJs.js
-+++ b/gulp/tasks/buildCustomJs.js
-@@ -59,7 +59,7 @@ function buildByBrowserify() {
-             buildParams.viewJsDir()+'/node_modules'
-         ]
-     })
--        .transform("babelify",{presets: ["es2015"]})
-+        .transform("babelify",{presets: ["es2015"], plugins: ["transform-html-import-to-string"]})
-         .bundle()
-         .pipe(fs.createWriteStream(buildParams.customPath()));
- }
- ```
+$ pwd
+/primo-explore-devenv/primo-explore/custom
+$ git clone https://github.com/mehmetc/primo-explore-dom.git
+$ ls -l
+drwxr-xr-x@  9 user  staff    306 Oct  5 10:09 CENTRAL_PACKAGE
+drwxr-xr-x@ 10 user  staff    340 Jul 13 17:45 primo-explore-dom
 
- * create a symlink to `primo-explore-dom` after downloading it.
-
- ```bash
- cd js
- ln -s ../../primo-explore-dom ./
+$ cd CENTRAL_PACKAGE/js
+$ ln -s ../../primo-explore-dom ./
  ```
+ 
 ## Available Components 
 
 - __general/search-tips__
