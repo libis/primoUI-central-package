@@ -1,0 +1,32 @@
+
+/*
+This makes more sense than the counter example but it definitely not the 100% correct way.
+Ideally you want to choose your break points around your content and design, not around devices. 
+This year’s devices are different than last year’s and different than next year’s. 
+Resize your window — when the layout breaks or stops makings sense you have a break point. 
+Devices should have no voice in this decision.
+*/
+
+@media (max-width: 920px) {
+    prm-search-bookmark-filter > a[href*=favorites] {
+      display:none;
+    }
+    beta-switch {
+        display:none;
+    }
+}
+
+@media (min-width: 920px) and  (max-width: 1168px) {
+    prm-logo {
+      margin-right: 200px;
+      z-index: unset
+    }
+}
+
+
+@media (max-width: 920px) {
+    prm-logo {
+      margin-right: 50px;
+      z-index: unset
+    }
+}
