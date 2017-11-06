@@ -1,9 +1,10 @@
 /* beta-switch */
-@media (orientation: portrait) and (max-width: 600px) {
+/* @media (orientation: portrait) and (max-width: 600px) { 
   beta-switch {
     display:none;
   }
 }
+*/
 
 beta-switch {
     margin: auto 0;

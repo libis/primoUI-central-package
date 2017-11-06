@@ -3,3 +3,9 @@
 prm-main-menu a[aria-label="Browse"].md-button.flex-button {
     display:none;
 }
+
+@media (max-width: 600px) {
+    prm-search-bookmark-filter > a[href*=favorites] {
+      display:none;
+    }
+}
