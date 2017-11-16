@@ -42,6 +42,7 @@ export default class feedbackAnnouncementDialogController {
           cache: false,
           data: data
         }).then(function(response) {
+          localStorage.setItem('primoFeedback', new Date());
           let message = self.translate.instant('lbs.nui.feedback.success') || 'Thank you for your feedback!';
           MessageService.show(message, {scope:$scope, hideDelay: 5000});
           //self.mdToast.showSimple('Thank you for your feedback!');
