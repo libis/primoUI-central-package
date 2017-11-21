@@ -24,6 +24,9 @@ import {announcementsConfig} from './components/prmTopBarBefore/announcements'
 import {promoteLoginConfig} from './components/prmPromoteLogin/PromoteLogin'
 import {feedbackAnnouncementConfig} from './components/prmTopBarBefore/feedbackAnnouncement'
 import {staticFooterConfig} from './components/general/staticFooter'
+import {illRequestFormConfig} from './components/prmRequestsAfter/illRequestForm'
+
+
 
 export default class AfterComponents {
 
@@ -53,8 +56,12 @@ export default class AfterComponents {
       {name: 'static-footer', config: staticFooterConfig, enabled: true, appendTo: 'prm-explore-main-after', enableInView: '.*'},
       {name: 'static-footer-account', config: staticFooterConfig, enabled: true, appendTo: 'prm-account-after', enableInView: '.*'},
       
+
       /* lbs-components used in html-templates of the package */
       {name: 'promote-login-static-footer', config: promoteLoginConfig, enabled: true, appendTo: 'lbs-promote-login', enableInView:  '^KULeuven'},
+     
+      {name: 'ill-request-form-overview', config: illRequestFormConfig, enabled:true, appendTo: 'prm-requests-overview-after', enableInView: '.*'},
+      {name: 'ill-request-form', config: illRequestFormConfig, enabled:true, appendTo: 'prm-requests-after', enableInView: '.*'},
 
       {name: 'announcement-feedback', config: feedbackAnnouncementConfig, enabled:true, appendTo: 'prm-top-bar-before', enableInView: '.*'},
 
