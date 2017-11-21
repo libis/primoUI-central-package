@@ -23,8 +23,7 @@ import {finesMessageConfig as payMyFinesMessageConfig} from './components/prmTop
 import {announcementsConfig} from './components/prmTopBarBefore/announcements'
 import {promoteLoginConfig} from './components/prmPromoteLogin/PromoteLogin'
 import {feedbackAnnouncementConfig} from './components/prmTopBarBefore/feedbackAnnouncement'
-import {staticAfterConfig} from './components/prmFullViewAfter/staticAfter'
-
+import {staticFooterConfig} from './components/general/staticFooter'
 
 export default class AfterComponents {
 
@@ -51,9 +50,14 @@ export default class AfterComponents {
       {name: 'feedback', config: feedbackConfig, enabled: true, appendTo: 'prm-main-menu-after', enableInView: '.*'},
       {name: 'report-a-problem', config: reportAProblemConfig, enabled: true, appendTo: 'prm-service-header-after', enableInView: '.*'},
       {name: 'prm-searchtips', config: searchTipConfig, enabled: true, appendTo: null, enableInView: '.*'},
-      {name: 'promote-login', config: promoteLoginConfig, enabled: true, appendTo: 'prm-explore-main-after', enableInView:  '^KULeuven'},
+      {name: 'static-footer', config: staticFooterConfig, enabled: true, appendTo: 'prm-explore-main-after', enableInView: '.*'},
+      {name: 'static-footer-account', config: staticFooterConfig, enabled: true, appendTo: 'prm-account-after', enableInView: '.*'},
+      
+      /* lbs-components used in html-templates of the package */
+      {name: 'promote-login-static-footer', config: promoteLoginConfig, enabled: true, appendTo: 'lbs-promote-login', enableInView:  '^KULeuven'},
+
       {name: 'announcement-feedback', config: feedbackAnnouncementConfig, enabled:true, appendTo: 'prm-top-bar-before', enableInView: '.*'},
-      {name: 'static-after', config: staticAfterConfig, enabled: true, appendTo: 'prm-full-view-after', enableInView: '^KULeuven'},
+
       {name: 'announcement', config: announcementsConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '.*'},      
       {name: 'pay-my-fines-message', config: payMyFinesMessageConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '^KULeuven'}
     ].filter( (component) => ( component.enabled && new RegExp(component.enableInView).test(window.appConfig.vid) ) );

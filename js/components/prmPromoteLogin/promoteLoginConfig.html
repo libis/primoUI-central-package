@@ -1,22 +1,26 @@
+<!--
 <md-card class="default-card _md md-primoExplore-theme flex-xs-100 flex-sm-100" flex-sm="100" flex-xs="100" ng-show='$ctrl.showAutomaticLogin'>
   <md-card-content layout="column" layout-align="space-around center" class="layout-align-space-around-center layout-column">
     <prm-primo-login label-type="text" layout="column" class="layout-column">
+    -->
+      <!--
       <div>
         <span translate="lbs.nui.mypref.automatic_login.title">Always Sign In</span>
       </div>
-
+    -->
       <md-checkbox tabindex="-1" disabled="disabled" 
-      class="has-small-text zero-margin ng-pristine ng-untouched ng-valid md-primoExplore-theme ng-not-empty md-checked flex-50"
+      class="has-small-text zero-margin ng-pristine ng-untouched ng-valid md-primoExplore-theme ng-not-empty md-checked"
        role="checkbox" aria-checked="true" aria-disabled="true" aria-invalid="false" 
-       type="checkbox" flex="50" ng-model="$ctrl.alwaysSigninCheckBox" ng-change="alwaysSigninChecked()"
+       type="checkbox" ng-model="$ctrl.alwaysSigninCheckBox" ng-change="alwaysSigninChecked()"
        ng-disabled="$ctrl.formMode == 'View'">
        <div class="layout-column" layout="column">
           <span class="item-content" translate="lbs.nui.mypref.automatic_login.alwaysSigninOption"></span>
        </div>
       </md-checkbox>
+<!--
     </prm-primo-login>
     <md-divider class="card-divider layout-margin md-primoExplore-theme" layout-margin=""></md-divider>
-    <!---->
   </md-card-content>
 </md-card>
+-->
 
