@@ -10,7 +10,8 @@
 import './utils'
 
 /* import your component configuration*/
-import {experimentConfig} from './components/prmLogoAfter/experiment'
+import {experimentConfig} from './components/general/experiment'
+
 import {homeIconConfig} from './components/prmLogoAfter/homeIcon'
 import {betaSwitchConfig} from './components/prmLogoAfter/betaSwitch'
 import {sourceIconConfig} from './components/prmBriefResultAfter/sourceIcon'
@@ -25,6 +26,7 @@ import {promoteLoginConfig} from './components/prmPromoteLogin/PromoteLogin'
 import {feedbackAnnouncementConfig} from './components/prmTopBarBefore/feedbackAnnouncement'
 import {staticFooterConfig} from './components/general/staticFooter'
 import {illRequestFormConfig} from './components/prmRequestsAfter/illRequestForm'
+import {recommendationItemConfig} from './components/prmRecommendationItemAfter/recommendationItem'
 
 
 
@@ -44,7 +46,7 @@ export default class AfterComponents {
         </prm-logo-after>
     */
     return [
-      {name: 'libis-experiment', config: experimentConfig, enabled: false, appendTo: 'prm-logo-after', enableInView: '.*'},
+      {name: 'libis-experiment', config: experimentConfig, enabled: false, appendTo: 'prm-recomendation-item-after', enableInView: '.*'},
       {name: 'home-icon', config: homeIconConfig, enabled: true, appendTo: 'prm-logo-after', enableInView: '.*'},
       {name: 'beta-switch', config: betaSwitchConfig, enabled: true, appendTo: 'prm-logo-after', enableInView: '.*'},
       {name: 'source-icon', config: sourceIconConfig, enabled: true, appendTo: 'prm-brief-result-after', enableInView: '.*'},
@@ -53,18 +55,20 @@ export default class AfterComponents {
       {name: 'feedback', config: feedbackConfig, enabled: true, appendTo: 'prm-main-menu-after', enableInView: '.*'},
       {name: 'report-a-problem', config: reportAProblemConfig, enabled: true, appendTo: 'prm-service-header-after', enableInView: '.*'},
       {name: 'prm-searchtips', config: searchTipConfig, enabled: true, appendTo: null, enableInView: '.*'},
-      {name: 'static-footer', config: staticFooterConfig, enabled: true, appendTo: 'prm-explore-main-after', enableInView: '^KULeuven'},
-      {name: 'static-footer-account', config: staticFooterConfig, enabled: true, appendTo: 'prm-account-after', enableInView: '^KULeuven'},
-
+      {name: 'static-footer', config: staticFooterConfig, enabled: true, appendTo: 'prm-explore-main-after', enableInView: '.*'},
+      {name: 'static-footer-account', config: staticFooterConfig, enabled: true, appendTo: 'prm-account-after', enableInView: '.*'},
+      
       /* lbs-components used in html-templates of the package */
       {name: 'promote-login-static-footer', config: promoteLoginConfig, enabled: true, appendTo: 'lbs-promote-login', enableInView:  '^KULeuven'},
-
+     
       {name: 'ill-request-form-overview', config: illRequestFormConfig, enabled:true, appendTo: 'prm-requests-overview-after', enableInView: '.*'},
       {name: 'ill-request-form', config: illRequestFormConfig, enabled:true, appendTo: 'prm-requests-after', enableInView: '.*'},
 
       {name: 'announcement-feedback', config: feedbackAnnouncementConfig, enabled:true, appendTo: 'prm-top-bar-before', enableInView: '.*'},
 
-      {name: 'announcement', config: announcementsConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '.*'},
+      {name: 'override-getlink-recommendation', config: recommendationItemConfig, enabled: true, appendTo: 'prm-recomendation-item-after', enableInView: '.*'},
+
+      {name: 'announcement', config: announcementsConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '.*'},      
       {name: 'pay-my-fines-message', config: payMyFinesMessageConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '^KULeuven'}
     ].filter( (component) => ( component.enabled && new RegExp(component.enableInView).test(window.appConfig.vid) ) );
   }
