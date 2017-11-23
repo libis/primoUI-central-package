@@ -1,10 +1,11 @@
 export default class DialogController {
-  constructor($scope, $mdDialog, $mdToast, $http, feedbackServiceURL) {
+  constructor($scope, $mdDialog, $mdToast, $http, $translate, feedbackServiceURL, MessageService) {
     this.scope = $scope;
     this.mdDialog = $mdDialog;
     this.mdToast = $mdToast;
     this.http = $http;
     this.feedbackServiceURL = feedbackServiceURL;
+    this.translate = $translate;
 
     let self = this;
 
@@ -47,9 +48,13 @@ export default class DialogController {
               cache: false,
               data: data
             }).then(function(response) {
-              self.mdToast.showSimple('Thank you for your feedback!');
+              //self.mdToast.showSimple('Thank you for your feedback!');
+              let message = self.translate.instant('lbs.nui.feedback.success') || 'Thank you for your feedback!';
+              MessageService.show(message, {scope:$scope, hideDelay: 5000});
             }, function(response) {
-              self.mdToast.showSimple('Unable to submit feedback.');
+              //self.mdToast.showSimple('Unable to submit feedback.');
+              let message = self.translate.instant('lbs.nui.feedback.fail') || 'Unable to submit feedback.';
+              MessageService.show(message, {scope:$scope, hideDelay: 5000});
             });
           }
         });
@@ -71,4 +76,4 @@ export default class DialogController {
 
 }
 
-DialogController.$inject = ['$scope', '$mdDialog', '$mdToast', '$http', 'feedbackServiceURL'];
+DialogController.$inject = ['$scope', '$mdDialog', '$mdToast', '$http', '$translate', 'feedbackServiceURL', 'MessageService'];
