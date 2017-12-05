@@ -23,10 +23,18 @@ class HomeIconController {
         });
 
       }
-
       ctrl.homePageLink = '/primo-explore/search?vid=' + vid + "&lang=" + locale;
+
+      $scope.removeStickyFacets = function () {
+        var stickyFacets = $scope.$parent.$parent.$parent.$parent.$ctrl.searchService.facetService.getStickyFacets();
+        for (var i = 0; i < stickyFacets.length; i++) {
+          $scope.$parent.$parent.$parent.$parent.$ctrl.searchService.facetService.removeStickyFacet(stickyFacets[i]);
+        }
+      }
     });
   }
+    
+
 }
 
 HomeIconController.$inject = ['$scope', '$element', '$compile', '$http'];
