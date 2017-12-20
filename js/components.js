@@ -61,7 +61,7 @@ export default class AfterComponents {
       /* lbs-components used in html-templates of the package */
       {name: 'promote-login-static-footer', config: promoteLoginConfig, enabled: true, appendTo: 'lbs-promote-login', enableInView:  '^KULeuven'},
      
-      {name: 'ill-request-form-overview', config: illRequestFormConfig, enabled:true, appendTo: 'prm-requests-overview-after', enableInView: '.*'},
+      {name: 'ill-request-form-overview', config: illRequestFormConfig, enabled:false, appendTo: 'prm-requests-overview-after', enableInView: '.*'},
       {name: 'ill-request-form', config: illRequestFormConfig, enabled:true, appendTo: 'prm-requests-after', enableInView: '.*'},
 
       {name: 'announcement-feedback', config: feedbackAnnouncementConfig, enabled:true, appendTo: 'prm-top-bar-before', enableInView: '.*'},
