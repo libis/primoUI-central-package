@@ -71,7 +71,7 @@ Components.all.forEach((component) => {
 //Inject place holders into the after components
 Object.keys(afterComponents).forEach((component,i) => {
   let subComponents = afterComponents[component];
-
+ 
   app.component(component.toCamelCase(), {
     bindings:{
       parentCtrl: '<'

@@ -1,4 +1,7 @@
 /* wrap overflow text in facets */
+
+
+
 prm-facet-exact .section-content .md-chips .md-chip.facet-element-marker-library_myinstitution .md-chip-content,
 prm-facet-exact .section-content .md-chips .md-chip.facet-element-marker-library_otherinstitution .md-chip-content {
     overflow: visible;

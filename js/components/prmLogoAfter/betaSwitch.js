@@ -62,7 +62,7 @@ class BetaSwitchController {
       if (/^ECB/.test(view.code)) {
         this.showBetaSwitch = false;
       }
-      this.oldVid = Object.keys(LinkToBetaViews).find(key => LinkToBetaViews[key] === view.code);
+      this.oldVid = Object.keys(LinkToBetaViews).find(key => LinkToBetaViews[key] === view.code) || view.code;
     });
   }
 

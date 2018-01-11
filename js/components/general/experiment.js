@@ -2,92 +2,58 @@
 /* [en|dis]able in components*/
 
 class ExperimentController {
-  constructor($scope, $element, $compile,$injector,$rootScope) {
+ 
+  constructor($scope, $element,$templateCache, $compile,$injector,$rootScope,$translate, $window) {
     console.log('Experiment:');
     let self = this;
     this.$scope = $scope;
     this.$rootScope = $rootScope;
     this.$element = $element;
+    this.$templateCache = $templateCache;
     this.$compile = $compile;
+    this.translate = $translate;
+    this.window = $window;
+    this.illRequestUrl = ''; 
 
     console.log(self)
     console.log('rootScope:')
     console.log($rootScope)
-    //this.$injector = $injector;
-    /*
-    console.log(this)
-    console.log($scope)
-    */
-    console.log('scope:')
-    console.log($scope)
-    console.log( self.parentCtrl.parentCtrl.primolyticsService.configurationUtil.vid );
-    console.log( self.parentCtrl.parentCtrl.primolyticsService.userSessionManagerService.vid );
-    console.log( self.parentCtrl.parentCtrl.primolyticsService.userSessionManagerService.inst );
-    console.log( self.parentCtrl.parentCtrl.primolyticsService.userSessionManagerService.userInstitution );
-        
-    this.parentCtrl.parentCtrl.orgGetLink = this.parentCtrl.parentCtrl.getLink;
-    this.parentCtrl.parentCtrl.getLink = function() { 
-      var getItLink = self.parentCtrl.parentCtrl.orgGetLink();  
-      return getItLink.replace(/KULeuven_UX/i, self.parentCtrl.parentCtrl.primolyticsService.configurationUtil.vid) 
-    } ;
-  }
+    console.log('templateCache')
+    console.log($templateCache)   
+    var template = $templateCache.get('components/account/overview/requestsOverview/requests-overview.html');
+    // var template = template + "<H1 id='omtelachten'>LALALA<ill-request-form-overview></ill-request-form-overview></H1>";
+    var template = template + "<H1 id='omtelachten'>LALALA</H1>";
+    $templateCache.put('components/account/overview/requestsOverview/requests-overview.html', template);
+    console.log($templateCache.get('components/account/overview/requestsOverview/requests-overview.html'))
+};
+
+  toIllRequestUrl() {
+      var institutionCode = this.parentCtrl.parentCtrl.requestsService.accountService.linkedUserSelectorService.selectedInstitution.institutionCode;
+      //console.log('institutionCode:' + institutionCode)
+      this.illRequestUrl = 'https://leuven-primo.hosted.exlibrisgroup.com/pds?func=sso&url=http://eu.alma.exlibrisgroup.com/view/uresolver/'+ institutionCode +'/openurl?svc_dat=getit&svc.profile=getit&directResourceSharingRequest=true&newUI=true'
+      this.window.open(this.illRequestUrl, '_freeIll');
+  };
     
-  $onInit() {
-    var containsWrongVid = false
-    console.log ( this.parentCtrl.parentCtrl.getLink() );
-    //var getItLink = this.parentCtrl.parentCtrl.getLink();
-    //this.parentCtrl.parentCtrl.getLink = function() { return getItLink.replace(/KUL/i, "LALALALALALALALALAL")  } ;
-
-
-    if (this.parentCtrl.parentCtrl.pnx.delivery){
-      /* Check pnx.delivery..getIt1.getItTabsData */
-      /*
-      var ItTabData = this.parentCtrl.parentCtrl.pnx.delivery.getIt1.getItTabsData['Remote Search Resource']
-      if (ItTabData) {
-        if ( ItTabData.getItLinks[0].linkUrl.includes('KUL') ){
-          console.log ('CONATINS WRONG !!!!!!!!!!!!!!!!!!!!!')
-          containsWrongVid =true;
-        }
-        var url = ItTabData.getItLinks[0].linkUrl.replace(/KUL/i, "Remote Search Resource");
-        ItTabData.getItLinks[0].linkUrl = url;
-      }
-      var ItTabData = this.parentCtrl.parentCtrl.pnx.delivery.getIt1.getItTabsData['Remote Search Resource:Alma']
-      if (ItTabData){
-        if ( ItTabData.getItLinks[0].linkUrl.includes('KUL') ){
-          console.log ('CONATINS WRONG !!!!!!!!!!!!!!!!!!!!!')
-          containsWrongVid =true;
-        }
-        var url = ItTabData.getItLinks[0].linkUrl.replace(/KUL/i, "Remote Search Resource:ALAM");
-        ItTabData.getItLinks[0].linkUrl = url;
-      }
-      */
-      /* Check pnx.delivery.availabilityLink */
-      /*
-      var availabilityLinks = this.parentCtrl.parentCtrl.pnx.delivery.availabilityLink;
-      availabilityLinks.forEach( function(availabilityLink) {
-        if ( availabilityLink.availabilityLinkUrl.includes('KUL') ){
-          console.log ('CONATINS WRONG !!!!!!!!!!!!!!!!!!!!!')
-          containsWrongVid =true;
-        }
-        var url = availabilityLink.availabilityLinkUrl.replace(/KUL/i, "PRIMO");
-        availabilityLink.availabilityLinkUrl = url;
-      });
-      */
-
-      console.log ( this.parentCtrl.parentCtrl.getLink() );
-      /* recompile parent if necessary */      
-      /*
-      var parent = this.$element.parent().parent()
-      var pinjector = parent.injector();
-      if ( containsWrongVid ) {
-        pinjector.invoke( function($compile){ $compile(parent)( parent.scope() ) }) // CAN CREATES A LOOP !!!!!!!!!!!!!!!!
-      }
-      */
+  $onInit() {  
+    
+    console.log ('newElement:')
+  //  console.log (angular.element( '#omtelachten').length)
+   // if ( angular.element( 'H1').length == 0 ) {
+      console.log ('\'t Is ni om te lachten')
+       var elementName = 'prm-requests-overview'
+       //let element = $element.parentElement.parentElement
+       let element = angular.element(document.querySelector(elementName));
+       if (element) {
+         let elementScope = element.scope();
+         console.log (elementScope)
+         this.$compile(element)(elementScope);
+         //elementScope.$apply()
+       }     
+  //   }
     }
-  }
 }
 
-ExperimentController.$inject = ['$scope', '$element', '$compile','$injector','$rootScope']
+ExperimentController.$inject = ['$scope', '$element',  '$templateCache', '$compile','$injector','$rootScope','$translate', '$window']
 
 export let experimentConfig = {
   bindings: {

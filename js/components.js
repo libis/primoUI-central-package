@@ -28,6 +28,9 @@ import {staticFooterConfig} from './components/general/staticFooter'
 import {illRequestFormConfig} from './components/prmRequestsAfter/illRequestForm'
 import {recommendationItemConfig} from './components/prmRecommendationItemAfter/recommendationItem'
 
+import {databaseLinkConfig} from './components/general/databaseLink'
+
+
 
 
 export default class AfterComponents {
@@ -46,7 +49,7 @@ export default class AfterComponents {
         </prm-logo-after>
     */
     return [
-      {name: 'libis-experiment', config: experimentConfig, enabled: false, appendTo: 'prm-recomendation-item-after', enableInView: '.*'},
+      {name: 'libis-experiment', config: experimentConfig, enabled: false, appendTo: 'prm-messages-and-blocks-overview-after', enableInView: '.*'},
       {name: 'home-icon', config: homeIconConfig, enabled: true, appendTo: 'prm-logo-after', enableInView: '.*'},
       {name: 'beta-switch', config: betaSwitchConfig, enabled: true, appendTo: 'prm-logo-after', enableInView: '.*'},
       {name: 'source-icon', config: sourceIconConfig, enabled: true, appendTo: 'prm-brief-result-after', enableInView: '.*'},
@@ -57,12 +60,14 @@ export default class AfterComponents {
       {name: 'prm-searchtips', config: searchTipConfig, enabled: true, appendTo: null, enableInView: '.*'},
       {name: 'static-footer', config: staticFooterConfig, enabled: true, appendTo: 'prm-explore-main-after', enableInView: '.*'},
       {name: 'static-footer-account', config: staticFooterConfig, enabled: true, appendTo: 'prm-account-after', enableInView: '.*'},
-      
+    
+      {name: 'prm-dblink', config: databaseLinkConfig, enabled: false, appendTo: null, enableInView: '.*'},
+
       /* lbs-components used in html-templates of the package */
       {name: 'promote-login-static-footer', config: promoteLoginConfig, enabled: true, appendTo: 'lbs-promote-login', enableInView:  '^KULeuven'},
      
       {name: 'ill-request-form-overview', config: illRequestFormConfig, enabled:false, appendTo: 'prm-requests-overview-after', enableInView: '.*'},
-      {name: 'ill-request-form', config: illRequestFormConfig, enabled:true, appendTo: 'prm-requests-after', enableInView: '.*'},
+      {name: 'ill-request-form', config: illRequestFormConfig, enabled:true, appendTo: 'prm-requests-after', enableInView: '^KULeuven|^VIVES'},
 
       {name: 'announcement-feedback', config: feedbackAnnouncementConfig, enabled:true, appendTo: 'prm-top-bar-before', enableInView: '.*'},
 
