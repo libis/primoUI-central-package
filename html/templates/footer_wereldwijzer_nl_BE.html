@@ -1,0 +1,69 @@
+﻿<style>
+
+        prm-facet [sticky].is-stuck {
+            max-height: calc(100% - 65px);
+        }
+        
+        .__gt-md prm-page-nav-menu {
+            bottom: 55px
+        }
+        
+        
+            div#footer,
+            div#footer a {
+                color: #a9cdd6;
+            }
+        
+                div#footer div#disclaimer {
+                    display:flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                }
+            
+                div#lbs-promote-login {
+                    text-align: right;
+                    align-items: center;
+                }
+            
+                div#lbs-promote-login md-checkbox ._md-icon {
+                    transform: scale(.7);
+                }
+            
+                div#lbs-promote-login md-checkbox ._md-container {
+                    top: 0px
+                }
+            </style>
+            
+            <div id="footer" class="layout-row">
+                <div class="hide-xs layout-row" style="align-items: center"  style='flex:1 auto'>
+                    <div class="hide-xs" style="flex: 0 1 auto; margin-right:1em">
+                        <a href="http://www.libis.be" target="libis">Copyright © LIBIS</a>
+            
+                    </div>
+                    <div style="flex: 0 1 auto;">
+                        <img id="limo_logo" src="https://limo.libis.be/primo_library/libweb/libis/images/limo.png" alt="Limo" height="30px" 
+                        style="padding-top:4px; padding-left:6px; display:inline-block;">
+                        <!--
+                        <br>
+                        <span style="font-size: xx-small">
+                            Based on Primo from
+                            
+                            <a href="http://www.exlibrisgroup.com/"  target="exl">Ex Libris</a>
+                        </span>
+                    -->                
+               
+                    </div>
+                </div>
+                <div style='flex:1 auto'>
+                    <div id="disclaimer">
+                        <a href="http://www.kuleuven.be/kuleuven/disclaimer.html" target="kuleuven">Disclaimer</a>
+                        <a href="https://admin.kuleuven.be/icts/cookiebeleid/" target="kuleuven">Cookiebeleid</a>
+                    </div>
+            
+                </div>
+                <div class="hide-xs" id="lbs-promote-login"  style='flex:2 auto'>
+                    <lbs-promote-login></lbs-promote-login>
+                </div>
+            
+            
+            </div>

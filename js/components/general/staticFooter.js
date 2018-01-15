@@ -4,9 +4,10 @@ class StaticFooterController {
         let self = this;
         var locale = "en_US"
 
-        var viewWithCustomFooter = ['Lirias']
-/*
-        var locale = self.parentCtrl.parentCtrl.searchService.userSessionManagerService.i18nService.getLanguage();
+        var viewWithCustomFooter = ['Lirias','wereldwijzer']
+
+        locale = self.parentCtrl.parentCtrl.searchService.userSessionManagerService.i18nService.getLanguage();
+        /*
         var vid = window.appConfig['vid'];
        //       $templateCache.put(staticFooterTemplateName, 'custom/CENTRAL_PACKAGE/html/templates/footer_' + locale + '.html');
 */
