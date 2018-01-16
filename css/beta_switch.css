@@ -94,3 +94,7 @@ beta-switch md-switch[disabled] ._md-thumb {
     background-color: rgb(255, 255, 255);
     /* disabled switch color */
 }
+
+#mainMenu > a:nth-child(2) {
+    flex-basis: 100%;
+}

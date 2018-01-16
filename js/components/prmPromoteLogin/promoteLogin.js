@@ -5,6 +5,17 @@ class PromoteLoginController {
     var self = this;
     this.showAutomaticLogin = false;  
 
+    var url = window.location.href;
+    var urlParam = "clearLogin";
+    urlParam = urlParam.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + urlParam + "(=([^&#]*)|&|#|$)"),
+    results = regex.exec(url);
+    if (results) {
+            if (decodeURIComponent(results[2].replace(/\+/g, " "))){
+                    localStorage.removeItem('primoPromoteLogin');
+            }
+    }
+
     self.alwaysSigninCheckBox = false;
     self.alwaysSignin = localStorage.getItem("primoPromoteLogin");
     if (self.alwaysSignin) {

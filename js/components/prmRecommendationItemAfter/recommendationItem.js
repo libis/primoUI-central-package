@@ -1,5 +1,5 @@
 /* component to do all your experimental stuff */
-/* [en|dis]able in components*/
+/* [en|dis]able in components */
 
 class RecommendationItemController {
   constructor($scope, $element) {
@@ -17,7 +17,7 @@ class RecommendationItemController {
     this.parentCtrl.parentCtrl.getLink = function() { 
       var getItLink = self.parentCtrl.parentCtrl.orgGetLink();
       return getItLink.replace(/\/openurl\/[^/]*\/[^?]*/, "/openurl\/"+ self.parentCtrl.parentCtrl.primolyticsService.userSessionManagerService.userInstitution +"\/"+ self.parentCtrl.parentCtrl.primolyticsService.configurationUtil.vid) 
-    } ;
+    };
   }
 }
 
