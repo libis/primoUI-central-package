@@ -1,0 +1,7 @@
+#advanced-search div.date-range-inputs  md-input-container md-select {
+  display:none;
+}
+
+prm-search-bar .advanced-search-wrapper .date-range-inputs md-input-container {
+  width:auto;
+}

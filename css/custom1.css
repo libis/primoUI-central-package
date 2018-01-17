@@ -216,6 +216,14 @@ prm-main-menu a[aria-label="Browse"].md-button.flex-button {
     }
 }
 
+#advanced-search div.date-range-inputs  md-input-container md-select {
+  display:none;
+}
+
+prm-search-bar .advanced-search-wrapper .date-range-inputs md-input-container {
+  width:auto;
+}
+
 
 prm-logo, prm-logo-after {
     display: flex;
