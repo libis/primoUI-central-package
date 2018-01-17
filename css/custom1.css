@@ -117,6 +117,9 @@ beta-switch md-switch[disabled] ._md-thumb {
     /* disabled switch color */
 }
 
+#mainMenu > a:nth-child(2) {
+    flex-basis: 100%;
+}
 /*split ref code and title*/
 .media-delimiter::after {
     content: "\A";
@@ -197,6 +200,10 @@ prm-facet-exact .section-content .md-chips .md-chip.facet-element-marker-library
   prm-facet .sidebar-inner-wrapper {
     margin-right: 0;
   }
+
+prm-full-view prm-search-result-availability-line {
+  display:none;
+}
 /* Hide de Browse in the top menu*/
 
 prm-main-menu a[aria-label="Browse"].md-button.flex-button {
