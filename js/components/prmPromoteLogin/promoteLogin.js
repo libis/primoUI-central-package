@@ -4,7 +4,7 @@ class PromoteLoginController {
   constructor($scope) {
     var self = this;
     this.showAutomaticLogin = false;  
-
+/* Remove the localStorage parameter primoPromoteLogin if the url contains clearLogin */
     var url = window.location.href;
     var urlParam = "clearLogin";
     urlParam = urlParam.replace(/[\[\]]/g, "\\$&");

@@ -1,0 +1,6 @@
+md-template prm-add-alert-toast md-toast *[aria-label="Set Alert For this saved search"],
+prm-saved-queries-list  md-list > md-list-item div.result-item-actions button.md-icon-button:nth-child(1),
+prm-saved-queries-list  md-list > md-list-item div.result-item-actions button.md-icon-button:nth-child(2){
+    display: none;
+}
+

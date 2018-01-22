@@ -1,0 +1,7 @@
+
+@media screen and (min-height: 700px) {
+    body > div:first-child > md-select-menu,
+    body > div:first-child > md-select-menu > md-content{
+        min-height: 500px
+    }
+  }
