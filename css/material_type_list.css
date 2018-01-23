@@ -1,7 +1,8 @@
 
 @media screen and (min-height: 700px) {
-    body > div:first-child > md-select-menu,
-    body > div:first-child > md-select-menu > md-content{
-        min-height: 500px
-    }
-  }
+        body > div._md-select-menu-container > md-select-menu,
+        body > div._md-select-menu-container > md-select-menu > md-content{
+          max-height: 500px;
+        }
+      }
+    

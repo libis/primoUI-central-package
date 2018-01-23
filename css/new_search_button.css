@@ -1,0 +1,4 @@
+prm-logo-after a#new-search-button{
+    box-shadow: 1px 0 0 0 rgba(0,0,0,.1), -1px 0 0 0 rgba(0,0,0,.1);
+    margin-right: 1em;
+}

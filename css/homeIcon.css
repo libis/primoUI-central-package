@@ -13,3 +13,8 @@ prm-logo-after a.md-primoExplore-theme.md-button.md-icon-button {
 prm-logo .product-logo {
     display: inline-block;
 }
+
+prm-logo .product-logo a:hover{
+    box-shadow: none;
+    background-color: transparent;
+}

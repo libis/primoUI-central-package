@@ -3,9 +3,13 @@ import homeIconHTML from './homeIcon.html'
 class HomeIconController {
   constructor($scope, $element, $compile, $http) {
     let ctrl = this;
+    ctrl.linktype = 'homeIcon';
 
     Primo.view.then((view) => {
       let vid = view.code;
+      if ( vid == "ECB" ){
+        ctrl.linktype = "newSearchButton";
+      }
       let locale = view.interfaceLanguage; //window.Primo.explore.helper.userSessionManagerService().i18nService.getLanguage();
 
       let libraryLogo = window.appConfig.customization.libraryLogo;
@@ -33,8 +37,6 @@ class HomeIconController {
       }
     });
   }
-    
-
 }
 
 HomeIconController.$inject = ['$scope', '$element', '$compile', '$http'];
