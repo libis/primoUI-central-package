@@ -200,9 +200,6 @@ prm-facet-exact .section-content .md-chips .md-chip.facet-element-marker-library
   prm-facet .sidebar-inner-wrapper {
     margin-right: 0;
   }
-#personalDetails > md-card-content > div > md-checkbox {
-    display: none;
-}
 
 prm-full-view prm-search-result-availability-line {
   display:none;
@@ -232,6 +229,9 @@ prm-search-bar .advanced-search-wrapper .date-range-inputs md-input-container {
   width:auto;
 }
 
+#personalDetails > md-card-content > div > md-checkbox {
+    display: none;
+}
 
 prm-logo, prm-logo-after {
     display: flex;
