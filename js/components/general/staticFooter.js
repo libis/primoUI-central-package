@@ -2,11 +2,16 @@
 class StaticFooterController {
     constructor($scope, $http, $mdDialog, $element) {
         let self = this;
+        let scope = $scope;
         var locale = "en_US"
 
-        var viewWithCustomFooter = ['Lirias','wereldwijzer']
-
-        locale = self.parentCtrl.parentCtrl.searchService.userSessionManagerService.i18nService.getLanguage();
+        var viewWithCustomFooter = ['Lirias','wereldwijzer','ECB']
+/*
+        console.log (self )
+        console.log (scope )
+        console.log (scope.$root.$$childHead.$ctrl.userSessionManagerService )
+*/
+        locale = scope.$root.$$childHead.$ctrl.userSessionManagerService.i18nService.getLanguage();
         /*
         var vid = window.appConfig['vid'];
        //       $templateCache.put(staticFooterTemplateName, 'custom/CENTRAL_PACKAGE/html/templates/footer_' + locale + '.html');
