@@ -1,5 +1,5 @@
 /*split ref code and title*/
-.media-delimiter::after {
+/*.media-delimiter::after {
     content: "\A";
     white-space: pre;
-}
+}*/

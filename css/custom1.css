@@ -121,36 +121,11 @@ beta-switch md-switch[disabled] ._md-thumb {
     flex-basis: 100%;
 }
 /*split ref code and title*/
-.media-delimiter::after {
+/*.media-delimiter::after {
     content: "\A";
     white-space: pre;
-}
+}*/
 
-/* Facets on the Left Side */
-/* Is nu een configuration optie in de Backend :
-   https://knowledge.exlibrisgroup.com/Primo/Product_Documentation/New_Primo_User_Interface/New_UI_Customization_-_Best_Practices#Moving_the_Facets_to_the_Left_Side
-*/
-/*
-prm-search > md-content.padded-container  {
-    display: -webkit-flex; !* Safari *!
-    -webkit-flex-flow: row-reverse wrap; !* Safari 6.1+ *!
-    display: flex;
-    flex-flow: row-reverse wrap;
-}
-.flex-gt-md-25.sidebar{
-    webkit-flex: 0 0 15%;
-    flex: 0 0 15%;
-}
-.main{
-    webkit-flex: 0 0 65%;
-    flex: 0 0 65%;
-}
-.layout-row>.flex-gt-lg-10{
-    webkit-flex: 0 0 16%;
-    flex: 0 0 16%;
-    max-width: none;
-}
-*/
 prm-search-bookmark-filter #fixed-buttons-holder.fixed-to-top {
         flex-direction: column-reverse;
 }
@@ -200,6 +175,31 @@ prm-facet-exact .section-content .md-chips .md-chip.facet-element-marker-library
   prm-facet .sidebar-inner-wrapper {
     margin-right: 0;
   }
+/* Facets on the Left Side */
+/* Is nu een configuration optie in de Backend :
+   https://knowledge.exlibrisgroup.com/Primo/Product_Documentation/New_Primo_User_Interface/New_UI_Customization_-_Best_Practices#Moving_the_Facets_to_the_Left_Side
+*/
+/*
+prm-search > md-content.padded-container  {
+    display: -webkit-flex; !* Safari *!
+    -webkit-flex-flow: row-reverse wrap; !* Safari 6.1+ *!
+    display: flex;
+    flex-flow: row-reverse wrap;
+}
+.flex-gt-md-25.sidebar{
+    webkit-flex: 0 0 15%;
+    flex: 0 0 15%;
+}
+.main{
+    webkit-flex: 0 0 65%;
+    flex: 0 0 65%;
+}
+.layout-row>.flex-gt-lg-10{
+    webkit-flex: 0 0 16%;
+    flex: 0 0 16%;
+    max-width: none;
+}
+*/
 
 prm-full-view prm-search-result-availability-line {
   display:none;
@@ -270,13 +270,13 @@ prm-linked-user-selector md-input-container ._md-select-value:hover {
     border-bottom-style: solid;
     padding-bottom: 0;
 }
-
-prm-news md-list md-list-item._md-no-proxy{
-    padding: 0 16px 10px 16px;
-}
 prm-logo-after a#new-search-button{
     box-shadow: 1px 0 0 0 rgba(0,0,0,.1), -1px 0 0 0 rgba(0,0,0,.1);
     margin-right: 1em;
+}
+
+prm-news md-list md-list-item._md-no-proxy{
+    padding: 0 16px 10px 16px;
 }
 md-template prm-add-alert-toast md-toast *[aria-label="Set Alert For this saved search"],
 prm-saved-queries-list  md-list > md-list-item div.result-item-actions button.md-icon-button:nth-child(1),
