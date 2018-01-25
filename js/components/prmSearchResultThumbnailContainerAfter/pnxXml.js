@@ -12,7 +12,7 @@ class PnxXmlController {
     let self = this;
     if (document.querySelectorAll('pnx-xml-trigger').length == 0) {
       let div = document.createElement('pnx-xml-trigger');
-      div.setAttribute('style', 'position:fixed;right:0;bottom:0;height:20px;width:20px;z-index:1000;background-color:black;opacity:.03');
+      div.setAttribute('style', 'position:fixed;left:0;bottom:0;height:20px;width:20px;z-index:1000;background-color:black;opacity:.03');
       div.onclick = (event) => {
         self.visible = !self.visible;
 
@@ -21,6 +21,8 @@ class PnxXmlController {
         }
       };
       document.body.appendChild(div);
+      //div.setAttribute('style', 'position:absolute;right:0;top:0;height:20px;width:20px;z-index:1000;background-color:black;opacity:.01');
+      //document.getElementById("mainResults").getElementsByTagName("div")[0].appendChild(div)
     }
   }
 }
