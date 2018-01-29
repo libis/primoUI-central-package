@@ -15,12 +15,12 @@ class disclaimerController {
           'title_label': "Cookiebeleid"
         },
         'en_US': {
-          'title': 'Disclaimer',
-          'title_label': "Cookie Disclaimer"
+          'title': 'Cookie Policy',
+          'title_label': "Cookie Policy"
         },
         'fr_FR': {
-          'title': 'Cookie',
-          'title_label': "Cookie"
+          'title': 'Cookie Policy',
+          'title_label': "Cookie Policy"
         },
       }
 
