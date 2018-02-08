@@ -1,34 +1,29 @@
 import pnxXmlHTML from './pnxXml.html'
 class PnxXmlController {
-  constructor(){
+  constructor() {
     try {
-        this.recordid = this.parentCtrl.parentCtrl.item.pnx.control.recordid[0];
-    } catch(e) {
+      this.recordid = this.parentCtrl.parentCtrl.item.pnx.control.recordid[0];
+    } catch (e) {
       this.recordid = null;
     }
   }
 
-  $onInit(){
+  $onInit() {
     let self = this;
-    if (document.querySelectorAll('pnx-xml-trigger').length == 0) {
-      let div = document.createElement('pnx-xml-trigger');
-      div.setAttribute('style', 'position:fixed;left:0;bottom:0;height:20px;width:20px;z-index:1000;background-color:black;opacity:.03');
-      div.onclick = (event) => {
+    if (hotkeys) {
+      hotkeys("ctrl+enter", (e) => {
         self.visible = !self.visible;
 
         for (let element of Array.from(document.querySelectorAll('.pnx-xml'))) {
           element.style.display = self.visible ? 'flex' : 'none';
         }
-      };
-      document.body.appendChild(div);
-      //div.setAttribute('style', 'position:absolute;right:0;top:0;height:20px;width:20px;z-index:1000;background-color:black;opacity:.01');
-      //document.getElementById("mainResults").getElementsByTagName("div")[0].appendChild(div)
+      });
     }
   }
 }
 
 export let pnxXmlConfig = {
-  bindings : {
+  bindings: {
     parentCtrl: '<'
   },
   controller: PnxXmlController,

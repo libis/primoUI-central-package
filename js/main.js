@@ -40,6 +40,9 @@ let app = angular.module('centralCustom',['ngMaterial'])
                  })
                  .run(($templateCache) => {
                    //$templateCache.put('components/search/fullView/full-view.html', fullViewHTML);
+                   Helper.loadScript('https://unpkg.com/hotkeys-js@2.0.8/dist/hotkeys.min.js').then(()=>{
+                     console.log('hotkeys.js loaded');
+                   });
                  })
                  .factory('FeedService', feedService)
                  .service('MessageService', MessageService)
@@ -71,7 +74,7 @@ Components.all.forEach((component) => {
 //Inject place holders into the after components
 Object.keys(afterComponents).forEach((component,i) => {
   let subComponents = afterComponents[component];
- 
+
   app.component(component.toCamelCase(), {
     bindings:{
       parentCtrl: '<'
