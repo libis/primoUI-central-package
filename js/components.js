@@ -72,7 +72,7 @@ export default class AfterComponents {
       {name: 'ill-request-form-overview', config: illRequestFormConfig, enabled:false, appendTo: 'prm-requests-overview-after', enableInView: '.*'},
       {name: 'ill-request-form', config: illRequestFormConfig, enabled:true, appendTo: 'prm-requests-after', enableInView: '^KULeuven|^VIVES'},
 
-      {name: 'announcement-feedback', config: feedbackAnnouncementConfig, enabled:true, appendTo: 'prm-top-bar-before', enableInView: '.*'},
+      {name: 'announcement-feedback', config: feedbackAnnouncementConfig, enabled:false, appendTo: 'prm-top-bar-before', enableInView: '.*'},
 
       {name: 'override-getlink-recommendation', config: recommendationItemConfig, enabled: true, appendTo: 'prm-recomendation-item-after', enableInView: '.*'},
 

@@ -9,7 +9,7 @@ class HomeIconController {
 
     Primo.view.then((view) => {
       let vid = view.code;
-      if ( vid == "ECB" ){
+      if (vid == "ECB") {
         self.linktype = "newSearchButton";
       }
       let locale = view.interfaceLanguage; //window.Primo.explore.helper.userSessionManagerService().i18nService.getLanguage();
@@ -21,10 +21,10 @@ class HomeIconController {
         $http({
           method: 'GET',
           url: localeLibraryLogo,
-        }).then(function(response) {
+        }).then(function (response) {
           window.appConfig.customization.libraryLogo = localeLibraryLogo;
           $compile($element.parent().parent())($scope);
-        }, function(response) {
+        }, function (response) {
           window.appConfig.customization.libraryLogo = libraryLogo;
         });
 
@@ -32,18 +32,19 @@ class HomeIconController {
       self.homePageLink = '/primo-explore/search?vid=' + vid + "&lang=" + locale;
 
       $scope.removeStickyFacets = function () {
-        var sSearch = self.rootScope.$$childHead.$$childTail.$$childHead.$ctrl.searchService
-        var stickyFacets = sSearch.facetService.getStickyFacets();
-
-        for (var i = 0; i < stickyFacets.length; i++) {
-          sSearch.facetService.removeStickyFacet(stickyFacets[i]);
+        var facets = Primo.explore.components.get('prm-facet');
+        if (facets) {
+          var stickyFacets = facets[0].ctrl().facetService.getStickyFacets()
+          for (var i = 0; i < stickyFacets.length; i++) {
+            facets[0].ctrl().facetService.removeStickyFacet(stickyFacets[i]);
+          }
         }
       }
     });
   }
 }
 
-HomeIconController.$inject = ['$scope', '$element', '$compile', '$http','$rootScope'];
+HomeIconController.$inject = ['$scope', '$element', '$compile', '$http', '$rootScope'];
 
 export let homeIconConfig = {
   bindings: {
