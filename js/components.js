@@ -33,8 +33,6 @@ import {recommendationItemConfig} from './components/prmRecommendationItemAfter/
 import {databaseLinkConfig} from './components/general/databaseLink'
 
 
-
-
 export default class AfterComponents {
 
   static get all() {
@@ -76,7 +74,7 @@ export default class AfterComponents {
 
       {name: 'override-getlink-recommendation', config: recommendationItemConfig, enabled: true, appendTo: 'prm-recomendation-item-after', enableInView: '.*'},
 
-      {name: 'announcement', config: announcementsConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '.*'},      
+      {name: 'announcement', config: announcementsConfig, enabled: false, appendTo: 'prm-top-bar-before', enableInView: '.*'},      
       {name: 'pay-my-fines-message', config: payMyFinesMessageConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '^KULeuven'}
     ].filter( (component) => ( component.enabled && new RegExp(component.enableInView).test(window.appConfig.vid) ) );
   }
