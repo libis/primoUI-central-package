@@ -1,5 +1,6 @@
 /* Hide de Browse in the top menu*/
 
+prm-main-menu a[aria-label="Repérer"].md-button.flex-button,
 prm-main-menu a[aria-label="Browse"].md-button.flex-button {
     display:none;
 }
