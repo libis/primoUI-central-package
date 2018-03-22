@@ -1,4 +1,9 @@
 import disclaimerDialogHTML from '../../../html/templates/disclaimerDialog.html'
+import cookiePolicyDialogHTML from '../../../html/templates/cookie_policy_en_US.html'
+import disclaimerDialog_frFR_HTML from '../../../html/templates/cookie_policy_en_US.html'
+import disclaimerDialog_nlBE_HTML from '../../../html/templates/cookie_policy_nl_BE.html'
+import disclaimerDialog_enUS_HTML from '../../../html/templates/cookie_policy_en_US.html'
+
 import disclaimerLinkHTML from 'disclaimer.html'
 
 class disclaimerController {
@@ -24,8 +29,9 @@ class disclaimerController {
         },
       }
 
-      let disclaimerDialog = disclaimerDialogHTML;
-      /*
+/* Todo Refactory disclaimerDialog / cookiePolicy ??? */
+//    let disclaimerDialog = disclaimerDialogHTML; 
+      let disclaimerDialog = cookiePolicyDialogHTML;
       switch (locale) {
         case 'fr_FR':
         disclaimerDialog = disclaimerDialog_frFR_HTML;
@@ -36,7 +42,7 @@ class disclaimerController {
         default:
         disclaimerDialog = disclaimerDialog_enUS_HTML;
       }
-*/
+
       $scope.title = locale_text[locale]['title'];
       $scope.title_label = locale_text[locale]['title_label'];
 

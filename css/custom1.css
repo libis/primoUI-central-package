@@ -227,7 +227,6 @@ prm-main-menu a[aria-label="Browse"].md-button.flex-button {
       display:none;
     }
 }
-
 /* Hide collection_path in full view */
 prm-record-collection-paths{
     display: none !important;
