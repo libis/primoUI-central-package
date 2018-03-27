@@ -2,7 +2,7 @@
 <md-dialog aria-label=Aanmelden">
     <md-dialog-content id="Aanmelden">
 
-        <md-toolbar>
+        <md-toolbar md-autofocus >
             <div class="md-toolbar-tools">
                 <h2>Sign in</h2>
                 <span flex></span>
@@ -42,7 +42,7 @@
 
                       </div>
                           <div>
-                    <md-button  md-autofocus flex class="md-primary" ng-click="closeDialog()"    style="box-shadow: 0 2px 5px 0 rgba(0,0,0,.26); margin-right: 0;">
+                    <md-button   flex class="md-primary" ng-click="closeDialog()"    style="box-shadow: 0 2px 5px 0 rgba(0,0,0,.26); margin-right: 0;">
                       Continue as guest
                     </md-button>
                      – Limited access for non-KU Leuven users
@@ -50,7 +50,7 @@
 
                 <md-dialog-actions>
                     <div layout="row" class="demo-dialog-button">
-                        <md-button md-autofocus class="md-primary" ng-click="closeDialog()">
+                        <md-button class="md-primary" ng-click="closeDialog()">
                             Close
                         </md-button>
                     </div>
