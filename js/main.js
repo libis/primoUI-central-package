@@ -43,6 +43,11 @@ let app = angular.module('centralCustom',['ngMaterial'])
                    Helper.loadScript('https://unpkg.com/hotkeys-js@2.0.8/dist/hotkeys.min.js').then(()=>{
                      console.log('hotkeys.js loaded');
                    });
+
+                   Helper.loadScript('https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js?' + Date.now()).then(function () {
+                      console.log('altmerics loaded');
+                   });
+
                  })
                  .factory('FeedService', feedService)
                  .service('MessageService', MessageService)
