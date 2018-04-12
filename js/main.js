@@ -14,6 +14,7 @@ import Components from './components'
 import {feedService} from './factories/feedService'
 import MessageService from './factories/messageService'
 import FeedbackService from './factories/feedbackService'
+import AltmetricsService from './factories/altmetricsService'
 
 //make Primo public
 window.Primo = Primo;
@@ -38,18 +39,17 @@ let app = angular.module('centralCustom',['ngMaterial'])
                      '**'
                    ]);
                  })
-                 .run(($templateCache) => {
+                 .run(($templateCache, $rootScope) => {
                    //$templateCache.put('components/search/fullView/full-view.html', fullViewHTML);
                    Helper.loadScript('https://unpkg.com/hotkeys-js@2.0.8/dist/hotkeys.min.js').then(()=>{
                      console.log('hotkeys.js loaded');
                    });
-
                    Helper.loadScript('https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js?' + Date.now()).then(function () {
-                      console.log('altmerics loaded');
+                      console.log('altmerics embed.js loaded');
                    });
-
                  })
                  .factory('FeedService', feedService)
+                 .service('AltmetricsService', AltmetricsService)
                  .service('MessageService', MessageService)
                  .service('FeedbackService', FeedbackService);
 

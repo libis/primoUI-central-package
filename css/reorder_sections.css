@@ -125,3 +125,19 @@ button[aria-label='Tags'],
 button[orderIndex='6']{
   order: 6;
 }
+
+
+
+#altmetrics{
+  -webkit-box-ordinal-group: 10;
+  -moz-box-ordinal-group: 10;
+  -ms-flex-order: 10;
+  -webkit-order: 10;
+  order: 10;
+}
+
+button[aria-label="Altmetrics"],
+button[aria-label="altmetrics"],
+button[orderIndex='10']{
+  order: 10;
+}

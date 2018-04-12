@@ -88,7 +88,7 @@ class ReportAProblemController {
     let element = angular.element(document.querySelector(selector));
     if (element) {
       let elementCtrl = element.controller(selector);
-      console.log(elementCtrl);
+     // console.log(elementCtrl);
       return elementCtrl.item;
     }
     return null;

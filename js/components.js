@@ -16,6 +16,9 @@ import {homeIconConfig} from './components/prmLogoAfter/homeIcon'
 import {betaSwitchConfig} from './components/prmLogoAfter/betaSwitch'
 import {sourceIconConfig} from './components/prmBriefResultAfter/sourceIcon'
 import {altmetricConfig} from './components/prmBriefResultAfter/altmetric'
+
+import {altmetricsBadgeConfig} from './components/prmFullViewAfter/altmetricsBadge'
+
 import {pnxXmlConfig} from './components/prmSearchResultThumbnailContainerAfter/pnxXml'
 import {payMyFinesConfig} from './components/prmFinesOverviewAfter/payMyFines'
 import {feedbackConfig} from './components/prmMainMenuAfter/feedback'
@@ -55,6 +58,10 @@ export default class AfterComponents {
       {name: 'beta-switch', config: betaSwitchConfig, enabled: true, appendTo: 'prm-logo-after', enableInView: '^(?!ECB)'},
       {name: 'source-icon', config: sourceIconConfig, enabled: true, appendTo: 'prm-brief-result-after', enableInView: '.*'},
       {name: 'altmetric', config: altmetricConfig, enabled: true, appendTo: 'prm-brief-result-after', enableInView: '.*'},
+
+      {name: 'altmetrics-badge', config: altmetricsBadgeConfig, enabled: true, appendTo: 'prm-full-view-after', enableInView: 'Lirias'},
+
+      
       {name: 'pnx-xml', config: pnxXmlConfig, enabled: true, appendTo: 'prm-brief-result-container-after', enableInView: '.*'},
       {name: 'pay-my-fines', config: payMyFinesConfig, enabled: true, appendTo: 'prm-fines-overview-after', enableInView: '.*'},
       {name: 'feedback', config: feedbackConfig, enabled: true, appendTo: 'prm-main-menu-after', enableInView: '^(?!ECB)'},
