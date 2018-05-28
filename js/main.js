@@ -11,7 +11,9 @@ import Primo from './primo-explore-dom/js/primo'
 import Helper from './primo-explore-dom/js/primo/explore/helper'
 import Components from './components'
 
-import {feedService} from './factories/feedService'
+import {
+  feedService
+} from './factories/feedService'
 import MessageService from './factories/messageService'
 import FeedbackService from './factories/feedbackService'
 import AltmetricsService from './factories/altmetricsService'
@@ -32,26 +34,94 @@ window.setTimeout(function() {
 }, 2000);
 
 //Create the centralCustom module;
-let app = angular.module('centralCustom',['ngMaterial'])
-                 .constant('feedbackServiceURL', 'https://services.libis.be/feedback')
-                 .config(($sceDelegateProvider) => {
-                   $sceDelegateProvider.resourceUrlWhitelist([
-                     '**'
-                   ]);
-                 })
-                 .run(($templateCache, $rootScope) => {
-                   //$templateCache.put('components/search/fullView/full-view.html', fullViewHTML);
-                   Helper.loadScript('https://unpkg.com/hotkeys-js@2.0.8/dist/hotkeys.min.js').then(()=>{
-                     console.log('hotkeys.js loaded');
-                   });
-                   Helper.loadScript('https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js?' + Date.now()).then(function () {
-                      console.log('altmerics embed.js loaded');
-                   });
-                 })
-                 .factory('FeedService', feedService)
-                 .service('AltmetricsService', AltmetricsService)
-                 .service('MessageService', MessageService)
-                 .service('FeedbackService', FeedbackService);
+let app = angular.module('centralCustom', ['ngMaterial'])
+  .constant('feedbackServiceURL', 'https://services.libis.be/feedback')
+  .config(($sceDelegateProvider) => {
+    $sceDelegateProvider.resourceUrlWhitelist([
+      '**'
+    ]);
+  })
+  .run(($templateCache, $rootScope) => {
+    //$templateCache.put('components/search/fullView/full-view.html', fullViewHTML);
+    Helper.loadScript('https://unpkg.com/hotkeys-js@2.0.8/dist/hotkeys.min.js').then(() => {
+      console.log('hotkeys.js loaded');
+    });
+    Helper.loadScript('https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js?' + Date.now()).then(function() {
+      console.log('altmerics embed.js loaded');
+    });
+  })
+  .factory('FeedService', feedService)
+  .service('AltmetricsService', AltmetricsService)
+  .service('MessageService', MessageService)
+  .service('FeedbackService', FeedbackService)
+  .factory('apiCallInterceptor', [() => {
+    var apiCallInterceptor = {
+      response: function(response) {
+        //"Assessing Gospel Quotations in Justin Martyr"
+        let fixDisplayData = function(pnxData) {
+          if (pnxData) {
+            try {              
+              if (pnxData.display && pnxData.display.creator) {
+                pnxData.display.creator = pnxData.display.creator.map(c => {
+                  let relator = c.match(/\(.*?\)/i);
+                  let data = c.split(/\(.*?\)/i).join("");
+
+                  if (relator) {
+                    c=`${c} $$Q${data}`;
+                  }
+                  return c;
+                });
+              }
+
+              if (pnxData.display && pnxData.display.contributor) {
+                pnxData.display.contributor = pnxData.display.contributor.map(c => {
+                  let relator = c.match(/\(.*?\)/i);
+                  let data = c.split(/\(.*?\)/i).join("");
+
+                  if (relator) {
+                    c=`${c} $$Q${data}`;
+                  }
+                  return c;
+                });
+              }
+
+            } catch (e) {
+              console.log(e);
+              console.log('no data');
+            }
+          }
+          return pnxData;
+        }
+
+        if (/^\/primo_library\/libweb\/webservices\/rest\/primo-explore\/v1\/pnxs/.test(response.config.url)) {
+          var data = response.data;
+          try {
+            if (Object.keys(data).includes('docs')) {
+              data.docs.map(p => {
+                return fixDisplayData(p.pnx);
+              });
+            } else {
+              if (Object.keys(data).includes('pnx')) {
+                data.pnx = fixDisplayData(data.pnx);
+              }
+            }
+
+          } catch (e) {
+            console.log(e);
+            console.log('no data');
+          }
+          response.data = data;
+        }
+
+        return response;
+      }
+    }
+
+    return apiCallInterceptor;
+  }])
+  .config(['$httpProvider', ($httpProvider) => {
+    $httpProvider.interceptors.push('apiCallInterceptor');
+  }]);
 
 
 //Contains the after component selectors that will be injected
@@ -66,7 +136,10 @@ Components.all.forEach((component) => {
     if (component.appendTo) {
       let elements = afterComponents[component.appendTo] || [];
       //elements.push(component.name);
-      elements.push({ 'name': component.name, 'enableInView': component.enableInView });
+      elements.push({
+        'name': component.name,
+        'enableInView': component.enableInView
+      });
       afterComponents[component.appendTo] = elements;
 
     }
@@ -77,11 +150,11 @@ Components.all.forEach((component) => {
 
 
 //Inject place holders into the after components
-Object.keys(afterComponents).forEach((component,i) => {
+Object.keys(afterComponents).forEach((component, i) => {
   let subComponents = afterComponents[component];
 
   app.component(component.toCamelCase(), {
-    bindings:{
+    bindings: {
       parentCtrl: '<'
     },
     template: subComponents.map(m => `<${m.name} parent-ctrl="$ctrl"></${m.name}>`).join("")

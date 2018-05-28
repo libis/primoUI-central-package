@@ -35,7 +35,7 @@ import {illRequestFormConfig} from './components/prmRequestsAfter/illRequestForm
 import {recommendationItemConfig} from './components/prmRecommendationItemAfter/recommendationItem'
 
 import {databaseLinkConfig} from './components/general/databaseLink'
-
+import {removeOpenAccessConfig} from './components/prmFacetAfter/removeOpenAccess'
 
 export default class AfterComponents {
 
@@ -61,7 +61,6 @@ export default class AfterComponents {
 
       {name: 'altmetrics-badge', config: altmetricsBadgeConfig, enabled: true, appendTo: 'prm-full-view-after', enableInView: 'Lirias'},
 
-      
       {name: 'pnx-xml', config: pnxXmlConfig, enabled: true, appendTo: 'prm-brief-result-container-after', enableInView: '.*'},
       {name: 'pay-my-fines', config: payMyFinesConfig, enabled: true, appendTo: 'prm-fines-overview-after', enableInView: '.*'},
       {name: 'feedback', config: feedbackConfig, enabled: true, appendTo: 'prm-main-menu-after', enableInView: '^(?!ECB)'},
@@ -75,7 +74,7 @@ export default class AfterComponents {
 
       /* lbs-components used in html-templates of the package */
       {name: 'promote-login-static-footer', config: promoteLoginConfig, enabled: true, appendTo: 'lbs-promote-login', enableInView:  '^KULeuven'},
-     
+
       {name: 'ill-request-form-overview', config: illRequestFormConfig, enabled:false, appendTo: 'prm-requests-overview-after', enableInView: '.*'},
       {name: 'ill-request-form', config: illRequestFormConfig, enabled:true, appendTo: 'prm-requests-after', enableInView: '^KULeuven|^VIVES'},
 
@@ -83,8 +82,9 @@ export default class AfterComponents {
 
       {name: 'override-getlink-recommendation', config: recommendationItemConfig, enabled: true, appendTo: 'prm-recomendation-item-after', enableInView: '.*'},
 
-      {name: 'announcement', config: announcementsConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '.*'},      
-      {name: 'pay-my-fines-message', config: payMyFinesMessageConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '^KULeuven'}
+      {name: 'announcement', config: announcementsConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '.*'},
+      {name: 'pay-my-fines-message', config: payMyFinesMessageConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '^KULeuven'},
+      {name: 'remove-open-access', config: removeOpenAccessConfig, enabled: true, appendTo: 'prm-facet-after', enableInView: '.*'}
     ].filter( (component) => ( component.enabled && new RegExp(component.enableInView).test(window.appConfig.vid) ) );
   }
 }
