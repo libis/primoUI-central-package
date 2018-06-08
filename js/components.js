@@ -56,8 +56,8 @@ export default class AfterComponents {
       {name: 'libis-experiment', config: experimentConfig, enabled: false, appendTo: 'prm-messages-and-blocks-overview-after', enableInView: '.*'},
       {name: 'home-icon', config: homeIconConfig, enabled: true, appendTo: 'prm-logo-after', enableInView: '^(?!ECB)'},
       {name: 'beta-switch', config: betaSwitchConfig, enabled: true, appendTo: 'prm-logo-after', enableInView: '^(?!ECB)'},
-      {name: 'source-icon', config: sourceIconConfig, enabled: true, appendTo: 'prm-brief-result-after', enableInView: '.*'},
-      {name: 'altmetric', config: altmetricConfig, enabled: true, appendTo: 'prm-brief-result-after', enableInView: '.*'},
+      {name: 'source-icon', config: sourceIconConfig, enabled: true, appendTo: 'prm-brief-result-after', enableInView: '^Lirias'},
+      {name: 'altmetric', config: altmetricConfig, enabled: true, appendTo: 'prm-brief-result-after', enableInView: '^Lirias'},
 
       {name: 'altmetrics-badge', config: altmetricsBadgeConfig, enabled: true, appendTo: 'prm-full-view-after', enableInView: 'Lirias'},
 
