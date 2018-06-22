@@ -1,0 +1,62 @@
+﻿<style>
+    #fixed-feedback {
+        position: fixed;
+        right: 1em;
+        bottom: 0em;
+        background-color: #4d6b82;
+        color: #a9cdd6;
+        border-radius: 0.4em 0.4em 0 0;
+        padding: 0.1em;
+        display: flex;
+        flex-direction: row;
+        transform: scale(0.8);
+        transform-origin: bottom right;
+    }
+
+    @media (max-width:  959px) {
+        #fixed-feedback{
+            display: none;
+        }
+    }
+</style>
+
+<div id="fixed-feedback" hide-sm hide-xs>
+    <div class="item" style="padding: 0.1em 0">
+        <a href="https://knowledge.exlibrisgroup.com/Primo/Product_Documentation/050New_Primo_User_Interface/End_User_Help_-_New_UI"
+            target="_blank">
+            <md-button class="md-icon-button md-ink-ripple darker-bg button-over-dark md-button md-primoExplore-theme">
+                <prm-icon icon-type="svg" svg-icon-set="primo-ui" icon-definition="help-circle-outline"></prm-icon>
+                <md-tooltip md-direction="left" md-delay="400">
+                    <span>Help</span>
+                </md-tooltip>
+            </md-button>
+        </a>
+    </div>
+    <div class="item" style="padding: 0.1em 0">
+        <prm-feedbacklink parent-Ctrl='$ctrl' linktemplate="custom/CENTRAL_PACKAGE/html/templates/feedbackicon.html"></prm-feedbacklink>
+    </div>
+</div>
+
+
+
+<!--
+<img src="http://localhost:8003/primo-explore/img/svg/svg-primo-ui.svg">
+<img src="http://localhost:8003/primo-explore/img/svg/back-to-search.svg">
+<img src="http://localhost:8003/primo-explore/img/svg/open-iconic.svg">
+<img src="http://localhost:8003/primo-explore/img/svg/svg-external-all.svg">
+<img src="http://localhost:8003/primo-explore/img/svg/svg-primo-actions.svg">
+<img src="http://localhost:8003/primo-explore/img/svg/svg-primo-ui.svg">
+<img src="http://localhost:8003/primo-explore/img/svg/svg-sprite-action.svg">
+<img src="http://localhost:8003/primo-explore/img/svg/svg-sprite-alert.svg">
+<img src="http://localhost:8003/primo-explore/img/svg/svg-sprite-av.svg">
+<img src="http://localhost:8003/primo-explore/img/svg/svg-sprite-communication.svg">
+<img src="http://localhost:8003/primo-explore/img/svg/svg-sprite-content.svg">
+<img src="http://localhost:8003/primo-explore/img/svg/svg-sprite-editor.svg">
+<img src="http://localhost:8003/primo-explore/img/svg/svg-sprite-file.svg">
+<img src="http://localhost:8003/primo-explore/img/svg/svg-sprite-hardware.svg">
+<img src="http://localhost:8003/primo-explore/img/svg/svg-sprite-image.svg">
+<img src="http://localhost:8003/primo-explore/img/svg/svg-sprite-maps.svg">
+<img src="http://localhost:8003/primo-explore/img/svg/svg-sprite-navigation.svg">
+<img src="http://localhost:8003/primo-explore/img/svg/svg-sprite-notification.svg">
+<img src="http://localhost:8003/primo-explore/img/svg/svg-sprite-social.svg">
+-->

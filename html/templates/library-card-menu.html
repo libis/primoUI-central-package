@@ -1,0 +1,62 @@
+<style>
+/* TODO kleuren verwerken in sass */
+
+    .md-button.md-icon-button:hover {
+        box-shadow: inset 0 -1px 0 0 rgba(21, 58, 86, .5);
+    }
+
+    #LibraryCardButton.md-button.md-icon-button {
+        border: 1px solid #73E9FF;
+    }
+
+    #LibraryCardButton.md-button.md-icon-button:hover {
+        border: none;
+        box-shadow: inset 0 -2px 0 0 #73E9FF;
+    }
+
+    #LibraryCardButton.md-button prm-icon md-icon {
+        /* color:#73E9FF!important; */
+    }
+
+    #LibraryCardButton.md-button prm-icon md-icon:hover {
+        color: rgb(200, 245, 250);
+    }
+    #LibraryCard span{
+        border-bottom: 1px solid #73E9FF;
+    }
+
+</style>
+
+<md-button aria-label="{{$ctrl.getLibraryCardAriaLabel() | translate}}" style="min-width: 60px" hide-gt-sm class="button-with-icon zero-margin"
+    (click)="$ctrl.goToMyLibraryCard();" (keydown)="$ctrl.keydownSupport($event)">
+    <prm-icon [icon-type]="::$ctrl.topBarIcons.library.type" [svg-icon-set]="::$ctrl.topBarIcons.library.iconSet" [icon-definition]="::$ctrl.topBarIcons.library.icon"></prm-icon>
+    <span translate="nui.menu.librarycard"></span>
+</md-button>
+
+<md-button ng-if="!$ctrl.isOvp()" aria-label="{{'nui.aria.menu.settings' | translate}}" hide-sm hide-xs class="button-with-icon zero-margin"
+    (click)="$ctrl.goToUserSettings();">
+    <prm-icon [icon-type]="::$ctrl.topBarIcons.library.type" [svg-icon-set]="::$ctrl.topBarIcons.library.iconSet" [icon-definition]="::$ctrl.topBarIcons.library.icon"></prm-icon>
+    <span translate="nui.details.header.ovl"></span>
+</md-button>
+
+<md-button id="LibraryCard" aria-label="{{$ctrl.getLibraryCardAriaLabel() | translate}}" class="button-with-icon zero-margin" (click)="$ctrl.goToMyLibraryCard();"
+    (keydown)="$ctrl.keydownSupport($event)">
+    <md-button aria-label="{{$ctrl.getLibraryCardAriaLabel() | translate}}" id="LibraryCardButton" hide-sm hide-xs class="md-icon-button button-over-dark md-button md-primoExplore-theme md-ink-ripple darker-bg"
+    (click)="$ctrl.goToMyLibraryCard();" (keydown)="$ctrl.keydownSupport($event)">
+    <prm-icon [icon-type]="::$ctrl.topBarIcons.library.type" [svg-icon-set]="::$ctrl.topBarIcons.library.iconSet" [icon-definition]="::$ctrl.topBarIcons.library.icon"></prm-icon>
+    <md-tooltip md-direction="down" md-delay="400">
+        <span translate="nui.clisckSignIn.tooltip"></span>
+    </md-tooltip>
+</md-button>
+<span translate="nui.menu.librarycard"></span>
+</md-button>
+
+
+
+<md-button hide-sm c ng-click="$ctrl.$state.go('account', {vid: $root.$$childHead.$ctrl.userSessionManagerService.vid, lang: this.lang, section: 'personal_details'}, {reload: true});"
+    aria-label="{{'nui.details.header' | translate}}" class="md-icon-button button-over-dark md-button md-primoExplore-theme md-ink-ripple darker-bg">
+    <prm-icon icon-type="svg" svg-icon-set="action" icon-definition="ic_settings_24px"></prm-icon>
+    <md-tooltip md-direction="down" md-delay="400">
+            <span translate="nui.details.header">Personal details</span>
+    </md-tooltip>
+</md-button>

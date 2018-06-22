@@ -1,0 +1,12 @@
+<div ng-if="::($ctrl.getLabelType() == 'text')">
+        <span translate="nui.mypref.label.interface_languages"></span>
+        </div>
+        <md-input-container layout="row" layout-align="center center">
+            <prm-icon ng-if="::($ctrl.getLabelType() == 'icon')" [icon-type]="::$ctrl.topBarIcons.language.type" [svg-icon-set]="::$ctrl.topBarIcons.language.iconSet"
+                [icon-definition]="::$ctrl.topBarIcons.language.icon"></prm-icon>
+        <md-select ng-model="$ctrl.selectedLanguage" ng-change="$ctrl.changeLanguage()" aria-label="{{'nui.aria.account.details.langaugesselect' | translate}}">
+            <md-option ng-repeat="language in ::$ctrl.languages" value="{{::language}}">
+                <span translate="mypref.language.option.{{::language}}"></span>
+            </md-option>
+        </md-select>
+        </md-input-container>

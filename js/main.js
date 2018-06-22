@@ -10,6 +10,7 @@
 import Primo from './primo-explore-dom/js/primo'
 import Helper from './primo-explore-dom/js/primo/explore/helper'
 import Components from './components'
+import Templates from './templates'
 
 import {
   feedService
@@ -148,6 +149,13 @@ Components.all.forEach((component) => {
   }
 });
 
+console.log('Replace Templates');
+Templates.all.forEach((template) => {
+  console.log(template.id)
+  app.run (($templateCache) => {
+    $templateCache.put(template.id,template.template);
+  })
+})
 
 //Inject place holders into the after components
 Object.keys(afterComponents).forEach((component, i) => {

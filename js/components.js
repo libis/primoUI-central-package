@@ -22,6 +22,9 @@ import {altmetricsBadgeConfig} from './components/prmFullViewAfter/altmetricsBad
 import {pnxXmlConfig} from './components/prmSearchResultThumbnailContainerAfter/pnxXml'
 import {payMyFinesConfig} from './components/prmFinesOverviewAfter/payMyFines'
 import {feedbackConfig} from './components/prmMainMenuAfter/feedback'
+import {feedbackLinkConfig} from './components/general/feedbacklink'
+import {fixedFeedbackHelpConfig} from './components/general/fixedFeedbackHelp'
+
 import {searchTipConfig} from './components/general/searchTip'
 import {disclaimerConfig} from './components/general/disclaimer'
 import {reportAProblemConfig} from './components/prmServiceHeaderAfter/reportAProblem'
@@ -33,6 +36,8 @@ import {staticFooterConfig} from './components/general/staticFooter'
 import {removeAlertsConfig} from './components/general/removeAlerts'
 import {illRequestFormConfig} from './components/prmRequestsAfter/illRequestForm'
 import {recommendationItemConfig} from './components/prmRecommendationItemAfter/recommendationItem'
+
+
 
 import {databaseLinkConfig} from './components/general/databaseLink'
 import {removeOpenAccessConfig} from './components/prmFacetAfter/removeOpenAccess'
@@ -55,15 +60,17 @@ export default class AfterComponents {
     return [
       {name: 'libis-experiment', config: experimentConfig, enabled: false, appendTo: 'prm-messages-and-blocks-overview-after', enableInView: '.*'},
       {name: 'home-icon', config: homeIconConfig, enabled: true, appendTo: 'prm-logo-after', enableInView: '^(?!ECB)'},
-      {name: 'beta-switch', config: betaSwitchConfig, enabled: true, appendTo: 'prm-logo-after', enableInView: '^(?!ECB)'},
+      {name: 'beta-switch', config: betaSwitchConfig, enabled: false, appendTo: 'prm-logo-after', enableInView: '^(?!ECB)'},
       {name: 'source-icon', config: sourceIconConfig, enabled: true, appendTo: 'prm-brief-result-after', enableInView: '^Lirias'},
-      {name: 'altmetric', config: altmetricConfig, enabled: true, appendTo: 'prm-brief-result-after', enableInView: '^Lirias'},
+      {name: 'altmetric', config: altmetricConfig, enabled: true, appendTo: 'prm-brief-result-after', enableInView: '^Lirias|^KULeuven'},
 
       {name: 'altmetrics-badge', config: altmetricsBadgeConfig, enabled: true, appendTo: 'prm-full-view-after', enableInView: 'Lirias'},
 
+      {name: 'prm-feedbacklink', config: feedbackLinkConfig, enabled: true, appendTo: null, enableInView: '.*'},            
+
       {name: 'pnx-xml', config: pnxXmlConfig, enabled: true, appendTo: 'prm-brief-result-container-after', enableInView: '.*'},
       {name: 'pay-my-fines', config: payMyFinesConfig, enabled: true, appendTo: 'prm-fines-overview-after', enableInView: '.*'},
-      {name: 'feedback', config: feedbackConfig, enabled: true, appendTo: 'prm-main-menu-after', enableInView: '^(?!ECB)'},
+      {name: 'feedback', config: feedbackConfig, enabled: true, appendTo: null, enableInView: '^(?!ECB)'},
       {name: 'report-a-problem', config: reportAProblemConfig, enabled: true, appendTo: 'prm-service-header-after', enableInView: '.*'},
       {name: 'prm-searchtips', config: searchTipConfig, enabled: true, appendTo: null, enableInView: '.*'},
       {name: 'prm-disclaimer', config: disclaimerConfig, enabled: true, appendTo: null, enableInView: '.*'},
@@ -71,6 +78,8 @@ export default class AfterComponents {
       {name: 'static-footer-account', config: staticFooterConfig, enabled: true, appendTo: 'prm-account-after', enableInView: '.*'},
       {name: 'remove-alerts', config: removeAlertsConfig, enabled: true, appendTo: 'prm-add-query-to-saved-searches-after', enableInView: '.*'},
       {name: 'prm-dblink', config: databaseLinkConfig, enabled: false, appendTo: null, enableInView: '.*'},
+
+      {name: 'fixed-feedback-help', config: fixedFeedbackHelpConfig, enabled: true, appendTo: 'prm-explore-main-after', enableInView: '.*'},
 
       /* lbs-components used in html-templates of the package */
       {name: 'promote-login-static-footer', config: promoteLoginConfig, enabled: true, appendTo: 'lbs-promote-login', enableInView:  '^KULeuven'},

@@ -1,0 +1,16 @@
+<span id="loggedInIndicator" role="alert" class="accessible-only hidden" ng-style="{'display': $ctrl.isBlocked}">{{$ctrl.getRoleAlertMessage()}}</span>
+<md-button tabindex="-1" class="user-menu-button accessible-only" aria-label="{{($ctrl.userName().length==0 ?  'nui.clisckSignIn.tooltip'  : 'nui.clisckSignOut.tooltip') | translate}}"
+    ng-click="$event.stopPropagation();$ctrl.enableMobileMenu()" hide-xs>
+</md-button>
+<md-button style="display:none" class="user-menu-button accessible-only" aria-label="{{($ctrl.userName().length==0 ?  'nui.clisckSignIn.tooltip'  : 'nui.clisckSignOut.tooltip') | translate}}"
+    (click)="$ctrl.changUserStatus()" hide-xs>
+</md-button>
+
+<prm-library-card-menu 
+    ng-if="$ctrl.showUserArea && $ctrl.userName().length > 0 && !$ctrl.detectMobile()" ></prm-library-card-menu>
+
+<prm-authentication layout="flex" [is-logged-in]="$ctrl.userName().length > 0"  
+    ng-if="!$ctrl.detectMobile()"></prm-authentication>
+<prm-change-lang aria-label="{{'eshelf.signin.title' | translate}}" 
+ng-if="$ctrl.displayLanguage && $ctrl.userName().length == 0 && !$ctrl.detectMobile()"
+label-type="icon"></prm-change-lang>

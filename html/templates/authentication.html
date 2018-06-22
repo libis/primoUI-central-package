@@ -1,0 +1,34 @@
+<md-button ng-if="!$ctrl.isLoggedInIDP()" ng-click="$ctrl.handleLogin();" aria-label="{{'eshelf.signin.title' | translate}}"
+    class="md-icon-button button-over-dark md-button md-primoExplore-theme md-ink-ripple darker-bg"
+    hide-sm hide-xs
+    >
+    <prm-icon icon-type="svg" svg-icon-set="primo-ui" icon-definition="account-card-details"></prm-icon>
+    <md-tooltip md-direction="down" md-delay="400">
+        <span translate="nui.clisckSignIn.tooltip"></span>
+    </md-tooltip>
+</md-button>
+
+
+<md-button ng-if="!$ctrl.isLoggedInIDP()" style="min-width: 60px" hide-gt-sm ng-click="$ctrl.handleLogin();" aria-label="{{'eshelf.signin.title' | translate}}"
+    class="button-with-icon zero-margin">
+    <prm-icon icon-type="svg" svg-icon-set="primo-ui" icon-definition="sign-in"></prm-icon>
+    <span translate="eshelf.signin.title"></span>
+
+    <md-tooltip md-direction="down" md-delay="400">
+        <span translate="nui.clisckSignIn.tooltip"></span>
+    </md-tooltip>
+</md-button>
+
+
+
+<md-button ng-if="$ctrl.isLoggedInIDP()" ng-click="$ctrl.handleLogout(authenticationMethod);" aria-label="{{'eshelf.signout.title.link' | translate}}"
+    class="button-with-icon zero-margin" id="logout">
+    <prm-icon icon-type="svg" svg-icon-set="primo-ui" icon-definition="sign-out"></prm-icon>
+
+    <span ng-if="!$ctrl.idpLogout" translate="eshelf.signout.title.link" style="min-width: 60px" hide-gt-sm></span>
+    <span ng-if="$ctrl.idpLogout" translate="nui.bor_info_failed.signout" style="min-width: 60px" hide-gt-sm></span>
+
+    <md-tooltip md-direction="down" md-delay="400">
+        <span translate="nui.clisckSignOut.tooltip"></span>
+    </md-tooltip>
+</md-button>

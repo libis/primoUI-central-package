@@ -1,0 +1,25 @@
+
+prm-user-area {
+    background-color: transparent;
+    display: flex;
+}
+
+prm-topbar prm-authentication {
+    display: flex;
+    align-items: center;
+}
+prm-topbar prm-library-card-menu {
+    display: flex;
+    align-items: center;
+}
+
+prm-change-lang{
+    display: flex;
+    align-items: center;
+}
+
+prm-topbar button.md-button#logout {
+    min-width: 36px;
+    padding:left:1em;
+}
+
