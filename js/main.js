@@ -11,9 +11,7 @@ import Primo from './primo-explore-dom/js/primo'
 import Helper from './primo-explore-dom/js/primo/explore/helper'
 import Components from './components'
 
-import {
-  feedService
-} from './factories/feedService'
+import {feedService} from './factories/feedService'
 import MessageService from './factories/messageService'
 import FeedbackService from './factories/feedbackService'
 import AltmetricsService from './factories/altmetricsService'
@@ -60,7 +58,7 @@ let app = angular.module('centralCustom', ['ngMaterial'])
         //"Assessing Gospel Quotations in Justin Martyr"
         let fixDisplayData = function(pnxData) {
           if (pnxData) {
-            try {              
+            try {
               if (pnxData.display && pnxData.display.creator) {
                 pnxData.display.creator = pnxData.display.creator.map(c => {
                   let relator = c.match(/\(.*?\)/i);
