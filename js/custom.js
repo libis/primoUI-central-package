@@ -795,16 +795,18 @@ var SearchAlsoBodyController = function () {
           var terms = search.split(",");
           return terms[2] || "";
         }
-      }, {
-        "name": "Google Scholar",
-        "url": "https://scholar.google.com/scholar?q=",
-        "img": "/primo-explore/custom/CENTRAL_PACKAGE/img/google_icon.png",
-        "tooltip": "lbs.nui.search_also.tooltip.google_scolar",
-        mapping: function mapping(search) {
-          var terms = search.split(",");
-          return terms[2] || "";
-        }
-      }, {
+      },
+      // {
+      //   "name": "Google Scholar",
+      //   "url": "https://scholar.google.com/scholar?q=",
+      //   "img": "/primo-explore/custom/CENTRAL_PACKAGE/img/google_icon.png",
+      //   "tooltip": "lbs.nui.search_also.tooltip.google_scolar",
+      //   mapping: function mapping(search) {
+      //     var terms = search.split(",");
+      //     return terms[2] || "";
+      //   }
+      // },
+      {
         "name": "Worldcat",
         "url": "https://www.worldcat.org/search?q=",
         "img": "/primo-explore/custom/CENTRAL_PACKAGE/img/worldcat_icon.png",
