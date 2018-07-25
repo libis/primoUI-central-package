@@ -37,6 +37,10 @@ import {recommendationItemConfig} from './components/prmRecommendationItemAfter/
 import {databaseLinkConfig} from './components/general/databaseLink'
 import {removeOpenAccessConfig} from './components/prmFacetAfter/removeOpenAccess'
 
+import {searchAlsoConfig} from './components/prmFacetAfter/searchAlso'
+import {searchAlsoBodyConfig} from './components/prmFacetExactAfter/searchAlsoBody'
+
+
 export default class AfterComponents {
 
   static get all() {
@@ -84,7 +88,9 @@ export default class AfterComponents {
 
       {name: 'announcement', config: announcementsConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '.*'},
       {name: 'pay-my-fines-message', config: payMyFinesMessageConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '^KULeuven'},
-      {name: 'remove-open-access', config: removeOpenAccessConfig, enabled: true, appendTo: 'prm-facet-after', enableInView: '.*'}
+      {name: 'remove-open-access', config: removeOpenAccessConfig, enabled: true, appendTo: 'prm-facet-after', enableInView: '.*'},
+      {name: 'search-also', config: searchAlsoConfig, enabled: true, appendTo: 'prm-facet-after', enableInView: '.*'},
+      {name: 'search-also-body', config: searchAlsoBodyConfig, enabled: true, appendTo: 'prm-facet-exact-after', enableInView: '.*'}      
     ].filter( (component) => ( component.enabled && new RegExp(component.enableInView).test(window.appConfig.vid) ) );
   }
 }

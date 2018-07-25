@@ -65,6 +65,10 @@ var _databaseLink = require('./components/general/databaseLink');
 
 var _removeOpenAccess = require('./components/prmFacetAfter/removeOpenAccess');
 
+var _searchAlso = require('./components/prmFacetAfter/searchAlso');
+
+var _searchAlsoBody = require('./components/prmFacetExactAfter/searchAlsoBody');
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var AfterComponents = function () {
@@ -89,7 +93,7 @@ var AfterComponents = function () {
       return [{ name: 'libis-experiment', config: _experiment.experimentConfig, enabled: false, appendTo: 'prm-messages-and-blocks-overview-after', enableInView: '.*' }, { name: 'home-icon', config: _homeIcon.homeIconConfig, enabled: true, appendTo: 'prm-logo-after', enableInView: '^(?!ECB)' }, { name: 'beta-switch', config: _betaSwitch.betaSwitchConfig, enabled: false, appendTo: 'prm-logo-after', enableInView: '^(?!ECB)' }, { name: 'source-icon', config: _sourceIcon.sourceIconConfig, enabled: true, appendTo: 'prm-brief-result-after', enableInView: '^Lirias' }, { name: 'altmetric', config: _altmetric.altmetricConfig, enabled: true, appendTo: 'prm-brief-result-after', enableInView: '^Lirias|^KULeuven|^VDIC|^UCLL|^TMOREAM|^TMOREK|^SERV|^NBB' }, { name: 'altmetrics-badge', config: _altmetricsBadge.altmetricsBadgeConfig, enabled: true, appendTo: 'prm-full-view-after', enableInView: '^Lirias|^KULeuven|^VDIC|^UCLL|^TMOREAM|^TMOREK|^SERV|^NBB' }, { name: 'pnx-xml', config: _pnxXml.pnxXmlConfig, enabled: true, appendTo: 'prm-brief-result-container-after', enableInView: '.*' }, { name: 'pay-my-fines', config: _payMyFines.payMyFinesConfig, enabled: true, appendTo: 'prm-fines-overview-after', enableInView: '.*' }, { name: 'feedback', config: _feedback.feedbackConfig, enabled: true, appendTo: 'prm-main-menu-after', enableInView: '^(?!ECB)' }, { name: 'report-a-problem', config: _reportAProblem.reportAProblemConfig, enabled: true, appendTo: 'prm-service-header-after', enableInView: '.*' }, { name: 'prm-searchtips', config: _searchTip.searchTipConfig, enabled: true, appendTo: null, enableInView: '.*' }, { name: 'prm-disclaimer', config: _disclaimer.disclaimerConfig, enabled: true, appendTo: null, enableInView: '.*' }, { name: 'static-footer', config: _staticFooter.staticFooterConfig, enabled: true, appendTo: 'prm-explore-main-after', enableInView: '.*' }, { name: 'static-footer-account', config: _staticFooter.staticFooterConfig, enabled: true, appendTo: 'prm-account-after', enableInView: '.*' }, { name: 'remove-alerts', config: _removeAlerts.removeAlertsConfig, enabled: true, appendTo: 'prm-add-query-to-saved-searches-after', enableInView: '.*' }, { name: 'prm-dblink', config: _databaseLink.databaseLinkConfig, enabled: false, appendTo: null, enableInView: '.*' },
 
       /* lbs-components used in html-templates of the package */
-      { name: 'promote-login-static-footer', config: _PromoteLogin.promoteLoginConfig, enabled: true, appendTo: 'lbs-promote-login', enableInView: '^KULeuven' }, { name: 'ill-request-form-overview', config: _illRequestForm.illRequestFormConfig, enabled: false, appendTo: 'prm-requests-overview-after', enableInView: '.*' }, { name: 'ill-request-form', config: _illRequestForm.illRequestFormConfig, enabled: true, appendTo: 'prm-requests-after', enableInView: '^KULeuven|^VIVES' }, { name: 'announcement-feedback', config: _feedbackAnnouncement.feedbackAnnouncementConfig, enabled: false, appendTo: 'prm-top-bar-before', enableInView: '.*' }, { name: 'override-getlink-recommendation', config: _recommendationItem.recommendationItemConfig, enabled: true, appendTo: 'prm-recomendation-item-after', enableInView: '.*' }, { name: 'announcement', config: _announcements.announcementsConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '.*' }, { name: 'pay-my-fines-message', config: _finesMessage.finesMessageConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '^KULeuven' }, { name: 'remove-open-access', config: _removeOpenAccess.removeOpenAccessConfig, enabled: true, appendTo: 'prm-facet-after', enableInView: '.*' }].filter(function (component) {
+      { name: 'promote-login-static-footer', config: _PromoteLogin.promoteLoginConfig, enabled: true, appendTo: 'lbs-promote-login', enableInView: '^KULeuven' }, { name: 'ill-request-form-overview', config: _illRequestForm.illRequestFormConfig, enabled: false, appendTo: 'prm-requests-overview-after', enableInView: '.*' }, { name: 'ill-request-form', config: _illRequestForm.illRequestFormConfig, enabled: true, appendTo: 'prm-requests-after', enableInView: '^KULeuven|^VIVES' }, { name: 'announcement-feedback', config: _feedbackAnnouncement.feedbackAnnouncementConfig, enabled: false, appendTo: 'prm-top-bar-before', enableInView: '.*' }, { name: 'override-getlink-recommendation', config: _recommendationItem.recommendationItemConfig, enabled: true, appendTo: 'prm-recomendation-item-after', enableInView: '.*' }, { name: 'announcement', config: _announcements.announcementsConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '.*' }, { name: 'pay-my-fines-message', config: _finesMessage.finesMessageConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '^KULeuven' }, { name: 'remove-open-access', config: _removeOpenAccess.removeOpenAccessConfig, enabled: true, appendTo: 'prm-facet-after', enableInView: '.*' }, { name: 'search-also', config: _searchAlso.searchAlsoConfig, enabled: true, appendTo: 'prm-facet-after', enableInView: '.*' }, { name: 'search-also-body', config: _searchAlsoBody.searchAlsoBodyConfig, enabled: true, appendTo: 'prm-facet-exact-after', enableInView: '.*' }].filter(function (component) {
         return component.enabled && new RegExp(component.enableInView).test(window.appConfig.vid);
       });
     }
@@ -100,7 +104,7 @@ var AfterComponents = function () {
 
 exports.default = AfterComponents;
 
-},{"./components/general/databaseLink":2,"./components/general/disclaimer":4,"./components/general/experiment":5,"./components/general/removeAlerts":6,"./components/general/searchTip":7,"./components/general/staticFooter":8,"./components/prmBriefResultAfter/altmetric":9,"./components/prmBriefResultAfter/sourceIcon":10,"./components/prmFacetAfter/removeOpenAccess":11,"./components/prmFinesOverviewAfter/payMyFines":12,"./components/prmFullViewAfter/altmetricsBadge":13,"./components/prmLogoAfter/betaSwitch":14,"./components/prmLogoAfter/homeIcon":15,"./components/prmMainMenuAfter/feedback":16,"./components/prmPromoteLogin/PromoteLogin":17,"./components/prmRecommendationItemAfter/recommendationItem":18,"./components/prmRequestsAfter/illRequestForm":19,"./components/prmSearchResultThumbnailContainerAfter/pnxXml":20,"./components/prmServiceHeaderAfter/reportAProblem":21,"./components/prmTopBarBefore/announcements":22,"./components/prmTopBarBefore/feedbackAnnouncement":23,"./components/prmTopBarBefore/finesMessage":25,"./utils":40}],2:[function(require,module,exports){
+},{"./components/general/databaseLink":2,"./components/general/disclaimer":4,"./components/general/experiment":5,"./components/general/removeAlerts":6,"./components/general/searchTip":7,"./components/general/staticFooter":8,"./components/prmBriefResultAfter/altmetric":9,"./components/prmBriefResultAfter/sourceIcon":10,"./components/prmFacetAfter/removeOpenAccess":11,"./components/prmFacetAfter/searchAlso":12,"./components/prmFacetExactAfter/searchAlsoBody":13,"./components/prmFinesOverviewAfter/payMyFines":14,"./components/prmFullViewAfter/altmetricsBadge":15,"./components/prmLogoAfter/betaSwitch":16,"./components/prmLogoAfter/homeIcon":17,"./components/prmMainMenuAfter/feedback":18,"./components/prmPromoteLogin/PromoteLogin":19,"./components/prmRecommendationItemAfter/recommendationItem":20,"./components/prmRequestsAfter/illRequestForm":21,"./components/prmSearchResultThumbnailContainerAfter/pnxXml":22,"./components/prmServiceHeaderAfter/reportAProblem":23,"./components/prmTopBarBefore/announcements":24,"./components/prmTopBarBefore/feedbackAnnouncement":25,"./components/prmTopBarBefore/finesMessage":27,"./utils":41}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -724,6 +728,131 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+//facets.facet.facet_search_also in "facet labels"
+var SearchAlsoController = function SearchAlsoController($scope) {
+  var _this = this;
+
+  _classCallCheck(this, SearchAlsoController);
+
+  $scope.$watch(function () {
+    return _this.parentCtrl.parentCtrl.facetService.results;
+  }, function (n, o) {
+    if (n != o) {
+      if (_this.parentCtrl.parentCtrl.facetService.results.filter(function (f) {
+        return f.name == 'search_also';
+      }).length == 0) {
+        _this.parentCtrl.parentCtrl.facetService.results.unshift({
+          name: 'search_also',
+          displayedType: 'exact',
+          limitCount: 0,
+          facetGroupCollapsed: false,
+          values: undefined
+        });
+      }
+    }
+  });
+};
+
+SearchAlsoController.$inject = ['$scope'];
+
+var searchAlsoConfig = exports.searchAlsoConfig = {
+  bindings: { parentCtrl: '<' },
+  controller: SearchAlsoController
+};
+
+},{}],13:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var searchAlsoBodyHTML = "<div ng-if=\"$ctrl.name === 'search_also'\" class=\"lbs-search-also\">\n  <div ng-hide=\"$ctrl.parentCtrl.parentCtrl.facetGroup.facetGroupCollapsed\">\n    <div class=\"section-content animate-max-height-variable\">\n      <div class=\"md-chips md-chips-wrap\">\n        <div ng-repeat=\"target in $ctrl.targets\" aria-live=\"polite\" class=\"md-chip animate-opacity-and-scale facet-element-marker-local4\">\n          <div class=\"md-chip-content layout-row\" role=\"button\" tabindex=\"9\">\n            <strong dir=\"auto\" title=\"{{ target.name }}\">\n              <a ng-href=\"{{ target.url + target.mapping($ctrl.search) }}\" target=\"_blank\"  title=\"{{ (target.tooltip | translate )}}\">\n                <img ng-src=\"{{ target.img }}\" width=\"22\" height=\"22\" style=\"vertical-align:middle;padding-right:2px;\"> {{ target.name }}\n              </a>\n            </strong>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n";
+
+var SearchAlsoBodyController = function () {
+  function SearchAlsoBodyController($location) {
+    _classCallCheck(this, SearchAlsoBodyController);
+
+    this.location = $location;
+    this.targets = this._targets();
+  }
+
+  _createClass(SearchAlsoBodyController, [{
+    key: "_targets",
+    value: function _targets() {
+      return [{
+        "name": "UniCat",
+        "url": "https://unicat.be/uniCat?func=search&uiLanguage=en&query=",
+        "img": "/primo-explore/custom/CENTRAL_PACKAGE/img/unicat_icon.png",
+        "tooltip": "lbs.nui.search_also.tooltip.unicat",
+        mapping: function mapping(search) {
+          var terms = search.split(",");
+          return terms[2] || "";
+        }
+      }, {
+        "name": "Google Scholar",
+        "url": "https://scholar.google.com/scholar?q=",
+        "img": "/primo-explore/custom/CENTRAL_PACKAGE/img/google_icon.png",
+        "tooltip": "lbs.nui.search_also.tooltip.google_scolar",
+        mapping: function mapping(search) {
+          var terms = search.split(",");
+          return terms[2] || "";
+        }
+      }, {
+        "name": "Worldcat",
+        "url": "https://www.worldcat.org/search?q=",
+        "img": "/primo-explore/custom/CENTRAL_PACKAGE/img/worldcat_icon.png",
+        "tooltip": "lbs.nui.search_also.tooltip.worldcat",
+        mapping: function mapping(search) {
+          var type_mappings = {
+            "any": "kw",
+            "title": "ti",
+            "creator": "au",
+            "subject": "su"
+          };
+          var terms = search.split(",");
+          var type = type_mappings[terms[0]] || "kw";
+          var query = terms[2] || "";
+          return type + ':' + query;
+        }
+      }];
+    }
+  }, {
+    key: "search",
+    get: function get() {
+      return this.location.search().query;
+    }
+  }, {
+    key: "name",
+    get: function get() {
+      return this.parentCtrl.parentCtrl.facetGroup.name;
+    }
+  }]);
+
+  return SearchAlsoBodyController;
+}();
+
+SearchAlsoBodyController.$inject = ['$location'];
+
+var searchAlsoBodyConfig = exports.searchAlsoBodyConfig = {
+  bindings: { parentCtrl: '<' },
+  controller: SearchAlsoBodyController,
+  template: searchAlsoBodyHTML
+};
+
+},{}],14:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -766,7 +895,7 @@ var payMyFinesConfig = exports.payMyFinesConfig = {
   template: payMyFinesHTML
 };
 
-},{}],13:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -855,7 +984,7 @@ var altmetricsBadgeConfig = exports.altmetricsBadgeConfig = {
   template: AltmetricsBadgeHTML
 };
 
-},{}],14:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -955,7 +1084,7 @@ var betaSwitchConfig = exports.betaSwitchConfig = {
   template: betaSwitchHTML
 };
 
-},{}],15:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1019,7 +1148,7 @@ var homeIconConfig = exports.homeIconConfig = {
   template: homeIconHTML
 };
 
-},{}],16:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1061,7 +1190,7 @@ var feedbackConfig = exports.feedbackConfig = {
   template: ''
 };
 
-},{}],17:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1134,7 +1263,7 @@ var promoteLoginConfig = exports.promoteLoginConfig = {
   template: promoteLoginHTML
 };
 
-},{}],18:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1176,7 +1305,7 @@ var recommendationItemConfig = exports.recommendationItemConfig = {
   template: ''
 };
 
-},{}],19:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1248,7 +1377,7 @@ var illRequestFormConfig = exports.illRequestFormConfig = {
     template: illRequestFormHTML
 };
 
-},{}],20:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1354,7 +1483,7 @@ var pnxXmlConfig = exports.pnxXmlConfig = {
   template: pnxXmlHTML
 };
 
-},{}],21:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1479,7 +1608,7 @@ var reportAProblemConfig = exports.reportAProblemConfig = {
   template: ''
 };
 
-},{}],22:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1502,7 +1631,7 @@ var announcementsConfig = exports.announcementsConfig = {
   template: ''
 };
 
-},{}],23:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1552,7 +1681,7 @@ var feedbackAnnouncementConfig = exports.feedbackAnnouncementConfig = {
   template: ''
 };
 
-},{"./feedbackAnnouncementDialog":24}],24:[function(require,module,exports){
+},{"./feedbackAnnouncementDialog":26}],26:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1638,7 +1767,7 @@ exports.default = feedbackAnnouncementDialogController;
 
 feedbackAnnouncementDialogController.$inject = ['$scope', '$mdDialog', '$mdToast', '$translate', '$http', 'feedbackServiceURL', 'MessageService'];
 
-},{}],25:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1676,7 +1805,7 @@ var finesMessageConfig = exports.finesMessageConfig = {
   template: ''
 };
 
-},{}],26:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1740,7 +1869,7 @@ exports.default = AltmetricsService;
 
 AltmetricsService.$inject = ['$rootScope', '$compile', '$mdToast', '$timeout', '$window'];
 
-},{}],27:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1837,7 +1966,7 @@ var feedService = exports.feedService = ['$http', function ($http) {
   };
 }];
 
-},{}],28:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1900,7 +2029,7 @@ exports.default = FeedbackService;
 
 FeedbackService.$inject = ['$mdDialog'];
 
-},{"../components/general/dialog":3}],29:[function(require,module,exports){
+},{"../components/general/dialog":3}],31:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2023,176 +2152,7 @@ exports.default = MessageService;
 
 MessageService.$inject = ['$rootScope', '$compile', '$mdToast', '$sce', '$translate', '$timeout'];
 
-},{}],30:[function(require,module,exports){
-'use strict';
-
-var _primo = require('./primo-explore-dom/js/primo');
-
-var _primo2 = _interopRequireDefault(_primo);
-
-var _helper = require('./primo-explore-dom/js/primo/explore/helper');
-
-var _helper2 = _interopRequireDefault(_helper);
-
-var _components = require('./components');
-
-var _components2 = _interopRequireDefault(_components);
-
-var _feedService = require('./factories/feedService');
-
-var _messageService = require('./factories/messageService');
-
-var _messageService2 = _interopRequireDefault(_messageService);
-
-var _feedbackService = require('./factories/feedbackService');
-
-var _feedbackService2 = _interopRequireDefault(_feedbackService);
-
-var _altmetricsService = require('./factories/altmetricsService');
-
-var _altmetricsService2 = _interopRequireDefault(_altmetricsService);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//make Primo public
-window.Primo = _primo2.default;
-//load PrimoExplorer UI if angular.reloadWithDebugInfo() is ran
-/*
-  Central Package Loader
-
-  Do NOT edit this file.
-  All components are declared in "components.js"
-
-  KULeuven/LIBIS (c) 2017
-  Mehmet Celik
-*/
-window.setTimeout(function () {
-  if (_primo2.default.isDebugEnabled()) {
-    var uiURL = 'https://cdn.rawgit.com/mehmetc/primo-explore-dom-ui/fc0868df/js/custom.js';
-    //let uiURL = 'http://127.0.0.1:8000/js/custom.js';
-
-    _helper2.default.loadScript(uiURL).then(function () {
-      console.log('Injecting UI');
-      _primo2.default.explore.ui.toggle();
-    });
-  }
-}, 2000);
-
-//Create the centralCustom module;
-var app = angular.module('centralCustom', ['ngMaterial']).constant('feedbackServiceURL', 'https://services.libis.be/feedback').config(function ($sceDelegateProvider) {
-  $sceDelegateProvider.resourceUrlWhitelist(['**']);
-}).run(function ($templateCache, $rootScope) {
-  //$templateCache.put('components/search/fullView/full-view.html', fullViewHTML);
-  _helper2.default.loadScript('https://unpkg.com/hotkeys-js@2.0.8/dist/hotkeys.min.js').then(function () {
-    console.log('hotkeys.js loaded');
-  });
-  _helper2.default.loadScript('https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js?' + Date.now()).then(function () {
-    console.log('altmerics embed.js loaded');
-  });
-}).factory('FeedService', _feedService.feedService).service('AltmetricsService', _altmetricsService2.default).service('MessageService', _messageService2.default).service('FeedbackService', _feedbackService2.default).factory('apiCallInterceptor', [function () {
-  var apiCallInterceptor = {
-    response: function response(_response) {
-      //"Assessing Gospel Quotations in Justin Martyr"
-      var fixDisplayData = function fixDisplayData(pnxData) {
-        if (pnxData) {
-          try {
-            if (pnxData.display && pnxData.display.creator) {
-              pnxData.display.creator = pnxData.display.creator.map(function (c) {
-                var relator = c.match(/\(.*?\)/i);
-                var data = c.split(/\(.*?\)/i).join("");
-
-                if (relator) {
-                  c = c + ' $$Q' + data;
-                }
-                return c;
-              });
-            }
-
-            if (pnxData.display && pnxData.display.contributor) {
-              pnxData.display.contributor = pnxData.display.contributor.map(function (c) {
-                var relator = c.match(/\(.*?\)/i);
-                var data = c.split(/\(.*?\)/i).join("");
-
-                if (relator) {
-                  c = c + ' $$Q' + data;
-                }
-                return c;
-              });
-            }
-          } catch (e) {
-            console.log(e);
-            console.log('no data');
-          }
-        }
-        return pnxData;
-      };
-
-      if (/^\/primo_library\/libweb\/webservices\/rest\/primo-explore\/v1\/pnxs/.test(_response.config.url)) {
-        var data = _response.data;
-        try {
-          if (Object.keys(data).includes('docs')) {
-            data.docs.map(function (p) {
-              return fixDisplayData(p.pnx);
-            });
-          } else {
-            if (Object.keys(data).includes('pnx')) {
-              data.pnx = fixDisplayData(data.pnx);
-            }
-          }
-        } catch (e) {
-          console.log(e);
-          console.log('no data');
-        }
-        _response.data = data;
-      }
-
-      return _response;
-    }
-  };
-
-  return apiCallInterceptor;
-}]).config(['$httpProvider', function ($httpProvider) {
-  $httpProvider.interceptors.push('apiCallInterceptor');
-}]);
-
-//Contains the after component selectors that will be injected
-var afterComponents = {};
-
-//Create all components and determine in which after component these need to be
-//injected
-console.log('Loading centralCustom components');
-_components2.default.all.forEach(function (component) {
-  console.log(component.name);
-  if (component.enabled) {
-    if (component.appendTo) {
-      var elements = afterComponents[component.appendTo] || [];
-      //elements.push(component.name);
-      elements.push({
-        'name': component.name,
-        'enableInView': component.enableInView
-      });
-      afterComponents[component.appendTo] = elements;
-    }
-    app.constant('afterComponents', afterComponents);
-    app.component(component.name.toCamelCase(), component.config);
-  }
-});
-
-//Inject place holders into the after components
-Object.keys(afterComponents).forEach(function (component, i) {
-  var subComponents = afterComponents[component];
-
-  app.component(component.toCamelCase(), {
-    bindings: {
-      parentCtrl: '<'
-    },
-    template: subComponents.map(function (m) {
-      return '<' + m.name + ' parent-ctrl="$ctrl"></' + m.name + '>';
-    }).join("")
-  });
-});
-
-},{"./components":1,"./factories/altmetricsService":26,"./factories/feedService":27,"./factories/feedbackService":28,"./factories/messageService":29,"./primo-explore-dom/js/primo":31,"./primo-explore-dom/js/primo/explore/helper":34}],31:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2353,7 +2313,7 @@ var Primo = function () {
 
 exports.default = Primo;
 
-},{"./primo/explore":32,"./primo/explore/helper":34,"./primo/facets":35,"./primo/records":36,"./primo/user":37,"./primo/view":38}],32:[function(require,module,exports){
+},{"./primo/explore":33,"./primo/explore/helper":35,"./primo/facets":36,"./primo/records":37,"./primo/user":38,"./primo/view":39}],33:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2410,7 +2370,7 @@ var Explore = function () {
 
 exports.default = Explore;
 
-},{"./explore/components":33,"./explore/helper":34}],33:[function(require,module,exports){
+},{"./explore/components":34,"./explore/helper":35}],34:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2530,7 +2490,7 @@ var Components = function () {
 
 exports.default = Components;
 
-},{"../../vendor/css-selector-generator.js":39,"./helper":34}],34:[function(require,module,exports){
+},{"../../vendor/css-selector-generator.js":40,"./helper":35}],35:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2807,7 +2767,7 @@ var Helper = function () {
 
 exports.default = Helper;
 
-},{}],35:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2864,7 +2824,7 @@ var Facets = function () {
 
 exports.default = Facets;
 
-},{"./explore/components":33,"./explore/helper":34}],36:[function(require,module,exports){
+},{"./explore/components":34,"./explore/helper":35}],37:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2924,7 +2884,7 @@ var Records = function () {
 
 exports.default = Records;
 
-},{"./explore/components":33,"./explore/helper":34}],37:[function(require,module,exports){
+},{"./explore/components":34,"./explore/helper":35}],38:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2983,7 +2943,7 @@ var User = function () {
 
 exports.default = User;
 
-},{"./explore/helper":34}],38:[function(require,module,exports){
+},{"./explore/helper":35}],39:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3019,7 +2979,7 @@ var View = function View() {
 
 exports.default = View;
 
-},{"./explore/helper":34}],39:[function(require,module,exports){
+},{"./explore/helper":35}],40:[function(require,module,exports){
 'use strict';
 
 (function () {
@@ -3335,7 +3295,7 @@ exports.default = View;
   }
 }).call(undefined);
 
-},{}],40:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 'use strict';
 
 /*
@@ -3350,7 +3310,176 @@ String.prototype.toCamelCase = function () {
   }).join('');
 };
 
-},{}]},{},[30])
+},{}],42:[function(require,module,exports){
+'use strict';
+
+var _primo = require('./primo-explore-dom/js/primo');
+
+var _primo2 = _interopRequireDefault(_primo);
+
+var _helper = require('./primo-explore-dom/js/primo/explore/helper');
+
+var _helper2 = _interopRequireDefault(_helper);
+
+var _components = require('./components');
+
+var _components2 = _interopRequireDefault(_components);
+
+var _feedService = require('./factories/feedService');
+
+var _messageService = require('./factories/messageService');
+
+var _messageService2 = _interopRequireDefault(_messageService);
+
+var _feedbackService = require('./factories/feedbackService');
+
+var _feedbackService2 = _interopRequireDefault(_feedbackService);
+
+var _altmetricsService = require('./factories/altmetricsService');
+
+var _altmetricsService2 = _interopRequireDefault(_altmetricsService);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//make Primo public
+window.Primo = _primo2.default;
+//load PrimoExplorer UI if angular.reloadWithDebugInfo() is ran
+/*
+  Central Package Loader
+
+  Do NOT edit this file.
+  All components are declared in "components.js"
+
+  KULeuven/LIBIS (c) 2017
+  Mehmet Celik
+*/
+window.setTimeout(function () {
+  if (_primo2.default.isDebugEnabled()) {
+    var uiURL = 'https://cdn.rawgit.com/mehmetc/primo-explore-dom-ui/fc0868df/js/custom.js';
+    //let uiURL = 'http://127.0.0.1:8000/js/custom.js';
+
+    _helper2.default.loadScript(uiURL).then(function () {
+      console.log('Injecting UI');
+      _primo2.default.explore.ui.toggle();
+    });
+  }
+}, 2000);
+
+//Create the centralCustom module;
+var app = angular.module('centralCustom', ['ngMaterial']).constant('feedbackServiceURL', 'https://services.libis.be/feedback').config(function ($sceDelegateProvider) {
+  $sceDelegateProvider.resourceUrlWhitelist(['**']);
+}).run(function ($templateCache, $rootScope) {
+  //$templateCache.put('components/search/fullView/full-view.html', fullViewHTML);
+  _helper2.default.loadScript('https://unpkg.com/hotkeys-js@2.0.8/dist/hotkeys.min.js').then(function () {
+    console.log('hotkeys.js loaded');
+  });
+  _helper2.default.loadScript('https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js?' + Date.now()).then(function () {
+    console.log('altmerics embed.js loaded');
+  });
+}).factory('FeedService', _feedService.feedService).service('AltmetricsService', _altmetricsService2.default).service('MessageService', _messageService2.default).service('FeedbackService', _feedbackService2.default).factory('apiCallInterceptor', [function () {
+  var apiCallInterceptor = {
+    response: function response(_response) {
+      //"Assessing Gospel Quotations in Justin Martyr"
+      var fixDisplayData = function fixDisplayData(pnxData) {
+        if (pnxData) {
+          try {
+            if (pnxData.display && pnxData.display.creator) {
+              pnxData.display.creator = pnxData.display.creator.map(function (c) {
+                var relator = c.match(/\(.*?\)/i);
+                var data = c.split(/\(.*?\)/i).join("");
+
+                if (relator) {
+                  c = c + ' $$Q' + data;
+                }
+                return c;
+              });
+            }
+
+            if (pnxData.display && pnxData.display.contributor) {
+              pnxData.display.contributor = pnxData.display.contributor.map(function (c) {
+                var relator = c.match(/\(.*?\)/i);
+                var data = c.split(/\(.*?\)/i).join("");
+
+                if (relator) {
+                  c = c + ' $$Q' + data;
+                }
+                return c;
+              });
+            }
+          } catch (e) {
+            console.log(e);
+            console.log('no data');
+          }
+        }
+        return pnxData;
+      };
+
+      if (/^\/primo_library\/libweb\/webservices\/rest\/primo-explore\/v1\/pnxs/.test(_response.config.url)) {
+        var data = _response.data;
+        try {
+          if (Object.keys(data).includes('docs')) {
+            data.docs.map(function (p) {
+              return fixDisplayData(p.pnx);
+            });
+          } else {
+            if (Object.keys(data).includes('pnx')) {
+              data.pnx = fixDisplayData(data.pnx);
+            }
+          }
+        } catch (e) {
+          console.log(e);
+          console.log('no data');
+        }
+        _response.data = data;
+      }
+
+      return _response;
+    }
+  };
+
+  return apiCallInterceptor;
+}]).config(['$httpProvider', function ($httpProvider) {
+  $httpProvider.interceptors.push('apiCallInterceptor');
+}]);
+
+//Contains the after component selectors that will be injected
+var afterComponents = {};
+
+//Create all components and determine in which after component these need to be
+//injected
+console.log('Loading centralCustom components');
+_components2.default.all.forEach(function (component) {
+  console.log(component.name);
+  if (component.enabled) {
+    if (component.appendTo) {
+      var elements = afterComponents[component.appendTo] || [];
+      //elements.push(component.name);
+      elements.push({
+        'name': component.name,
+        'enableInView': component.enableInView
+      });
+      afterComponents[component.appendTo] = elements;
+    }
+    app.constant('afterComponents', afterComponents);
+    app.component(component.name.toCamelCase(), component.config);
+  }
+});
+
+//Inject place holders into the after components
+Object.keys(afterComponents).forEach(function (component, i) {
+  var subComponents = afterComponents[component];
+
+  app.component(component.toCamelCase(), {
+    bindings: {
+      parentCtrl: '<'
+    },
+    template: subComponents.map(function (m) {
+      return '<' + m.name + ' parent-ctrl="$ctrl"></' + m.name + '>';
+    }).join("")
+  });
+});
+
+},{"./components":1,"./factories/altmetricsService":28,"./factories/feedService":29,"./factories/feedbackService":30,"./factories/messageService":31,"./primo-explore-dom/js/primo":32,"./primo-explore-dom/js/primo/explore/helper":35}]},{},[42])
 
 
 //# sourceMappingURL=custom.js.map

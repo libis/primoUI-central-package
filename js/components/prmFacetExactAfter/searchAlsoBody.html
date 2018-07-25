@@ -1,0 +1,17 @@
+<div ng-if="$ctrl.name === 'search_also'" class="lbs-search-also">
+  <div ng-hide="$ctrl.parentCtrl.parentCtrl.facetGroup.facetGroupCollapsed">
+    <div class="section-content animate-max-height-variable">
+      <div class="md-chips md-chips-wrap">
+        <div ng-repeat="target in $ctrl.targets" aria-live="polite" class="md-chip animate-opacity-and-scale facet-element-marker-local4">
+          <div class="md-chip-content layout-row" role="button" tabindex="9">
+            <strong dir="auto" title="{{ target.name }}">
+              <a ng-href="{{ target.url + target.mapping($ctrl.search) }}" target="_blank"  title="{{ (target.tooltip | translate )}}">
+                <img ng-src="{{ target.img }}" width="22" height="22" style="vertical-align:middle;padding-right:2px;"> {{ target.name }}
+              </a>
+            </strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
