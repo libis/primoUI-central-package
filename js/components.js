@@ -16,7 +16,6 @@ import {homeIconConfig} from './components/prmLogoAfter/homeIcon'
 import {betaSwitchConfig} from './components/prmLogoAfter/betaSwitch'
 import {sourceIconConfig} from './components/prmBriefResultAfter/sourceIcon'
 import {altmetricConfig} from './components/prmBriefResultAfter/altmetric'
-
 import {altmetricsBadgeConfig} from './components/prmFullViewAfter/altmetricsBadge'
 
 import {pnxXmlConfig} from './components/prmSearchResultThumbnailContainerAfter/pnxXml'
@@ -64,7 +63,7 @@ export default class AfterComponents {
       {name: 'altmetric', config: altmetricConfig, enabled: true, appendTo: 'prm-brief-result-after', enableInView: '^Lirias|^KULeuven|^VDIC|^UCLL|^TMOREAM|^TMOREK|^SERV|^NBB'},
 
       {name: 'altmetrics-badge', config: altmetricsBadgeConfig, enabled: true, appendTo: 'prm-full-view-after', enableInView: '^Lirias|^KULeuven|^VDIC|^UCLL|^TMOREAM|^TMOREK|^SERV|^NBB'},
-
+      
       {name: 'pnx-xml', config: pnxXmlConfig, enabled: true, appendTo: 'prm-brief-result-container-after', enableInView: '.*'},
       {name: 'pay-my-fines', config: payMyFinesConfig, enabled: true, appendTo: 'prm-fines-overview-after', enableInView: '.*'},
       {name: 'feedback', config: feedbackConfig, enabled: true, appendTo: 'prm-main-menu-after', enableInView: '^(?!ECB)'},
