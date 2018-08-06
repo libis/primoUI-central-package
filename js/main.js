@@ -7,6 +7,8 @@
   KULeuven/LIBIS (c) 2017
   Mehmet Celik
 */
+
+
 import Primo from './primo-explore-dom/js/primo'
 import Helper from './primo-explore-dom/js/primo/explore/helper'
 import Components from './components'
@@ -61,6 +63,7 @@ let app = angular.module('centralCustom', ['ngMaterial'])
         let fixDisplayData = function(pnxData) {
           if (pnxData) {
             try {
+              /*
               if (pnxData.display && pnxData.display.creator) {
                 pnxData.display.creator = pnxData.display.creator.map(c => {
                   let relator = c.match(/\(.*?\)/i);
@@ -84,7 +87,7 @@ let app = angular.module('centralCustom', ['ngMaterial'])
                   return c;
                 });
               }
-
+              */
             } catch (e) {
               console.log(e);
               console.log('no data');
@@ -116,12 +119,11 @@ let app = angular.module('centralCustom', ['ngMaterial'])
         return response;
       }
     }
-
     return apiCallInterceptor;
-  }])
-  .config(['$httpProvider', ($httpProvider) => {
+  }]).config(['$httpProvider', ($httpProvider) => {
     $httpProvider.interceptors.push('apiCallInterceptor');
   }]);
+  
 
 
 //Contains the after component selectors that will be injected
