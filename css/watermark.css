@@ -1,0 +1,39 @@
+@media only screen and (min-width: 1280px) {
+    prm-topbar {
+        z-index: 6;
+    }
+
+  prm-explore-main .header{
+    position: relative;
+  }
+  prm-explore-main .header::before {
+      z-index: 5;
+      background: transparent url("../img/watermark_gray.png") no-repeat;
+      background-size: auto 115%;
+      content: '';
+      background-position: 0 -5px;
+      height: 100%;
+      width: 40%;
+      position: absolute;
+      left: -5px;
+      opacity: 0.4;
+      mix-blend-mode: overlay;
+  }
+}
+
+/* check if compatible */
+@supports not (mix-blend-mode: overlay) {
+  prm-explore-main .header::before {
+      background: transparent url("../img/watermark.png") no-repeat;
+      background-size: auto 115%;
+      background-position: 0 -5px;
+  }
+}
+/* check if IE */
+@media screen\0, @media screen\9 {
+  prm-explore-main .header::before {
+      background: transparent url("../img/watermark.png") no-repeat;
+      background-size: auto 115%;
+      background-position: 0 -5px;
+  }
+}

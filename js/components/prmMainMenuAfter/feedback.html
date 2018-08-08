@@ -12,64 +12,60 @@
   </md-button>
 -->
 
-  <style>
+<style>
+  #mainMenu #mainMenuHelp {
+    display: none;
+  }
+
+  #mainMenu #mainMenuFeedback,
+  #mainMenu #mainMenuHelp {
+    max-width: 60px;
+    min-width: 55px;
+  }
+
+  #mainMenu #mainMenuFeedback {
+    margin-left: 3em !important;
+    box-shadow: 1px 0 0 0 rgba(0, 0, 0, .1), -1px 0 0 0 rgba(0, 0, 0, .1);
+  }
+
+  @media (max-width : 959px) {
     #mainMenu #mainMenuFeedback,
     #mainMenu #mainMenuHelp {
-      max-width: 60px;
-      min-width: 55px;
+      padding-left: 0.2em;
+      padding-right: 0.2em;
     }
-  
-    #mainMenu #mainMenuFeedback {
-      margin-left: 3em !important;
-      box-shadow: 1px 0 0 0 rgba(0,0,0,.1), -1px 0 0 0 rgba(0,0,0,.1);
+  }
+
+  @media (max-width : 750px) {
+    #mainMenu #mainMenuFeedback,
+    #mainMenu #mainMenuHelp {
+      display: none;
     }
-  
-  @media (max-width:  959px) {
-        #mainMenu #mainMenuFeedback,
-        #mainMenu #mainMenuHelp {
-              padding-left: 0.2em;
-              padding-right: 0.2em;
-          }
-      }
-  
-      @media (max-width:  750px) {
-        #mainMenu #mainMenuFeedback,
-        #mainMenu #mainMenuHelp {
-              display: none;
-          }
-      }
-  </style>
-  
-    <md-button id='mainMenuFeedback' tabindex="0" role="listitem" tabindex="0" ng-href=""
-               class="zero-margin flex-button multi-line-button button-over-dark"
-               layout="column" layout-align="center center" (click)="$ctrl.showFeedbackForm($event)"
-               aria-label="mainmenu.label.feedback">
-               <!--
+  }
+</style>
+
+<md-button id='mainMenuFeedback' tabindex="0" role="listitem" tabindex="0" ng-href="" class="zero-margin flex-button multi-line-button button-over-dark"
+  layout="column" layout-align="center center" (click)="$ctrl.showFeedbackForm($event)" aria-label="mainmenu.label.feedback">
+  <!--
         <span class="item-content" translate="mainmenu.label.feedback"></span>
                 -->
-        <prm-icon icon-type="svg" svg-icon-set="action" icon-definition="ic_announcement_24px"></prm-icon>
-  
-        <md-tooltip md-direction="down" md-delay="400" class="multi-row-tooltip slide-tooltip-anim">
-          <span class="item-description popover animate-popover"
-                translate="nui.mainmenu.description.feedback"></span>
-        </md-tooltip>
-    </md-button>
-  
-    
-    <md-button id='mainMenuHelp' tabindex="0" role="listitem" tabindex="0" ng-href="https://knowledge.exlibrisgroup.com/Primo/Product_Documentation/050New_Primo_User_Interface/End_User_Help_-_New_UI"
-               class="zero-margin flex-button multi-line-button button-over-dark"
-               layout="column" layout-align="center center"
-               aria-label="mainmenu.label.help"
-               target="_blank"
-      >
-               <!--
+  <prm-icon icon-type="svg" svg-icon-set="action" icon-definition="ic_announcement_24px"></prm-icon>
+
+  <md-tooltip md-direction="down" md-delay="400" class="multi-row-tooltip slide-tooltip-anim">
+    <span class="item-description popover animate-popover" translate="nui.mainmenu.description.feedback"></span>
+  </md-tooltip>
+</md-button>
+
+
+<md-button id='mainMenuHelp' tabindex="0" role="listitem" tabindex="0" ng-href="https://knowledge.exlibrisgroup.com/Primo/Product_Documentation/050New_Primo_User_Interface/End_User_Help_-_New_UI"
+  class="zero-margin flex-button multi-line-button button-over-dark" layout="column" layout-align="center center" aria-label="mainmenu.label.help"
+  target="_blank">
+  <!--
         <span class="item-content" translate="mainmenu.label.help"></span>
                 -->
-        <prm-icon icon-type="svg" svg-icon-set="primo-ui" icon-definition="help-circle-outline"></prm-icon>
-        
-        <md-tooltip md-direction="down" md-delay="400" class="multi-row-tooltip slide-tooltip-anim">
-          <span class="item-description popover animate-popover"
-                translate="nui.mainmenu.description.help"></span>
-        </md-tooltip>
-    </md-button>
-  
+  <prm-icon icon-type="svg" svg-icon-set="primo-ui" icon-definition="help-circle-outline"></prm-icon>
+
+  <md-tooltip md-direction="down" md-delay="400" class="multi-row-tooltip slide-tooltip-anim">
+    <span class="item-description popover animate-popover" translate="nui.mainmenu.description.help"></span>
+  </md-tooltip>
+</md-button>

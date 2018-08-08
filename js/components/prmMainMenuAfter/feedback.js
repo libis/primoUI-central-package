@@ -10,7 +10,7 @@ class FeedbackController {
   showFeedbackForm($event) {
     this.feedbackService.show($event, feedbackDialogHTML);
   }
-
+  
 }
 
 FeedbackController.$inject = ['$element', '$compile', '$scope', 'FeedbackService'];
