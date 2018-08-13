@@ -7,6 +7,10 @@
       z-index:101;
     }
 
+    prm-search-bar .advanced-search-backdrop.visible{
+      z-index: 100;
+    }
+
     #banner {
         z-index: 101;
     }
@@ -21,6 +25,7 @@
       content: '';
       background-position: 0 -5px;
       height: 100%;
+      max-height: 250px;
       width: 30%;
       position: absolute;
       left: -5px;
