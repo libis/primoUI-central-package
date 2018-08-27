@@ -12,6 +12,7 @@ import './utils'
 /* import your templates */
 
 import changeLangWithoutUserAreaHTML from '../html/templates/change-lang-without-user-area.html'
+import prmLoanBugFixHTML from '../html/templates/prm-loan-bug-fix.html'
 
 export default class Templates {
     static get all() {
@@ -30,6 +31,12 @@ export default class Templates {
                 template: changeLangWithoutUserAreaHTML,
                 enabled: true,
                 enableInView: 'VDIC'
+            },
+            {
+                id: 'components/account/loans/loan.html',
+                template: prmLoanBugFixHTML,
+                enabled: true,
+                enableInView: '.*'
             }
         ].filter((template) => (template.enabled && new RegExp(template.enableInView).test(window.appConfig.vid)));
     }

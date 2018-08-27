@@ -16,6 +16,7 @@ import {homeIconConfig} from './components/prmLogoAfter/homeIcon'
 
 import {newSearchButtonConfig} from './components/prmLogoAfter/newSearchButton'
 import {languageDependentLogoConfig} from './components/prmLogoAfter/languageDependentLogo'
+import {viewLogoConfig} from './components/prmLogoAfter/viewLogo'
 
 
 import {betaSwitchConfig} from './components/prmLogoAfter/betaSwitch'
@@ -30,7 +31,6 @@ import {searchTipConfig} from './components/general/searchTip'
 import {disclaimerConfig} from './components/general/disclaimer'
 
 import {LanguageSelectionConfig} from './components/general/ConfigLanguageSelection'
-
 
 import {reportAProblemConfig} from './components/prmServiceHeaderAfter/reportAProblem'
 import {finesMessageConfig as payMyFinesMessageConfig} from './components/prmTopBarBefore/finesMessage'
@@ -71,6 +71,10 @@ export default class AfterComponents {
       {name: 'beta-switch', config: betaSwitchConfig, enabled: false, appendTo: 'prm-logo-after', enableInView: '^(?!ECB)'},
 
       {name: 'language-dependent-logo', config: languageDependentLogoConfig, enabled: true, appendTo: 'prm-logo-after', enableInView: '^(?!ECB)'},
+
+      {name: 'view-logo', config: viewLogoConfig, enabled: true, appendTo: 'prm-logo-after', enableInView: '^(?!ECB)'},
+
+      
 
       {name: 'source-icon', config: sourceIconConfig, enabled: true, appendTo: 'prm-brief-result-after', enableInView: '.*'},
       {name: 'altmetric', config: altmetricConfig, enabled: true, appendTo: 'prm-brief-result-after', enableInView: '^Lirias|^KULeuven|^VDIC|^UCLL|^TMOREAM|^TMOREK|^SERV|^NBB'},

@@ -29,6 +29,8 @@ var _newSearchButton = require('./components/prmLogoAfter/newSearchButton');
 
 var _languageDependentLogo = require('./components/prmLogoAfter/languageDependentLogo');
 
+var _viewLogo = require('./components/prmLogoAfter/viewLogo');
+
 var _betaSwitch = require('./components/prmLogoAfter/betaSwitch');
 
 var _sourceIcon = require('./components/prmBriefResultAfter/sourceIcon');
@@ -96,7 +98,7 @@ var AfterComponents = function () {
             <home-icon parentCtrl='$ctrl'></home-icon>
           </prm-logo-after>
       */
-      return [{ name: 'libis-experiment', config: _experiment.experimentConfig, enabled: false, appendTo: 'prm-messages-and-blocks-overview-after', enableInView: '.*' }, { name: 'home-icon', config: _homeIcon.homeIconConfig, enabled: false, appendTo: null, enableInView: '' }, { name: 'beta-switch', config: _betaSwitch.betaSwitchConfig, enabled: false, appendTo: 'prm-logo-after', enableInView: '^(?!ECB)' }, { name: 'language-dependent-logo', config: _languageDependentLogo.languageDependentLogoConfig, enabled: true, appendTo: 'prm-logo-after', enableInView: '^(?!ECB)' }, { name: 'source-icon', config: _sourceIcon.sourceIconConfig, enabled: true, appendTo: 'prm-brief-result-after', enableInView: '.*' }, { name: 'altmetric', config: _altmetric.altmetricConfig, enabled: true, appendTo: 'prm-brief-result-after', enableInView: '^Lirias|^KULeuven|^VDIC|^UCLL|^TMOREAM|^TMOREK|^SERV|^NBB' }, { name: 'altmetrics-badge', config: _altmetricsBadge.altmetricsBadgeConfig, enabled: true, appendTo: 'prm-full-view-after', enableInView: '^Lirias|^KULeuven|^VDIC|^UCLL|^TMOREAM|^TMOREK|^SERV|^NBB' }, { name: 'pnx-xml', config: _pnxXml.pnxXmlConfig, enabled: true, appendTo: 'prm-brief-result-container-after', enableInView: '.*' }, { name: 'pay-my-fines', config: _payMyFines.payMyFinesConfig, enabled: true, appendTo: 'prm-fines-overview-after', enableInView: '.*' }, { name: 'feedback', config: _feedback.feedbackConfig, enabled: true, appendTo: 'prm-main-menu-after', enableInView: '^(?!ECB)' }, { name: 'language-selection', config: _ConfigLanguageSelection.LanguageSelectionConfig, enabled: true, appendTo: 'prm-main-menu-after', enableInView: '^(?!ECB)' }, { name: 'new-search-button', config: _newSearchButton.newSearchButtonConfig, enabled: true, appendTo: 'prm-top-nav-bar-links-after', enableInView: '^(?!ECB)' }, { name: 'report-a-problem', config: _reportAProblem.reportAProblemConfig, enabled: true, appendTo: 'prm-service-header-after', enableInView: '.*' }, { name: 'prm-searchtips', config: _searchTip.searchTipConfig, enabled: true, appendTo: null, enableInView: '.*' }, { name: 'prm-disclaimer', config: _disclaimer.disclaimerConfig, enabled: true, appendTo: null, enableInView: '.*' }, { name: 'static-footer', config: _staticFooter.staticFooterConfig, enabled: true, appendTo: 'prm-explore-footer-after', enableInView: '.*' },
+      return [{ name: 'libis-experiment', config: _experiment.experimentConfig, enabled: false, appendTo: 'prm-messages-and-blocks-overview-after', enableInView: '.*' }, { name: 'home-icon', config: _homeIcon.homeIconConfig, enabled: false, appendTo: null, enableInView: '' }, { name: 'beta-switch', config: _betaSwitch.betaSwitchConfig, enabled: false, appendTo: 'prm-logo-after', enableInView: '^(?!ECB)' }, { name: 'language-dependent-logo', config: _languageDependentLogo.languageDependentLogoConfig, enabled: true, appendTo: 'prm-logo-after', enableInView: '^(?!ECB)' }, { name: 'view-logo', config: _viewLogo.viewLogoConfig, enabled: true, appendTo: 'prm-logo-after', enableInView: '^(?!ECB)' }, { name: 'source-icon', config: _sourceIcon.sourceIconConfig, enabled: true, appendTo: 'prm-brief-result-after', enableInView: '.*' }, { name: 'altmetric', config: _altmetric.altmetricConfig, enabled: true, appendTo: 'prm-brief-result-after', enableInView: '^Lirias|^KULeuven|^VDIC|^UCLL|^TMOREAM|^TMOREK|^SERV|^NBB' }, { name: 'altmetrics-badge', config: _altmetricsBadge.altmetricsBadgeConfig, enabled: true, appendTo: 'prm-full-view-after', enableInView: '^Lirias|^KULeuven|^VDIC|^UCLL|^TMOREAM|^TMOREK|^SERV|^NBB' }, { name: 'pnx-xml', config: _pnxXml.pnxXmlConfig, enabled: true, appendTo: 'prm-brief-result-container-after', enableInView: '.*' }, { name: 'pay-my-fines', config: _payMyFines.payMyFinesConfig, enabled: true, appendTo: 'prm-fines-overview-after', enableInView: '.*' }, { name: 'feedback', config: _feedback.feedbackConfig, enabled: true, appendTo: 'prm-main-menu-after', enableInView: '^(?!ECB)' }, { name: 'language-selection', config: _ConfigLanguageSelection.LanguageSelectionConfig, enabled: true, appendTo: 'prm-main-menu-after', enableInView: '^(?!ECB)' }, { name: 'new-search-button', config: _newSearchButton.newSearchButtonConfig, enabled: true, appendTo: 'prm-top-nav-bar-links-after', enableInView: '^(?!ECB)' }, { name: 'report-a-problem', config: _reportAProblem.reportAProblemConfig, enabled: true, appendTo: 'prm-service-header-after', enableInView: '.*' }, { name: 'prm-searchtips', config: _searchTip.searchTipConfig, enabled: true, appendTo: null, enableInView: '.*' }, { name: 'prm-disclaimer', config: _disclaimer.disclaimerConfig, enabled: true, appendTo: null, enableInView: '.*' }, { name: 'static-footer', config: _staticFooter.staticFooterConfig, enabled: true, appendTo: 'prm-explore-footer-after', enableInView: '.*' },
       //{name: 'static-footer-account', config: staticFooterConfig, enabled: true, appendTo: 'prm-account-after', enableInView: '.*'},
       { name: 'remove-alerts', config: _removeAlerts.removeAlertsConfig, enabled: true, appendTo: 'prm-add-query-to-saved-searches-after', enableInView: '.*' }, { name: 'prm-dblink', config: _databaseLink.databaseLinkConfig, enabled: false, appendTo: null, enableInView: '.*' },
 
@@ -112,7 +114,7 @@ var AfterComponents = function () {
 
 exports.default = AfterComponents;
 
-},{"./components/general/ConfigLanguageSelection":2,"./components/general/databaseLink":3,"./components/general/disclaimer":5,"./components/general/experiment":6,"./components/general/removeAlerts":7,"./components/general/searchTip":8,"./components/general/staticFooter":9,"./components/prmBriefResultAfter/altmetric":10,"./components/prmBriefResultAfter/sourceIcon":11,"./components/prmFacetAfter/removeOpenAccess":12,"./components/prmFacetAfter/searchAlso":13,"./components/prmFacetExactAfter/searchAlsoBody":14,"./components/prmFinesOverviewAfter/payMyFines":15,"./components/prmFullViewAfter/altmetricsBadge":16,"./components/prmLogoAfter/betaSwitch":17,"./components/prmLogoAfter/homeIcon":18,"./components/prmLogoAfter/languageDependentLogo":19,"./components/prmLogoAfter/newSearchButton":20,"./components/prmMainMenuAfter/feedback":21,"./components/prmPromoteLogin/PromoteLogin":22,"./components/prmRecommendationItemAfter/recommendationItem":23,"./components/prmRequestsAfter/illRequestForm":24,"./components/prmSearchResultThumbnailContainerAfter/pnxXml":25,"./components/prmServiceHeaderAfter/reportAProblem":26,"./components/prmTopBarBefore/announcements":27,"./components/prmTopBarBefore/feedbackAnnouncement":28,"./components/prmTopBarBefore/finesMessage":30,"./utils":46}],2:[function(require,module,exports){
+},{"./components/general/ConfigLanguageSelection":2,"./components/general/databaseLink":3,"./components/general/disclaimer":5,"./components/general/experiment":6,"./components/general/removeAlerts":7,"./components/general/searchTip":8,"./components/general/staticFooter":9,"./components/prmBriefResultAfter/altmetric":10,"./components/prmBriefResultAfter/sourceIcon":11,"./components/prmFacetAfter/removeOpenAccess":12,"./components/prmFacetAfter/searchAlso":13,"./components/prmFacetExactAfter/searchAlsoBody":14,"./components/prmFinesOverviewAfter/payMyFines":15,"./components/prmFullViewAfter/altmetricsBadge":16,"./components/prmLogoAfter/betaSwitch":17,"./components/prmLogoAfter/homeIcon":18,"./components/prmLogoAfter/languageDependentLogo":19,"./components/prmLogoAfter/newSearchButton":20,"./components/prmLogoAfter/viewLogo":21,"./components/prmMainMenuAfter/feedback":22,"./components/prmPromoteLogin/PromoteLogin":23,"./components/prmRecommendationItemAfter/recommendationItem":24,"./components/prmRequestsAfter/illRequestForm":25,"./components/prmSearchResultThumbnailContainerAfter/pnxXml":26,"./components/prmServiceHeaderAfter/reportAProblem":27,"./components/prmTopBarBefore/announcements":28,"./components/prmTopBarBefore/feedbackAnnouncement":29,"./components/prmTopBarBefore/finesMessage":31,"./utils":47}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1246,7 +1248,7 @@ Object.defineProperty(exports, "__esModule", {
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var newSearchButtonHTML = "<a class=\"zero-margin flex-button multi-line-button button-over-dark md-button md-primoExplore-theme md-ink-ripple layout-align-center-center layout-column\"\nhref=\"{{ $ctrl.homePageLink }}\"  layout=\"column\" layout-align=\"center center\" (click)=\"::$ctrl.removeStickyFacets();$ctrl.clearSearchForm()\" \n    aria-label=\"New Search\" aria-hidden=\"false\" tabindex=\"0\">\n    <span class=\"item-content\" translate=\"lbs.nui.default.nui.new_search\">New Search</span>\n</a>\n";
+var newSearchButtonHTML = "<a class=\"zero-margin flex-button multi-line-button button-over-dark md-button md-primoExplore-theme md-ink-ripple layout-align-center-center layout-column\"\nhref=\"{{ $ctrl.homePageLink }}\"  layout=\"column\" layout-align=\"center center\" (click)=\"::$ctrl.removeStickyFacets()\" \n    aria-label=\"New Search\" aria-hidden=\"false\" tabindex=\"0\">\n    <span class=\"item-content\" translate=\"lbs.nui.default.nui.new_search\">New Search</span>\n</a>";
 
 var NewSearchButtonController = function NewSearchButtonController($scope, $element, $compile, $http, $rootScope) {
   _classCallCheck(this, NewSearchButtonController);
@@ -1294,6 +1296,58 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var viewLogoHTML = '\n <div class="product-logo" id="banner" aria-label="{{ \'nui.aria.logo.link.open\' | translate}}">\n  <a ng-href="{{ $ctrl.homePageLink }}" ng-click=" $ctrl.logoClick() " href="{{ $ctrl.homePageLink }} "> \n    <img class="logo-image" translate-attr="{ alt: \'nui.header.LogoAlt\' }" ng-src="{{  $ctrl.localeLibraryLogo }}" src="{{  $ctrl.localeLibraryLogo }}" />\n  </a>\n</div>\n';
+
+var ViewLogoController = function ViewLogoController($scope, $translate, $element, $compile, $http, $rootScope) {
+  _classCallCheck(this, ViewLogoController);
+
+  var self = this;
+  self.scope = $scope;
+  self.rootScope = $rootScope;
+  $element.parent().parent()[0].firstChild.remove();
+
+  $translate('limo.instituteUrl').then(function (message) {
+    self.homePageLink = message;
+  });
+
+  Primo.view.then(function (view) {
+    var vid = view.code;
+    var locale = view.interfaceLanguage; //window.Primo.explore.helper.userSessionManagerService().i18nService.getLanguage();
+    var localeLibraryLogo = 'custom/' + vid + '/img/library-logo-' + locale + '.png';
+    self.homePageLink = '/primo-explore/search?vid=' + vid + "&lang=" + locale;
+    self.localeLibraryLogo = window.appConfig.customization.libraryLogo;
+
+    if (self.localeLibraryLog !== localeLibraryLogo) {
+      $http({
+        method: 'GET',
+        url: localeLibraryLogo
+      }).then(function (response) {
+        window.appConfig.customization.libraryLogo = localeLibraryLogo;
+        self.localeLibraryLogo = localeLibraryLogo;
+      });
+    }
+  });
+};
+
+ViewLogoController.$inject = ['$scope', '$translate', '$element', '$compile', '$http', '$rootScope'];
+
+var viewLogoConfig = exports.viewLogoConfig = {
+  bindings: {
+    parentCtrl: '<'
+  },
+  controller: ViewLogoController,
+  template: viewLogoHTML
+};
+
+},{}],22:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1329,7 +1383,7 @@ var feedbackConfig = exports.feedbackConfig = {
   template: ''
 };
 
-},{}],22:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1402,7 +1456,7 @@ var promoteLoginConfig = exports.promoteLoginConfig = {
   template: promoteLoginHTML
 };
 
-},{}],23:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1444,7 +1498,7 @@ var recommendationItemConfig = exports.recommendationItemConfig = {
   template: ''
 };
 
-},{}],24:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1516,7 +1570,7 @@ var illRequestFormConfig = exports.illRequestFormConfig = {
     template: illRequestFormHTML
 };
 
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1622,7 +1676,7 @@ var pnxXmlConfig = exports.pnxXmlConfig = {
   template: pnxXmlHTML
 };
 
-},{}],26:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1747,7 +1801,7 @@ var reportAProblemConfig = exports.reportAProblemConfig = {
   template: ''
 };
 
-},{}],27:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1770,7 +1824,7 @@ var announcementsConfig = exports.announcementsConfig = {
   template: ''
 };
 
-},{}],28:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1820,7 +1874,7 @@ var feedbackAnnouncementConfig = exports.feedbackAnnouncementConfig = {
   template: ''
 };
 
-},{"./feedbackAnnouncementDialog":29}],29:[function(require,module,exports){
+},{"./feedbackAnnouncementDialog":30}],30:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1906,7 +1960,7 @@ exports.default = feedbackAnnouncementDialogController;
 
 feedbackAnnouncementDialogController.$inject = ['$scope', '$mdDialog', '$mdToast', '$translate', '$http', 'feedbackServiceURL', 'MessageService'];
 
-},{}],30:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1944,7 +1998,7 @@ var finesMessageConfig = exports.finesMessageConfig = {
   template: ''
 };
 
-},{}],31:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2008,7 +2062,7 @@ exports.default = AltmetricsService;
 
 AltmetricsService.$inject = ['$rootScope', '$compile', '$mdToast', '$timeout', '$window'];
 
-},{}],32:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2105,7 +2159,7 @@ var feedService = exports.feedService = ['$http', function ($http) {
   };
 }];
 
-},{}],33:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2168,7 +2222,7 @@ exports.default = FeedbackService;
 
 FeedbackService.$inject = ['$mdDialog'];
 
-},{"../components/general/dialog":4}],34:[function(require,module,exports){
+},{"../components/general/dialog":4}],35:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2291,7 +2345,7 @@ exports.default = MessageService;
 
 MessageService.$inject = ['$rootScope', '$compile', '$mdToast', '$sce', '$translate', '$timeout'];
 
-},{}],35:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 'use strict';
 
 var _primo = require('./primo-explore-dom/js/primo');
@@ -2471,7 +2525,7 @@ Object.keys(afterComponents).forEach(function (component, i) {
   });
 });
 
-},{"./components":1,"./factories/altmetricsService":31,"./factories/feedService":32,"./factories/feedbackService":33,"./factories/messageService":34,"./primo-explore-dom/js/primo":36,"./primo-explore-dom/js/primo/explore/helper":39,"./templates":45}],36:[function(require,module,exports){
+},{"./components":1,"./factories/altmetricsService":32,"./factories/feedService":33,"./factories/feedbackService":34,"./factories/messageService":35,"./primo-explore-dom/js/primo":37,"./primo-explore-dom/js/primo/explore/helper":40,"./templates":46}],37:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2632,7 +2686,7 @@ var Primo = function () {
 
 exports.default = Primo;
 
-},{"./primo/explore":37,"./primo/explore/helper":39,"./primo/facets":40,"./primo/records":41,"./primo/user":42,"./primo/view":43}],37:[function(require,module,exports){
+},{"./primo/explore":38,"./primo/explore/helper":40,"./primo/facets":41,"./primo/records":42,"./primo/user":43,"./primo/view":44}],38:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2689,7 +2743,7 @@ var Explore = function () {
 
 exports.default = Explore;
 
-},{"./explore/components":38,"./explore/helper":39}],38:[function(require,module,exports){
+},{"./explore/components":39,"./explore/helper":40}],39:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2809,7 +2863,7 @@ var Components = function () {
 
 exports.default = Components;
 
-},{"../../vendor/css-selector-generator.js":44,"./helper":39}],39:[function(require,module,exports){
+},{"../../vendor/css-selector-generator.js":45,"./helper":40}],40:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3086,7 +3140,7 @@ var Helper = function () {
 
 exports.default = Helper;
 
-},{}],40:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3143,7 +3197,7 @@ var Facets = function () {
 
 exports.default = Facets;
 
-},{"./explore/components":38,"./explore/helper":39}],41:[function(require,module,exports){
+},{"./explore/components":39,"./explore/helper":40}],42:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3203,7 +3257,7 @@ var Records = function () {
 
 exports.default = Records;
 
-},{"./explore/components":38,"./explore/helper":39}],42:[function(require,module,exports){
+},{"./explore/components":39,"./explore/helper":40}],43:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3262,7 +3316,7 @@ var User = function () {
 
 exports.default = User;
 
-},{"./explore/helper":39}],43:[function(require,module,exports){
+},{"./explore/helper":40}],44:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3298,7 +3352,7 @@ var View = function View() {
 
 exports.default = View;
 
-},{"./explore/helper":39}],44:[function(require,module,exports){
+},{"./explore/helper":40}],45:[function(require,module,exports){
 'use strict';
 
 (function () {
@@ -3614,7 +3668,7 @@ exports.default = View;
   }
 }).call(undefined);
 
-},{}],45:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3639,6 +3693,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /* import your templates */
 
 var changeLangWithoutUserAreaHTML = '<style>\n\nprm-user-area {\n    background-color: transparent;\n    display: flex;\n}\n\nprm-change-lang{\n    display: flex;\n    align-items: center;\n}\n\n</style>\n\n<span id="loggedInIndicator" role="alert" class="accessible-only hidden" ng-style="{\'display\': $ctrl.isBlocked}">{{$ctrl.getRoleAlertMessage()}}</span>\n<md-button tabindex="-1" class="user-menu-button accessible-only" aria-label="{{($ctrl.userName().length==0 ?  \'nui.clisckSignIn.tooltip\'  : \'nui.clisckSignOut.tooltip\') | translate}}"\n    ng-click="$event.stopPropagation();$ctrl.enableMobileMenu()" hide-xs>\n</md-button>\n<md-button style="display:none" class="user-menu-button accessible-only" aria-label="{{($ctrl.userName().length==0 ?  \'nui.clisckSignIn.tooltip\'  : \'nui.clisckSignOut.tooltip\') | translate}}"\n    (click)="$ctrl.changUserStatus()" hide-xs>\n</md-button>\n\n<prm-change-lang aria-label="{{\'eshelf.signin.title\' | translate}}" \nng-if="$ctrl.displayLanguage && $ctrl.userName().length == 0 && !$ctrl.detectMobile()"\nlabel-type="icon"></prm-change-lang>';
+var prmLoanBugFixHTML = '<div class="md-list-item-text md-list-item-with-checkbox" layout="row" layout-wrap flex aria-live="assertive">\n    <md-checkbox ng-model="$ctrl.selectedIds[$ctrl.item.loanid]" aria-label="Checkbox {{$index}}" ng-change="$ctrl.toggleSelected($ctrl.item.loanid)"\n        ng-if="$ctrl.item[$ctrl.selector]"></md-checkbox>\n    <span class="item-index">{{$ctrl.index}}</span>\n    <div flex="40" flex-xs="100">\n        <div layout="row" class="title-row" ng-class="{\'is-hovered\': isHovered && $ctrl.item[$ctrl.selector]}" ng-mouseenter="isHovered = true"\n            ng-mouseleave="isHovered = false">\n            <h3 ng-if="::$ctrl.item.title" title="{{::$ctrl.item.title}}">\n                    {{::$ctrl.item.title}} \n                <span ng-if="!$ctrl.item[$ctrl.selector]">{{::$ctrl.item.title}}</span>\n            </h3>\n        </div>\n        <h4 ng-class="{\'loans-brief-display\':!$ctrl.isExpanded}">\n            <span translate="nui.loan.brief.1"></span> {{::($ctrl.item.getBriefDisplayLine(1))}}</h4>\n    </div>\n    <div flex="40" flex-xs="100" class="weak-text">\n        <div ng-if="::$ctrl.item.isActiveLoan()">\n            <p class="normal-text" ng-style="$ctrl.item.isDueAlert() && {\'color\':\'tomato\'}">\n                <prm-icon ng-if="::$ctrl.item.isDueAlert()" class="alert-red" icon-type="{{::$ctrl.accountIcons.timerIcon.type}}"\n                    svg-icon-set="{{::$ctrl.accountIcons.timerIcon.iconSet}}" icon-definition="{{::$ctrl.accountIcons.timerIcon.icon}}"></prm-icon>\n                <span translate="{{$ctrl.item.getCodeAlert()}}"></span>: {{($ctrl.item.getDateForBriefDisplay())}}.\n                <span ng-if="::($ctrl.item.isFine())">\n                    <span translate="nui.loan.fine"></span>: {{::$ctrl.item.fine}}</span>\n            </p>\n        </div>\n        <div ng-if="::(!$ctrl.item.isActiveLoan())">\n            <span translate="loans.return_date"></span> {{::($ctrl.item.getDateForBriefDisplay())}}</div>\n        <p class="normal-text" ng-class="{\'loans-brief-display\':!$ctrl.isExpanded}">\n            <span translate="nui.loan.brief.2"></span>{{::($ctrl.item.getBriefDisplayLine(2))}}</p>\n        <div ng-if="$ctrl.isExpanded">\n            <p ng-repeat="line in ::$ctrl.item.fullDisplayValues" class="normal-text">\n                <span translate="loans.{{::line.key}}"></span> {{::line.value}}</p>\n        </div>\n    </div>\n    <div layout-align="end center" layout="row" flex="20" flex-xs="100" ng-class="{\'not-clickable\': $ctrl.renewAllInProgress}"\n        class="list-item-actions">\n        <div ng-if="$ctrl.isRenewable && !$ctrl.isRenewed && !$ctrl.renewInProgress">\n            <md-button class="button-with-icon zero-margin button-link" (click)="$ctrl.renewLoan()" aria-label="{{\'nui.loans.renew\' | translate}}">\n                <prm-icon class="h-flipped" icon-type="{{::$ctrl.accountIcons.renewLoanIcon.type}}" svg-icon-set="{{::$ctrl.accountIcons.renewLoanIcon.iconSet}}"\n                    icon-definition="{{::$ctrl.accountIcons.renewLoanIcon.icon}}"></prm-icon>\n                <span translate="nui.loans.renew"></span>\n            </md-button>\n        </div>\n        <prm-spinner class="inline-loader half-transparent no-text" layout="row" layout-align="center center" ng-if="$ctrl.renewInProgress"></prm-spinner>\n        <div class="item-respond" ng-if="$ctrl.isRenewed">\n            <span ng-style="$ctrl.renewResponse.renewed === \'N\' && {\'color\':\'tomato\'} || $ctrl.renewResponse.renewed === \'Y\' && {\'color\':\'green\'}">\n                <span translate="{{$ctrl.renewResponse.response || \'loans.renewed.\' + $ctrl.renewResponse.renewed}}"></span>\n            </span>\n        </div>\n    </div>\n</div>\n<div class="align-self-stretch" flex-xs="100">\n    <md-button class="item-expand-button" aria-label="{{\'nui.aria.account.requests.expandcollapse\' | translate:\'{title: $ctrl.item.title}\'}}"\n        (click)="$ctrl.toggleDisplayMode()">\n        <prm-icon ng-class="{\'rotate-180\':$ctrl.isExpanded}" icon-type="{{::$ctrl.accountIcons.expandIcon.type}}" svg-icon-set="{{::$ctrl.accountIcons.expandIcon.iconSet}}"\n            icon-definition="{{::$ctrl.accountIcons.expandIcon.icon}}"></prm-icon>\n    </md-button>\n    <div ng-init="messageAdded = \'open\' ;\\r\\n                      messageRemoved = \'close\' " class="accessible-only"\n        aria-label="{{$ctrl.isExpanded ? messageAdded : messageRemoved}}" aria-live="assertive">{{$ctrl.isExpanded ? messageAdded : messageRemoved}}</div>\n</div>\n<prm-loan-after parent-ctrl="$ctrl"></prm-loan-after>';
 
 var Templates = function () {
     function Templates() {
@@ -3662,6 +3717,11 @@ var Templates = function () {
                 template: changeLangWithoutUserAreaHTML,
                 enabled: true,
                 enableInView: 'VDIC'
+            }, {
+                id: 'components/account/loans/loan.html',
+                template: prmLoanBugFixHTML,
+                enabled: true,
+                enableInView: '.*'
             }].filter(function (template) {
                 return template.enabled && new RegExp(template.enableInView).test(window.appConfig.vid);
             });
@@ -3673,7 +3733,7 @@ var Templates = function () {
 
 exports.default = Templates;
 
-},{"./utils":46}],46:[function(require,module,exports){
+},{"./utils":47}],47:[function(require,module,exports){
 'use strict';
 
 /*
@@ -3688,7 +3748,7 @@ String.prototype.toCamelCase = function () {
   }).join('');
 };
 
-},{}]},{},[35])
+},{}]},{},[36])
 
 
 //# sourceMappingURL=custom.js.map
