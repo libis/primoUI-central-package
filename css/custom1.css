@@ -587,6 +587,10 @@ prm-user-area div.md-fab-action-item:nth-child(1) {
         z-index: 101;
     }
 
+    prm-search-bar .search-switch-buttons .md-button.switch-to-simple, prm-search-bar .search-switch-buttons .md-button.switch-to-advanced{
+        z-index:102;
+    }
+
   prm-explore-main .header{
     position: relative;
   }
