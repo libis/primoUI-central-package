@@ -1306,7 +1306,7 @@ var ViewLogoController = function ViewLogoController($scope, $translate, $elemen
   var self = this;
   self.scope = $scope;
   self.rootScope = $rootScope;
-  $element.parent().parent()[0].firstChild.remove();
+  $element.parent().parent()[0].firstChild.parentNode.removeChild($element.parent().parent()[0].firstChild);
 
   $translate('limo.instituteUrl').then(function (message) {
     self.homePageLink = message;
@@ -1319,7 +1319,7 @@ var ViewLogoController = function ViewLogoController($scope, $translate, $elemen
     self.homePageLink = '/primo-explore/search?vid=' + vid + "&lang=" + locale;
     self.localeLibraryLogo = window.appConfig.customization.libraryLogo;
 
-    if (self.localeLibraryLog !== localeLibraryLogo) {
+    if (self.localeLibraryLogo !== localeLibraryLogo) {
       $http({
         method: 'GET',
         url: localeLibraryLogo
