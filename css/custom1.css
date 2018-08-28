@@ -601,7 +601,7 @@ prm-user-area div.md-fab-action-item:nth-child(1) {
       content: '';
       background-position: 0 -5px;
       height: 100%;
-      max-height: 250px;
+      max-height: 280px;
       width: 30%;
       position: absolute;
       left: -5px;

@@ -74,8 +74,6 @@ export default class AfterComponents {
 
       {name: 'view-logo', config: viewLogoConfig, enabled: true, appendTo: 'prm-logo-after', enableInView: '^(?!ECB)'},
 
-      
-
       {name: 'source-icon', config: sourceIconConfig, enabled: true, appendTo: 'prm-brief-result-after', enableInView: '.*'},
       {name: 'altmetric', config: altmetricConfig, enabled: true, appendTo: 'prm-brief-result-after', enableInView: '^Lirias|^KULeuven|^VDIC|^UCLL|^TMOREAM|^TMOREK|^SERV|^NBB'},
 
