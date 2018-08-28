@@ -19,7 +19,7 @@ class ViewLogoController {
       self.homePageLink = '/primo-explore/search?vid=' + vid + "&lang=" + locale;
       self.localeLibraryLogo = window.appConfig.customization.libraryLogo;
 
-       if ( self.localeLibraryLog !== localeLibraryLogo) {
+       if ( self.localeLibraryLogo !== localeLibraryLogo) {
         $http({
           method: 'GET',
           url: localeLibraryLogo,
