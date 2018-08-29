@@ -5,7 +5,8 @@ class ViewLogoController {
     let self = this;
     self.scope = $scope;
     self.rootScope = $rootScope;
-    $element.parent().parent()[0].firstChild.remove()
+    $element.parent().parent()[0].firstChild.parentNode.removeChild($element.parent().parent()[0].firstChild);
+
 
     $translate('limo.instituteUrl').then(
     (message) => {
