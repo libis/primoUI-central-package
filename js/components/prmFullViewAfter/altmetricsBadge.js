@@ -1,6 +1,6 @@
 /**
  * The altmetrics component controller. (https://github.com/Det-Kongelige-Bibliotek/primo-explore-rex/blob/master/js/altmetrics.component.js)
- * 
+ *
  */
 import AltmetricsBadgeHTML from './altmetricsBadge.html'
 
@@ -38,6 +38,22 @@ class AltmetricsBadgeController {
   }
 
   $onInit() {
+    //polyfill
+    if (!Element.prototype.matches)
+    Element.prototype.matches = Element.prototype.msMatchesSelector ||
+                                Element.prototype.webkitMatchesSelector;
+
+    if (!Element.prototype.closest)
+        Element.prototype.closest = function(s) {
+            var el = this;
+            if (!document.documentElement.contains(el)) return null;
+            do {
+                if (el.matches(s)) return el;
+                el = el.parentElement || el.parentNode;
+            } while (el !== null && el.nodeType === 1);
+            return null;
+        };
+
     let doi = this.doi
     let self = this;
     if (doi !== '') {
@@ -67,4 +83,3 @@ export let altmetricsBadgeConfig = {
   controller: AltmetricsBadgeController,
   template: AltmetricsBadgeHTML
 }
-
