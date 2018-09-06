@@ -48,6 +48,7 @@ import {removeOpenAccessConfig} from './components/prmFacetAfter/removeOpenAcces
 import {searchAlsoConfig} from './components/prmFacetAfter/searchAlso'
 import {searchAlsoBodyConfig} from './components/prmFacetExactAfter/searchAlsoBody'
 
+import {browzineConfig} from './components/prmSearchResultAvailabilityLineAfterController/browzine'
 
 export default class AfterComponents {
 
@@ -108,7 +109,8 @@ export default class AfterComponents {
       {name: 'pay-my-fines-message', config: payMyFinesMessageConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '^KULeuven'},
       {name: 'remove-open-access', config: removeOpenAccessConfig, enabled: true, appendTo: 'prm-facet-after', enableInView: '.*'},
       {name: 'search-also', config: searchAlsoConfig, enabled: true, appendTo: 'prm-facet-after', enableInView: '^KULeuven'},
-      {name: 'search-also-body', config: searchAlsoBodyConfig, enabled: true, appendTo: 'prm-facet-exact-after', enableInView: '^KULeuven'}
+      {name: 'search-also-body', config: searchAlsoBodyConfig, enabled: true, appendTo: 'prm-facet-exact-after', enableInView: '^KULeuven'},
+      {name: 'browzine', config: browzineConfig, enabled: true, appendTo: 'prm-search-result-availability-line-after', enableInView: '^ECB'}
     ].filter( (component) => ( component.enabled && new RegExp(component.enableInView).test(window.appConfig.vid) ) );
   }
 }

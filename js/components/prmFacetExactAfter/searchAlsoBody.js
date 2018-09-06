@@ -7,7 +7,7 @@ class SearchAlsoBodyController {
   }
 
   get search() {
-    return this.location.search().query;
+    return this.location.search().query || '';
   }
 
   get name() {
