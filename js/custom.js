@@ -743,7 +743,7 @@ var RemoveOpenAccessController = function RemoveOpenAccessController($scope) {
       if (_this.parentCtrl.parentCtrl.facetService.results.filter(function (f) {
         return f.name == 'tlevel';
       }).length > 0) {
-        removeOpenAccess();
+        //removeOpenAccess();
         _this.parentCtrl.parentCtrl.facetService.results = _this.parentCtrl.parentCtrl.facetService.results.map(function (a) {
           if (a.name == 'tlevel') {
             a.values = a.values.filter(function (t) {
