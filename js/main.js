@@ -36,6 +36,17 @@ window.setTimeout(function() {
 }, 2000);
 
 //Create the centralCustom module;
+if(window.appConfig.vid == 'ECB') {
+  window.browzine = {
+    api: "https://public-api.thirdiron.com/public/v1/libraries/1624",
+    apiKey: "e71d1c31-7938-470a-8be2-a6e351e0c001",
+    journalBrowZineWebLinkText: "View Journal Contents",
+    articleBrowZineWebLinkText: "View Issue Contents",
+    articlePDFDownloadLinkEnabled: true,
+    articlePDFDownloadLinkText: "Download PDF",
+  };  
+}
+
 let app = angular.module('centralCustom', ['ngMaterial'])
   .constant('feedbackServiceURL', 'https://services.libis.be/feedback')
   .config(($sceDelegateProvider) => {
@@ -51,6 +62,11 @@ let app = angular.module('centralCustom', ['ngMaterial'])
     Helper.loadScript('https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js?' + Date.now()).then(function() {
       console.log('altmerics embed.js loaded');
     });
+    if(window.appConfig.vid == 'ECB') {
+      Helper.loadScript('https://s3.amazonaws.com/browzine-adapters/primo/browzine-primo-adapter.js').then(() => {
+        console.log('browzine-primo-adapter.js loaded');      
+      });
+    }
   })
   .factory('FeedService', feedService)
   .service('AltmetricsService', AltmetricsService)

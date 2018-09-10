@@ -5,7 +5,7 @@ class RemoveOpenAccessController {
     }, (n,o) => {
       if (n != o) {
         if (this.parentCtrl.parentCtrl.facetService.results.filter(f => {return f.name == 'tlevel'}).length > 0) {
-          removeOpenAccess();
+          //removeOpenAccess();
           this.parentCtrl.parentCtrl.facetService.results = this.parentCtrl.parentCtrl.facetService.results.map(a => {
             if (a.name == 'tlevel') {
                a.values = a.values.filter(t => { return t.value !== 'open_access'})
