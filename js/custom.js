@@ -1261,7 +1261,7 @@ Object.defineProperty(exports, "__esModule", {
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var newSearchButtonHTML = "<a class=\"zero-margin flex-button multi-line-button button-over-dark md-button md-primoExplore-theme md-ink-ripple layout-align-center-center layout-column\"\nhref=\"{{ $ctrl.homePageLink }}\"  layout=\"column\" layout-align=\"center center\" (click)=\"::$ctrl.removeStickyFacets()\" \n    aria-label=\"New Search\" aria-hidden=\"false\" tabindex=\"0\">\n    <span class=\"item-content\" translate=\"lbs.nui.default.nui.new_search\">New Search</span>\n</a>";
+var newSearchButtonHTML = "<a class=\"zero-margin flex-button multi-line-button button-over-dark md-button md-primoExplore-theme md-ink-ripple layout-align-center-center layout-column\"\nhref=\"{{ $ctrl.homePageLink }}\"  layout=\"column\" layout-align=\"center center\" (click)=\"::$ctrl.removeStickyFacets()\" \n    aria-label=\"New Search\" aria-hidden=\"false\" tabindex=\"0\">\n    <span class=\"item-content\" translate=\"lbs.nui.default.nui.new_search\">New Search</span>\n</a>\n";
 
 var NewSearchButtonController = function NewSearchButtonController($scope, $element, $compile, $http, $rootScope) {
   _classCallCheck(this, NewSearchButtonController);
@@ -1280,7 +1280,14 @@ var NewSearchButtonController = function NewSearchButtonController($scope, $elem
 
     self.homePageLink = '/primo-explore/search?vid=' + vid + "&lang=" + locale;
 
-    $scope.removeStickyFacets = function () {
+    self.removeStickyFacets = function () {
+      var prmAdvancedSearch = Primo.explore.components.get('prm-advanced-search');
+      if (prmAdvancedSearch) {
+        var c = prmAdvancedSearch[0].ctrl();
+        c.clearSearchForm();
+        c.$scope.$apply();
+      }
+
       var facets = Primo.explore.components.get('prm-facet');
       if (facets) {
         var stickyFacets = facets[0].ctrl().facetService.getStickyFacets();

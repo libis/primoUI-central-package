@@ -16,7 +16,14 @@ class NewSearchButtonController {
 
       self.homePageLink = '/primo-explore/search?vid=' + vid + "&lang=" + locale;
 
-      $scope.removeStickyFacets = function () {
+      self.removeStickyFacets = function () {
+        let prmAdvancedSearch = Primo.explore.components.get('prm-advanced-search');
+        if(prmAdvancedSearch){
+          let c = prmAdvancedSearch[0].ctrl();
+          c.clearSearchForm();
+          c.$scope.$apply();
+        }
+        
         var facets = Primo.explore.components.get('prm-facet');
         if (facets) {
           var stickyFacets = facets[0].ctrl().facetService.getStickyFacets()
