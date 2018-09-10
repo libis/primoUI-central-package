@@ -23,10 +23,10 @@ class NewSearchButtonController {
           c.clearSearchForm();
           c.$scope.$apply();
         }
-        
-        var facets = Primo.explore.components.get('prm-facet');
+
+        let facets = Primo.explore.components.get('prm-facet');
         if (facets) {
-          var stickyFacets = facets[0].ctrl().facetService.getStickyFacets()
+          let stickyFacets = facets[0].ctrl().facetService.getStickyFacets()
           for (var i = 0; i < stickyFacets.length; i++) {
             facets[0].ctrl().facetService.removeStickyFacet(stickyFacets[i]);
           }
