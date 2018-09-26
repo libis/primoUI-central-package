@@ -43,7 +43,7 @@ import {illRequestFormConfig} from './components/prmRequestsAfter/illRequestForm
 import {recommendationItemConfig} from './components/prmRecommendationItemAfter/recommendationItem'
 
 import {databaseLinkConfig} from './components/general/databaseLink'
-import {removeOpenAccessConfig} from './components/prmFacetAfter/removeOpenAccess'
+//import {removeOpenAccessConfig} from './components/prmFacetAfter/removeOpenAccess'
 
 import {searchAlsoConfig} from './components/prmFacetAfter/searchAlso'
 import {searchAlsoBodyConfig} from './components/prmFacetExactAfter/searchAlsoBody'
@@ -107,7 +107,7 @@ export default class AfterComponents {
 
       {name: 'announcement', config: announcementsConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '.*'},
       {name: 'pay-my-fines-message', config: payMyFinesMessageConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '^KULeuven'},
-      {name: 'remove-open-access', config: removeOpenAccessConfig, enabled: true, appendTo: 'prm-facet-after', enableInView: '.*'},
+    //  {name: 'remove-open-access', config: removeOpenAccessConfig, enabled: false, appendTo: 'prm-facet-after', enableInView: '.*'},
       {name: 'search-also', config: searchAlsoConfig, enabled: true, appendTo: 'prm-facet-after', enableInView: '^KULeuven'},
       {name: 'search-also-body', config: searchAlsoBodyConfig, enabled: true, appendTo: 'prm-facet-exact-after', enableInView: '^KULeuven'},
       {name: 'browzine', config: browzineConfig, enabled: true, appendTo: 'prm-search-result-availability-line-after', enableInView: '^ECB'}

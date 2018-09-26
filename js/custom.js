@@ -18,6 +18,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 /* import your component configuration*/
 
+//import {removeOpenAccessConfig} from './components/prmFacetAfter/removeOpenAccess'
 
 require('./utils');
 
@@ -71,8 +72,6 @@ var _recommendationItem = require('./components/prmRecommendationItemAfter/recom
 
 var _databaseLink = require('./components/general/databaseLink');
 
-var _removeOpenAccess = require('./components/prmFacetAfter/removeOpenAccess');
-
 var _searchAlso = require('./components/prmFacetAfter/searchAlso');
 
 var _searchAlsoBody = require('./components/prmFacetExactAfter/searchAlsoBody');
@@ -105,7 +104,9 @@ var AfterComponents = function () {
       { name: 'remove-alerts', config: _removeAlerts.removeAlertsConfig, enabled: true, appendTo: 'prm-add-query-to-saved-searches-after', enableInView: '.*' }, { name: 'prm-dblink', config: _databaseLink.databaseLinkConfig, enabled: false, appendTo: null, enableInView: '.*' },
 
       /* lbs-components used in html-templates of the package */
-      { name: 'promote-login-static-footer', config: _PromoteLogin.promoteLoginConfig, enabled: true, appendTo: 'lbs-promote-login', enableInView: '^KULeuven' }, { name: 'ill-request-form-overview', config: _illRequestForm.illRequestFormConfig, enabled: false, appendTo: 'prm-requests-overview-after', enableInView: '.*' }, { name: 'ill-request-form', config: _illRequestForm.illRequestFormConfig, enabled: true, appendTo: 'prm-requests-after', enableInView: '^KULeuven|^VIVES' }, { name: 'announcement-feedback', config: _feedbackAnnouncement.feedbackAnnouncementConfig, enabled: false, appendTo: 'prm-top-bar-before', enableInView: '.*' }, { name: 'override-getlink-recommendation', config: _recommendationItem.recommendationItemConfig, enabled: true, appendTo: 'prm-recomendation-item-after', enableInView: '.*' }, { name: 'announcement', config: _announcements.announcementsConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '.*' }, { name: 'pay-my-fines-message', config: _finesMessage.finesMessageConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '^KULeuven' }, { name: 'remove-open-access', config: _removeOpenAccess.removeOpenAccessConfig, enabled: true, appendTo: 'prm-facet-after', enableInView: '.*' }, { name: 'search-also', config: _searchAlso.searchAlsoConfig, enabled: true, appendTo: 'prm-facet-after', enableInView: '^KULeuven' }, { name: 'search-also-body', config: _searchAlsoBody.searchAlsoBodyConfig, enabled: true, appendTo: 'prm-facet-exact-after', enableInView: '^KULeuven' }, { name: 'browzine', config: _browzine.browzineConfig, enabled: true, appendTo: 'prm-search-result-availability-line-after', enableInView: '^ECB' }].filter(function (component) {
+      { name: 'promote-login-static-footer', config: _PromoteLogin.promoteLoginConfig, enabled: true, appendTo: 'lbs-promote-login', enableInView: '^KULeuven' }, { name: 'ill-request-form-overview', config: _illRequestForm.illRequestFormConfig, enabled: false, appendTo: 'prm-requests-overview-after', enableInView: '.*' }, { name: 'ill-request-form', config: _illRequestForm.illRequestFormConfig, enabled: true, appendTo: 'prm-requests-after', enableInView: '^KULeuven|^VIVES' }, { name: 'announcement-feedback', config: _feedbackAnnouncement.feedbackAnnouncementConfig, enabled: false, appendTo: 'prm-top-bar-before', enableInView: '.*' }, { name: 'override-getlink-recommendation', config: _recommendationItem.recommendationItemConfig, enabled: true, appendTo: 'prm-recomendation-item-after', enableInView: '.*' }, { name: 'announcement', config: _announcements.announcementsConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '.*' }, { name: 'pay-my-fines-message', config: _finesMessage.finesMessageConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '^KULeuven' },
+      //  {name: 'remove-open-access', config: removeOpenAccessConfig, enabled: false, appendTo: 'prm-facet-after', enableInView: '.*'},
+      { name: 'search-also', config: _searchAlso.searchAlsoConfig, enabled: true, appendTo: 'prm-facet-after', enableInView: '^KULeuven' }, { name: 'search-also-body', config: _searchAlsoBody.searchAlsoBodyConfig, enabled: true, appendTo: 'prm-facet-exact-after', enableInView: '^KULeuven' }, { name: 'browzine', config: _browzine.browzineConfig, enabled: true, appendTo: 'prm-search-result-availability-line-after', enableInView: '^ECB' }].filter(function (component) {
         return component.enabled && new RegExp(component.enableInView).test(window.appConfig.vid);
       });
     }
@@ -116,7 +117,7 @@ var AfterComponents = function () {
 
 exports.default = AfterComponents;
 
-},{"./components/general/ConfigLanguageSelection":2,"./components/general/databaseLink":3,"./components/general/disclaimer":5,"./components/general/experiment":6,"./components/general/removeAlerts":7,"./components/general/searchTip":8,"./components/general/staticFooter":9,"./components/prmBriefResultAfter/altmetric":10,"./components/prmBriefResultAfter/sourceIcon":11,"./components/prmFacetAfter/removeOpenAccess":12,"./components/prmFacetAfter/searchAlso":13,"./components/prmFacetExactAfter/searchAlsoBody":14,"./components/prmFinesOverviewAfter/payMyFines":15,"./components/prmFullViewAfter/altmetricsBadge":16,"./components/prmLogoAfter/betaSwitch":17,"./components/prmLogoAfter/homeIcon":18,"./components/prmLogoAfter/languageDependentLogo":19,"./components/prmLogoAfter/newSearchButton":20,"./components/prmLogoAfter/viewLogo":21,"./components/prmMainMenuAfter/feedback":22,"./components/prmPromoteLogin/PromoteLogin":23,"./components/prmRecommendationItemAfter/recommendationItem":24,"./components/prmRequestsAfter/illRequestForm":25,"./components/prmSearchResultAvailabilityLineAfterController/browzine":26,"./components/prmSearchResultThumbnailContainerAfter/pnxXml":27,"./components/prmServiceHeaderAfter/reportAProblem":28,"./components/prmTopBarBefore/announcements":29,"./components/prmTopBarBefore/feedbackAnnouncement":30,"./components/prmTopBarBefore/finesMessage":32,"./utils":48}],2:[function(require,module,exports){
+},{"./components/general/ConfigLanguageSelection":2,"./components/general/databaseLink":3,"./components/general/disclaimer":5,"./components/general/experiment":6,"./components/general/removeAlerts":7,"./components/general/searchTip":8,"./components/general/staticFooter":9,"./components/prmBriefResultAfter/altmetric":10,"./components/prmBriefResultAfter/sourceIcon":11,"./components/prmFacetAfter/searchAlso":12,"./components/prmFacetExactAfter/searchAlsoBody":13,"./components/prmFinesOverviewAfter/payMyFines":14,"./components/prmFullViewAfter/altmetricsBadge":15,"./components/prmLogoAfter/betaSwitch":16,"./components/prmLogoAfter/homeIcon":17,"./components/prmLogoAfter/languageDependentLogo":18,"./components/prmLogoAfter/newSearchButton":19,"./components/prmLogoAfter/viewLogo":20,"./components/prmMainMenuAfter/feedback":21,"./components/prmPromoteLogin/PromoteLogin":22,"./components/prmRecommendationItemAfter/recommendationItem":23,"./components/prmRequestsAfter/illRequestForm":24,"./components/prmSearchResultAvailabilityLineAfterController/browzine":25,"./components/prmSearchResultThumbnailContainerAfter/pnxXml":26,"./components/prmServiceHeaderAfter/reportAProblem":27,"./components/prmTopBarBefore/announcements":28,"./components/prmTopBarBefore/feedbackAnnouncement":29,"./components/prmTopBarBefore/finesMessage":31,"./utils":46}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -681,7 +682,7 @@ Object.defineProperty(exports, "__esModule", {
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var sourceIconHTML = '<style>\n  div.sourceid {\n    display: inline-flex;\n    /* margin-left: 1em; */\n     /* margin-top: -2px; */\n    position: relative; \n  }\n\n\n  div.sourceid img.source-icon {\n    display: inline-block;\n    max-height: 18px;\n    width: auto;\n    height: auto;\n    transform: none;\n    min-width: auto;\n    min-height: auto;\n    vertical-align: bottom;\n  }\n\n  div.sourceid span.source-text {\n    font-size: small;\n    margin-left: 0.4em;\n    text-transform: none;\n    letter-spacing: normal;\n  }\n</style>\n\n<div ng-if="$ctrl.sourceid" class="sourceid">\n  <img src="{{$ctrl.icon.iconUrl}}" class="source-icon">\n  <span class="source-text">{{$ctrl.icon.iconText}}</span>\n</div>\n';
+var sourceIconHTML = '<style>\n  div.sourceid {\n    display: inline-flex;\n    /* margin-left: 1em; */\n     /* margin-top: -2px; */\n    position: relative; \n  }\n\n\n  div.sourceid img.source-icon {\n    display: inline-block;\n    max-height: 18px;\n    width: auto;\n    height: auto;\n    transform: none;\n    min-width: auto;\n    min-height: auto;\n    vertical-align: bottom;\n  }\n\n  div.sourceid span.source-text {\n    font-size: small;\n    margin-left: 0.4em;\n    text-transform: none;\n    letter-spacing: normal;\n  }\n</style>\n\n<div ng-if="$ctrl.sourceid" class="sourceid">\n  <img ng-src="{{$ctrl.icon.iconUrl}}" class="source-icon">\n  <span class="source-text">{{$ctrl.icon.iconText}}</span>\n</div>\n';
 
 var SourceIconController = function SourceIconController($scope, $element, $compile) {
   _classCallCheck(this, SourceIconController);
@@ -731,48 +732,6 @@ Object.defineProperty(exports, "__esModule", {
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var RemoveOpenAccessController = function RemoveOpenAccessController($scope) {
-  var _this = this;
-
-  _classCallCheck(this, RemoveOpenAccessController);
-
-  var removeOpenAccess = $scope.$watch(function () {
-    return _this.parentCtrl.parentCtrl.facetService.results;
-  }, function (n, o) {
-    if (n != o) {
-      if (_this.parentCtrl.parentCtrl.facetService.results.filter(function (f) {
-        return f.name == 'tlevel';
-      }).length > 0) {
-        //removeOpenAccess();
-        _this.parentCtrl.parentCtrl.facetService.results = _this.parentCtrl.parentCtrl.facetService.results.map(function (a) {
-          if (a.name == 'tlevel') {
-            a.values = a.values.filter(function (t) {
-              return t.value !== 'open_access';
-            });
-          }
-          return a;
-        });
-      }
-    }
-  });
-};
-
-RemoveOpenAccessController.$inject = ['$scope'];
-
-var removeOpenAccessConfig = exports.removeOpenAccessConfig = {
-  bindings: { parentCtrl: '<' },
-  controller: RemoveOpenAccessController
-};
-
-},{}],13:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 //facets.facet.facet_search_also in "facet labels"
 var SearchAlsoController = function SearchAlsoController($scope) {
   var _this = this;
@@ -805,7 +764,7 @@ var searchAlsoConfig = exports.searchAlsoConfig = {
   controller: SearchAlsoController
 };
 
-},{}],14:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -891,7 +850,7 @@ var searchAlsoBodyConfig = exports.searchAlsoBodyConfig = {
   template: searchAlsoBodyHTML
 };
 
-},{}],15:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -940,7 +899,7 @@ var payMyFinesConfig = exports.payMyFinesConfig = {
   template: payMyFinesHTML
 };
 
-},{}],16:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1042,7 +1001,7 @@ var altmetricsBadgeConfig = exports.altmetricsBadgeConfig = {
   template: AltmetricsBadgeHTML
 };
 
-},{}],17:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1142,7 +1101,7 @@ var betaSwitchConfig = exports.betaSwitchConfig = {
   template: betaSwitchHTML
 };
 
-},{}],18:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1206,7 +1165,7 @@ var homeIconConfig = exports.homeIconConfig = {
   template: homeIconHTML
 };
 
-},{}],19:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1254,7 +1213,7 @@ var languageDependentLogoConfig = exports.languageDependentLogoConfig = {
   template: ''
 };
 
-},{}],20:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1311,7 +1270,7 @@ var newSearchButtonConfig = exports.newSearchButtonConfig = {
   template: ''
 };
 
-},{}],21:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1363,7 +1322,7 @@ var viewLogoConfig = exports.viewLogoConfig = {
   template: viewLogoHTML
 };
 
-},{}],22:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1405,7 +1364,7 @@ var feedbackConfig = exports.feedbackConfig = {
   template: ''
 };
 
-},{}],23:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1478,7 +1437,7 @@ var promoteLoginConfig = exports.promoteLoginConfig = {
   template: promoteLoginHTML
 };
 
-},{}],24:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1520,7 +1479,7 @@ var recommendationItemConfig = exports.recommendationItemConfig = {
   template: ''
 };
 
-},{}],25:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1592,7 +1551,7 @@ var illRequestFormConfig = exports.illRequestFormConfig = {
     template: illRequestFormHTML
 };
 
-},{}],26:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1642,7 +1601,7 @@ var browzineConfig = exports.browzineConfig = {
     controller: BrowzineController
 };
 
-},{}],27:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1748,7 +1707,7 @@ var pnxXmlConfig = exports.pnxXmlConfig = {
   template: pnxXmlHTML
 };
 
-},{}],28:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1873,7 +1832,7 @@ var reportAProblemConfig = exports.reportAProblemConfig = {
   template: ''
 };
 
-},{}],29:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1896,7 +1855,7 @@ var announcementsConfig = exports.announcementsConfig = {
   template: ''
 };
 
-},{}],30:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1946,7 +1905,7 @@ var feedbackAnnouncementConfig = exports.feedbackAnnouncementConfig = {
   template: ''
 };
 
-},{"./feedbackAnnouncementDialog":31}],31:[function(require,module,exports){
+},{"./feedbackAnnouncementDialog":30}],30:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2032,7 +1991,7 @@ exports.default = feedbackAnnouncementDialogController;
 
 feedbackAnnouncementDialogController.$inject = ['$scope', '$mdDialog', '$mdToast', '$translate', '$http', 'feedbackServiceURL', 'MessageService'];
 
-},{}],32:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2070,7 +2029,7 @@ var finesMessageConfig = exports.finesMessageConfig = {
   template: ''
 };
 
-},{}],33:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2134,7 +2093,7 @@ exports.default = AltmetricsService;
 
 AltmetricsService.$inject = ['$rootScope', '$compile', '$mdToast', '$timeout', '$window'];
 
-},{}],34:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2231,7 +2190,7 @@ var feedService = exports.feedService = ['$http', function ($http) {
   };
 }];
 
-},{}],35:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2294,7 +2253,7 @@ exports.default = FeedbackService;
 
 FeedbackService.$inject = ['$mdDialog'];
 
-},{"../components/general/dialog":4}],36:[function(require,module,exports){
+},{"../components/general/dialog":4}],35:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2417,203 +2376,7 @@ exports.default = MessageService;
 
 MessageService.$inject = ['$rootScope', '$compile', '$mdToast', '$sce', '$translate', '$timeout'];
 
-},{}],37:[function(require,module,exports){
-'use strict';
-
-var _primo = require('./primo-explore-dom/js/primo');
-
-var _primo2 = _interopRequireDefault(_primo);
-
-var _helper = require('./primo-explore-dom/js/primo/explore/helper');
-
-var _helper2 = _interopRequireDefault(_helper);
-
-var _components = require('./components');
-
-var _components2 = _interopRequireDefault(_components);
-
-var _templates = require('./templates');
-
-var _templates2 = _interopRequireDefault(_templates);
-
-var _feedService = require('./factories/feedService');
-
-var _messageService = require('./factories/messageService');
-
-var _messageService2 = _interopRequireDefault(_messageService);
-
-var _feedbackService = require('./factories/feedbackService');
-
-var _feedbackService2 = _interopRequireDefault(_feedbackService);
-
-var _altmetricsService = require('./factories/altmetricsService');
-
-var _altmetricsService2 = _interopRequireDefault(_altmetricsService);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//make Primo public
-/*
-  Central Package Loader
-
-  Do NOT edit this file.
-  All components are declared in "components.js"
-
-  KULeuven/LIBIS (c) 2017
-  Mehmet Celik
-*/
-
-window.Primo = _primo2.default;
-//load PrimoExplorer UI if angular.reloadWithDebugInfo() is ran
-window.setTimeout(function () {
-  if (_primo2.default.isDebugEnabled()) {
-    var uiURL = 'https://cdn.rawgit.com/mehmetc/primo-explore-dom-ui/fc0868df/js/custom.js';
-    //let uiURL = 'http://127.0.0.1:8000/js/custom.js';
-
-    _helper2.default.loadScript(uiURL).then(function () {
-      console.log('Injecting UI');
-      _primo2.default.explore.ui.toggle();
-    });
-  }
-}, 2000);
-
-//Create the centralCustom module;
-if (window.appConfig.vid == 'ECB') {
-  window.browzine = {
-    api: "https://public-api.thirdiron.com/public/v1/libraries/1624",
-    apiKey: "e71d1c31-7938-470a-8be2-a6e351e0c001",
-    journalBrowZineWebLinkText: "View Journal Contents",
-    articleBrowZineWebLinkText: "View Issue Contents",
-    articlePDFDownloadLinkEnabled: true,
-    articlePDFDownloadLinkText: "Download PDF"
-  };
-}
-
-var app = angular.module('centralCustom', ['ngMaterial']).constant('feedbackServiceURL', 'https://services.libis.be/feedback').config(function ($sceDelegateProvider) {
-  $sceDelegateProvider.resourceUrlWhitelist(['**']);
-}).run(function ($templateCache, $rootScope) {
-  //$templateCache.put('components/search/fullView/full-view.html', fullViewHTML);
-  _helper2.default.loadScript('https://unpkg.com/hotkeys-js@2.0.8/dist/hotkeys.min.js').then(function () {
-    console.log('hotkeys.js loaded');
-  });
-  _helper2.default.loadScript('https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js?' + Date.now()).then(function () {
-    console.log('altmerics embed.js loaded');
-  });
-  if (window.appConfig.vid == 'ECB') {
-    _helper2.default.loadScript('https://s3.amazonaws.com/browzine-adapters/primo/browzine-primo-adapter.js').then(function () {
-      console.log('browzine-primo-adapter.js loaded');
-    });
-  }
-}).factory('FeedService', _feedService.feedService).service('AltmetricsService', _altmetricsService2.default).service('MessageService', _messageService2.default).service('FeedbackService', _feedbackService2.default).factory('apiCallInterceptor', [function () {
-  var apiCallInterceptor = {
-    response: function response(_response) {
-      //"Assessing Gospel Quotations in Justin Martyr"
-      var fixDisplayData = function fixDisplayData(pnxData) {
-        if (pnxData) {
-          try {
-            /*
-            if (pnxData.display && pnxData.display.creator) {
-              pnxData.display.creator = pnxData.display.creator.map(c => {
-                let relator = c.match(/\(.*?\)/i);
-                let data = c.split(/\(.*?\)/i).join("");
-                 if (relator) {
-                  c=`${c} $$Q${data}`;
-                }
-                return c;
-              });
-            }
-             if (pnxData.display && pnxData.display.contributor) {
-              pnxData.display.contributor = pnxData.display.contributor.map(c => {
-                let relator = c.match(/\(.*?\)/i);
-                let data = c.split(/\(.*?\)/i).join("");
-                 if (relator) {
-                  c=`${c} $$Q${data}`;
-                }
-                return c;
-              });
-            }
-            */
-          } catch (e) {
-            console.log(e);
-            console.log('no data');
-          }
-        }
-        return pnxData;
-      };
-
-      if (/^\/primo_library\/libweb\/webservices\/rest\/primo-explore\/v1\/pnxs/.test(_response.config.url)) {
-        var data = _response.data;
-        try {
-          if (Object.keys(data).includes('docs')) {
-            data.docs.map(function (p) {
-              return fixDisplayData(p.pnx);
-            });
-          } else {
-            if (Object.keys(data).includes('pnx')) {
-              data.pnx = fixDisplayData(data.pnx);
-            }
-          }
-        } catch (e) {
-          console.log(e);
-          console.log('no data');
-        }
-        _response.data = data;
-      }
-
-      return _response;
-    }
-  };
-  return apiCallInterceptor;
-}]).config(['$httpProvider', function ($httpProvider) {
-  $httpProvider.interceptors.push('apiCallInterceptor');
-}]);
-
-//Contains the after component selectors that will be injected
-var afterComponents = {};
-
-//Create all components and determine in which after component these need to be
-//injected
-console.log('Loading centralCustom components');
-_components2.default.all.forEach(function (component) {
-  console.log(component.name);
-  if (component.enabled) {
-    if (component.appendTo) {
-      var elements = afterComponents[component.appendTo] || [];
-      //elements.push(component.name);
-      elements.push({
-        'name': component.name,
-        'enableInView': component.enableInView
-      });
-      afterComponents[component.appendTo] = elements;
-    }
-    app.constant('afterComponents', afterComponents);
-    app.component(component.name.toCamelCase(), component.config);
-  }
-});
-
-console.log('Replace Templates');
-_templates2.default.all.forEach(function (template) {
-  console.log(template.id);
-  app.run(function ($templateCache) {
-    $templateCache.put(template.id, template.template);
-  });
-});
-
-//Inject place holders into the after components
-Object.keys(afterComponents).forEach(function (component, i) {
-  var subComponents = afterComponents[component];
-
-  app.component(component.toCamelCase(), {
-    bindings: {
-      parentCtrl: '<'
-    },
-    template: subComponents.map(function (m) {
-      return '<' + m.name + ' parent-ctrl="$ctrl"></' + m.name + '>';
-    }).join("")
-  });
-});
-
-},{"./components":1,"./factories/altmetricsService":33,"./factories/feedService":34,"./factories/feedbackService":35,"./factories/messageService":36,"./primo-explore-dom/js/primo":38,"./primo-explore-dom/js/primo/explore/helper":41,"./templates":47}],38:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2774,7 +2537,7 @@ var Primo = function () {
 
 exports.default = Primo;
 
-},{"./primo/explore":39,"./primo/explore/helper":41,"./primo/facets":42,"./primo/records":43,"./primo/user":44,"./primo/view":45}],39:[function(require,module,exports){
+},{"./primo/explore":37,"./primo/explore/helper":39,"./primo/facets":40,"./primo/records":41,"./primo/user":42,"./primo/view":43}],37:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2831,7 +2594,7 @@ var Explore = function () {
 
 exports.default = Explore;
 
-},{"./explore/components":40,"./explore/helper":41}],40:[function(require,module,exports){
+},{"./explore/components":38,"./explore/helper":39}],38:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2951,7 +2714,7 @@ var Components = function () {
 
 exports.default = Components;
 
-},{"../../vendor/css-selector-generator.js":46,"./helper":41}],41:[function(require,module,exports){
+},{"../../vendor/css-selector-generator.js":44,"./helper":39}],39:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3228,7 +2991,7 @@ var Helper = function () {
 
 exports.default = Helper;
 
-},{}],42:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3285,7 +3048,7 @@ var Facets = function () {
 
 exports.default = Facets;
 
-},{"./explore/components":40,"./explore/helper":41}],43:[function(require,module,exports){
+},{"./explore/components":38,"./explore/helper":39}],41:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3345,7 +3108,7 @@ var Records = function () {
 
 exports.default = Records;
 
-},{"./explore/components":40,"./explore/helper":41}],44:[function(require,module,exports){
+},{"./explore/components":38,"./explore/helper":39}],42:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3404,7 +3167,7 @@ var User = function () {
 
 exports.default = User;
 
-},{"./explore/helper":41}],45:[function(require,module,exports){
+},{"./explore/helper":39}],43:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3440,7 +3203,7 @@ var View = function View() {
 
 exports.default = View;
 
-},{"./explore/helper":41}],46:[function(require,module,exports){
+},{"./explore/helper":39}],44:[function(require,module,exports){
 'use strict';
 
 (function () {
@@ -3756,7 +3519,7 @@ exports.default = View;
   }
 }).call(undefined);
 
-},{}],47:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3821,7 +3584,7 @@ var Templates = function () {
 
 exports.default = Templates;
 
-},{"./utils":48}],48:[function(require,module,exports){
+},{"./utils":46}],46:[function(require,module,exports){
 'use strict';
 
 /*
@@ -3836,7 +3599,219 @@ String.prototype.toCamelCase = function () {
   }).join('');
 };
 
-},{}]},{},[37])
+},{}],47:[function(require,module,exports){
+'use strict';
+
+var _primo = require('./primo-explore-dom/js/primo');
+
+var _primo2 = _interopRequireDefault(_primo);
+
+var _helper = require('./primo-explore-dom/js/primo/explore/helper');
+
+var _helper2 = _interopRequireDefault(_helper);
+
+var _components = require('./components');
+
+var _components2 = _interopRequireDefault(_components);
+
+var _templates = require('./templates');
+
+var _templates2 = _interopRequireDefault(_templates);
+
+var _feedService = require('./factories/feedService');
+
+var _messageService = require('./factories/messageService');
+
+var _messageService2 = _interopRequireDefault(_messageService);
+
+var _feedbackService = require('./factories/feedbackService');
+
+var _feedbackService2 = _interopRequireDefault(_feedbackService);
+
+var _altmetricsService = require('./factories/altmetricsService');
+
+var _altmetricsService2 = _interopRequireDefault(_altmetricsService);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//make Primo public
+/*
+  Central Package Loader
+
+  Do NOT edit this file.
+  All components are declared in "components.js"
+
+  KULeuven/LIBIS (c) 2017
+  Mehmet Celik
+*/
+
+window.Primo = _primo2.default;
+//load PrimoExplorer UI if angular.reloadWithDebugInfo() is ran
+window.setTimeout(function () {
+  if (_primo2.default.isDebugEnabled()) {
+    var uiURL = 'https://cdn.rawgit.com/mehmetc/primo-explore-dom-ui/fc0868df/js/custom.js';
+    //let uiURL = 'http://127.0.0.1:8000/js/custom.js';
+
+    _helper2.default.loadScript(uiURL).then(function () {
+      console.log('Injecting UI');
+      _primo2.default.explore.ui.toggle();
+    });
+  }
+}, 2000);
+
+//Create the centralCustom module;
+if (window.appConfig.vid == 'ECB') {
+  window.browzine = {
+    api: "https://public-api.thirdiron.com/public/v1/libraries/1624",
+    apiKey: "e71d1c31-7938-470a-8be2-a6e351e0c001",
+    journalBrowZineWebLinkText: "View Journal Contents",
+    articleBrowZineWebLinkText: "View Issue Contents",
+    articlePDFDownloadLinkEnabled: true,
+    articlePDFDownloadLinkText: "Download PDF"
+  };
+}
+
+var app = angular.module('centralCustom', ['ngMaterial']).constant('feedbackServiceURL', 'https://services.libis.be/feedback').config(function ($sceDelegateProvider) {
+  $sceDelegateProvider.resourceUrlWhitelist(['**']);
+}).run(function ($templateCache, $rootScope) {
+  //$templateCache.put('components/search/fullView/full-view.html', fullViewHTML);
+  _helper2.default.loadScript('https://unpkg.com/hotkeys-js@2.0.8/dist/hotkeys.min.js').then(function () {
+    console.log('hotkeys.js loaded');
+  });
+  _helper2.default.loadScript('https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js?' + Date.now()).then(function () {
+    console.log('altmerics embed.js loaded');
+  });
+  if (window.appConfig.vid == 'ECB') {
+    _helper2.default.loadScript('https://s3.amazonaws.com/browzine-adapters/primo/browzine-primo-adapter.js').then(function () {
+      console.log('browzine-primo-adapter.js loaded');
+    });
+  }
+}).factory('FeedService', _feedService.feedService).service('AltmetricsService', _altmetricsService2.default).service('MessageService', _messageService2.default).service('FeedbackService', _feedbackService2.default).factory('apiCallInterceptor', [function () {
+  var apiCallInterceptor = {
+    response: function response(_response) {
+      //"Assessing Gospel Quotations in Justin Martyr"
+      var fixDisplayData = function fixDisplayData(pnxData) {
+        if (pnxData) {
+          try {
+            /*
+            if (pnxData.display && pnxData.display.creator) {
+              pnxData.display.creator = pnxData.display.creator.map(c => {
+                let relator = c.match(/\(.*?\)/i);
+                let data = c.split(/\(.*?\)/i).join("");
+                 if (relator) {
+                  c=`${c} $$Q${data}`;
+                }
+                return c;
+              });
+            }
+             if (pnxData.display && pnxData.display.contributor) {
+              pnxData.display.contributor = pnxData.display.contributor.map(c => {
+                let relator = c.match(/\(.*?\)/i);
+                let data = c.split(/\(.*?\)/i).join("");
+                 if (relator) {
+                  c=`${c} $$Q${data}`;
+                }
+                return c;
+              });
+            }
+            */
+          } catch (e) {
+            console.log(e);
+            console.log('no data');
+          }
+        }
+        return pnxData;
+      };
+
+      if (/^\/primo_library\/libweb\/webservices\/rest\/primo-explore\/v1\/pnxs/.test(_response.config.url)) {
+        var data = _response.data;
+        try {
+          if (Object.keys(data).includes('docs')) {
+            data.docs.map(function (p) {
+              return fixDisplayData(p.pnx);
+            });
+          } else {
+            if (Object.keys(data).includes('pnx')) {
+              data.pnx = fixDisplayData(data.pnx);
+            }
+          }
+        } catch (e) {
+          console.log(e);
+          console.log('no data');
+        }
+        //Remove open access from facets
+        try {
+          if (Object.keys(data).includes('facets')) {
+            data["facets"] = data["facets"].map(function (m) {
+              if (m.name == "tlevel") {
+                m.values = m.values.filter(function (t) {
+                  return t.value !== 'open_access';
+                });
+              }
+              return m;
+            });
+          }
+        } catch (e) {
+          console.log('no data', e.message);
+        }
+
+        _response.data = data;
+      }
+
+      return _response;
+    }
+  };
+  return apiCallInterceptor;
+}]).config(['$httpProvider', function ($httpProvider) {
+  $httpProvider.interceptors.push('apiCallInterceptor');
+}]);
+
+//Contains the after component selectors that will be injected
+var afterComponents = {};
+
+//Create all components and determine in which after component these need to be
+//injected
+console.log('Loading centralCustom components');
+_components2.default.all.forEach(function (component) {
+  console.log(component.name);
+  if (component.enabled) {
+    if (component.appendTo) {
+      var elements = afterComponents[component.appendTo] || [];
+      //elements.push(component.name);
+      elements.push({
+        'name': component.name,
+        'enableInView': component.enableInView
+      });
+      afterComponents[component.appendTo] = elements;
+    }
+    app.constant('afterComponents', afterComponents);
+    app.component(component.name.toCamelCase(), component.config);
+  }
+});
+
+console.log('Replace Templates');
+_templates2.default.all.forEach(function (template) {
+  console.log(template.id);
+  app.run(function ($templateCache) {
+    $templateCache.put(template.id, template.template);
+  });
+});
+
+//Inject place holders into the after components
+Object.keys(afterComponents).forEach(function (component, i) {
+  var subComponents = afterComponents[component];
+
+  app.component(component.toCamelCase(), {
+    bindings: {
+      parentCtrl: '<'
+    },
+    template: subComponents.map(function (m) {
+      return '<' + m.name + ' parent-ctrl="$ctrl"></' + m.name + '>';
+    }).join("")
+  });
+});
+
+},{"./components":1,"./factories/altmetricsService":32,"./factories/feedService":33,"./factories/feedbackService":34,"./factories/messageService":35,"./primo-explore-dom/js/primo":36,"./primo-explore-dom/js/primo/explore/helper":39,"./templates":45}]},{},[47])
 
 
 //# sourceMappingURL=custom.js.map

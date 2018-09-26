@@ -129,6 +129,22 @@ let app = angular.module('centralCustom', ['ngMaterial'])
             console.log(e);
             console.log('no data');
           }
+//Remove open access from facets
+          try {             
+            if (Object.keys(data).includes('facets')) {        
+              data["facets"] = data["facets"].map(m => {
+                if (m.name == "tlevel") {
+                  m.values = m.values.filter(t => {
+                    return t.value !== 'open_access'
+                  })
+                }
+                return m
+              })
+            }
+          } catch (e) {
+            console.log('no data', e.message);
+          }
+
           response.data = data;
         }
 
