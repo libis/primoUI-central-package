@@ -12,9 +12,7 @@ import Helper from './primo-explore-dom/js/primo/explore/helper'
 import Components from './components'
 import Templates from './templates'
 
-import {
-  feedService
-} from './factories/feedService'
+import {feedService} from './factories/feedService'
 import MessageService from './factories/messageService'
 import FeedbackService from './factories/feedbackService'
 import AltmetricsService from './factories/altmetricsService'
@@ -45,8 +43,8 @@ if (window.appConfig.vid == 'ECB') {
     articlePDFDownloadLinkText: "Download PDF",
   };
 }
-
-let servicesHost = 'http://192.168.100.101:9292/';
+//let servicesHost = 'http://192.168.100.101:9292/';
+let servicesHost = 'https://services.libis.be/';
 
 let app = angular.module('centralCustom', ['ngMaterial', 'vcRecaptcha'])
   /*
@@ -139,6 +137,22 @@ let app = angular.module('centralCustom', ['ngMaterial', 'vcRecaptcha'])
             console.log(e);
             console.log('no data');
           }
+          //Remove open access from facets
+          try {             
+            if (Object.keys(data).includes('facets')) {        
+              data["facets"] = data["facets"].map(m => {
+                if (m.name == "tlevel") {
+                  m.values = m.values.filter(t => {
+                    return t.value !== 'open_access'
+                  })
+                }
+                return m
+              })
+            }
+          } catch (e) {
+            console.log('no data', e.message);
+          }
+          
           response.data = data;
         }
 

@@ -4,22 +4,23 @@ import requestACopyDialogHTML from './requestACopyDialog.html'
 class RequestACopyController {
   constructor($element, $compile, $scope, $mdDialog, $mdToast, $http,requestACopyURL) {
     let self = this;
-    if (/^nui\.getit\./.test(self.parentCtrl.parentCtrl.title)) {
+    
+    // If you want to add the button to the title (like report a problem)
+    //let serviceTitleCode = self.parentCtrl.parentCtrl.title
+    //let appendButtonTo = $element.parent().parent().find('h4');
 
-      console.log ("-------------- RequestACopyController-------------------------")
+    let serviceTitleCode = self.parentCtrl.parentCtrl.service.title;
+    let appendButtonTo = $element.parent();
 
-      console.log($scope.$ctrl.parentCtrl)
-      if ((!/^nui\.getit\.tab1_onl_norestrict/.test(self.parentCtrl.parentCtrl.title))) {
+    if (/^nui\.getit\./.test(serviceTitleCode)) {
+      if ((!/^nui\.getit\.tab1_onl_norestrict/.test(serviceTitleCode))) {
 
        /* captcha implementation (Already used in )
         https://github.com/VividCortex/angular-recaptcha
-        */
 
+        */
         let recordData = self.currentRecord;
         let capchaPublicKey = window.appConfig["system-configuration"]["Public Captcha Key"];
-       
-
-
 
         Primo.user.then(user => {
           self.user = user;
@@ -27,11 +28,11 @@ class RequestACopyController {
             self.view = view;
 
             self.onCampus = self.user.isOnCampus();
-            if ( ! /^nui\.getit\.tab1_onl_mayrestrict/.test(self.parentCtrl.parentCtrl.title)  || /^nui\.getit\.tab1_onl_mayrestrict/.test(self.parentCtrl.parentCtrl.title) && ! self.onCampus ) {
-               $element.parent().parent().find('h4').after($compile(requestACopyHTML)($scope));
+            if ( ! /^nui\.getit\.tab1_onl_mayrestrict/.test(serviceTitleCode)  || /^nui\.getit\.tab1_onl_mayrestrict/.test(serviceTitleCode) && ! self.onCampus ) {
+              appendButtonTo.after($compile(requestACopyHTML)($scope));
             }
 
-console.log ( recordData.pnx )
+//console.log ( recordData.pnx )
 
             self.showRequestACopyForm = ($event) => {
               $mdDialog.show({
@@ -124,8 +125,8 @@ console.log ( recordData.pnx )
             }; //showRequestACopyForm
           });
         });
-      } //if ( ( ! /^nui\.getit\.tab1_onl_norestrict/.test(self.parentCtrl.parentCtrl.title)  ) ){
-    } // if (/^nui\.getit\./.test(self.parentCtrl.parentCtrl.title))  
+      } //if ( ( ! /^nui\.getit\.tab1_onl_norestrict/.test(serviceTitleCode)  ) ){
+    } // if (/^nui\.getit\./.test(serviceTitleCode))  
   }
 
   get currentRecord() {
@@ -138,6 +139,9 @@ console.log ( recordData.pnx )
     }
     return null;
   }
+
+
+
 }
 
 RequestACopyController.$inject = ['$element', '$compile', '$scope', '$mdDialog', '$mdToast', '$http','requestACopyURL'];
