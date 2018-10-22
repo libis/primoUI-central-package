@@ -2,9 +2,9 @@ import requestACopyHTML from './requestACopy.html'
 import requestACopyDialogHTML from './requestACopyDialog.html'
 
 class RequestACopyController {
-  constructor($element, $compile, $scope, $mdDialog, $mdToast, $http,requestACopyURL) {
+  constructor($element, $compile, $scope, $mdDialog, $mdToast, $http, $rootScope, requestACopyURL, MessageService) {
     let self = this;
-    
+    self.$rootScope = $rootScope;
     // If you want to add the button to the title (like report a problem)
     //let serviceTitleCode = self.parentCtrl.parentCtrl.title
     //let appendButtonTo = $element.parent().parent().find('h4');
@@ -28,6 +28,7 @@ class RequestACopyController {
             self.view = view;
 
             self.onCampus = self.user.isOnCampus();
+            self.onCampus = false;
             if ( ! /^nui\.getit\.tab1_onl_mayrestrict/.test(serviceTitleCode)  || /^nui\.getit\.tab1_onl_mayrestrict/.test(serviceTitleCode) && ! self.onCampus ) {
               appendButtonTo.after($compile(requestACopyHTML)($scope));
             }
@@ -90,7 +91,7 @@ class RequestACopyController {
                       motivation: $scope.request.motivation
                     };
 
-                    console.log ( data )
+                  //  console.log ( data )
 
 
                     if ($scope.request.replyTo.length > 0 && $scope.request.motivation.length > 0) {
@@ -106,14 +107,17 @@ class RequestACopyController {
                         cache: false,
                         data: data
                       }).then(function (response) {
-                        let message = self.translate.instant('lbs.nui.feedback.success') || 'Thank you the request had been send!';
-                        MessageService.show(message, {
+                        let message = self.$rootScope.$$childHead.$ctrl.$translate.instant('lbs.nui.feedback.success') || 'Thank you the request had been send!';
+                        MessageService.__show({
+                          message: message,
                           scope: $scope,
                           hideDelay: 5000
                         });
                       }, function (response) {
-                        let message = self.translate.instant('lbs.nui.feedback.fail') || 'Unable to submit the request.';
-                        MessageService.show(message, {
+                        let message = self.$rootScope.$$childHead.$ctrl.$translate.instant('lbs.nui.feedback.fail') || 'Unable to submit the request.';
+                        console.log( message )
+                        MessageService.__show({
+                          message: message,
                           scope: $scope,
                           hideDelay: 5000
                         });
@@ -139,12 +143,9 @@ class RequestACopyController {
     }
     return null;
   }
-
-
-
 }
 
-RequestACopyController.$inject = ['$element', '$compile', '$scope', '$mdDialog', '$mdToast', '$http','requestACopyURL'];
+RequestACopyController.$inject = ['$element', '$compile', '$scope', '$mdDialog', '$mdToast', '$http', '$rootScope', 'requestACopyURL', 'MessageService'];
 
 export let requestACopyConfig = {
   bindings: {
