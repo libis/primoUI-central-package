@@ -11,16 +11,19 @@ class RequestACopyController {
 
     let serviceTitleCode = self.parentCtrl.parentCtrl.service.title;
     let appendButtonTo = $element.parent();
-
-    if (/^nui\.getit\./.test(serviceTitleCode)) {
-      if ((!/^nui\.getit\.tab1_onl_norestrict/.test(serviceTitleCode))) {
-
+    let recordData = self.currentRecord;
        /* captcha implementation (Already used in )
         https://github.com/VividCortex/angular-recaptcha
-
         */
-        let recordData = self.currentRecord;
-        let capchaPublicKey = window.appConfig["system-configuration"]["Public Captcha Key"];
+    let capchaPublicKey = window.appConfig["system-configuration"]["Public Captcha Key"];
+
+    let TypesShowRequestACopy = ['chapter','journal-article','thesis-dissertation','conference','report','dataset','c-bookreview','media','software'];
+
+    if (/^nui\.getit\./.test(serviceTitleCode)) {
+      var ShowRequestACopyType = recordData.pnx.facets.lfc16.filter(value => -1 !== TypesShowRequestACopy.indexOf(value));
+
+      if ((!/^nui\.getit\.tab1_onl_norestrict/.test(serviceTitleCode)) && ShowRequestACopyType.length > 0 ) {
+
 
         Primo.user.then(user => {
           self.user = user;
@@ -28,11 +31,11 @@ class RequestACopyController {
             self.view = view;
 
             self.onCampus = self.user.isOnCampus();
+            console.log( serviceTitleCode )
             if ( ! /^nui\.getit\.tab1_onl_mayrestrict/.test(serviceTitleCode)  || /^nui\.getit\.tab1_onl_mayrestrict/.test(serviceTitleCode) && ! self.onCampus ) {
               appendButtonTo.after($compile(requestACopyHTML)($scope));
             }
 
-//console.log ( recordData.pnx )
 
             self.showRequestACopyForm = ($event) => {
               $mdDialog.show({
