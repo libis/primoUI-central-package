@@ -7,15 +7,14 @@
   KULeuven/LIBIS (c) 2017
   Mehmet Celik
 */
-
-
 import Primo from './primo-explore-dom/js/primo'
 import Helper from './primo-explore-dom/js/primo/explore/helper'
 import Components from './components'
 import Templates from './templates'
 
-
-import {feedService} from './factories/feedService'
+import {
+  feedService
+} from './factories/feedService'
 import MessageService from './factories/messageService'
 import FeedbackService from './factories/feedbackService'
 import AltmetricsService from './factories/altmetricsService'
@@ -23,7 +22,7 @@ import AltmetricsService from './factories/altmetricsService'
 //make Primo public
 window.Primo = Primo;
 //load PrimoExplorer UI if angular.reloadWithDebugInfo() is ran
-window.setTimeout(function() {
+window.setTimeout(function () {
   if (Primo.isDebugEnabled()) {
     let uiURL = 'https://cdn.rawgit.com/mehmetc/primo-explore-dom-ui/fc0868df/js/custom.js';
     //let uiURL = 'http://127.0.0.1:8000/js/custom.js';
@@ -36,7 +35,7 @@ window.setTimeout(function() {
 }, 2000);
 
 //Create the centralCustom module;
-if(window.appConfig.vid == 'ECB') {
+if (window.appConfig.vid == 'ECB') {
   window.browzine = {
     api: "https://public-api.thirdiron.com/public/v1/libraries/1624",
     apiKey: "e71d1c31-7938-470a-8be2-a6e351e0c001",
@@ -44,11 +43,22 @@ if(window.appConfig.vid == 'ECB') {
     articleBrowZineWebLinkText: "View Issue Contents",
     articlePDFDownloadLinkEnabled: true,
     articlePDFDownloadLinkText: "Download PDF",
-  };  
+  };
 }
 
-let app = angular.module('centralCustom', ['ngMaterial'])
-  .constant('feedbackServiceURL', 'https://services.libis.be/feedback')
+let servicesHost = 'http://192.168.100.101:9292/';
+
+let app = angular.module('centralCustom', ['ngMaterial', 'vcRecaptcha'])
+  /*
+  //.constant('servicesHost', 'https://services.libis.be/')
+    .constant('feedbackServiceURL', 'https://services.libis.be/feedback')
+    .constant('reportAProblemURL', 'https://services.libis.be/report_a_problem')
+    .constant('requestACopyURL', 'http://192.168.100.101:9292//request_a_copy')
+  */
+  .constant('feedbackServiceURL', servicesHost + 'feedback')
+  .constant('reportAProblemURL', servicesHost + 'report_a_problem')
+  .constant('requestACopyURL', servicesHost + 'request_a_copy')
+
   .config(($sceDelegateProvider) => {
     $sceDelegateProvider.resourceUrlWhitelist([
       '**'
@@ -59,12 +69,12 @@ let app = angular.module('centralCustom', ['ngMaterial'])
     Helper.loadScript('https://unpkg.com/hotkeys-js@2.0.8/dist/hotkeys.min.js').then(() => {
       console.log('hotkeys.js loaded');
     });
-    Helper.loadScript('https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js?' + Date.now()).then(function() {
+    Helper.loadScript('https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js?' + Date.now()).then(function () {
       console.log('altmerics embed.js loaded');
     });
-    if(window.appConfig.vid == 'ECB') {
+    if (window.appConfig.vid == 'ECB') {
       Helper.loadScript('https://s3.amazonaws.com/browzine-adapters/primo/browzine-primo-adapter.js').then(() => {
-        console.log('browzine-primo-adapter.js loaded');      
+        console.log('browzine-primo-adapter.js loaded');
       });
     }
   })
@@ -74,9 +84,9 @@ let app = angular.module('centralCustom', ['ngMaterial'])
   .service('FeedbackService', FeedbackService)
   .factory('apiCallInterceptor', [() => {
     var apiCallInterceptor = {
-      response: function(response) {
+      response: function (response) {
         //"Assessing Gospel Quotations in Justin Martyr"
-        let fixDisplayData = function(pnxData) {
+        let fixDisplayData = function (pnxData) {
           if (pnxData) {
             try {
               /*
@@ -129,22 +139,6 @@ let app = angular.module('centralCustom', ['ngMaterial'])
             console.log(e);
             console.log('no data');
           }
-//Remove open access from facets
-          try {             
-            if (Object.keys(data).includes('facets')) {        
-              data["facets"] = data["facets"].map(m => {
-                if (m.name == "tlevel") {
-                  m.values = m.values.filter(t => {
-                    return t.value !== 'open_access'
-                  })
-                }
-                return m
-              })
-            }
-          } catch (e) {
-            console.log('no data', e.message);
-          }
-
           response.data = data;
         }
 
@@ -155,7 +149,7 @@ let app = angular.module('centralCustom', ['ngMaterial'])
   }]).config(['$httpProvider', ($httpProvider) => {
     $httpProvider.interceptors.push('apiCallInterceptor');
   }]);
-  
+
 
 
 //Contains the after component selectors that will be injected
@@ -185,8 +179,8 @@ Components.all.forEach((component) => {
 console.log('Replace Templates');
 Templates.all.forEach((template) => {
   console.log(template.id)
-  app.run (($templateCache) => {
-    $templateCache.put(template.id,template.template);
+  app.run(($templateCache) => {
+    $templateCache.put(template.id, template.template);
   })
 })
 

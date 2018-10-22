@@ -33,6 +33,8 @@ import {disclaimerConfig} from './components/general/disclaimer'
 import {LanguageSelectionConfig} from './components/general/ConfigLanguageSelection'
 
 import {reportAProblemConfig} from './components/prmServiceHeaderAfter/reportAProblem'
+import {requestACopyConfig} from './components/prmServiceHeaderAfter/requestACopy'
+
 import {finesMessageConfig as payMyFinesMessageConfig} from './components/prmTopBarBefore/finesMessage'
 import {announcementsConfig} from './components/prmTopBarBefore/announcements'
 import {promoteLoginConfig} from './components/prmPromoteLogin/PromoteLogin'
@@ -88,6 +90,8 @@ export default class AfterComponents {
       {name: 'new-search-button', config: newSearchButtonConfig, enabled: true, appendTo: 'prm-top-nav-bar-links-after', enableInView: '^(?!ECB)'},
 
       {name: 'report-a-problem', config: reportAProblemConfig, enabled: true, appendTo: 'prm-service-header-after', enableInView: '.*'},
+      {name: 'request-a-copy', config: requestACopyConfig, enabled: true, appendTo: 'prm-service-header-after', enableInView: '^Lirias'}, 
+
       {name: 'prm-searchtips', config: searchTipConfig, enabled: true, appendTo: null, enableInView: '.*'},
       {name: 'prm-disclaimer', config: disclaimerConfig, enabled: true, appendTo: null, enableInView: '.*'},
       {name: 'static-footer', config: staticFooterConfig, enabled: true, appendTo: 'prm-explore-footer-after', enableInView: '.*'},
@@ -107,10 +111,10 @@ export default class AfterComponents {
 
       {name: 'announcement', config: announcementsConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '.*'},
       {name: 'pay-my-fines-message', config: payMyFinesMessageConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '^KULeuven'},
-    //  {name: 'remove-open-access', config: removeOpenAccessConfig, enabled: false, appendTo: 'prm-facet-after', enableInView: '.*'},
-      {name: 'search-also', config: searchAlsoConfig, enabled: true, appendTo: 'prm-facet-after', enableInView: '^KULeuven'},
-      {name: 'search-also-body', config: searchAlsoBodyConfig, enabled: true, appendTo: 'prm-facet-exact-after', enableInView: '^KULeuven'},
-      {name: 'browzine', config: browzineConfig, enabled: true, appendTo: 'prm-search-result-availability-line-after', enableInView: '^ECB'}
+     //  {name: 'remove-open-access', config: removeOpenAccessConfig, enabled: false, appendTo: 'prm-facet-after', enableInView: '.*'},
+     {name: 'search-also', config: searchAlsoConfig, enabled: true, appendTo: 'prm-facet-after', enableInView: '^KULeuven'},
+     {name: 'search-also-body', config: searchAlsoBodyConfig, enabled: true, appendTo: 'prm-facet-exact-after', enableInView: '^KULeuven'},
+    {name: 'browzine', config: browzineConfig, enabled: true, appendTo: 'prm-search-result-availability-line-after', enableInView: '^ECB'}
     ].filter( (component) => ( component.enabled && new RegExp(component.enableInView).test(window.appConfig.vid) ) );
   }
 }
