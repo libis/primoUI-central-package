@@ -28,7 +28,6 @@ class RequestACopyController {
             self.view = view;
 
             self.onCampus = self.user.isOnCampus();
-            //self.onCampus = false;
             if ( ! /^nui\.getit\.tab1_onl_mayrestrict/.test(serviceTitleCode)  || /^nui\.getit\.tab1_onl_mayrestrict/.test(serviceTitleCode) && ! self.onCampus ) {
               appendButtonTo.after($compile(requestACopyHTML)($scope));
             }
