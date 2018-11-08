@@ -22,6 +22,16 @@ export default class MessageService {
     let actionLabel = options.actionLabel || 'unknown';
     let messageKey = 'lbs.generalMessage';
 
+    if (message.length > 0) {
+      self.__show({
+        message: message,
+        scope: scope,
+        hideDelay: hideDelay,
+        action: action,
+        actionLabel: actionLabel
+      });      
+    }
+
     self.translate(messageKey).then((m) => {
       message = (m == messageKey || m <= 1) ? '' : m;
 
