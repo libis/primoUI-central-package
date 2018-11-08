@@ -2,7 +2,7 @@ import reportAProblemHTML from './reportAProblem.html'
 import reportAProblemDialogHTML from './reportAProblemDialog.html'
 
 class ReportAProblemController {
-  constructor($element, $compile, $scope, $mdDialog, $mdToast, $http) {
+  constructor($element, $compile, $scope, $mdDialog, $mdToast, $http,reportAProblemURL) {
     let self = this;
     if (/^nui\.getit\./.test(this.parentCtrl.parentCtrl.title)) {
       $element.parent().parent().find('h4').after($compile(reportAProblemHTML)($scope));
@@ -59,7 +59,7 @@ class ReportAProblemController {
 
                     $http({
                       method: 'POST',
-                      url: "https://services.libis.be/report_a_problem",
+                      url: reportAProblemURL,
                       headers: {
                         'Content-Type': 'application/json',
                         'X-From-ExL-API-Gateway': undefined
@@ -95,7 +95,7 @@ class ReportAProblemController {
   }
 }
 
-ReportAProblemController.$inject = ['$element', '$compile', '$scope', '$mdDialog', '$mdToast', '$http'];
+ReportAProblemController.$inject = ['$element', '$compile', '$scope', '$mdDialog', '$mdToast', '$http','reportAProblemURL'];
 
 export let reportAProblemConfig = {
   bindings: {

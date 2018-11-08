@@ -32,7 +32,7 @@ export default class AltmetricsService {
 
     addAltmetrics(altmetricsElementSelector) {
         return this.checkAltmetricscripts().then(function (result) {
-          //  console.log('Loading altmetrics: We kunnen starten');
+           // console.log('Loading altmetrics: We kunnen starten');
             window._altmetric_embed_init(altmetricsElementSelector);
             return result;
         });

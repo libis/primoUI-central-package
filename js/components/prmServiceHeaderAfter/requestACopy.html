@@ -1,0 +1,33 @@
+  <md-button tabindex="0" role="listitem" tabindex="0" ng-href=""
+             class="zero-margin button-link md-button md-primoExplore-theme md-ink-ripple request-a-copy"
+             layout="column" layout-align="center center" (click)="$ctrl.showRequestACopyForm($event)"
+             aria-label="lbs.nui.details.request_a_copy">
+
+                  
+ <!--       
+      <span class="item-content" translate="lbs.nui.details.request_a_copy"> <i class="material-icons">shopping_cart</i></span>
+-->
+<span class="item-content" ><i class="material-icons">shopping_cart</i> Request a copy</span>
+            <md-tooltip md-direction="down" md-delay="400" class="multi-row-tooltip slide-tooltip-anim">
+        <span class="item-description popover animate-popover"
+              translate="lbs.nui.details.description.request_a_copy"></span>
+       </md-tooltip>
+  </md-button>
+
+
+  <style>
+.md-button.request-a-copy{
+      /* background-color: blueviolet; */
+      width: fit-content;
+      color: #265f8d;
+      background-color: rgba(92, 146, 189, 0.1);
+}
+
+
+.md-button.button-link.request-a-copy:hover:not([disabled]) {
+      color: #fff;
+      background-color: #08a7eb;
+}
+
+
+  </style>
