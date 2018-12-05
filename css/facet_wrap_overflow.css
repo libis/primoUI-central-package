@@ -2,25 +2,25 @@
 
 
 
-prm-facet-exact .section-content .md-chips .md-chip.facet-element-marker-library_myinstitution .md-chip-content,
+/*prm-facet-exact .section-content .md-chips .md-chip.facet-element-marker-library_myinstitution .md-chip-content,
 prm-facet-exact .section-content .md-chips .md-chip.facet-element-marker-library_otherinstitution .md-chip-content {
     overflow: visible;
-    margin-bottom: 0.5em; 
+    margin-bottom: 0.5em;
     width: 100%;
   }
   prm-facet-exact .md-chips .md-chip.facet-element-marker-library_myinstitution,
   prm-facet-exact .md-chips .md-chip.facet-element-marker-library_otherinstitution {
     line-height: normal;
-    height: auto; 
+    height: auto;
   }
   prm-facet-exact .md-chips .md-chip.facet-element-marker-library_myinstitution .md-chip-content strong,
   prm-facet-exact .md-chips .md-chip.facet-element-marker-library_otherinstitution .md-chip-content strong {
-    white-space: normal; 
-    overflow: visible; 
+    white-space: normal;
+    overflow: visible;
   }
   prm-facet-exact .section-content .md-chips .md-chip.facet-element-marker-library_myinstitution .md-chip-remove-container,
   prm-facet-exact .section-content .md-chips .md-chip.facet-element-marker-library_otherinstitution .md-chip-remove-container {
-    height: 28px; 
+    height: 28px;
     align-items: center;
     align-self: center;
     top: -5px;
@@ -32,4 +32,4 @@ prm-facet-exact .section-content .md-chips .md-chip.facet-element-marker-library
   }
   prm-facet .sidebar-inner-wrapper {
     margin-right: 0;
-  }
+  }*/
