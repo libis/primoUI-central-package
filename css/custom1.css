@@ -1,3 +1,15 @@
+.institutions-list md-list-item{
+  min-height: auto;
+}
+
+.institutions-list ._md-list-item-inner{
+  min-height: auto;
+}
+
+.institutions-list md-list-item._md-button-wrap > div.md-button:first-child{
+  padding: 0.4em 1em;
+}
+
 
 prm-action-list div#scrollActionList {
     align-items: baseline;
@@ -243,6 +255,14 @@ prm-record-collection-paths{
 
 prm-search-bar .advanced-search-wrapper .date-range-inputs md-input-container {
   width:auto;
+}
+
+prm-loans .unpin-button{
+  display: none;
+}
+
+#scrollActionList #Print, #scrollActionList #E-mail{
+  display:none;
 }
 
 #personalDetails > md-card-content > div > md-checkbox {

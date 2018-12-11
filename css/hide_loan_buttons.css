@@ -1,0 +1,7 @@
+prm-loans .unpin-button{
+  display: none;
+}
+
+#scrollActionList #Print, #scrollActionList #E-mail{
+  display:none;
+}

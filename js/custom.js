@@ -4025,8 +4025,6 @@ if (reg_views.includes(window.appConfig.vid)) {
       request: function request(config) {
         if (config.url.includes('pnxs') && !config.url.includes('delivery') && config.params) {
           //console.log(config);
-          var newInst = 'KUL';
-          var newVid = 'KULeuven';
 
           if (config.params.databases) {
             config.params.inst = 'KUL';
