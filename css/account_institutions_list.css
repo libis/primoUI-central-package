@@ -1,0 +1,11 @@
+.institutions-list md-list-item{
+  min-height: auto;
+}
+
+.institutions-list ._md-list-item-inner{
+  min-height: auto;
+}
+
+.institutions-list md-list-item._md-button-wrap > div.md-button:first-child{
+  padding: 0.4em 1em;
+}
