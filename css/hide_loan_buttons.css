@@ -2,6 +2,6 @@ prm-loans .unpin-button{
   display: none;
 }
 
-#scrollActionList #Print, #scrollActionList #E-mail{
+.account-actions-list #scrollActionList #Print, .account-actions-list #scrollActionList #E-mail{
   display:none;
 }
