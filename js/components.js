@@ -90,10 +90,10 @@ export default class AfterComponents {
       {name: 'new-search-button', config: newSearchButtonConfig, enabled: true, appendTo: 'prm-top-nav-bar-links-after', enableInView: '^(?!ECB)'},
 
       {name: 'report-a-problem', config: reportAProblemConfig, enabled: true, appendTo: 'prm-service-header-after', enableInView: '.*'},
-     // {name: 'request-a-copy-head', config: requestACopyConfig, enabled: true, appendTo: 'prm-service-header-after', enableInView: '^Lirias'}, 
-      {name: 'request-a-copy', config: requestACopyConfig, enabled: true, appendTo: 'prm-full-view-service-container-after', enableInView: '^Lirias'}, 
+     // {name: 'request-a-copy-head', config: requestACopyConfig, enabled: true, appendTo: 'prm-service-header-after', enableInView: '^Lirias'},
+      {name: 'request-a-copy', config: requestACopyConfig, enabled: true, appendTo: 'prm-full-view-service-container-after', enableInView: '^Lirias'},
 
-      
+
 
       {name: 'prm-searchtips', config: searchTipConfig, enabled: true, appendTo: null, enableInView: '.*'},
       {name: 'prm-disclaimer', config: disclaimerConfig, enabled: true, appendTo: null, enableInView: '.*'},
@@ -106,7 +106,7 @@ export default class AfterComponents {
       {name: 'promote-login-static-footer', config: promoteLoginConfig, enabled: true, appendTo: 'lbs-promote-login', enableInView:  '^KULeuven'},
 
       {name: 'ill-request-form-overview', config: illRequestFormConfig, enabled:false, appendTo: 'prm-requests-overview-after', enableInView: '.*'},
-      {name: 'ill-request-form', config: illRequestFormConfig, enabled:true, appendTo: 'prm-requests-after', enableInView: '^KULeuven|^VIVES'},
+      {name: 'ill-request-form', config: illRequestFormConfig, enabled:false, appendTo: 'prm-requests-after', enableInView: '^KULeuven|^VIVES'},
 
       {name: 'announcement-feedback', config: feedbackAnnouncementConfig, enabled:false, appendTo: 'prm-top-bar-before', enableInView: '.*'},
 
