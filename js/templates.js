@@ -13,15 +13,16 @@ import './utils'
 
 import changeLangWithoutUserAreaHTML from '../html/templates/change-lang-without-user-area.html'
 import prmLoanBugFixHTML from '../html/templates/prm-loan-bug-fix.html'
+import prmLiriasBriefResultContainerHTML from '../html/templates/prm-lirias-brief-result-container.html'
 
 export default class Templates {
     static get all() {
         /*
-          id = templateId in the templateCache 
+          id = templateId in the templateCache
           template = the imported tempalte
           enabled = true/false should the component be created
           enableInView = regex to define in which views the template has to be replaced.
-    
+
           ex. {id: 'components/search/topbar/userArea/user-area.html', template: userAreaHTML, enabled: true, enableInView: '.*'}
           results in:
             $templateCache.put('components/search/topbar/userArea/user-area.html',userAreaHTML);
@@ -37,6 +38,12 @@ export default class Templates {
                 template: prmLoanBugFixHTML,
                 enabled: true,
                 enableInView: '.*'
+            },
+            {
+                id: 'components/search/briefResult/briefResultContainer.html',
+                template: prmLiriasBriefResultContainerHTML,
+                enabled: true,
+                enableInView: 'Lirias'
             }
         ].filter((template) => (template.enabled && new RegExp(template.enableInView).test(window.appConfig.vid)));
     }
