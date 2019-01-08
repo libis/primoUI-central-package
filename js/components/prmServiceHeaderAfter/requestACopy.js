@@ -109,14 +109,14 @@ class RequestACopyController {
                         cache: false,
                         data: data
                       }).then(function (response) {
-                        let message = self.$rootScope.$$childHead.$ctrl.$translate.instant('lbs.nui.feedback.success') || 'Thank you the request had been send!';
+                        let message = self.$rootScope.$$childHead.$ctrl.$translate.instant('lbs.nui.request_a_copy.success') || 'Thank you the request had been send!';
                         MessageService.__show({
                           message: message,
                           scope: $scope,
                           hideDelay: 5000
                         });
                       }, function (response) {
-                        let message = self.$rootScope.$$childHead.$ctrl.$translate.instant('lbs.nui.feedback.fail') || 'Unable to submit the request.';
+                        let message = self.$rootScope.$$childHead.$ctrl.$translate.instant('lbs.nui.request_a_copy.fail') || 'Unable to submit the request.';
                         console.log( message )
                         MessageService.__show({
                           message: message,
