@@ -16,7 +16,7 @@
     <div class="media-content-type align-self-start">
       <!--OLD LINE:<span ng-if="::$ctrl.showItemType && (!$ctrl.isDBSearch() || $ctrl.isFullView)" translate="{{::$ctrl.getResourceTypeForDisplay()}}"></span>-->
       <!-- NEW LINE-->
-      <span ng-if="::$ctrl.showItemType && (!$ctrl.isDBSearch() || $ctrl.isFullView)" translate="{{::('facets.facet.facet_local16.'+$ctrl.item.pnx.display.lds03[0])}}"></span>
+      <span ng-if="::$ctrl.showItemType && (!$ctrl.isDBSearch() || $ctrl.isFullView)" translate="{{::('lbs.nui.lirias.type.'+$ctrl.item.pnx.display.lds03[0])}}"></span>
       <!-- END NEW LINE-->
       <span ng-if="::($ctrl.isPc() && !$ctrl.isfavorites && $ctrl.isMultipleVersions() && !$ctrl.isFavoriteForDisplayFrbr)">
         <prm-search-result-frbr-line [result]="::$ctrl.item" [is-full-view]="::$ctrl.isFullView" [index]="::$ctrl.index"></prm-search-result-frbr-line>
