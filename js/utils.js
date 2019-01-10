@@ -9,6 +9,7 @@ String.prototype.toCamelCase = function () {
 }
 
 //intercept api calls for database search and change to KUL (only regional views)
+  /*
 var reg_views = ["KULeuven_TMOREM", "KULeuven_TMOREK", "KULeuven_UCLL", "KULeuven_LUCA", "KULeuven_ODISEE"];
 if (reg_views.includes(window.appConfig.vid)) {
   let app = angular.module('viewCustom', [])
@@ -34,7 +35,7 @@ if (reg_views.includes(window.appConfig.vid)) {
       $httpProvider.interceptors.push('httpCallInterceptor');
     }]);
 }
-
+*/
 /*
 angular.element.prototype.closestClass = function (className) {
   return (function closest(element, className) {

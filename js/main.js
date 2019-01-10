@@ -13,6 +13,8 @@ import Components from './components'
 import Templates from './templates'
 
 import {feedService} from './factories/feedService'
+import {dbSearchHttpCallInterceptor} from './factories/dbSearchHttpCallInterceptor'
+import {apiCallInterceptor} from './factories/apiCallInterceptor'
 import MessageService from './factories/messageService'
 import FeedbackService from './factories/feedbackService'
 import AltmetricsService from './factories/altmetricsService'
@@ -52,11 +54,11 @@ let app = angular.module('centralCustom', ['ngMaterial', 'vcRecaptcha'])
     .constant('feedbackServiceURL', 'https://services.libis.be/feedback')
     .constant('reportAProblemURL', 'https://services.libis.be/report_a_problem')
     .constant('requestACopyURL', 'http://192.168.100.101:9292//request_a_copy')
-  */
+  */    
   .constant('feedbackServiceURL', servicesHost + 'feedback')
   .constant('reportAProblemURL', servicesHost + 'report_a_problem')
   .constant('requestACopyURL', servicesHost + 'request_a_copy')
-
+  
   .config(($sceDelegateProvider) => {
     $sceDelegateProvider.resourceUrlWhitelist([
       '**'
@@ -80,91 +82,16 @@ let app = angular.module('centralCustom', ['ngMaterial', 'vcRecaptcha'])
   .service('AltmetricsService', AltmetricsService)
   .service('MessageService', MessageService)
   .service('FeedbackService', FeedbackService)
-  .factory('apiCallInterceptor', [() => {
-    var apiCallInterceptor = {
-      response: function (response) {
-        //"Assessing Gospel Quotations in Justin Martyr"
-        let fixDisplayData = function (pnxData) {
-          if (pnxData) {
-            try {
-              /*
-              if (pnxData.display && pnxData.display.creator) {
-                pnxData.display.creator = pnxData.display.creator.map(c => {
-                  let relator = c.match(/\(.*?\)/i);
-                  let data = c.split(/\(.*?\)/i).join("");
+  .factory('dbSearchHttpCallInterceptor', dbSearchHttpCallInterceptor)
+  .factory('apiCallInterceptor', apiCallInterceptor)
+  .config(['$httpProvider', ($httpProvider) => { $httpProvider.interceptors.push('apiCallInterceptor'); }]);
 
-                  if (relator) {
-                    c=`${c} $$Q${data}`;
-                  }
-                  return c;
-                });
-              }
-
-              if (pnxData.display && pnxData.display.contributor) {
-                pnxData.display.contributor = pnxData.display.contributor.map(c => {
-                  let relator = c.match(/\(.*?\)/i);
-                  let data = c.split(/\(.*?\)/i).join("");
-
-                  if (relator) {
-                    c=`${c} $$Q${data}`;
-                  }
-                  return c;
-                });
-              }
-              */
-            } catch (e) {
-              console.log(e);
-              console.log('no data');
-            }
-          }
-          return pnxData;
-        }
-
-        if (/^\/primo_library\/libweb\/webservices\/rest\/primo-explore\/v1\/pnxs/.test(response.config.url)) {
-          var data = response.data;
-          try {
-            if (Object.keys(data).includes('docs')) {
-              data.docs.map(p => {
-                return fixDisplayData(p.pnx);
-              });
-            } else {
-              if (Object.keys(data).includes('pnx')) {
-                data.pnx = fixDisplayData(data.pnx);
-              }
-            }
-
-          } catch (e) {
-            console.log(e);
-            console.log('no data');
-          }
-          //Remove open access from facets
-          try {             
-            if (Object.keys(data).includes('facets')) {        
-              data["facets"] = data["facets"].map(m => {
-                if (m.name == "tlevel") {
-                  m.values = m.values.filter(t => {
-                    return t.value !== 'open_access'
-                  })
-                }
-                return m
-              })
-            }
-          } catch (e) {
-            console.log('no data', e.message);
-          }
-          
-          response.data = data;
-        }
-
-        return response;
-      }
-    }
-    return apiCallInterceptor;
-  }]).config(['$httpProvider', ($httpProvider) => {
-    $httpProvider.interceptors.push('apiCallInterceptor');
-  }]);
-
-
+//intercept api calls for database search and change to KUL (only regional views)
+var reg_views = ["KULeuven_TMOREM", "KULeuven_TMOREK", "KULeuven_UCLL", "KULeuven_LUCA", "KULeuven_ODISEE"];
+if (reg_views.includes(window.appConfig.vid)) {
+  console.log ("KULeuven_TMOREM, KULeuven_TMOREK, KULeuven_UCLL, KULeuven_LUCA, KULeuven_ODISEE" )
+  app.config(['$httpProvider', ($httpProvider) => { $httpProvider.interceptors.push('dbSearchHttpCallInterceptor'); }]);
+}
 
 //Contains the after component selectors that will be injected
 let afterComponents = {};
