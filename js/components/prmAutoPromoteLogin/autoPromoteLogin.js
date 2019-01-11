@@ -99,15 +99,7 @@ class AutoLoginController {
         if (!parentCtrl.isLoggedIn) {
             var auth = window.appConfig.authentication[0];
             var loginUrl = parentCtrl.loginService.loginUrl(auth['profile-name'], auth['authentication-system']);
-
-            var r = confirm('Go To Login :['+ loginUrl.replace(/institution=([^&])*/, "institution=KUL") +']');
-            if (r == true) {
-              document.location.href = loginUrl.replace(/institution=([^&])*/, "institution=KUL");
-            } else {
-              return;
-            }
-
-            //document.location.href = loginUrl.replace(/institution=([^&])*/, "institution=KUL");
+            document.location.href = loginUrl.replace(/institution=([^&])*/, "institution=KUL");
         }
     }
   }
