@@ -7,7 +7,6 @@ class ViewLogoController {
     self.rootScope = $rootScope;
     $element.parent().parent()[0].firstChild.parentNode.removeChild($element.parent().parent()[0].firstChild);
 
-
     $translate('limo.instituteUrl').then(
     (message) => {
       self.homePageLink = message
@@ -27,7 +26,10 @@ class ViewLogoController {
         }).then(function (response) {
           window.appConfig.customization.libraryLogo = localeLibraryLogo;
           self.localeLibraryLogo =  localeLibraryLogo
-        });
+        }, function (error) {
+          self.localeLibraryLogo;
+        }
+        );
       }
     });
   }

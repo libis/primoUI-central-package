@@ -21,13 +21,14 @@ class HomeIconController {
         $http({
           method: 'GET',
           url: localeLibraryLogo,
-        }).then(function (response) {
-          window.appConfig.customization.libraryLogo = localeLibraryLogo;
-          $compile($element.parent().parent())($scope);
-        }, function (response) {
-          window.appConfig.customization.libraryLogo = libraryLogo;
-        });
-
+        }).then(
+          function (response) {
+            window.appConfig.customization.libraryLogo = localeLibraryLogo;
+            $compile($element.parent().parent())($scope);
+          }, function (error) {
+            window.appConfig.customization.libraryLogo = libraryLogo;
+          }
+        );
       }
       self.homePageLink = '/primo-explore/search?vid=' + vid + "&lang=" + locale;
 

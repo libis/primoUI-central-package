@@ -37,7 +37,8 @@ import {requestACopyConfig} from './components/prmServiceHeaderAfter/requestACop
 
 import {finesMessageConfig as payMyFinesMessageConfig} from './components/prmTopBarBefore/finesMessage'
 import {announcementsConfig} from './components/prmTopBarBefore/announcements'
-import {promoteLoginConfig} from './components/prmPromoteLogin/PromoteLogin'
+import {autoLoginCheckboxConfig,autoLoginConfig,promoteLoginConfig} from './components/prmAutoPromoteLogin/autoPromoteLogin'
+
 import {feedbackAnnouncementConfig} from './components/prmTopBarBefore/feedbackAnnouncement'
 import {staticFooterConfig} from './components/general/staticFooter'
 import {removeAlertsConfig} from './components/general/removeAlerts'
@@ -100,7 +101,9 @@ export default class AfterComponents {
       {name: 'prm-dblink', config: databaseLinkConfig, enabled: false, appendTo: null, enableInView: '.*'},
 
       /* lbs-components used in html-templates of the package */
-      {name: 'promote-login-static-footer', config: promoteLoginConfig, enabled: true, appendTo: 'lbs-promote-login', enableInView:  '^KULeuven'},
+      {name: 'auto-login-static-footer', config: autoLoginCheckboxConfig, enabled: true, appendTo: 'lbs-promote-login', enableInView:  '^KULeuven$'},
+      {name: 'promote-login', config: promoteLoginConfig, enabled: true, appendTo: 'prm-authentication-after', enableInView:  '^KULeuven$'},
+      {name: 'auto-login', config: autoLoginConfig, enabled: true, appendTo: 'prm-authentication-after', enableInView:  'KULeuven_LUCA|KULeuven_ODISEE|KULeuven_TMOREK|KULeuven_TMOREM|KULeuven_UCLL'},
 
       {name: 'ill-request-form-overview', config: illRequestFormConfig, enabled:false, appendTo: 'prm-requests-overview-after', enableInView: '.*'},
       {name: 'ill-request-form', config: illRequestFormConfig, enabled:false, appendTo: 'prm-requests-after', enableInView: '^KULeuven|^VIVES'},

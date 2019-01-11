@@ -89,9 +89,10 @@ let app = angular.module('centralCustom', ['ngMaterial', 'vcRecaptcha'])
 //intercept api calls for database search and change to KUL (only regional views)
 var reg_views = ["KULeuven_TMOREM", "KULeuven_TMOREK", "KULeuven_UCLL", "KULeuven_LUCA", "KULeuven_ODISEE"];
 if (reg_views.includes(window.appConfig.vid)) {
-  console.log ("KULeuven_TMOREM, KULeuven_TMOREK, KULeuven_UCLL, KULeuven_LUCA, KULeuven_ODISEE" )
   app.config(['$httpProvider', ($httpProvider) => { $httpProvider.interceptors.push('dbSearchHttpCallInterceptor'); }]);
 }
+
+
 
 //Contains the after component selectors that will be injected
 let afterComponents = {};

@@ -63,7 +63,9 @@ export let feedService = ['$http', function($http) {
         return retval;
       });
       return filteredResults;
-    });
+    }).catch(function() {
+      // handle errors
+    });;
   }
 
   function sortFeed(feeds) {
