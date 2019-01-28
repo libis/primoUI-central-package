@@ -45,6 +45,17 @@ if (window.appConfig.vid == 'ECB') {
     articlePDFDownloadLinkText: "Download PDF",
   };
 }
+
+if (window.appConfig.vid == 'KULeuven') {
+  window.browzine = {
+    api: "https://public-api.thirdiron.com/public/v1/libraries/1781",
+    apiKey: "10ed5d2a-4ff0-4541-857d-b8c36a01f3ed",
+    journalBrowZineWebLinkText: "View Journal Contents",
+    articleBrowZineWebLinkText: "View Issue Contents",
+    articlePDFDownloadLinkEnabled: true,
+    articlePDFDownloadLinkText: "Download PDF",
+  };
+}
 //let servicesHost = 'http://192.168.100.101:9292/';
 let servicesHost = 'https://services.libis.be/';
 
@@ -54,11 +65,11 @@ let app = angular.module('centralCustom', ['ngMaterial', 'vcRecaptcha'])
     .constant('feedbackServiceURL', 'https://services.libis.be/feedback')
     .constant('reportAProblemURL', 'https://services.libis.be/report_a_problem')
     .constant('requestACopyURL', 'http://192.168.100.101:9292//request_a_copy')
-  */    
+  */
   .constant('feedbackServiceURL', servicesHost + 'feedback')
   .constant('reportAProblemURL', servicesHost + 'report_a_problem')
   .constant('requestACopyURL', servicesHost + 'request_a_copy')
-  
+
   .config(($sceDelegateProvider) => {
     $sceDelegateProvider.resourceUrlWhitelist([
       '**'
@@ -72,7 +83,7 @@ let app = angular.module('centralCustom', ['ngMaterial', 'vcRecaptcha'])
     Helper.loadScript('https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js?' + Date.now()).then(function () {
       console.log('altmerics embed.js loaded');
     });
-    if (window.appConfig.vid == 'ECB') {
+    if (window.appConfig.vid == 'ECB' || window.appConfig.vid == 'KULeuven') {
       Helper.loadScript('https://s3.amazonaws.com/browzine-adapters/primo/browzine-primo-adapter.js').then(() => {
         console.log('browzine-primo-adapter.js loaded');
       });

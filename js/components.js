@@ -117,7 +117,7 @@ export default class AfterComponents {
      //  {name: 'remove-open-access', config: removeOpenAccessConfig, enabled: false, appendTo: 'prm-facet-after', enableInView: '.*'},
      {name: 'search-also', config: searchAlsoConfig, enabled: true, appendTo: 'prm-facet-after', enableInView: '^KULeuven'},
      {name: 'search-also-body', config: searchAlsoBodyConfig, enabled: true, appendTo: 'prm-facet-exact-after', enableInView: '^KULeuven'},
-    {name: 'browzine', config: browzineConfig, enabled: true, appendTo: 'prm-search-result-availability-line-after', enableInView: '^ECB'}
+    {name: 'browzine', config: browzineConfig, enabled: true, appendTo: 'prm-search-result-availability-line-after', enableInView: '^KULeuven|^ECB'}
     ].filter( (component) => ( component.enabled && new RegExp(component.enableInView).test(window.appConfig.vid) ) );
   }
 }
