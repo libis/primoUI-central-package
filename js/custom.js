@@ -2812,28 +2812,6 @@ window.setTimeout(function () {
   }
 }, 2000);
 
-//Create the centralCustom module;
-if (window.appConfig.vid == 'ECB') {
-  window.browzine = {
-    api: "https://public-api.thirdiron.com/public/v1/libraries/1624",
-    apiKey: "e71d1c31-7938-470a-8be2-a6e351e0c001",
-    journalBrowZineWebLinkText: "View Journal Contents",
-    articleBrowZineWebLinkText: "View Issue Contents",
-    articlePDFDownloadLinkEnabled: true,
-    articlePDFDownloadLinkText: "Download PDF"
-  };
-}
-
-if (window.appConfig.vid == 'KULeuven') {
-  window.browzine = {
-    api: "https://public-api.thirdiron.com/public/v1/libraries/1781",
-    apiKey: "10ed5d2a-4ff0-4541-857d-b8c36a01f3ed",
-    journalBrowZineWebLinkText: "View Journal Contents",
-    articleBrowZineWebLinkText: "View Issue Contents",
-    articlePDFDownloadLinkEnabled: true,
-    articlePDFDownloadLinkText: "Download PDF"
-  };
-}
 //let servicesHost = 'http://192.168.100.101:9292/';
 var servicesHost = 'https://services.libis.be/';
 
@@ -2854,7 +2832,44 @@ var app = angular.module('centralCustom', ['ngMaterial', 'vcRecaptcha'])
   _helper2.default.loadScript('https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js?' + Date.now()).then(function () {
     console.log('altmerics embed.js loaded');
   });
-  if (window.appConfig.vid == 'ECB' || window.appConfig.vid == 'KULeuven') {
+  if (window.appConfig.vid == 'ECB' || window.appConfig.vid.includes('KULeuven')) {
+    //Create the centralCustom module;
+    if (window.appConfig.vid == 'ECB') {
+      window.browzine = {
+        api: "https://public-api.thirdiron.com/public/v1/libraries/1624",
+        apiKey: "e71d1c31-7938-470a-8be2-a6e351e0c001",
+        journalBrowZineWebLinkText: "View Journal Contents",
+        articleBrowZineWebLinkText: "View Issue Contents",
+        articlePDFDownloadLinkEnabled: true,
+        articlePDFDownloadLinkText: "Download PDF"
+      };
+    }
+
+    if (window.appConfig.vid.includes('KULeuven')) {
+      console.log(window.appConfig['primo-view']['attributes-map'].interfaceLanguage);
+      var locale = window.appConfig['primo-view']['attributes-map'].interfaceLanguage;
+      var locale_text = {
+        'nl_BE': {
+          'journal': 'Bekijk de inhoud van het tijdschrift',
+          'issue': "Bekijk de inhoud van het nummer",
+          'download': "Trial: Download PDF"
+        },
+        'en_US': {
+          'journal': 'View Journal Contents',
+          'issue': "View Issue Contents",
+          'download': "In trial: Download PDF"
+        }
+      };
+
+      window.browzine = {
+        api: "https://public-api.thirdiron.com/public/v1/libraries/1781",
+        apiKey: "10ed5d2a-4ff0-4541-857d-b8c36a01f3ed",
+        journalBrowZineWebLinkText: locale_text[locale]['journal'],
+        articleBrowZineWebLinkText: locale_text[locale]['issue'],
+        articlePDFDownloadLinkEnabled: true,
+        articlePDFDownloadLinkText: locale_text[locale]['download']
+      };
+    }
     _helper2.default.loadScript('https://s3.amazonaws.com/browzine-adapters/primo/browzine-primo-adapter.js').then(function () {
       console.log('browzine-primo-adapter.js loaded');
     });
