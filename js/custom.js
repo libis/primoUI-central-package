@@ -2846,7 +2846,6 @@ var app = angular.module('centralCustom', ['ngMaterial', 'vcRecaptcha'])
     }
 
     if (window.appConfig.vid.includes('KULeuven')) {
-      console.log(window.appConfig['primo-view']['attributes-map'].interfaceLanguage);
       var locale = window.appConfig['primo-view']['attributes-map'].interfaceLanguage;
       var locale_text = {
         'nl_BE': {
