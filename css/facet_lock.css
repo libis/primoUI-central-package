@@ -1,0 +1,8 @@
+prm-breadcrumbs .md-chip.wrapping-chip .md-chip-content strong {
+    padding: 5px 0px 5px 20px;
+}
+
+prm-breadcrumbs .md-chips .md-chip-content .persistence-button {
+    opacity: 1;
+    transform: none;
+}

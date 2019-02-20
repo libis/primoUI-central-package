@@ -178,6 +178,19 @@ prm-search > md-content.padded-container  {
     max-width: none;
 }
 */
+prm-breadcrumbs .md-chip.wrapping-chip .md-chip-content strong {
+    overflow: hidden;
+    white-space: nowrap;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding: 5px 0px 5px 20px;
+}
+
+prm-breadcrumbs .md-chips .md-chip-content .persistence-button {
+    opacity: 1;
+    transform: none;
+}
+
 prm-search-bookmark-filter #fixed-buttons-holder.fixed-to-top {
         flex-direction: column-reverse;
 }
