@@ -32,6 +32,8 @@ var _languageDependentLogo = require('./components/prmLogoAfter/languageDependen
 
 var _viewLogo = require('./components/prmLogoAfter/viewLogo');
 
+var _exploreSearchCollections = require('./components/prmCollectionGalleryHeaderAfter/exploreSearchCollections');
+
 var _betaSwitch = require('./components/prmLogoAfter/betaSwitch');
 
 var _sourceIcon = require('./components/prmBriefResultAfter/sourceIcon');
@@ -110,7 +112,7 @@ var AfterComponents = function () {
       /* lbs-components used in html-templates of the package */
       { name: 'auto-login-static-footer', config: _autoPromoteLogin.autoLoginCheckboxConfig, enabled: true, appendTo: 'lbs-promote-login', enableInView: '^KULeuven$' }, { name: 'promote-login', config: _autoPromoteLogin.promoteLoginConfig, enabled: true, appendTo: 'prm-authentication-after', enableInView: '^KULeuven$' }, { name: 'auto-login', config: _autoPromoteLogin.autoLoginConfig, enabled: true, appendTo: 'prm-authentication-after', enableInView: 'KULeuven_LUCA|KULeuven_ODISEE|KULeuven_TMOREK|KULeuven_TMOREM|KULeuven_UCLL' }, { name: 'ill-request-form-overview', config: _illRequestForm.illRequestFormConfig, enabled: false, appendTo: 'prm-requests-overview-after', enableInView: '.*' }, { name: 'ill-request-form', config: _illRequestForm.illRequestFormConfig, enabled: false, appendTo: 'prm-requests-after', enableInView: '^KULeuven|^VIVES' }, { name: 'announcement-feedback', config: _feedbackAnnouncement.feedbackAnnouncementConfig, enabled: false, appendTo: 'prm-top-bar-before', enableInView: '.*' }, { name: 'override-getlink-recommendation', config: _recommendationItem.recommendationItemConfig, enabled: true, appendTo: 'prm-recomendation-item-after', enableInView: '.*' }, { name: 'announcement', config: _announcements.announcementsConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '.*' }, { name: 'pay-my-fines-message', config: _finesMessage.finesMessageConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '^KULeuven' },
       //  {name: 'remove-open-access', config: removeOpenAccessConfig, enabled: false, appendTo: 'prm-facet-after', enableInView: '.*'},
-      { name: 'search-also', config: _searchAlso.searchAlsoConfig, enabled: true, appendTo: 'prm-facet-after', enableInView: '^KULeuven' }, { name: 'search-also-body', config: _searchAlsoBody.searchAlsoBodyConfig, enabled: true, appendTo: 'prm-facet-exact-after', enableInView: '^KULeuven' }, { name: 'browzine', config: _browzine.browzineConfig, enabled: true, appendTo: 'prm-search-result-availability-line-after', enableInView: '^KULeuven|^ECB' }].filter(function (component) {
+      { name: 'search-also', config: _searchAlso.searchAlsoConfig, enabled: true, appendTo: 'prm-facet-after', enableInView: '^KULeuven' }, { name: 'search-also-body', config: _searchAlsoBody.searchAlsoBodyConfig, enabled: true, appendTo: 'prm-facet-exact-after', enableInView: '^KULeuven' }, { name: 'browzine', config: _browzine.browzineConfig, enabled: true, appendTo: 'prm-search-result-availability-line-after', enableInView: '^KULeuven|^ECB' }, { name: 'search-collections', config: _exploreSearchCollections.searchCollectionsConfig, enabled: true, appendTo: 'prm-collection-gallery-header-after', enableInView: '^KULeuven' }].filter(function (component) {
         return component.enabled && new RegExp(component.enableInView).test(window.appConfig.vid);
       });
     }
@@ -121,7 +123,7 @@ var AfterComponents = function () {
 
 exports.default = AfterComponents;
 
-},{"./components/general/ConfigLanguageSelection":2,"./components/general/databaseLink":3,"./components/general/disclaimer":5,"./components/general/experiment":6,"./components/general/removeAlerts":7,"./components/general/searchTip":8,"./components/general/staticFooter":9,"./components/prmAutoPromoteLogin/autoPromoteLogin":10,"./components/prmBriefResultAfter/altmetric":11,"./components/prmBriefResultAfter/sourceIcon":12,"./components/prmFacetAfter/searchAlso":13,"./components/prmFacetExactAfter/searchAlsoBody":14,"./components/prmFinesOverviewAfter/payMyFines":15,"./components/prmFullViewAfter/altmetricsBadge":16,"./components/prmLogoAfter/betaSwitch":17,"./components/prmLogoAfter/homeIcon":18,"./components/prmLogoAfter/languageDependentLogo":19,"./components/prmLogoAfter/newSearchButton":20,"./components/prmLogoAfter/viewLogo":21,"./components/prmMainMenuAfter/feedback":22,"./components/prmRecommendationItemAfter/recommendationItem":23,"./components/prmRequestsAfter/illRequestForm":24,"./components/prmSearchResultAvailabilityLineAfterController/browzine":25,"./components/prmSearchResultThumbnailContainerAfter/pnxXml":26,"./components/prmServiceHeaderAfter/reportAProblem":27,"./components/prmServiceHeaderAfter/requestACopy":28,"./components/prmTopBarBefore/announcements":29,"./components/prmTopBarBefore/feedbackAnnouncement":30,"./components/prmTopBarBefore/finesMessage":32,"./utils":50}],2:[function(require,module,exports){
+},{"./components/general/ConfigLanguageSelection":2,"./components/general/databaseLink":3,"./components/general/disclaimer":5,"./components/general/experiment":6,"./components/general/removeAlerts":7,"./components/general/searchTip":8,"./components/general/staticFooter":9,"./components/prmAutoPromoteLogin/autoPromoteLogin":10,"./components/prmBriefResultAfter/altmetric":11,"./components/prmBriefResultAfter/sourceIcon":12,"./components/prmCollectionGalleryHeaderAfter/exploreSearchCollections":13,"./components/prmFacetAfter/searchAlso":14,"./components/prmFacetExactAfter/searchAlsoBody":15,"./components/prmFinesOverviewAfter/payMyFines":16,"./components/prmFullViewAfter/altmetricsBadge":17,"./components/prmLogoAfter/betaSwitch":18,"./components/prmLogoAfter/homeIcon":19,"./components/prmLogoAfter/languageDependentLogo":20,"./components/prmLogoAfter/newSearchButton":21,"./components/prmLogoAfter/viewLogo":22,"./components/prmMainMenuAfter/feedback":23,"./components/prmRecommendationItemAfter/recommendationItem":24,"./components/prmRequestsAfter/illRequestForm":25,"./components/prmSearchResultAvailabilityLineAfterController/browzine":26,"./components/prmSearchResultThumbnailContainerAfter/pnxXml":27,"./components/prmServiceHeaderAfter/reportAProblem":28,"./components/prmServiceHeaderAfter/requestACopy":29,"./components/prmTopBarBefore/announcements":30,"./components/prmTopBarBefore/feedbackAnnouncement":31,"./components/prmTopBarBefore/finesMessage":33,"./utils":51}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -871,6 +873,55 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var searchCollectionsHTML = '<a class="md-button md-primoExplore-theme md-ink-ripple" href="/primo-explore/search?search_scope=KULEUVEN_COLLECTIONS&vid=KULeuven&offset=0">Search Curated Collections</a>\n<!--<a ng-if="!$ctrl.isGalleryLobby" class="md-button md-primoExplore-theme md-ink-ripple" href="/primo-explore/search?query=title,contains,{{$ctrl.getCollection()}}&search_scope=KULEUVEN_COLLECTIONS&sortby=rank&vid=KULeuven&offset=0" title="Search {{$ctrl.getCollection()}}">Search this collection</a>\n<!-- &facet=local4,include,Corble%20fencing%20collection$$IKUL -->\n';
+
+var SearchCollectionsController = function () {
+  function SearchCollectionsController($scope) {
+    _classCallCheck(this, SearchCollectionsController);
+
+    var self = this;
+    //might be needed after next release
+    /*self.$scope = $scope;
+    this.isGalleryLobby= this.parentCtrl.parentCtrl.isGalleryLobby;
+    this.getCollection = this.getCollection;*/
+  }
+
+  _createClass(SearchCollectionsController, [{
+    key: '$onInit',
+    value: function $onInit() {}
+
+    /*getCollection() {
+      if(!this.isGalleryLobby && this.parentCtrl.parentCtrl.currentCollection != undefined){
+        return this.parentCtrl.parentCtrl.currentCollection.name;
+      }
+    };*/
+
+  }]);
+
+  return SearchCollectionsController;
+}();
+
+SearchCollectionsController.$inject = ['$scope'];
+
+var searchCollectionsConfig = exports.searchCollectionsConfig = {
+  bindings: {
+    parentCtrl: '<'
+  },
+  controller: SearchCollectionsController,
+  template: searchCollectionsHTML
+};
+
+},{}],14:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 //facets.facet.facet_search_also in "facet labels"
@@ -905,7 +956,7 @@ var searchAlsoConfig = exports.searchAlsoConfig = {
   controller: SearchAlsoController
 };
 
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -991,7 +1042,7 @@ var searchAlsoBodyConfig = exports.searchAlsoBodyConfig = {
   template: searchAlsoBodyHTML
 };
 
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1040,7 +1091,7 @@ var payMyFinesConfig = exports.payMyFinesConfig = {
   template: payMyFinesHTML
 };
 
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1145,7 +1196,7 @@ var altmetricsBadgeConfig = exports.altmetricsBadgeConfig = {
   template: AltmetricsBadgeHTML
 };
 
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1245,7 +1296,7 @@ var betaSwitchConfig = exports.betaSwitchConfig = {
   template: betaSwitchHTML
 };
 
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1309,7 +1360,7 @@ var homeIconConfig = exports.homeIconConfig = {
   template: homeIconHTML
 };
 
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1357,7 +1408,7 @@ var languageDependentLogoConfig = exports.languageDependentLogoConfig = {
   template: ''
 };
 
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1414,7 +1465,7 @@ var newSearchButtonConfig = exports.newSearchButtonConfig = {
   template: ''
 };
 
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1468,7 +1519,7 @@ var viewLogoConfig = exports.viewLogoConfig = {
   template: viewLogoHTML
 };
 
-},{}],22:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1510,7 +1561,7 @@ var feedbackConfig = exports.feedbackConfig = {
   template: ''
 };
 
-},{}],23:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1552,7 +1603,7 @@ var recommendationItemConfig = exports.recommendationItemConfig = {
   template: ''
 };
 
-},{}],24:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1624,7 +1675,7 @@ var illRequestFormConfig = exports.illRequestFormConfig = {
     template: illRequestFormHTML
 };
 
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1674,7 +1725,7 @@ var browzineConfig = exports.browzineConfig = {
     controller: BrowzineController
 };
 
-},{}],26:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1780,7 +1831,7 @@ var pnxXmlConfig = exports.pnxXmlConfig = {
   template: pnxXmlHTML
 };
 
-},{}],27:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1905,7 +1956,7 @@ var reportAProblemConfig = exports.reportAProblemConfig = {
   template: ''
 };
 
-},{}],28:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2086,7 +2137,7 @@ var requestACopyConfig = exports.requestACopyConfig = {
   template: ''
 };
 
-},{}],29:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2109,7 +2160,7 @@ var announcementsConfig = exports.announcementsConfig = {
   template: ''
 };
 
-},{}],30:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2159,7 +2210,7 @@ var feedbackAnnouncementConfig = exports.feedbackAnnouncementConfig = {
   template: ''
 };
 
-},{"./feedbackAnnouncementDialog":31}],31:[function(require,module,exports){
+},{"./feedbackAnnouncementDialog":32}],32:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2245,7 +2296,7 @@ exports.default = feedbackAnnouncementDialogController;
 
 feedbackAnnouncementDialogController.$inject = ['$scope', '$mdDialog', '$mdToast', '$translate', '$http', 'feedbackServiceURL', 'MessageService'];
 
-},{}],32:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2283,7 +2334,7 @@ var finesMessageConfig = exports.finesMessageConfig = {
   template: ''
 };
 
-},{}],33:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2347,7 +2398,7 @@ exports.default = AltmetricsService;
 
 AltmetricsService.$inject = ['$rootScope', '$compile', '$mdToast', '$timeout', '$window'];
 
-},{}],34:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2431,7 +2482,7 @@ var apiCallInterceptor = exports.apiCallInterceptor = [function () {
     return apiCallInterceptor;
 }];
 
-},{}],35:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2454,7 +2505,7 @@ var dbSearchHttpCallInterceptor = exports.dbSearchHttpCallInterceptor = [functio
   return httpCallInterceptor;
 }];
 
-},{}],36:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2553,7 +2604,7 @@ var feedService = exports.feedService = ['$http', function ($http) {
   };
 }];
 
-},{}],37:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2616,7 +2667,7 @@ exports.default = FeedbackService;
 
 FeedbackService.$inject = ['$mdDialog'];
 
-},{"../components/general/dialog":4}],38:[function(require,module,exports){
+},{"../components/general/dialog":4}],39:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2749,7 +2800,7 @@ exports.default = MessageService;
 
 MessageService.$inject = ['$rootScope', '$compile', '$mdToast', '$sce', '$translate', '$timeout'];
 
-},{}],39:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 'use strict';
 
 var _primo = require('./primo-explore-dom/js/primo');
@@ -2849,13 +2900,13 @@ var app = angular.module('centralCustom', ['ngMaterial', 'vcRecaptcha'])
       var locale = window.appConfig['primo-view']['attributes-map'].interfaceLanguage;
       var locale_text = {
         'nl_BE': {
-          'journal': 'Bekijk de inhoud van het tijdschrift',
-          'issue': "Bekijk de inhoud van het nummer",
+          'journal': "Trial: Bekijk de inhoud van het tijdschrift",
+          'issue': "Trial: Bekijk de inhoud van het nummer",
           'download': "Trial: Download PDF"
         },
         'en_US': {
-          'journal': 'View Journal Contents',
-          'issue': "View Issue Contents",
+          'journal': "In trial: View Journal Contents",
+          'issue': "In trial: View Issue Contents",
           'download': "In trial: Download PDF"
         }
       };
@@ -2930,7 +2981,7 @@ Object.keys(afterComponents).forEach(function (component, i) {
   });
 });
 
-},{"./components":1,"./factories/altmetricsService":33,"./factories/apiCallInterceptor":34,"./factories/dbSearchHttpCallInterceptor":35,"./factories/feedService":36,"./factories/feedbackService":37,"./factories/messageService":38,"./primo-explore-dom/js/primo":40,"./primo-explore-dom/js/primo/explore/helper":43,"./templates":49}],40:[function(require,module,exports){
+},{"./components":1,"./factories/altmetricsService":34,"./factories/apiCallInterceptor":35,"./factories/dbSearchHttpCallInterceptor":36,"./factories/feedService":37,"./factories/feedbackService":38,"./factories/messageService":39,"./primo-explore-dom/js/primo":41,"./primo-explore-dom/js/primo/explore/helper":44,"./templates":50}],41:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3091,7 +3142,7 @@ var Primo = function () {
 
 exports.default = Primo;
 
-},{"./primo/explore":41,"./primo/explore/helper":43,"./primo/facets":44,"./primo/records":45,"./primo/user":46,"./primo/view":47}],41:[function(require,module,exports){
+},{"./primo/explore":42,"./primo/explore/helper":44,"./primo/facets":45,"./primo/records":46,"./primo/user":47,"./primo/view":48}],42:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3148,7 +3199,7 @@ var Explore = function () {
 
 exports.default = Explore;
 
-},{"./explore/components":42,"./explore/helper":43}],42:[function(require,module,exports){
+},{"./explore/components":43,"./explore/helper":44}],43:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3268,7 +3319,7 @@ var Components = function () {
 
 exports.default = Components;
 
-},{"../../vendor/css-selector-generator.js":48,"./helper":43}],43:[function(require,module,exports){
+},{"../../vendor/css-selector-generator.js":49,"./helper":44}],44:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3545,7 +3596,7 @@ var Helper = function () {
 
 exports.default = Helper;
 
-},{}],44:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3602,7 +3653,7 @@ var Facets = function () {
 
 exports.default = Facets;
 
-},{"./explore/components":42,"./explore/helper":43}],45:[function(require,module,exports){
+},{"./explore/components":43,"./explore/helper":44}],46:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3662,7 +3713,7 @@ var Records = function () {
 
 exports.default = Records;
 
-},{"./explore/components":42,"./explore/helper":43}],46:[function(require,module,exports){
+},{"./explore/components":43,"./explore/helper":44}],47:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3721,7 +3772,7 @@ var User = function () {
 
 exports.default = User;
 
-},{"./explore/helper":43}],47:[function(require,module,exports){
+},{"./explore/helper":44}],48:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3757,7 +3808,7 @@ var View = function View() {
 
 exports.default = View;
 
-},{"./explore/helper":43}],48:[function(require,module,exports){
+},{"./explore/helper":44}],49:[function(require,module,exports){
 'use strict';
 
 (function () {
@@ -4073,7 +4124,7 @@ exports.default = View;
   }
 }).call(undefined);
 
-},{}],49:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -4144,7 +4195,7 @@ var Templates = function () {
 
 exports.default = Templates;
 
-},{"./utils":50}],50:[function(require,module,exports){
+},{"./utils":51}],51:[function(require,module,exports){
 'use strict';
 
 /*
@@ -4211,7 +4262,7 @@ angular.element.prototype.closestNode = function (nodeName) {
 };
 */
 
-},{}]},{},[39])
+},{}]},{},[40])
 
 
 //# sourceMappingURL=custom.js.map

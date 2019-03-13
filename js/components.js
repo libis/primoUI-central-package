@@ -18,6 +18,7 @@ import {newSearchButtonConfig} from './components/prmLogoAfter/newSearchButton'
 import {languageDependentLogoConfig} from './components/prmLogoAfter/languageDependentLogo'
 import {viewLogoConfig} from './components/prmLogoAfter/viewLogo'
 
+import {searchCollectionsConfig} from './components/prmCollectionGalleryHeaderAfter/exploreSearchCollections'
 
 import {betaSwitchConfig} from './components/prmLogoAfter/betaSwitch'
 import {sourceIconConfig} from './components/prmBriefResultAfter/sourceIcon'
@@ -117,7 +118,8 @@ export default class AfterComponents {
      //  {name: 'remove-open-access', config: removeOpenAccessConfig, enabled: false, appendTo: 'prm-facet-after', enableInView: '.*'},
      {name: 'search-also', config: searchAlsoConfig, enabled: true, appendTo: 'prm-facet-after', enableInView: '^KULeuven'},
      {name: 'search-also-body', config: searchAlsoBodyConfig, enabled: true, appendTo: 'prm-facet-exact-after', enableInView: '^KULeuven'},
-    {name: 'browzine', config: browzineConfig, enabled: true, appendTo: 'prm-search-result-availability-line-after', enableInView: '^KULeuven|^ECB'}
+     {name: 'browzine', config: browzineConfig, enabled: true, appendTo: 'prm-search-result-availability-line-after', enableInView: '^KULeuven|^ECB'},
+     {name: 'search-collections', config: searchCollectionsConfig, enabled: true, appendTo: 'prm-collection-gallery-header-after', enableInView: '^KULeuven'}
     ].filter( (component) => ( component.enabled && new RegExp(component.enableInView).test(window.appConfig.vid) ) );
   }
 }

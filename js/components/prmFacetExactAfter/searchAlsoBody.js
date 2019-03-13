@@ -53,7 +53,18 @@ class SearchAlsoBodyController {
         return type + ':' + query;
 
       }
-    }];
+    },
+    /*{
+      "name": "Bibliotheek.be",
+      "url": "https://www.bibliotheek.be/catalogus?q=",
+      "img": "/primo-explore/custom/CENTRAL_PACKAGE/img/bib_be.png",
+      "tooltip": "lbs.nui.search_also.tooltip.unicat",
+      mapping: function mapping(search) {
+        var terms = search.split(",");
+        return terms[2] || "";
+      }
+    }*/
+    ];
   }
 }
 
