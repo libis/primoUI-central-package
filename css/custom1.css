@@ -629,6 +629,14 @@ prm-collection-gallery-header .collection-info{
   margin-bottom: 4rem;
 }
 
+.is-gallery-view prm-gallery-item .collection-element img {
+    max-height: none;
+}
+
+.is-grid-view prm-gallery-item .collection-element img {
+    max-height: none;
+}
+
 /* Responsive styles */
 
 @media screen and (max-width: 599px) {
