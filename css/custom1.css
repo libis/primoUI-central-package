@@ -630,11 +630,13 @@ prm-collection-gallery-header .collection-info{
 }
 
 .is-gallery-view prm-gallery-item .collection-element img {
-    max-height: none;
+  width: auto;
+  max-width: 100%;
 }
 
 .is-grid-view prm-gallery-item .collection-element img {
-    max-height: none;
+  max-width: 100%;
+  width: auto;
 }
 
 /* Responsive styles */

@@ -5,7 +5,7 @@ class StaticFooterController {
         let scope = $scope;
         var locale = "en_US"
 
-        var viewWithCustomFooter = ['Lirias','wereldwijzer','ECB']
+        var viewWithCustomFooter = ['Lirias','wereldwijzer','ECB','VDIC']
 /*
         console.log (self )
         console.log (scope )
