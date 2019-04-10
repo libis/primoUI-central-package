@@ -43,6 +43,7 @@ import {autoLoginCheckboxConfig,autoLoginConfig,promoteLoginConfig} from './comp
 import {feedbackAnnouncementConfig} from './components/prmTopBarBefore/feedbackAnnouncement'
 import {staticFooterConfig} from './components/general/staticFooter'
 import {removeAlertsConfig} from './components/general/removeAlerts'
+import {removeCheckLocationsConfig} from './components/general/removeCheckLocations'
 import {illRequestFormConfig} from './components/prmRequestsAfter/illRequestForm'
 import {recommendationItemConfig} from './components/prmRecommendationItemAfter/recommendationItem'
 
@@ -98,7 +99,8 @@ export default class AfterComponents {
       {name: 'prm-disclaimer', config: disclaimerConfig, enabled: true, appendTo: null, enableInView: '.*'},
       {name: 'static-footer', config: staticFooterConfig, enabled: true, appendTo: 'prm-explore-footer-after', enableInView: '.*'},
       //{name: 'static-footer-account', config: staticFooterConfig, enabled: true, appendTo: 'prm-account-after', enableInView: '.*'},
-      {name: 'remove-alerts', config: removeAlertsConfig, enabled: true, appendTo: 'prm-add-query-to-saved-searches-after', enableInView: '.*'},
+      {name: 'remove-alerts', config: removeAlertsConfig, enabled: false, appendTo: 'prm-add-query-to-saved-searches-after', enableInView: '.*'},
+      {name: 'remove-check-locations', config: removeCheckLocationsConfig, enabled: true, appendTo: 'prm-search-result-availability-line-after', enableInView: 'Lirias'},
       {name: 'prm-dblink', config: databaseLinkConfig, enabled: false, appendTo: null, enableInView: '.*'},
 
       /* lbs-components used in html-templates of the package */
