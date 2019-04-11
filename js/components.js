@@ -43,7 +43,7 @@ import {autoLoginCheckboxConfig,autoLoginConfig,promoteLoginConfig} from './comp
 import {feedbackAnnouncementConfig} from './components/prmTopBarBefore/feedbackAnnouncement'
 import {staticFooterConfig} from './components/general/staticFooter'
 import {removeAlertsConfig} from './components/general/removeAlerts'
-import {removeCheckLocationsConfig} from './components/general/removeCheckLocations'
+//import {removeCheckLocationsConfig} from './components/general/removeCheckLocations'
 import {illRequestFormConfig} from './components/prmRequestsAfter/illRequestForm'
 import {recommendationItemConfig} from './components/prmRecommendationItemAfter/recommendationItem'
 
