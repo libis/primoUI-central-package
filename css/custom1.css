@@ -253,11 +253,6 @@ prm-main-menu a[aria-label="Browse"].md-button.flex-button {
       display:none;
     }
 }
-/* Hide collection_path in full view */
-prm-record-collection-paths{
-    display: none !important;
-}
-
 #advanced-search div.date-range-inputs  md-input-container md-select {
   display:none;
 }
@@ -388,11 +383,13 @@ prm-logo-after a#new-search-button{
 .sidebar {display:none !important;}
 }
 
+/*
 md-template prm-add-alert-toast md-toast *[aria-label="Set Alert For this saved search"],
 prm-saved-queries-list  md-list > md-list-item div.result-item-actions button.md-icon-button:nth-child(1),
 prm-saved-queries-list  md-list > md-list-item div.result-item-actions button.md-icon-button:nth-child(2){
     display: none;
 }
+*/
 
 
 /*  Remove dismis citingAlert */
@@ -617,7 +614,6 @@ prm-collection-gallery-header-after .md-button {
     right: 17%;
     color: #456075;
     box-shadow: inset 0 -1px 0 0 rgba(21,58,86,.5);
-    z-index: 1000;
 }
 prm-collection-gallery-header-after .md-button:hover:not([disabled]) {
     background-color: #456075;
