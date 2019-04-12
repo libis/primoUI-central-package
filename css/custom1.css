@@ -474,15 +474,14 @@ prm-main-menu div#mainMenu a[aria-label='Réactions']
   order: 6;
 }
 
-/*?????*/
+/* Check Locations */
 #getit_link2{
-  -webkit-box-ordinal-group: 0;
-  -moz-box-ordinal-group: 0;
-  -ms-flex-order: 0;
-  -webkit-order: 0;
-  order: 0;
+  -webkit-box-ordinal-group: 7;
+  -moz-box-ordinal-group: 7;
+  -ms-flex-order: 7;
+  -webkit-order: 7;
+  order: 7;
 }
-
 
 #services-index {
   display:flex;
@@ -532,6 +531,12 @@ button[orderIndex='6']{
   order: 6;
 }
 
+/* Check Locations */
+button[aria-label='Check locaties'],
+button[aria-label='Check Locations'],
+button[orderIndex='7']{
+  order: 7;
+}
 
 
 #altmetrics{
