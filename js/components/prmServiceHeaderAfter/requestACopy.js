@@ -18,11 +18,13 @@ class RequestACopyController {
     let capchaPublicKey = window.appConfig["system-configuration"]["Public Captcha Key"];
 
     let TypesShowRequestACopy = ['chapter','journal-article','thesis-dissertation','conference','report','dataset','c-bookreview','media','software'];
+    let StatusShowRequestACopy = ['published'];
 
     if (/^nui\.getit\./.test(serviceTitleCode)) {
       var ShowRequestACopyType = recordData.pnx.facets.lfc16.filter(value => -1 !== TypesShowRequestACopy.indexOf(value));
+      var ShowRequestACopyStatus = recordData.pnx.facets.lfc12.filter(value => -1 !== StatusShowRequestACopy.indexOf(value));
 
-      if ((!/^nui\.getit\.tab1_onl_norestrict/.test(serviceTitleCode)) && ShowRequestACopyType.length > 0 ) {
+      if ((!/^nui\.getit\.tab1_onl_norestrict/.test(serviceTitleCode)) && ShowRequestACopyType.length > 0 && ShowRequestACopyStatus.length > 0) {
 
 
         Primo.user.then(user => {

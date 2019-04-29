@@ -70,6 +70,8 @@ var _staticFooter = require('./components/general/staticFooter');
 
 var _removeAlerts = require('./components/general/removeAlerts');
 
+var _removeCheckLocations = require('./components/general/removeCheckLocations');
+
 var _illRequestForm = require('./components/prmRequestsAfter/illRequestForm');
 
 var _recommendationItem = require('./components/prmRecommendationItemAfter/recommendationItem');
@@ -107,7 +109,7 @@ var AfterComponents = function () {
       // {name: 'request-a-copy-head', config: requestACopyConfig, enabled: true, appendTo: 'prm-service-header-after', enableInView: '^Lirias'},
       { name: 'request-a-copy', config: _requestACopy.requestACopyConfig, enabled: true, appendTo: 'prm-full-view-service-container-after', enableInView: '^Lirias' }, { name: 'prm-searchtips', config: _searchTip.searchTipConfig, enabled: true, appendTo: null, enableInView: '.*' }, { name: 'prm-disclaimer', config: _disclaimer.disclaimerConfig, enabled: true, appendTo: null, enableInView: '.*' }, { name: 'static-footer', config: _staticFooter.staticFooterConfig, enabled: true, appendTo: 'prm-explore-footer-after', enableInView: '.*' },
       //{name: 'static-footer-account', config: staticFooterConfig, enabled: true, appendTo: 'prm-account-after', enableInView: '.*'},
-      { name: 'remove-alerts', config: _removeAlerts.removeAlertsConfig, enabled: true, appendTo: 'prm-add-query-to-saved-searches-after', enableInView: '.*' }, { name: 'prm-dblink', config: _databaseLink.databaseLinkConfig, enabled: false, appendTo: null, enableInView: '.*' },
+      { name: 'remove-alerts', config: _removeAlerts.removeAlertsConfig, enabled: false, appendTo: 'prm-add-query-to-saved-searches-after', enableInView: '.*' }, { name: 'remove-check-locations', config: _removeCheckLocations.removeCheckLocationsConfig, enabled: false, appendTo: 'prm-search-result-availability-line-after', enableInView: 'Lirias' }, { name: 'prm-dblink', config: _databaseLink.databaseLinkConfig, enabled: false, appendTo: null, enableInView: '.*' },
 
       /* lbs-components used in html-templates of the package */
       { name: 'auto-login-static-footer', config: _autoPromoteLogin.autoLoginCheckboxConfig, enabled: true, appendTo: 'lbs-promote-login', enableInView: '^KULeuven$' }, { name: 'promote-login', config: _autoPromoteLogin.promoteLoginConfig, enabled: true, appendTo: 'prm-authentication-after', enableInView: '^KULeuven$' }, { name: 'auto-login', config: _autoPromoteLogin.autoLoginConfig, enabled: true, appendTo: 'prm-authentication-after', enableInView: 'KULeuven_LUCA|KULeuven_ODISEE|KULeuven_TMOREK|KULeuven_TMOREM|KULeuven_UCLL' }, { name: 'ill-request-form-overview', config: _illRequestForm.illRequestFormConfig, enabled: false, appendTo: 'prm-requests-overview-after', enableInView: '.*' }, { name: 'ill-request-form', config: _illRequestForm.illRequestFormConfig, enabled: false, appendTo: 'prm-requests-after', enableInView: '^KULeuven|^VIVES' }, { name: 'announcement-feedback', config: _feedbackAnnouncement.feedbackAnnouncementConfig, enabled: false, appendTo: 'prm-top-bar-before', enableInView: '.*' }, { name: 'override-getlink-recommendation', config: _recommendationItem.recommendationItemConfig, enabled: true, appendTo: 'prm-recomendation-item-after', enableInView: '.*' }, { name: 'announcement', config: _announcements.announcementsConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '.*' }, { name: 'pay-my-fines-message', config: _finesMessage.finesMessageConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '^KULeuven' },
@@ -123,7 +125,7 @@ var AfterComponents = function () {
 
 exports.default = AfterComponents;
 
-},{"./components/general/ConfigLanguageSelection":2,"./components/general/databaseLink":3,"./components/general/disclaimer":5,"./components/general/experiment":6,"./components/general/removeAlerts":7,"./components/general/searchTip":8,"./components/general/staticFooter":9,"./components/prmAutoPromoteLogin/autoPromoteLogin":10,"./components/prmBriefResultAfter/altmetric":11,"./components/prmBriefResultAfter/sourceIcon":12,"./components/prmCollectionGalleryHeaderAfter/exploreSearchCollections":13,"./components/prmFacetAfter/searchAlso":14,"./components/prmFacetExactAfter/searchAlsoBody":15,"./components/prmFinesOverviewAfter/payMyFines":16,"./components/prmFullViewAfter/altmetricsBadge":17,"./components/prmLogoAfter/betaSwitch":18,"./components/prmLogoAfter/homeIcon":19,"./components/prmLogoAfter/languageDependentLogo":20,"./components/prmLogoAfter/newSearchButton":21,"./components/prmLogoAfter/viewLogo":22,"./components/prmMainMenuAfter/feedback":23,"./components/prmRecommendationItemAfter/recommendationItem":24,"./components/prmRequestsAfter/illRequestForm":25,"./components/prmSearchResultAvailabilityLineAfterController/browzine":26,"./components/prmSearchResultThumbnailContainerAfter/pnxXml":27,"./components/prmServiceHeaderAfter/reportAProblem":28,"./components/prmServiceHeaderAfter/requestACopy":29,"./components/prmTopBarBefore/announcements":30,"./components/prmTopBarBefore/feedbackAnnouncement":31,"./components/prmTopBarBefore/finesMessage":33,"./utils":51}],2:[function(require,module,exports){
+},{"./components/general/ConfigLanguageSelection":2,"./components/general/databaseLink":3,"./components/general/disclaimer":5,"./components/general/experiment":6,"./components/general/removeAlerts":7,"./components/general/removeCheckLocations":8,"./components/general/searchTip":9,"./components/general/staticFooter":10,"./components/prmAutoPromoteLogin/autoPromoteLogin":11,"./components/prmBriefResultAfter/altmetric":12,"./components/prmBriefResultAfter/sourceIcon":13,"./components/prmCollectionGalleryHeaderAfter/exploreSearchCollections":14,"./components/prmFacetAfter/searchAlso":15,"./components/prmFacetExactAfter/searchAlsoBody":16,"./components/prmFinesOverviewAfter/payMyFines":17,"./components/prmFullViewAfter/altmetricsBadge":18,"./components/prmLogoAfter/betaSwitch":19,"./components/prmLogoAfter/homeIcon":20,"./components/prmLogoAfter/languageDependentLogo":21,"./components/prmLogoAfter/newSearchButton":22,"./components/prmLogoAfter/viewLogo":23,"./components/prmMainMenuAfter/feedback":24,"./components/prmRecommendationItemAfter/recommendationItem":25,"./components/prmRequestsAfter/illRequestForm":26,"./components/prmSearchResultAvailabilityLineAfterController/browzine":27,"./components/prmSearchResultThumbnailContainerAfter/pnxXml":28,"./components/prmServiceHeaderAfter/reportAProblem":29,"./components/prmServiceHeaderAfter/requestACopy":30,"./components/prmTopBarBefore/announcements":31,"./components/prmTopBarBefore/feedbackAnnouncement":32,"./components/prmTopBarBefore/finesMessage":34,"./utils":52}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -511,6 +513,37 @@ var removeAlertsConfig = exports.removeAlertsConfig = {
 };
 
 },{}],8:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var RemoveCheckLocationsController = function RemoveCheckLocationsController($scope, $http, $element, $templateCache) {
+    _classCallCheck(this, RemoveCheckLocationsController);
+
+    var displayedAvailability = $scope.$ctrl.parentCtrl.parentCtrl.displayedAvailability;
+    if (displayedAvailability.indexOf("fulltext_unknown") > -1 || displayedAvailability.indexOf("may_be_restricted") > -1) {
+        // console.log ( $scope.$parent.$parent.$parent.$ctrl.delivery )
+        angular.forEach($scope.$ctrl.parentCtrl.parentCtrl.$element, function (el) {
+            console.log(el);
+            if (el.localName == 'prm-search-result-availability-line') {
+                el.remove();
+            }
+        });
+    }
+};
+
+RemoveCheckLocationsController.$inject = ['$scope', '$http', '$element', '$templateCache'];
+
+var removeCheckLocationsConfig = exports.removeCheckLocationsConfig = {
+    bindings: { parentCtrl: '<' },
+    controller: RemoveCheckLocationsController
+};
+
+},{}],9:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -595,7 +628,7 @@ var searchTipConfig = exports.searchTipConfig = {
   template: searchTipHTML
 };
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -643,7 +676,7 @@ var staticFooterConfig = exports.staticFooterConfig = {
     template: '<ng-include src="getTemplateUrl()"/>'
 };
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -780,7 +813,7 @@ var autoLoginConfig = exports.autoLoginConfig = {
   template: ''
 };
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -816,7 +849,7 @@ var altmetricConfig = exports.altmetricConfig = {
   template: altmetricHTML
 };
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -866,7 +899,7 @@ var sourceIconConfig = exports.sourceIconConfig = {
   template: ''
 };
 
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -915,7 +948,7 @@ var searchCollectionsConfig = exports.searchCollectionsConfig = {
   template: searchCollectionsHTML
 };
 
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -956,7 +989,7 @@ var searchAlsoConfig = exports.searchAlsoConfig = {
   controller: SearchAlsoController
 };
 
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1042,7 +1075,7 @@ var searchAlsoBodyConfig = exports.searchAlsoBodyConfig = {
   template: searchAlsoBodyHTML
 };
 
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1091,7 +1124,7 @@ var payMyFinesConfig = exports.payMyFinesConfig = {
   template: payMyFinesHTML
 };
 
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1196,7 +1229,7 @@ var altmetricsBadgeConfig = exports.altmetricsBadgeConfig = {
   template: AltmetricsBadgeHTML
 };
 
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1296,7 +1329,7 @@ var betaSwitchConfig = exports.betaSwitchConfig = {
   template: betaSwitchHTML
 };
 
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1360,7 +1393,7 @@ var homeIconConfig = exports.homeIconConfig = {
   template: homeIconHTML
 };
 
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1408,7 +1441,7 @@ var languageDependentLogoConfig = exports.languageDependentLogoConfig = {
   template: ''
 };
 
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1465,7 +1498,7 @@ var newSearchButtonConfig = exports.newSearchButtonConfig = {
   template: ''
 };
 
-},{}],22:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1519,7 +1552,7 @@ var viewLogoConfig = exports.viewLogoConfig = {
   template: viewLogoHTML
 };
 
-},{}],23:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1561,7 +1594,7 @@ var feedbackConfig = exports.feedbackConfig = {
   template: ''
 };
 
-},{}],24:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1603,7 +1636,7 @@ var recommendationItemConfig = exports.recommendationItemConfig = {
   template: ''
 };
 
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1675,7 +1708,7 @@ var illRequestFormConfig = exports.illRequestFormConfig = {
     template: illRequestFormHTML
 };
 
-},{}],26:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1725,7 +1758,7 @@ var browzineConfig = exports.browzineConfig = {
     controller: BrowzineController
 };
 
-},{}],27:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1831,7 +1864,7 @@ var pnxXmlConfig = exports.pnxXmlConfig = {
   template: pnxXmlHTML
 };
 
-},{}],28:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1956,7 +1989,7 @@ var reportAProblemConfig = exports.reportAProblemConfig = {
   template: ''
 };
 
-},{}],29:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1989,13 +2022,17 @@ var RequestACopyController = function () {
     var capchaPublicKey = window.appConfig["system-configuration"]["Public Captcha Key"];
 
     var TypesShowRequestACopy = ['chapter', 'journal-article', 'thesis-dissertation', 'conference', 'report', 'dataset', 'c-bookreview', 'media', 'software'];
+    var StatusShowRequestACopy = ['published'];
 
     if (/^nui\.getit\./.test(serviceTitleCode)) {
       var ShowRequestACopyType = recordData.pnx.facets.lfc16.filter(function (value) {
         return -1 !== TypesShowRequestACopy.indexOf(value);
       });
+      var ShowRequestACopyStatus = recordData.pnx.facets.lfc12.filter(function (value) {
+        return -1 !== StatusShowRequestACopy.indexOf(value);
+      });
 
-      if (!/^nui\.getit\.tab1_onl_norestrict/.test(serviceTitleCode) && ShowRequestACopyType.length > 0) {
+      if (!/^nui\.getit\.tab1_onl_norestrict/.test(serviceTitleCode) && ShowRequestACopyType.length > 0 && ShowRequestACopyStatus.length > 0) {
 
         Primo.user.then(function (user) {
           self.user = user;
@@ -2137,7 +2174,7 @@ var requestACopyConfig = exports.requestACopyConfig = {
   template: ''
 };
 
-},{}],30:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2160,7 +2197,7 @@ var announcementsConfig = exports.announcementsConfig = {
   template: ''
 };
 
-},{}],31:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2210,7 +2247,7 @@ var feedbackAnnouncementConfig = exports.feedbackAnnouncementConfig = {
   template: ''
 };
 
-},{"./feedbackAnnouncementDialog":32}],32:[function(require,module,exports){
+},{"./feedbackAnnouncementDialog":33}],33:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2296,7 +2333,7 @@ exports.default = feedbackAnnouncementDialogController;
 
 feedbackAnnouncementDialogController.$inject = ['$scope', '$mdDialog', '$mdToast', '$translate', '$http', 'feedbackServiceURL', 'MessageService'];
 
-},{}],33:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2334,7 +2371,7 @@ var finesMessageConfig = exports.finesMessageConfig = {
   template: ''
 };
 
-},{}],34:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2398,7 +2435,7 @@ exports.default = AltmetricsService;
 
 AltmetricsService.$inject = ['$rootScope', '$compile', '$mdToast', '$timeout', '$window'];
 
-},{}],35:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2482,7 +2519,7 @@ var apiCallInterceptor = exports.apiCallInterceptor = [function () {
     return apiCallInterceptor;
 }];
 
-},{}],36:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2505,7 +2542,7 @@ var dbSearchHttpCallInterceptor = exports.dbSearchHttpCallInterceptor = [functio
   return httpCallInterceptor;
 }];
 
-},{}],37:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2604,7 +2641,7 @@ var feedService = exports.feedService = ['$http', function ($http) {
   };
 }];
 
-},{}],38:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2667,7 +2704,7 @@ exports.default = FeedbackService;
 
 FeedbackService.$inject = ['$mdDialog'];
 
-},{"../components/general/dialog":4}],39:[function(require,module,exports){
+},{"../components/general/dialog":4}],40:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2800,7 +2837,7 @@ exports.default = MessageService;
 
 MessageService.$inject = ['$rootScope', '$compile', '$mdToast', '$sce', '$translate', '$timeout'];
 
-},{}],40:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 'use strict';
 
 var _primo = require('./primo-explore-dom/js/primo');
@@ -2981,7 +3018,7 @@ Object.keys(afterComponents).forEach(function (component, i) {
   });
 });
 
-},{"./components":1,"./factories/altmetricsService":34,"./factories/apiCallInterceptor":35,"./factories/dbSearchHttpCallInterceptor":36,"./factories/feedService":37,"./factories/feedbackService":38,"./factories/messageService":39,"./primo-explore-dom/js/primo":41,"./primo-explore-dom/js/primo/explore/helper":44,"./templates":50}],41:[function(require,module,exports){
+},{"./components":1,"./factories/altmetricsService":35,"./factories/apiCallInterceptor":36,"./factories/dbSearchHttpCallInterceptor":37,"./factories/feedService":38,"./factories/feedbackService":39,"./factories/messageService":40,"./primo-explore-dom/js/primo":42,"./primo-explore-dom/js/primo/explore/helper":45,"./templates":51}],42:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3142,7 +3179,7 @@ var Primo = function () {
 
 exports.default = Primo;
 
-},{"./primo/explore":42,"./primo/explore/helper":44,"./primo/facets":45,"./primo/records":46,"./primo/user":47,"./primo/view":48}],42:[function(require,module,exports){
+},{"./primo/explore":43,"./primo/explore/helper":45,"./primo/facets":46,"./primo/records":47,"./primo/user":48,"./primo/view":49}],43:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3199,7 +3236,7 @@ var Explore = function () {
 
 exports.default = Explore;
 
-},{"./explore/components":43,"./explore/helper":44}],43:[function(require,module,exports){
+},{"./explore/components":44,"./explore/helper":45}],44:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3319,7 +3356,7 @@ var Components = function () {
 
 exports.default = Components;
 
-},{"../../vendor/css-selector-generator.js":49,"./helper":44}],44:[function(require,module,exports){
+},{"../../vendor/css-selector-generator.js":50,"./helper":45}],45:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3596,7 +3633,7 @@ var Helper = function () {
 
 exports.default = Helper;
 
-},{}],45:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3653,7 +3690,7 @@ var Facets = function () {
 
 exports.default = Facets;
 
-},{"./explore/components":43,"./explore/helper":44}],46:[function(require,module,exports){
+},{"./explore/components":44,"./explore/helper":45}],47:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3713,7 +3750,7 @@ var Records = function () {
 
 exports.default = Records;
 
-},{"./explore/components":43,"./explore/helper":44}],47:[function(require,module,exports){
+},{"./explore/components":44,"./explore/helper":45}],48:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3772,7 +3809,7 @@ var User = function () {
 
 exports.default = User;
 
-},{"./explore/helper":44}],48:[function(require,module,exports){
+},{"./explore/helper":45}],49:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3808,7 +3845,7 @@ var View = function View() {
 
 exports.default = View;
 
-},{"./explore/helper":44}],49:[function(require,module,exports){
+},{"./explore/helper":45}],50:[function(require,module,exports){
 'use strict';
 
 (function () {
@@ -4124,7 +4161,7 @@ exports.default = View;
   }
 }).call(undefined);
 
-},{}],50:[function(require,module,exports){
+},{}],51:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -4195,7 +4232,7 @@ var Templates = function () {
 
 exports.default = Templates;
 
-},{"./utils":51}],51:[function(require,module,exports){
+},{"./utils":52}],52:[function(require,module,exports){
 'use strict';
 
 /*
@@ -4262,7 +4299,7 @@ angular.element.prototype.closestNode = function (nodeName) {
 };
 */
 
-},{}]},{},[40])
+},{}]},{},[41])
 
 
 //# sourceMappingURL=custom.js.map
