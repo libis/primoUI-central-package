@@ -31,6 +31,14 @@ prm-collection-gallery-header .collection-info{
   width: auto;
 }
 
+prm-gallery-collection .collection-folder .collection-images div {
+    display: none;
+}
+
+prm-gallery-collection .collection-folder .collection-images div:first-of-type {
+    display: block;
+}
+
 /* Responsive styles */
 
 @media screen and (max-width: 599px) {
