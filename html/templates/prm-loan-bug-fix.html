@@ -3,8 +3,7 @@
         ng-if="$ctrl.item[$ctrl.selector]"></md-checkbox>
     <span class="item-index">{{$ctrl.index}}</span>
     <div flex="40" flex-xs="100">
-        <div layout="row" class="title-row" ng-class="{'is-hovered': isHovered && $ctrl.item[$ctrl.selector]}" ng-mouseenter="isHovered = true"
-            ng-mouseleave="isHovered = false">
+        <div layout="row" class="title-row">
             <h3 ng-if="::$ctrl.item.title" title="{{::$ctrl.item.title}}">
                     {{::$ctrl.item.title}} 
                 <span ng-if="!$ctrl.item[$ctrl.selector]">{{::$ctrl.item.title}}</span>

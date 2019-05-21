@@ -1,0 +1,162 @@
+<div ng-if="!$ctrl.isLoadingRequests" class="tab-content-header" layout="row" layout-xs="column"
+    layout-align="space-between end" layout-align-xs="start stretch">
+    <div layout="column">
+        <div class="header-title" layout="row">
+            <h2 class="zero-margin" layout="row" layout-align="start center"><span
+                    translate="nui.requests.header"></span></h2>
+        </div>
+        <div class="header-subtitle"><span class="items-count margin-right-small"><em translate="nui.requests.counter"
+                    translate-values="$ctrl.getRequestsCountPlaceHolder()"
+                    ng-if="!$ctrl.isDefinedAnySelector() && $ctrl.requestsCounter"></em>
+                <prm-account-links tab-name="requests"></prm-account-links>
+            </span></div>
+        <div ng-if="(!$ctrl.requestsCounter || $ctrl.requestsCounter === '0')" ng-cloak class="message-with-icon"
+            layout="row" layout-align="center center" layout-padding layout-margin>
+            <prm-icon class="giant-icon bg-icon" icon-type="{{$ctrl.accountIcons.sun.type}}"
+                svg-icon-set="{{$ctrl.accountIcons.sun.iconSet}}" icon-definition="{{$ctrl.accountIcons.sun.icon}}">
+            </prm-icon>
+            <div><span translate="nui.overview.norequests"></span></div>
+        </div>
+    </div>
+    <div class="tab-header-actions" layout="row" layout-align="end center" layout-align-xs="space-between center"
+        ng-if="$ctrl.requestsCounter">
+        <div layout="row" layout-align="start center">
+            <md-input-container class="static-select empty-select-on-init" layout="row"><label
+                    class="md-container-ignore bold-text"><span translate="nui.librarycard.sortby"></span></label>
+                <md-select id="requests-focus" ng-model="$ctrl.sortBy" ng-change="$ctrl.sortRequestsDisplay()"
+                    aria-label="{{::('nui.librarycard.sortby' | translate)}}">
+                    <md-option ng-repeat="sortOption in ::$ctrl.sortOptions" value="{{::sortOption.fieldName}}"><span
+                            translate="{{::sortOption.optionName}}"></span></md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <md-divider class="vertical-divider transparent-divider"></md-divider>
+        <md-button class="md-icon-button header-action expand-collapse-button" (click)="$ctrl.toggleAllExpand()"
+            aria-label="epand all request items button">
+            <md-tooltip md-autohide="true"><span ng-if="$ctrl.isAllExpanded"
+                    translate="nui.librarycard.collapseall.tooltip"></span><span ng-if="!$ctrl.isAllExpanded"
+                    translate="nui.librarycard.expandall.tooltip"></span></md-tooltip><span
+                ng-if="!$ctrl.isAllExpanded">
+                <prm-icon icon-type="{{::$ctrl.accountIcons.expandAllIcon.type}}"
+                    svg-icon-set="{{::$ctrl.accountIcons.expandAllIcon.iconSet}}"
+                    icon-definition="{{::$ctrl.accountIcons.expandAllIcon.icon}}"></prm-icon>
+            </span><span ng-if="$ctrl.isAllExpanded">
+                <prm-icon icon-type="{{::$ctrl.accountIcons.collapseAllIcon.type}}"
+                    svg-icon-set="{{::$ctrl.accountIcons.collapseAllIcon.iconSet}}"
+                    icon-definition="{{::$ctrl.accountIcons.collapseAllIcon.icon}}"></prm-icon>
+            </span>
+        </md-button>
+    </div>
+</div>
+<div ng-if="$ctrl.isDefinedAnySelector() && !$ctrl.isLoadingRequests" layout="row"
+    style="height: 40px; position: relative" layout-align="start center">
+    <div class="header-count" style="padding-left: 10px;"><span class="items-count margin-right-small" layout="column">
+            <md-checkbox aria-label="Checkbox {{$index}}" ng-checked="$ctrl.isSelectAll"
+                md-indeterminate="$ctrl.indeterminateState" ng-click="$ctrl.toggleAll()"><span
+                    translate="nui.requests.counter" translate-values="$ctrl.getRequestsCountPlaceHolder()"></span>
+            </md-checkbox>
+        </span></div><span flex></span>
+    <div layout="row">
+        <md-button class="md-icon-button unpin-button" aria-label="{{$ctrl.isChosenFav() | translate}}"
+            (click)="$ctrl.updateFavorites($event)">
+            <md-tooltip md-delay="400"><span translate="nui.favorites.pin.tooltip"></span></md-tooltip>
+            <prm-icon class="h-flipped-25-icon" ng-class="{'disabledFavTool':!$ctrl.showButtons()}"
+                icon-type="{{::$ctrl.favoritesIcons.pin.type}}" svg-icon-set="{{::$ctrl.favoritesIcons.pin.iconSet}}"
+                icon-definition="{{::$ctrl.favoritesIcons.pin.icon}}"></prm-icon>
+        </md-button>
+        <md-button class="md-icon-button has-bottom-arrow"
+            ng-class="$ctrl.showPushtoActions ? 'arrow-showing' : '' " aria-label="{{$ctrl.isChosenActions()}}"
+            (click)="$ctrl.switchShowPushtoActions($event);$ctrl.closeOpenTabs($event);$event.stopPropagation()">
+            <md-tooltip md-delay="400"><span translate="nui.favorites.pushto.tooltip"></span></md-tooltip>
+            <prm-icon icon-type="{{::$ctrl.favoritesIcons.favoriteActionsList.type}}"
+                ng-class="{'disabledFavTool':!$ctrl.showButtons()}"
+                svg-icon-set="{{::$ctrl.favoritesIcons.favoriteActionsList.iconSet}}"
+                icon-definition="{{::$ctrl.favoritesIcons.favoriteActionsList.icon}}"></prm-icon>
+        </md-button>
+        <div class="account-actions-list">
+            <div class="action-list-content" ng-if="$ctrl.showPushtoActions">
+                <prm-action-list [display-all]="false" [item]="$ctrl.selectedItems()"
+                    [selected-ids]="$ctrl.selectedIdsArray" [display-close-icon]="true" flex style="margin: 8px"
+                    (close-modal)="$ctrl.switchShowPushtoActions()"></prm-action-list>
+                <div flex="0" flex-md="25" flex-lg="25" flex-xl="30"
+                    ng-class="{'flex-lgPlus-30': $ctrl.mediaQueries.lgPlus}"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<md-list class="separate-list-items gapped-list" layout="column">
+    <md-list-item tabindex="0" class="md-3-line has-expand in-element-dialog-parent"
+        ng-repeat="requestDisplay in $ctrl.requestsDisplay | limitTo:200" ng-hide="actionSuccessful"
+        ng-class="requestDisplay.isExpanded?'item-expanded':''">
+        <div class="in-element-dialog-context" layout="row" flex>
+            <div class="md-list-item-text md-list-item-with-checkbox" layout="row" layout-wrap flex
+                aria-live="assertive">
+                <md-checkbox ng-model="$ctrl.selectedIds[requestDisplay[$ctrl.REQUEST_ID]]"
+                    aria-label="Checkbox {{$index}}" ng-change="$ctrl.toggleSelected(requestDisplay[$ctrl.REQUEST_ID])"
+                    ng-if="requestDisplay[$ctrl.REQUEST_ID_SELECTOR]"></md-checkbox><span
+                    class="item-index">{{$index + 1}}</span>
+                <div flex="40" flex-xs="100">
+                    <div layout="row" class="title-row">
+                        <h3 ng-if="::requestDisplay.firstLineLeft" title="{{::requestDisplay.firstLineLeft}}">
+                            <span>{{::requestDisplay.firstLineLeft}}</span>
+                        </h3>
+                        <prm-icon external-link icon-type="{{$ctrl.availabilityLineIcons.externalLink.type}}"
+                            svg-icon-set="{{$ctrl.availabilityLineIcons.externalLink.iconSet}}"
+                            icon-definition="{{$ctrl.availabilityLineIcons.externalLink.icon}}"></prm-icon>
+                    </div>
+                    <h4 ng-if="::requestDisplay.secondLineLeft"><span translate="nui.request.brief.1"></span>
+                        {{::requestDisplay.secondLineLeft}}</h4>
+                </div>
+                <div flex flex-xs="100" class="weak-text">
+                    <p class="bold-text" ng-if="::requestDisplay.firstLineRight"
+                        ng-style="::(request.new && {'color':'#5cb85c'})">
+                        <prm-icon ng-if="::requestDisplay.isAlert" style="color: #5cb85c;"
+                            icon-type="{{::$ctrl.accountIcons.requestsAlertIcon.type}}"
+                            svg-icon-set="{{::$ctrl.accountIcons.requestsAlertIcon.iconSet}}"
+                            icon-definition="{{::$ctrl.accountIcons.requestsAlertIcon.icon}}"></prm-icon><span
+                            class="text-uppercase"><span
+                                translate="{{::('request.'+requestDisplay.requestType+'.request_type')}}"></span></span>.{{requestDisplay.firstLineRight}}
+                    </p>
+                    <p ng-if="::requestDisplay.secondLineRight"><span translate="nui.request.brief.2"></span>
+                        {{::requestDisplay.secondLineRight}}</p>
+                    <div ng-if="requestDisplay.isExpanded">
+                        <p ng-repeat="line in ::requestDisplay.expandedDisplay"><span
+                                ng-if="line.label != 'request_id'"><span translate="{{::(line.label)}}"></span>
+                                {{::line.data}}</span></p>
+                    </div>
+                </div>
+                <div layout-align="end center" layout="row" layout-wrap flex-xs="100" flex-sm="30" flex
+                    class="list-item-actions">
+                    <md-button ng-if="::(requestDisplay.isCancelable)" class="button-with-icon zero-margin button-link"
+                        ng-hide="$ctrl.cancelPromptDisplayId === requestDisplay.requestId || $ctrl.failedRequestId === requestDisplay.requestId"
+                        ng-disabled="$ctrl.isInCancelAction"
+                        (click)="$ctrl.showCancelPrompt($event,requestDisplay.requestId, requestDisplay.requestType)"
+                        aria-label="cancel request button">
+                        <prm-icon class="h-flipped" icon-type="{{::$ctrl.accountIcons.removeIcon.type}}"
+                            svg-icon-set="{{::$ctrl.accountIcons.removeIcon.iconSet}}"
+                            icon-definition="{{::$ctrl.accountIcons.removeIcon.icon}}"></prm-icon><span
+                            translate="nui.requests.cancel"></span>
+                    </md-button>
+                    <div class="item-respond" ng-if="$ctrl.failedRequestId === requestDisplay.requestId"><span
+                            class="error-response">{{$ctrl.failedRequestMessage}}</span></div>
+                </div>
+            </div>
+            <div class="align-self-stretch">
+                <md-button class="item-expand-button"
+                    aria-label="{{::('nui.aria.account.requests.expandcollapse' | translate)}}"
+                    (click)="requestDisplay.isExpanded = !requestDisplay.isExpanded">
+                    <prm-icon ng-class="{'rotate-180':requestDisplay.isExpanded}"
+                        icon-type="{{::$ctrl.accountIcons.expandIcon.type}}"
+                        svg-icon-set="{{::$ctrl.accountIcons.expandIcon.iconSet}}"
+                        icon-definition="{{::$ctrl.accountIcons.expandIcon.icon}}"></prm-icon>
+                </md-button>
+                <div ng-init="messageAdded = 'open';\r\n                      messageRemoved = 'close' "
+                    class="accessible-only" aria-label="{{requestDisplay.isExpanded ? messageAdded : messageRemoved}}"
+                    aria-live="assertive">{{requestDisplay.isExpanded ? messageAdded : messageRemoved}}</div>
+            </div>
+        </div>
+    </md-list-item>
+</md-list>
+<prm-spinner ng-if="(!$ctrl.requestsCounter || $ctrl.requestsCounter === '0') && $ctrl.isLoadingRequests"
+    class="half-transparent no-text bottom-loader" layout="row" layout-align="center end" layout-margin></prm-spinner>
+<prm-requests-after parent-ctrl="$ctrl"></prm-requests-after>

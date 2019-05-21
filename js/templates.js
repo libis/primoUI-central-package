@@ -13,6 +13,7 @@ import './utils'
 
 import changeLangWithoutUserAreaHTML from '../html/templates/change-lang-without-user-area.html'
 import prmLoanBugFixHTML from '../html/templates/prm-loan-bug-fix.html'
+import prmRequestBugFixHTML from '../html/templates/prm-request-bug-fix.html'
 import prmLiriasBriefResultContainerHTML from '../html/templates/prm-lirias-brief-result-container.html'
 
 export default class Templates {
@@ -39,6 +40,12 @@ export default class Templates {
                 enabled: true,
                 enableInView: '.*'
             },
+            {
+                id: 'components/account/requests/requests.html',
+                template: prmRequestBugFixHTML,
+                enabled: true,
+                enableInView: '.*'
+            },           
             {
                 id: 'components/search/briefResult/briefResultContainer.html',
                 template: prmLiriasBriefResultContainerHTML,
