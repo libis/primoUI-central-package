@@ -7,9 +7,12 @@ class ViewLogoController {
     self.rootScope = $rootScope;
     $element.parent().parent()[0].firstChild.parentNode.removeChild($element.parent().parent()[0].firstChild);
 
+
     $translate('limo.instituteUrl').then(
-    (message) => {
-      self.homePageLink = message
+      (message) => {
+      if (message  !=  'http://www.libis.be/' ){
+        self.homePageLink = message
+      }
     });
 
     Primo.view.then((view) => {
