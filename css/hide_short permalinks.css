@@ -1,7 +1,7 @@
 /* Hide short permalinks */
 
 .long-permalink {
-    display: inherit;
+    display: inherit !important;;
 }
 
 .short-permalink {
