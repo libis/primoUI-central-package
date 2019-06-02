@@ -1,0 +1,9 @@
+/* Hide short permalinks */
+
+.long-permalink {
+    display: inherit;
+}
+
+.short-permalink {
+    display: none;
+}
