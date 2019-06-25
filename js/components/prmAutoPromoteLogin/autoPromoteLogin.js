@@ -38,7 +38,14 @@ class PromoteLoginController {
     let parentCtrl =  self.parentCtrl.parentCtrl
     //console.log (self)
     var locale = parentCtrl.primolyticsService.userSessionManagerService.i18nService.getLanguage();
-   
+    
+    parentCtrl.primolyticsService.userSessionManagerService.signInObservable.subscribe(()=> {
+      if (this.parentCtrl.parentCtrl.isLoggedIn  == true){
+        $mdDialog.hide();
+      }
+    });
+
+
     $scope.primoPromoteLogin = '';
     $scope.showSignInPopup = function () {
         var parentEl = angular.element(document.body);
