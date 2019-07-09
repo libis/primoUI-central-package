@@ -78,14 +78,14 @@ let app = angular.module('centralCustom', ['ngMaterial', 'vcRecaptcha'])
         var locale = window.appConfig['primo-view']['attributes-map'].interfaceLanguage;
         var locale_text = {
           'nl_BE': {
-            'journal': "Trial: Bekijk de inhoud van het tijdschrift",
-            'issue': "Trial: Bekijk de inhoud van het nummer",
-            'download': "Trial: Download PDF"
+            'journal': "Bekijk de inhoud van het tijdschrift",
+            'issue': "Bekijk de inhoud van het nummer",
+            'download': "Download PDF"
           },
           'en_US': {
-            'journal': "In trial: View Journal Contents",
-            'issue': "In trial: View Issue Contents",
-            'download': "In trial: Download PDF"
+            'journal': "View Journal Contents",
+            'issue': "View Issue Contents",
+            'download': "Download PDF"
           }
         }
 

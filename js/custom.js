@@ -721,12 +721,20 @@ var AutoLoginCheckboxController = function AutoLoginCheckboxController($scope) {
 };
 
 var PromoteLoginController = function PromoteLoginController($scope, $element, $mdDialog) {
+  var _this = this;
+
   _classCallCheck(this, PromoteLoginController);
 
   var self = this;
   var parentCtrl = self.parentCtrl.parentCtrl;
   //console.log (self)
   var locale = parentCtrl.primolyticsService.userSessionManagerService.i18nService.getLanguage();
+
+  parentCtrl.primolyticsService.userSessionManagerService.signInObservable.subscribe(function () {
+    if (_this.parentCtrl.parentCtrl.isLoggedIn == true) {
+      $mdDialog.hide();
+    }
+  });
 
   $scope.primoPromoteLogin = '';
   $scope.showSignInPopup = function () {
@@ -2999,14 +3007,14 @@ var app = angular.module('centralCustom', ['ngMaterial', 'vcRecaptcha'])
       var locale = window.appConfig['primo-view']['attributes-map'].interfaceLanguage;
       var locale_text = {
         'nl_BE': {
-          'journal': "Trial: Bekijk de inhoud van het tijdschrift",
-          'issue': "Trial: Bekijk de inhoud van het nummer",
-          'download': "Trial: Download PDF"
+          'journal': "Bekijk de inhoud van het tijdschrift",
+          'issue': "Bekijk de inhoud van het nummer",
+          'download': "Download PDF"
         },
         'en_US': {
-          'journal': "In trial: View Journal Contents",
-          'issue': "In trial: View Issue Contents",
-          'download': "In trial: Download PDF"
+          'journal': "View Journal Contents",
+          'issue': "View Issue Contents",
+          'download': "Download PDF"
         }
       };
 
