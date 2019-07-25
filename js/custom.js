@@ -84,6 +84,10 @@ var _searchAlsoBody = require('./components/prmFacetExactAfter/searchAlsoBody');
 
 var _searchAlsoBodyBib = require('./components/prmFacetExactAfter/searchAlsoBodyBib');
 
+var _searchAlsoBodyGoogle = require('./components/prmFacetExactAfter/searchAlsoBodyGoogle');
+
+var _searchAlsoBodyWorldcat = require('./components/prmFacetExactAfter/searchAlsoBodyWorldcat');
+
 var _browzine = require('./components/prmSearchResultAvailabilityLineAfterController/browzine');
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -116,7 +120,7 @@ var AfterComponents = function () {
       /* lbs-components used in html-templates of the package */
       { name: 'auto-login-static-footer', config: _autoPromoteLogin.autoLoginCheckboxConfig, enabled: true, appendTo: 'lbs-promote-login', enableInView: '^KULeuven$' }, { name: 'promote-login', config: _autoPromoteLogin.promoteLoginConfig, enabled: true, appendTo: 'prm-authentication-after', enableInView: '^KULeuven$' }, { name: 'auto-login', config: _autoPromoteLogin.autoLoginConfig, enabled: true, appendTo: 'prm-authentication-after', enableInView: 'KULeuven_LUCA|KULeuven_ODISEE|KULeuven_TMOREK|KULeuven_TMOREM|KULeuven_UCLL' }, { name: 'ill-request-form-overview', config: _illRequestForm.illRequestFormConfig, enabled: false, appendTo: 'prm-requests-overview-after', enableInView: '.*' }, { name: 'ill-request-form', config: _illRequestForm.illRequestFormConfig, enabled: false, appendTo: 'prm-requests-after', enableInView: '^KULeuven|^VIVES' }, { name: 'announcement-feedback', config: _feedbackAnnouncement.feedbackAnnouncementConfig, enabled: false, appendTo: 'prm-top-bar-before', enableInView: '.*' }, { name: 'override-getlink-recommendation', config: _recommendationItem.recommendationItemConfig, enabled: true, appendTo: 'prm-recomendation-item-after', enableInView: '.*' }, { name: 'announcement', config: _announcements.announcementsConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '.*' }, { name: 'pay-my-fines-message', config: _finesMessage.finesMessageConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '^KULeuven' },
       //  {name: 'remove-open-access', config: removeOpenAccessConfig, enabled: false, appendTo: 'prm-facet-after', enableInView: '.*'},
-      { name: 'search-also', config: _searchAlso.searchAlsoConfig, enabled: true, appendTo: 'prm-facet-after', enableInView: '^KULeuven|^VIVES_KATHO' }, { name: 'search-also-body', config: _searchAlsoBody.searchAlsoBodyConfig, enabled: true, appendTo: 'prm-facet-exact-after', enableInView: '^KULeuven' }, { name: 'search-also-body-bib', config: _searchAlsoBodyBib.searchAlsoBodyBibConfig, enabled: true, appendTo: 'prm-facet-exact-after', enableInView: '^VIVES_KATHO' }, { name: 'browzine', config: _browzine.browzineConfig, enabled: true, appendTo: 'prm-search-result-availability-line-after', enableInView: '^KULeuven|^ECB' }, { name: 'search-collections', config: _exploreSearchCollections.searchCollectionsConfig, enabled: true, appendTo: 'prm-collection-gallery-header-after', enableInView: '^KULeuven' }].filter(function (component) {
+      { name: 'search-also', config: _searchAlso.searchAlsoConfig, enabled: true, appendTo: 'prm-facet-after', enableInView: '^KULeuven|^VIVES|^ODISEE|^FARO|^TMOREK|^TMOREAM' }, { name: 'search-also-body', config: _searchAlsoBody.searchAlsoBodyConfig, enabled: true, appendTo: 'prm-facet-exact-after', enableInView: '^KULeuven|^VIVES|^ODISEE|^FARO' }, { name: 'search-also-body-bib', config: _searchAlsoBodyBib.searchAlsoBodyBibConfig, enabled: true, appendTo: 'prm-facet-exact-after', enableInView: '^VIVES|^ODISEE|^FARO|^TMOREK|^TMOREAM' }, { name: 'search-also-body-google', config: _searchAlsoBodyGoogle.searchAlsoBodyGoogleConfig, enabled: true, appendTo: 'prm-facet-exact-after', enableInView: '^ODISEE|^FARO|^TMOREK|^TMOREAM' }, { name: 'search-also-body-worldcat', config: _searchAlsoBodyWorldcat.searchAlsoBodyWorldcatConfig, enabled: true, appendTo: 'prm-facet-exact-after', enableInView: '^KULeuven' }, { name: 'browzine', config: _browzine.browzineConfig, enabled: true, appendTo: 'prm-search-result-availability-line-after', enableInView: '^KULeuven|^ECB' }, { name: 'search-collections', config: _exploreSearchCollections.searchCollectionsConfig, enabled: true, appendTo: 'prm-collection-gallery-header-after', enableInView: '^KULeuven' }].filter(function (component) {
         return component.enabled && new RegExp(component.enableInView).test(window.appConfig.vid);
       });
     }
@@ -127,7 +131,7 @@ var AfterComponents = function () {
 
 exports.default = AfterComponents;
 
-},{"./components/general/ConfigLanguageSelection":2,"./components/general/databaseLink":3,"./components/general/disclaimer":5,"./components/general/experiment":6,"./components/general/removeAlerts":7,"./components/general/removeCheckLocations":8,"./components/general/searchTip":9,"./components/general/staticFooter":10,"./components/prmAutoPromoteLogin/autoPromoteLogin":11,"./components/prmBriefResultAfter/altmetric":12,"./components/prmBriefResultAfter/sourceIcon":13,"./components/prmCollectionGalleryHeaderAfter/exploreSearchCollections":14,"./components/prmFacetAfter/searchAlso":15,"./components/prmFacetExactAfter/searchAlsoBody":16,"./components/prmFacetExactAfter/searchAlsoBodyBib":17,"./components/prmFinesOverviewAfter/payMyFines":18,"./components/prmFullViewAfter/altmetricsBadge":19,"./components/prmLogoAfter/betaSwitch":20,"./components/prmLogoAfter/homeIcon":21,"./components/prmLogoAfter/languageDependentLogo":22,"./components/prmLogoAfter/newSearchButton":23,"./components/prmLogoAfter/viewLogo":24,"./components/prmMainMenuAfter/feedback":25,"./components/prmRecommendationItemAfter/recommendationItem":26,"./components/prmRequestsAfter/illRequestForm":27,"./components/prmSearchResultAvailabilityLineAfterController/browzine":28,"./components/prmSearchResultThumbnailContainerAfter/pnxXml":29,"./components/prmServiceHeaderAfter/reportAProblem":30,"./components/prmServiceHeaderAfter/requestACopy":31,"./components/prmTopBarBefore/announcements":32,"./components/prmTopBarBefore/feedbackAnnouncement":33,"./components/prmTopBarBefore/finesMessage":35,"./utils":53}],2:[function(require,module,exports){
+},{"./components/general/ConfigLanguageSelection":2,"./components/general/databaseLink":3,"./components/general/disclaimer":5,"./components/general/experiment":6,"./components/general/removeAlerts":7,"./components/general/removeCheckLocations":8,"./components/general/searchTip":9,"./components/general/staticFooter":10,"./components/prmAutoPromoteLogin/autoPromoteLogin":11,"./components/prmBriefResultAfter/altmetric":12,"./components/prmBriefResultAfter/sourceIcon":13,"./components/prmCollectionGalleryHeaderAfter/exploreSearchCollections":14,"./components/prmFacetAfter/searchAlso":15,"./components/prmFacetExactAfter/searchAlsoBody":16,"./components/prmFacetExactAfter/searchAlsoBodyBib":17,"./components/prmFacetExactAfter/searchAlsoBodyGoogle":18,"./components/prmFacetExactAfter/searchAlsoBodyWorldcat":19,"./components/prmFinesOverviewAfter/payMyFines":20,"./components/prmFullViewAfter/altmetricsBadge":21,"./components/prmLogoAfter/betaSwitch":22,"./components/prmLogoAfter/homeIcon":23,"./components/prmLogoAfter/languageDependentLogo":24,"./components/prmLogoAfter/newSearchButton":25,"./components/prmLogoAfter/viewLogo":26,"./components/prmMainMenuAfter/feedback":27,"./components/prmRecommendationItemAfter/recommendationItem":28,"./components/prmRequestsAfter/illRequestForm":29,"./components/prmSearchResultAvailabilityLineAfterController/browzine":30,"./components/prmSearchResultThumbnailContainerAfter/pnxXml":31,"./components/prmServiceHeaderAfter/reportAProblem":32,"./components/prmServiceHeaderAfter/requestACopy":33,"./components/prmTopBarBefore/announcements":34,"./components/prmTopBarBefore/feedbackAnnouncement":35,"./components/prmTopBarBefore/finesMessage":37,"./utils":55}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1032,34 +1036,6 @@ var SearchAlsoBodyController = function () {
           var terms = search.split(",");
           return terms[2] || "";
         }
-      },
-      // {
-      //   "name": "Google Scholar",
-      //   "url": "https://scholar.google.com/scholar?q=",
-      //   "img": "/primo-explore/custom/CENTRAL_PACKAGE/img/google_icon.png",
-      //   "tooltip": "lbs.nui.search_also.tooltip.google_scolar",
-      //   mapping: function mapping(search) {
-      //     var terms = search.split(",");
-      //     return terms[2] || "";
-      //   }
-      // },
-      {
-        "name": "Worldcat",
-        "url": "https://www.worldcat.org/search?q=",
-        "img": "/primo-explore/custom/CENTRAL_PACKAGE/img/worldcat_icon.png",
-        "tooltip": "lbs.nui.search_also.tooltip.worldcat",
-        mapping: function mapping(search) {
-          var type_mappings = {
-            "any": "kw",
-            "title": "ti",
-            "creator": "au",
-            "subject": "su"
-          };
-          var terms = search.split(",");
-          var type = type_mappings[terms[0]] || "kw";
-          var query = terms[2] || "";
-          return type + ':' + query;
-        }
       }];
     }
   }, {
@@ -1154,6 +1130,130 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+var searchAlsoBodyHTML = '<div ng-if="$ctrl.name === \'search_also\'" class="lbs-search-also">\n  <div ng-hide="$ctrl.parentCtrl.parentCtrl.facetGroup.facetGroupCollapsed">\n    <div class="section-content animate-max-height-variable">\n      <div class="md-chips md-chips-wrap">\n        <div ng-repeat="target in $ctrl.targets" aria-live="polite" class="md-chip animate-opacity-and-scale facet-element-marker-local4">\n          <div class="md-chip-content layout-row" role="button" tabindex="9">\n            <strong dir="auto" title="{{ target.name }}">\n              <a ng-href="{{ target.url + target.mapping($ctrl.search) }}" target="_blank"  title="{{ (target.tooltip | translate )}}">\n                <img ng-src="{{ target.img }}" width="22" height="22" style="vertical-align:middle;padding-right:2px;"> {{ target.name }}\n              </a>\n            </strong>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n';
+
+var SearchAlsoBodyGoogleController = function () {
+  function SearchAlsoBodyGoogleController($location) {
+    _classCallCheck(this, SearchAlsoBodyGoogleController);
+
+    this.location = $location;
+    this.targets = this._targets();
+  }
+
+  _createClass(SearchAlsoBodyGoogleController, [{
+    key: '_targets',
+    value: function _targets() {
+      return [{
+        "name": "Google Scholar",
+        "url": "https://scholar.google.com/scholar?q=",
+        "img": "/primo-explore/custom/CENTRAL_PACKAGE/img/google_icon.png",
+        "tooltip": "lbs.nui.search_also.tooltip.google_scolar",
+        mapping: function mapping(search) {
+          var terms = search.split(",");
+          return terms[2] || "";
+        }
+      }];
+    }
+  }, {
+    key: 'search',
+    get: function get() {
+      return this.location.search().query || '';
+    }
+  }, {
+    key: 'name',
+    get: function get() {
+      return this.parentCtrl.parentCtrl.facetGroup.name;
+    }
+  }]);
+
+  return SearchAlsoBodyGoogleController;
+}();
+
+SearchAlsoBodyGoogleController.$inject = ['$location'];
+
+var searchAlsoBodyGoogleConfig = exports.searchAlsoBodyGoogleConfig = {
+  bindings: { parentCtrl: '<' },
+  controller: SearchAlsoBodyGoogleController,
+  template: searchAlsoBodyHTML
+};
+
+},{}],19:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var searchAlsoBodyHTML = '<div ng-if="$ctrl.name === \'search_also\'" class="lbs-search-also">\n  <div ng-hide="$ctrl.parentCtrl.parentCtrl.facetGroup.facetGroupCollapsed">\n    <div class="section-content animate-max-height-variable">\n      <div class="md-chips md-chips-wrap">\n        <div ng-repeat="target in $ctrl.targets" aria-live="polite" class="md-chip animate-opacity-and-scale facet-element-marker-local4">\n          <div class="md-chip-content layout-row" role="button" tabindex="9">\n            <strong dir="auto" title="{{ target.name }}">\n              <a ng-href="{{ target.url + target.mapping($ctrl.search) }}" target="_blank"  title="{{ (target.tooltip | translate )}}">\n                <img ng-src="{{ target.img }}" width="22" height="22" style="vertical-align:middle;padding-right:2px;"> {{ target.name }}\n              </a>\n            </strong>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n';
+
+var SearchAlsoBodyWorldcatController = function () {
+  function SearchAlsoBodyWorldcatController($location) {
+    _classCallCheck(this, SearchAlsoBodyWorldcatController);
+
+    this.location = $location;
+    this.targets = this._targets();
+  }
+
+  _createClass(SearchAlsoBodyWorldcatController, [{
+    key: '_targets',
+    value: function _targets() {
+      return [{
+        "name": "Worldcat",
+        "url": "https://www.worldcat.org/search?q=",
+        "img": "/primo-explore/custom/CENTRAL_PACKAGE/img/worldcat_icon.png",
+        "tooltip": "lbs.nui.search_also.tooltip.worldcat",
+        mapping: function mapping(search) {
+          var type_mappings = {
+            "any": "kw",
+            "title": "ti",
+            "creator": "au",
+            "subject": "su"
+          };
+          var terms = search.split(",");
+          var type = type_mappings[terms[0]] || "kw";
+          var query = terms[2] || "";
+          return type + ':' + query;
+        }
+      }];
+    }
+  }, {
+    key: 'search',
+    get: function get() {
+      return this.location.search().query || '';
+    }
+  }, {
+    key: 'name',
+    get: function get() {
+      return this.parentCtrl.parentCtrl.facetGroup.name;
+    }
+  }]);
+
+  return SearchAlsoBodyWorldcatController;
+}();
+
+SearchAlsoBodyWorldcatController.$inject = ['$location'];
+
+var searchAlsoBodyWorldcatConfig = exports.searchAlsoBodyWorldcatConfig = {
+  bindings: { parentCtrl: '<' },
+  controller: SearchAlsoBodyWorldcatController,
+  template: searchAlsoBodyHTML
+};
+
+},{}],20:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 var payMyFinesHTML = '<style>\n  .md-button[id=payFinesNow] {\n    color: white;\n    background-color: tomato;\n  }\n\n  .md-button[id=payFinesNow]:hover {\n    background-color: tomato;\n    filter: brightness(80%);\n    color: white;\n  }\n</style>\n\n<div layout="row" layout-align="center center" ng-show=\'$ctrl.showPayMyFines\'>\n  <a id=\'payFinesNow\' class="md-button md-raised md-secundary" target=\'_blank\' href=\'https://services.libis.be/pay_my_fines\'>Pay fines</a>\n</div>\n';
 
 var PayMyFinesController = function () {
@@ -1192,7 +1292,7 @@ var payMyFinesConfig = exports.payMyFinesConfig = {
   template: payMyFinesHTML
 };
 
-},{}],19:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1297,7 +1397,7 @@ var altmetricsBadgeConfig = exports.altmetricsBadgeConfig = {
   template: AltmetricsBadgeHTML
 };
 
-},{}],20:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1397,7 +1497,7 @@ var betaSwitchConfig = exports.betaSwitchConfig = {
   template: betaSwitchHTML
 };
 
-},{}],21:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1461,7 +1561,7 @@ var homeIconConfig = exports.homeIconConfig = {
   template: homeIconHTML
 };
 
-},{}],22:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1509,7 +1609,7 @@ var languageDependentLogoConfig = exports.languageDependentLogoConfig = {
   template: ''
 };
 
-},{}],23:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1566,7 +1666,7 @@ var newSearchButtonConfig = exports.newSearchButtonConfig = {
   template: ''
 };
 
-},{}],24:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1622,7 +1722,7 @@ var viewLogoConfig = exports.viewLogoConfig = {
   template: viewLogoHTML
 };
 
-},{}],25:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1664,7 +1764,7 @@ var feedbackConfig = exports.feedbackConfig = {
   template: ''
 };
 
-},{}],26:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1706,7 +1806,7 @@ var recommendationItemConfig = exports.recommendationItemConfig = {
   template: ''
 };
 
-},{}],27:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1778,7 +1878,7 @@ var illRequestFormConfig = exports.illRequestFormConfig = {
     template: illRequestFormHTML
 };
 
-},{}],28:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1828,7 +1928,7 @@ var browzineConfig = exports.browzineConfig = {
     controller: BrowzineController
 };
 
-},{}],29:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1934,7 +2034,7 @@ var pnxXmlConfig = exports.pnxXmlConfig = {
   template: pnxXmlHTML
 };
 
-},{}],30:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2059,7 +2159,7 @@ var reportAProblemConfig = exports.reportAProblemConfig = {
   template: ''
 };
 
-},{}],31:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2244,7 +2344,7 @@ var requestACopyConfig = exports.requestACopyConfig = {
   template: ''
 };
 
-},{}],32:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2267,7 +2367,7 @@ var announcementsConfig = exports.announcementsConfig = {
   template: ''
 };
 
-},{}],33:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2317,7 +2417,7 @@ var feedbackAnnouncementConfig = exports.feedbackAnnouncementConfig = {
   template: ''
 };
 
-},{"./feedbackAnnouncementDialog":34}],34:[function(require,module,exports){
+},{"./feedbackAnnouncementDialog":36}],36:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2403,7 +2503,7 @@ exports.default = feedbackAnnouncementDialogController;
 
 feedbackAnnouncementDialogController.$inject = ['$scope', '$mdDialog', '$mdToast', '$translate', '$http', 'feedbackServiceURL', 'MessageService'];
 
-},{}],35:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2441,7 +2541,7 @@ var finesMessageConfig = exports.finesMessageConfig = {
   template: ''
 };
 
-},{}],36:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2505,7 +2605,7 @@ exports.default = AltmetricsService;
 
 AltmetricsService.$inject = ['$rootScope', '$compile', '$mdToast', '$timeout', '$window'];
 
-},{}],37:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2589,7 +2689,7 @@ var apiCallInterceptor = exports.apiCallInterceptor = [function () {
     return apiCallInterceptor;
 }];
 
-},{}],38:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2612,7 +2712,7 @@ var dbSearchHttpCallInterceptor = exports.dbSearchHttpCallInterceptor = [functio
   return httpCallInterceptor;
 }];
 
-},{}],39:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2711,7 +2811,7 @@ var feedService = exports.feedService = ['$http', function ($http) {
   };
 }];
 
-},{}],40:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2774,7 +2874,7 @@ exports.default = FeedbackService;
 
 FeedbackService.$inject = ['$mdDialog'];
 
-},{"../components/general/dialog":4}],41:[function(require,module,exports){
+},{"../components/general/dialog":4}],43:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2907,7 +3007,7 @@ exports.default = MessageService;
 
 MessageService.$inject = ['$rootScope', '$compile', '$mdToast', '$sce', '$translate', '$timeout'];
 
-},{}],42:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 'use strict';
 
 var _primo = require('./primo-explore-dom/js/primo');
@@ -3088,7 +3188,7 @@ Object.keys(afterComponents).forEach(function (component, i) {
   });
 });
 
-},{"./components":1,"./factories/altmetricsService":36,"./factories/apiCallInterceptor":37,"./factories/dbSearchHttpCallInterceptor":38,"./factories/feedService":39,"./factories/feedbackService":40,"./factories/messageService":41,"./primo-explore-dom/js/primo":43,"./primo-explore-dom/js/primo/explore/helper":46,"./templates":52}],43:[function(require,module,exports){
+},{"./components":1,"./factories/altmetricsService":38,"./factories/apiCallInterceptor":39,"./factories/dbSearchHttpCallInterceptor":40,"./factories/feedService":41,"./factories/feedbackService":42,"./factories/messageService":43,"./primo-explore-dom/js/primo":45,"./primo-explore-dom/js/primo/explore/helper":48,"./templates":54}],45:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3249,7 +3349,7 @@ var Primo = function () {
 
 exports.default = Primo;
 
-},{"./primo/explore":44,"./primo/explore/helper":46,"./primo/facets":47,"./primo/records":48,"./primo/user":49,"./primo/view":50}],44:[function(require,module,exports){
+},{"./primo/explore":46,"./primo/explore/helper":48,"./primo/facets":49,"./primo/records":50,"./primo/user":51,"./primo/view":52}],46:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3306,7 +3406,7 @@ var Explore = function () {
 
 exports.default = Explore;
 
-},{"./explore/components":45,"./explore/helper":46}],45:[function(require,module,exports){
+},{"./explore/components":47,"./explore/helper":48}],47:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3426,7 +3526,7 @@ var Components = function () {
 
 exports.default = Components;
 
-},{"../../vendor/css-selector-generator.js":51,"./helper":46}],46:[function(require,module,exports){
+},{"../../vendor/css-selector-generator.js":53,"./helper":48}],48:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3703,7 +3803,7 @@ var Helper = function () {
 
 exports.default = Helper;
 
-},{}],47:[function(require,module,exports){
+},{}],49:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3760,7 +3860,7 @@ var Facets = function () {
 
 exports.default = Facets;
 
-},{"./explore/components":45,"./explore/helper":46}],48:[function(require,module,exports){
+},{"./explore/components":47,"./explore/helper":48}],50:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3820,7 +3920,7 @@ var Records = function () {
 
 exports.default = Records;
 
-},{"./explore/components":45,"./explore/helper":46}],49:[function(require,module,exports){
+},{"./explore/components":47,"./explore/helper":48}],51:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3879,7 +3979,7 @@ var User = function () {
 
 exports.default = User;
 
-},{"./explore/helper":46}],50:[function(require,module,exports){
+},{"./explore/helper":48}],52:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3915,7 +4015,7 @@ var View = function View() {
 
 exports.default = View;
 
-},{"./explore/helper":46}],51:[function(require,module,exports){
+},{"./explore/helper":48}],53:[function(require,module,exports){
 'use strict';
 
 (function () {
@@ -4231,7 +4331,7 @@ exports.default = View;
   }
 }).call(undefined);
 
-},{}],52:[function(require,module,exports){
+},{}],54:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -4308,7 +4408,7 @@ var Templates = function () {
 
 exports.default = Templates;
 
-},{"./utils":53}],53:[function(require,module,exports){
+},{"./utils":55}],55:[function(require,module,exports){
 'use strict';
 
 /*
@@ -4375,7 +4475,7 @@ angular.element.prototype.closestNode = function (nodeName) {
 };
 */
 
-},{}]},{},[42])
+},{}]},{},[44])
 
 
 //# sourceMappingURL=custom.js.map

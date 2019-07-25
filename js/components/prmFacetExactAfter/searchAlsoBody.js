@@ -24,46 +24,7 @@ class SearchAlsoBodyController {
         var terms = search.split(",");
         return terms[2] || "";
       }
-    },
-    // {
-    //   "name": "Google Scholar",
-    //   "url": "https://scholar.google.com/scholar?q=",
-    //   "img": "/primo-explore/custom/CENTRAL_PACKAGE/img/google_icon.png",
-    //   "tooltip": "lbs.nui.search_also.tooltip.google_scolar",
-    //   mapping: function mapping(search) {
-    //     var terms = search.split(",");
-    //     return terms[2] || "";
-    //   }
-    // },
-    {
-      "name": "Worldcat",
-      "url": "https://www.worldcat.org/search?q=",
-      "img": "/primo-explore/custom/CENTRAL_PACKAGE/img/worldcat_icon.png",
-      "tooltip": "lbs.nui.search_also.tooltip.worldcat",
-      mapping: function mapping(search) {
-        var type_mappings = {
-          "any": "kw",
-          "title": "ti",
-          "creator": "au",
-          "subject": "su"
-        };
-        var terms = search.split(",");
-        var type = type_mappings[terms[0]] || "kw";
-        var query = terms[2] || "";
-        return type + ':' + query;
-
-      }
-    },
-    /*{
-      "name": "Bibliotheek.be",
-      "url": "https://www.bibliotheek.be/catalogus?q=",
-      "img": "/primo-explore/custom/CENTRAL_PACKAGE/img/bib_be.png",
-      "tooltip": "lbs.nui.search_also.tooltip.unicat",
-      mapping: function mapping(search) {
-        var terms = search.split(",");
-        return terms[2] || "";
-      }
-    }*/
+    }
     ];
   }
 }

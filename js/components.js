@@ -53,6 +53,8 @@ import {databaseLinkConfig} from './components/general/databaseLink'
 import {searchAlsoConfig} from './components/prmFacetAfter/searchAlso'
 import {searchAlsoBodyConfig} from './components/prmFacetExactAfter/searchAlsoBody'
 import {searchAlsoBodyBibConfig} from './components/prmFacetExactAfter/searchAlsoBodyBib'
+import {searchAlsoBodyGoogleConfig} from './components/prmFacetExactAfter/searchAlsoBodyGoogle'
+import {searchAlsoBodyWorldcatConfig} from './components/prmFacetExactAfter/searchAlsoBodyWorldcat'
 
 import {browzineConfig} from './components/prmSearchResultAvailabilityLineAfterController/browzine'
 
@@ -119,9 +121,12 @@ export default class AfterComponents {
       {name: 'announcement', config: announcementsConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '.*'},
       {name: 'pay-my-fines-message', config: payMyFinesMessageConfig, enabled: true, appendTo: 'prm-top-bar-before', enableInView: '^KULeuven'},
      //  {name: 'remove-open-access', config: removeOpenAccessConfig, enabled: false, appendTo: 'prm-facet-after', enableInView: '.*'},
-     {name: 'search-also', config: searchAlsoConfig, enabled: true, appendTo: 'prm-facet-after', enableInView: '^KULeuven|^VIVES_KATHO'},
-     {name: 'search-also-body', config: searchAlsoBodyConfig, enabled: true, appendTo: 'prm-facet-exact-after', enableInView: '^KULeuven'},
-     {name: 'search-also-body-bib', config: searchAlsoBodyBibConfig, enabled: true, appendTo: 'prm-facet-exact-after', enableInView: '^VIVES_KATHO'},
+     {name: 'search-also', config: searchAlsoConfig, enabled: true, appendTo: 'prm-facet-after', enableInView: '^KULeuven|^VIVES|^ODISEE|^FARO|^TMOREK|^TMOREAM'},
+     {name: 'search-also-body', config: searchAlsoBodyConfig, enabled: true, appendTo: 'prm-facet-exact-after', enableInView: '^KULeuven|^VIVES|^ODISEE|^FARO'},
+     {name: 'search-also-body-bib', config: searchAlsoBodyBibConfig, enabled: true, appendTo: 'prm-facet-exact-after', enableInView: '^VIVES|^ODISEE|^FARO|^TMOREK|^TMOREAM'},
+     {name: 'search-also-body-google', config: searchAlsoBodyGoogleConfig, enabled: true, appendTo: 'prm-facet-exact-after', enableInView: '^ODISEE|^FARO|^TMOREK|^TMOREAM'},
+     {name: 'search-also-body-worldcat', config: searchAlsoBodyWorldcatConfig, enabled: true, appendTo: 'prm-facet-exact-after', enableInView: '^KULeuven'},
+
      {name: 'browzine', config: browzineConfig, enabled: true, appendTo: 'prm-search-result-availability-line-after', enableInView: '^KULeuven|^ECB'},
      {name: 'search-collections', config: searchCollectionsConfig, enabled: true, appendTo: 'prm-collection-gallery-header-after', enableInView: '^KULeuven'}
     ].filter( (component) => ( component.enabled && new RegExp(component.enableInView).test(window.appConfig.vid) ) );
