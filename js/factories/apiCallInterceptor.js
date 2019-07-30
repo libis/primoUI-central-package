@@ -56,6 +56,7 @@ export let apiCallInterceptor = [() => {
                     console.log('no data');
                 }
                 //Remove open access from facets
+                /*
                 try {
                     if (Object.keys(data).includes('facets')) {
                         data["facets"] = data["facets"].map(m => {
@@ -70,7 +71,7 @@ export let apiCallInterceptor = [() => {
                 } catch (e) {
                     console.log('no data', e.message);
                 }
-
+                */
                 response.data = data;
             }
 
