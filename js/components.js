@@ -31,10 +31,13 @@ import {feedbackConfig} from './components/prmMainMenuAfter/feedback'
 import {searchTipConfig} from './components/general/searchTip'
 import {disclaimerConfig} from './components/general/disclaimer'
 
+import {exposeJwtConfig} from './components/general/exposeJwt'
+
 import {LanguageSelectionConfig} from './components/general/ConfigLanguageSelection'
 
 import {reportAProblemConfig} from './components/prmServiceHeaderAfter/reportAProblem'
 import {requestACopyConfig} from './components/prmServiceHeaderAfter/requestACopy'
+import {requestACopyOfEsDocConfig} from './components/prmServiceHeaderAfter/requestACopyOfEsDoc'
 
 import {finesMessageConfig as payMyFinesMessageConfig} from './components/prmTopBarBefore/finesMessage'
 import {announcementsConfig} from './components/prmTopBarBefore/announcements'
@@ -97,10 +100,13 @@ export default class AfterComponents {
       {name: 'report-a-problem', config: reportAProblemConfig, enabled: true, appendTo: 'prm-service-header-after', enableInView: '.*'},
      // {name: 'request-a-copy-head', config: requestACopyConfig, enabled: true, appendTo: 'prm-service-header-after', enableInView: '^Lirias'},
       {name: 'request-a-copy', config: requestACopyConfig, enabled: true, appendTo: 'prm-full-view-service-container-after', enableInView: '^Lirias'},
+      {name: 'request-a-copy-es-doc', config: requestACopyOfEsDocConfig, enabled: true, appendTo: 'prm-full-view-service-container-after', enableInView: '^VLP'},
+      
+      {name: 'user-jwt', config: exposeJwtConfig, enabled: true, appendTo: 'prm-main-menu-after', enableInView: '^VLP|^ECB'},
 
       {name: 'prm-searchtips', config: searchTipConfig, enabled: true, appendTo: null, enableInView: '.*'},
       {name: 'prm-disclaimer', config: disclaimerConfig, enabled: true, appendTo: null, enableInView: '.*'},
-      {name: 'static-footer', config: staticFooterConfig, enabled: true, appendTo: 'prm-explore-footer-after', enableInView: '.*'},
+            {name: 'static-footer', config: staticFooterConfig, enabled: true, appendTo: 'prm-explore-footer-after', enableInView: '.*'},
       //{name: 'static-footer-account', config: staticFooterConfig, enabled: true, appendTo: 'prm-account-after', enableInView: '.*'},
       {name: 'remove-alerts', config: removeAlertsConfig, enabled: false, appendTo: 'prm-add-query-to-saved-searches-after', enableInView: '.*'},
       {name: 'remove-check-locations', config: removeCheckLocationsConfig, enabled: false, appendTo: 'prm-search-result-availability-line-after', enableInView: 'Lirias'},

@@ -19,6 +19,9 @@ import MessageService from './factories/messageService'
 import FeedbackService from './factories/feedbackService'
 import AltmetricsService from './factories/altmetricsService'
 
+import WindowEventListener from './factories/windowEventListener'
+
+
 //make Primo public
 window.Primo = Primo;
 //load PrimoExplorer UI if angular.reloadWithDebugInfo() is ran
@@ -35,7 +38,9 @@ window.setTimeout(function () {
 }, 2000);
 
 //let servicesHost = 'http://192.168.100.101:9292/';
+//let servicesHost = 'http://localhost:9292/';
 let servicesHost = 'https://services.libis.be/';
+
 
 let app = angular.module('centralCustom', ['ngMaterial', 'vcRecaptcha'])
   /*
@@ -47,6 +52,7 @@ let app = angular.module('centralCustom', ['ngMaterial', 'vcRecaptcha'])
   .constant('feedbackServiceURL', servicesHost + 'feedback')
   .constant('reportAProblemURL', servicesHost + 'report_a_problem')
   .constant('requestACopyURL', servicesHost + 'request_a_copy')
+  .constant('requestACopyOfEsDocURL', servicesHost + 'illform')
 
   .config(($sceDelegateProvider) => {
     $sceDelegateProvider.resourceUrlWhitelist([
@@ -107,6 +113,8 @@ let app = angular.module('centralCustom', ['ngMaterial', 'vcRecaptcha'])
   .service('AltmetricsService', AltmetricsService)
   .service('MessageService', MessageService)
   .service('FeedbackService', FeedbackService)
+  .service('WindowEventListener', WindowEventListener)
+
   .factory('dbSearchHttpCallInterceptor', dbSearchHttpCallInterceptor)
   .factory('apiCallInterceptor', apiCallInterceptor)
   .config(['$httpProvider', ($httpProvider) => { $httpProvider.interceptors.push('apiCallInterceptor'); }]);
