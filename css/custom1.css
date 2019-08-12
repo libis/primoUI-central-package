@@ -140,6 +140,31 @@ beta-switch md-switch[disabled] ._md-thumb {
 }
 */
 
+.collection-element prm-search-result-thumbnail-container img[src*="icon"] {
+    display:none;
+}
+
+prm-search-result-thumbnail-container{
+  background: #c99c9c;
+  /*background-image:  url('/custom/FARO/img/library-logo.png') ;*/
+  background-repeat: no-repeat, repeat;
+  background-size: 100%;
+  background-position: center;
+  min-height: 100px;
+  min-width:65px;
+}
+
+prm-gallery-item:nth-of-type(2n) prm-search-result-thumbnail-container {background: #c9ba9c;}
+prm-gallery-item:nth-of-type(3n) prm-search-result-thumbnail-container {background: #bac99c;}
+prm-gallery-item:nth-of-type(4n) prm-search-result-thumbnail-container {background: #9cc99c;}
+prm-gallery-item:nth-of-type(5n) prm-search-result-thumbnail-container {background: #9cc9ba;}
+prm-gallery-item:nth-of-type(6n) prm-search-result-thumbnail-container {background: #9cbac9;}
+prm-gallery-item:nth-of-type(7n) prm-search-result-thumbnail-container {background: #9c9cc9;}
+
+.collection-element prm-search-result-thumbnail-container img[src*="isbn"] {
+
+}
+
 .__sm .prm-hue2.sidebar, .__sm prm-facet.prm-hue2, .__sm prm-full-view-cont .recommendations-title::after, .__sm prm-full-view-cont .recommendations-title prm-icon, .__sm prm-full-view-cont .recommendations-wrapper, .__xs .prm-hue2.sidebar, .__xs prm-facet.prm-hue2, .__xs prm-full-view-cont .recommendations-title::after, .__xs prm-full-view-cont .recommendations-title prm-icon, .__xs prm-full-view-cont .recommendations-wrapper, .full-view-inner-container, .line-clamp-1::after, .line-clamp-2::after, .line-clamp-3::after, .line-clamp-4::after, .line-clamp-5::after, .list-item-wrapper, .multiselect-submit .prm-hue2.multiselect-submit-inner, .prm-background.prm-hue2, .prm-full-view-dialog, .prm-horizontal-content .horizontal-content-item md-card > .md-button, .prm-hue2.prm-view-overlay-inner, .recommendations-title::after, .recommendations-title prm-icon, .tiles-grid-tile, .tiles-grid-tile .tile-content prm-spinner.overlay-cover::after, .tiles-grid-tile md-list prm-spinner.overlay-cover::after, body.prm-hue2, html.prm-hue2, md-card.default-card, md-card .prm-hue2.card-content-block, md-dialog md-toolbar.prm-hue2:not(.md-menu-toolbar), md-grid-tile, md-grid-tile .tile-content prm-spinner.overlay-cover::after, md-grid-tile md-list prm-spinner.overlay-cover::after, md-list.prm-list.prm-linkable-list-items md-list-item ._md-list-item-inner, md-virtual-repeat-container#prm-simple-search .md-autocomplete-suggestions md-divider.prm-hue2, prm-atoz-search-bar .advanced-search-output md-card, prm-atoz-search-bar .advanced-search-tabs, prm-atoz-search-bar .simple-search-wrapper .prm-hue2.search-options::after, prm-atoz-search-bar .simple-search-wrapper .search-options md-divider.prm-hue2, prm-browse-search-bar .advanced-search-output md-card, prm-browse-search-bar .advanced-search-tabs, prm-browse-search-bar .simple-search-wrapper .prm-hue2.search-options::after, prm-browse-search-bar .simple-search-wrapper .search-options md-divider.prm-hue2, prm-browse-search md-list.prm-list.prm-linkable-list-items md-list-item ._md-list-item-inner, prm-featured-result-item md-card, prm-featured-result-item md-card md-card-title, prm-featured-results .horizontal-content-container .prm-hue2.horizontal-content-control, prm-full-view-cont .prm-hue2.recommendations-title::after, prm-full-view-cont .recommendations-title prm-icon.prm-hue2, prm-full-view-cont prm-recomendation-item .media-on-hover .prm-hue2.pin-button, prm-gallery-collection .collection-folder, prm-gallery-collection .collection-folder .item-meta, prm-gallery-collection .collection-folder h3 span, prm-gallery-item .collection-element, prm-gallery-item .collection-element .item-title, prm-gallery-item .collection-element .resource-type, prm-newspapers-search-bar .advanced-search-output md-card, prm-newspapers-search-bar .advanced-search-tabs, prm-newspapers-search-bar .simple-search-wrapper .prm-hue2.search-options::after, prm-newspapers-search-bar .simple-search-wrapper .search-options md-divider.prm-hue2, prm-recomendation-item .media-on-hover .pin-button, prm-recomendation-item .media-on-hover .pin-button:hover, prm-resource-recommender md-card, prm-search-bar .advanced-search-output md-card, prm-search-bar .advanced-search-tabs, prm-search-bar .simple-search-wrapper .prm-hue2.search-options::after, prm-search-bar .simple-search-wrapper .search-options md-divider.prm-hue2, prm-search-result-list .results-footer, prm-search-result-list .results-header, prm-search .prm-hue2.ui-blocker, prm-tags-results-list md-list.prm-list.prm-linkable-list-items md-list-item ._md-list-item-inner, prm-tags-search-bar .advanced-search-output md-card, prm-tags-search-bar .advanced-search-tabs, prm-tags-search-bar .simple-search-wrapper .prm-hue2.search-options::after, prm-tags-search-bar .simple-search-wrapper .search-options md-divider.prm-hue2 {
     background-color: #f5f5f5;
 }
@@ -273,7 +298,7 @@ prm-loans .unpin-button{
     display: none;
 }
 /* Hide the open-access text and icon */
-
+/*
 .open-access-mark span {
     display: none;
 }
@@ -281,6 +306,7 @@ prm-loans .unpin-button{
 .open-access-mark-icon md-icon {
     display: none;
 }
+*/
 /* Hide short permalinks */
 
 .long-permalink {
