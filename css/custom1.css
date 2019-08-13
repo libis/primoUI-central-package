@@ -144,7 +144,7 @@ beta-switch md-switch[disabled] ._md-thumb {
     display:none;
 }
 
-prm-search-result-thumbnail-container{
+.collection-element prm-search-result-thumbnail-container{
   background: #c99c9c;
   /*background-image:  url('/custom/FARO/img/library-logo.png') ;*/
   background-repeat: no-repeat, repeat;
@@ -586,6 +586,10 @@ button[aria-label="Altmetrics"],
 button[aria-label="altmetrics"],
 button[orderIndex='10']{
   order: 10;
+}
+
+prm-requests .unpin-button{
+    display: none;
 }
 
 
