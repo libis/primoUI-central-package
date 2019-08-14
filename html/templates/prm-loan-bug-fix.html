@@ -1,8 +1,10 @@
 <div class="md-list-item-text md-list-item-with-checkbox" layout="row" layout-wrap flex aria-live="assertive">
-    <md-checkbox ng-model="$ctrl.selectedIds[$ctrl.item.loanid]" aria-label="Checkbox {{$index}}" ng-change="$ctrl.toggleSelected($ctrl.item.loanid)"
-        ng-if="$ctrl.item[$ctrl.selector]"></md-checkbox>
-    <span class="item-index">{{$ctrl.index}}</span>
-    <div flex="40" flex-xs="100">
+        <md-checkbox ng-model="$ctrl.selectedIds[$ctrl.item.loanid]" aria-label="Checkbox {{$index}}"
+            ng-change="$ctrl.toggleSelected($ctrl.item.loanid)"
+            ng-disabled="!$ctrl.item[$ctrl.selector] && !$ctrl.isRenewAvailable()"></md-checkbox><span
+            class="item-index">{{$ctrl.index}}</span>
+        <div flex="40" flex-xs="100">
+
         <div layout="row" class="title-row">
             <h3 ng-if="::$ctrl.item.title" title="{{::$ctrl.item.title}}">
                     {{::$ctrl.item.title}} 
@@ -12,49 +14,76 @@
         <h4 ng-class="{'loans-brief-display':!$ctrl.isExpanded}">
             <span translate="nui.loan.brief.1"></span> {{::($ctrl.item.getBriefDisplayLine(1))}}</h4>
     </div>
-    <div flex="40" flex-xs="100" class="weak-text">
+  <div flex="40" flex-xs="100" class="weak-text">
         <div ng-if="::$ctrl.item.isActiveLoan()">
             <p class="normal-text" ng-style="$ctrl.item.isDueAlert() && {'color':'tomato'}">
-                <prm-icon ng-if="::$ctrl.item.isDueAlert()" class="alert-red" icon-type="{{::$ctrl.accountIcons.timerIcon.type}}"
-                    svg-icon-set="{{::$ctrl.accountIcons.timerIcon.iconSet}}" icon-definition="{{::$ctrl.accountIcons.timerIcon.icon}}"></prm-icon>
-                <span translate="{{$ctrl.item.getCodeAlert()}}"></span>: {{($ctrl.item.getDateForBriefDisplay())}}.
-                <span ng-if="::($ctrl.item.isFine())">
-                    <span translate="nui.loan.fine"></span>: {{::$ctrl.item.fine}}</span>
+                <prm-icon ng-if="::$ctrl.item.isDueAlert()" class="alert-red"
+                    icon-type="{{::$ctrl.accountIcons.timerIcon.type}}"
+                    svg-icon-set="{{::$ctrl.accountIcons.timerIcon.iconSet}}"
+                    icon-definition="{{::$ctrl.accountIcons.timerIcon.icon}}"></prm-icon><span
+                    translate="{{$ctrl.item.getCodeAlert()}}"></span>: {{($ctrl.item.getDateForBriefDisplay())}}. <span
+                    ng-if="::($ctrl.item.isFine())"><span translate="nui.loan.fine"></span>:
+                    {{::$ctrl.item.fine}}</span>
             </p>
         </div>
-        <div ng-if="::(!$ctrl.item.isActiveLoan())">
-            <span translate="loans.return_date"></span> {{::($ctrl.item.getDateForBriefDisplay())}}</div>
-        <p class="normal-text" ng-class="{'loans-brief-display':!$ctrl.isExpanded}">
-            <span translate="nui.loan.brief.2"></span>{{::($ctrl.item.getBriefDisplayLine(2))}}</p>
+        <div ng-if="::(!$ctrl.item.isActiveLoan())"><span translate="loans.return_date"></span>
+            {{::($ctrl.item.getDateForBriefDisplay())}}</div>
+        <p class="normal-text" ng-class="{'loans-brief-display':!$ctrl.isExpanded}"><span
+                translate="nui.loan.brief.2"></span>{{::($ctrl.item.getBriefDisplayLine(2))}}</p>
         <div ng-if="$ctrl.isExpanded">
-            <p ng-repeat="line in ::$ctrl.item.fullDisplayValues" class="normal-text">
-                <span translate="loans.{{::line.key}}"></span> {{::line.value}}</p>
+            <p ng-repeat="line in ::$ctrl.item.fullDisplayValues" class="normal-text"><span
+                    translate="loans.{{::line.key}}"></span> {{::line.value}}</p>
         </div>
     </div>
-    <div layout-align="end center" layout="row" flex="20" flex-xs="100" ng-class="{'not-clickable': $ctrl.renewAllInProgress}"
-        class="list-item-actions">
-        <div ng-if="$ctrl.isRenewable && !$ctrl.isRenewed && !$ctrl.renewInProgress">
-            <md-button class="button-with-icon zero-margin button-link" (click)="$ctrl.renewLoan()" aria-label="{{'nui.loans.renew' | translate}}">
-                <prm-icon class="h-flipped" icon-type="{{::$ctrl.accountIcons.renewLoanIcon.type}}" svg-icon-set="{{::$ctrl.accountIcons.renewLoanIcon.iconSet}}"
-                    icon-definition="{{::$ctrl.accountIcons.renewLoanIcon.icon}}"></prm-icon>
-                <span translate="nui.loans.renew"></span>
+    <div layout-align="start center" layout="row" flex="20" flex-xs="100"
+        ng-class="{'not-clickable': $ctrl.renewAllInProgress}" class="list-item-actions">
+        <div ng-if="$ctrl.isRenewable && !$ctrl.isRenewed && !$ctrl.renewInProgress" class="renewable">
+            <md-button class="button-with-icon zero-margin button-link" (click)="$ctrl.renewLoan()"
+                aria-label="{{'nui.loans.renew' | translate}}">
+                <prm-icon class="h-flipped" icon-type="{{::$ctrl.accountIcons.renewLoanIcon.type}}"
+                    svg-icon-set="{{::$ctrl.accountIcons.renewLoanIcon.iconSet}}"
+                    icon-definition="{{::$ctrl.accountIcons.renewLoanIcon.icon}}"></prm-icon><span
+                    translate="nui.loans.renew"></span>
             </md-button>
         </div>
-        <prm-spinner class="inline-loader half-transparent no-text" layout="row" layout-align="center center" ng-if="$ctrl.renewInProgress"></prm-spinner>
-        <div class="item-respond" ng-if="$ctrl.isRenewed">
-            <span ng-style="$ctrl.renewResponse.renewed === 'N' && {'color':'tomato'} || $ctrl.renewResponse.renewed === 'Y' && {'color':'green'}">
-                <span translate="{{$ctrl.renewResponse.response || 'loans.renewed.' + $ctrl.renewResponse.renewed}}"></span>
-            </span>
+        <prm-spinner class="inline-loader half-transparent no-text" layout="row" layout-align="center center"
+            ng-if="$ctrl.renewInProgress"></prm-spinner>
+        <div class="item-respond" ng-if="$ctrl.isRenewed"><span
+                ng-style="$ctrl.renewResponse.renewed === 'N' && {'color':'tomato'} || $ctrl.renewResponse.renewed === 'Y' && {'color':'green'}"><span
+                    translate="{{$ctrl.renewResponse.response || 'loans.renewed.' + $ctrl.renewResponse.renewed}}"></span></span>
+        </div>
+        <div ng-if="$ctrl.isNotRenewable && !$ctrl.renewInProgress && !$ctrl.isRenewed" class="not-renewable weak-text"
+            aria-label="{{'nui.loans.notRenewable' | translate}}" aria-hidden="false" layout-align="start center">
+            <prm-icon icon-type="{{::$ctrl.accountIcons.notRenewableIcon.type}}"
+                svg-icon-set="{{::$ctrl.accountIcons.notRenewableIcon.iconSet}}"
+                icon-definition="{{::$ctrl.accountIcons.notRenewableIcon.icon}}"></prm-icon><span
+                translate="nui.loans.notRenewable"></span>
+            <md-tooltip ng-if="$ctrl.notRenewableReasonsArray.length > 0" md-direction="down" md-delay="400"
+                class="multi-row-tooltip slide-tooltip-anim"><span class="popover animate-popover"
+                    translate="nui.loans.cannotRenewThisItem"></span><br /><span ng-if="::$ctrl.isNotRenewableWithCause"
+                    class="tooltip-content"
+                    ng-repeat="reason in $ctrl.notRenewableReasonsArray | limitTo:2">{{reason}}<br /></span><span
+                    ng-if="::$ctrl.isNotRenewableWithCause && $ctrl.notRenewableReasonsArray.length > 2"
+                    class="tooltip-content">...</span></md-tooltip>
+            <div ng-if="$ctrl.notRenewableReasonsArray.length > 0" class="accessible-only"><span
+                    class="popover animate-popover" translate="nui.loans.cannotRenewThisItem"></span><br /><span
+                    ng-if="::$ctrl.isNotRenewableWithCause" class="tooltip-content"
+                    ng-repeat="reason in $ctrl.notRenewableReasonsArray | limitTo:2">{{reason}}<br /></span><span
+                    ng-if="::$ctrl.isNotRenewableWithCause && $ctrl.notRenewableReasonsArray.length > 2"
+                    class="tooltip-content">...</span></div>
         </div>
     </div>
 </div>
-<div class="align-self-stretch" flex-xs="100">
-    <md-button class="item-expand-button" aria-label="{{'nui.aria.account.requests.expandcollapse' | translate:'{title: $ctrl.item.title}'}}"
+<div class="align-self-stretch" flex-xs="50">
+    <md-button class="item-expand-button"
+        aria-label="{{'nui.aria.account.requests.expandcollapse' | translate:'{title: $ctrl.item.title}'}}"
         (click)="$ctrl.toggleDisplayMode()">
-        <prm-icon ng-class="{'rotate-180':$ctrl.isExpanded}" icon-type="{{::$ctrl.accountIcons.expandIcon.type}}" svg-icon-set="{{::$ctrl.accountIcons.expandIcon.iconSet}}"
+        <prm-icon ng-class="{'rotate-180':$ctrl.isExpanded}" icon-type="{{::$ctrl.accountIcons.expandIcon.type}}"
+            svg-icon-set="{{::$ctrl.accountIcons.expandIcon.iconSet}}"
             icon-definition="{{::$ctrl.accountIcons.expandIcon.icon}}"></prm-icon>
     </md-button>
-    <div ng-init="messageAdded = 'open' ;\r\n                      messageRemoved = 'close' " class="accessible-only"
-        aria-label="{{$ctrl.isExpanded ? messageAdded : messageRemoved}}" aria-live="assertive">{{$ctrl.isExpanded ? messageAdded : messageRemoved}}</div>
+    <div ng-init="messageAdded = 'open' ;\r\n                      messageRemoved = 'close' "
+        class="accessible-only" aria-label="{{$ctrl.isExpanded ? messageAdded : messageRemoved}}" aria-live="assertive">
+        {{$ctrl.isExpanded ? messageAdded : messageRemoved}}</div>
 </div>
 <prm-loan-after parent-ctrl="$ctrl"></prm-loan-after>
