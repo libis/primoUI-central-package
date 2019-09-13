@@ -13,7 +13,8 @@ class RequestACopyController {
     // full // let appendButtonTo = $element.parent();
 
     let serviceTitleCode = self.parentCtrl.parentCtrl.title;
-    let appendButtonTo = $element.parent().parent().parent().parent().find("div");
+    //let appendButtonTo = $element.parent().parent().parent().parent();
+    let appendButtonTo = angular.element( ($element.nativeElement).closest('prm-full-view-service-container').querySelector('prm-full-view-service-container-after') )
     
     let recordData = self.currentRecord;
        /* captcha implementation (Already used in )
