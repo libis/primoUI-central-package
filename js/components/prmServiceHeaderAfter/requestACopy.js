@@ -2,15 +2,20 @@ import requestACopyHTML from './requestACopy.html'
 import requestACopyDialogHTML from './requestACopyDialog.html'
 
 class RequestACopyController {
-  constructor($element, $compile, $scope, $mdDialog, $mdToast, $http, $rootScope, requestACopyURL, MessageService) {
+  constructor($element, $compile, $scope, $mdDialog, $http, $rootScope, requestACopyURL, MessageService) {
     let self = this;
     self.$rootScope = $rootScope;
     // If you want to add the button to the title (like report a problem)
     //let serviceTitleCode = self.parentCtrl.parentCtrl.title
     //let appendButtonTo = $element.parent().parent().find('h4');
 
-    let serviceTitleCode = self.parentCtrl.parentCtrl.service.title;
-    let appendButtonTo = $element.parent();
+    // full // let serviceTitleCode = self.parentCtrl.parentCtrl.service.title;
+    // full // let appendButtonTo = $element.parent();
+
+    let serviceTitleCode = self.parentCtrl.parentCtrl.title;
+    //let appendButtonTo = $element.parent().parent().parent().parent();
+    let appendButtonTo = angular.element( ($element.nativeElement).closest('prm-full-view-service-container').querySelector('prm-full-view-service-container-after') )
+    
     let recordData = self.currentRecord;
        /* captcha implementation (Already used in )
         https://github.com/VividCortex/angular-recaptcha
@@ -149,7 +154,7 @@ class RequestACopyController {
   }
 }
 
-RequestACopyController.$inject = ['$element', '$compile', '$scope', '$mdDialog', '$mdToast', '$http', '$rootScope', 'requestACopyURL', 'MessageService'];
+RequestACopyController.$inject = ['$element', '$compile', '$scope', '$mdDialog', '$http', '$rootScope', 'requestACopyURL', 'MessageService'];
 
 export let requestACopyConfig = {
   bindings: {

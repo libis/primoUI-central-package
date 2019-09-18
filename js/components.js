@@ -34,6 +34,7 @@ import {disclaimerConfig} from './components/general/disclaimer'
 import {exposeJwtConfig} from './components/general/exposeJwt'
 
 import {LanguageSelectionConfig} from './components/general/ConfigLanguageSelection'
+import {DeprecatedViewsConfig} from './components/general/deprecatedViews'
 
 import {reportAProblemConfig} from './components/prmServiceHeaderAfter/reportAProblem'
 import {requestACopyConfig} from './components/prmServiceHeaderAfter/requestACopy'
@@ -95,11 +96,13 @@ export default class AfterComponents {
       {name: 'pay-my-fines', config: payMyFinesConfig, enabled: true, appendTo: 'prm-fines-overview-after', enableInView: '.*'},
       {name: 'feedback', config: feedbackConfig, enabled: true, appendTo: 'prm-main-menu-after', enableInView: '^(?!ECB)'},
       {name: 'language-selection', config: LanguageSelectionConfig, enabled: true, appendTo: 'prm-main-menu-after', enableInView: '^(?!ECB)'},
-
+      {name: 'deprecated-vids', config: DeprecatedViewsConfig, enabled: true, appendTo: 'prm-main-menu-after', enableInView: '^(?!ECB)'},
+      
       {name: 'new-search-button', config: newSearchButtonConfig, enabled: true, appendTo: 'prm-top-nav-bar-links-after', enableInView: '^(?!ECB)'},
       {name: 'report-a-problem', config: reportAProblemConfig, enabled: true, appendTo: 'prm-service-header-after', enableInView: '.*'},
-     // {name: 'request-a-copy-head', config: requestACopyConfig, enabled: true, appendTo: 'prm-service-header-after', enableInView: '^Lirias'},
-      {name: 'request-a-copy', config: requestACopyConfig, enabled: true, appendTo: 'prm-full-view-service-container-after', enableInView: '^Lirias'},
+      
+      {name: 'request-a-copy-head', config: requestACopyConfig, enabled: true, appendTo: 'prm-service-header-after', enableInView: '^Lirias'},
+      //{name: 'request-a-copy', config: requestACopyConfig, enabled: true, appendTo: 'prm-full-view-service-container-after', enableInView: '^Lirias'},
       {name: 'request-a-copy-es-doc', config: requestACopyOfEsDocConfig, enabled: true, appendTo: 'prm-full-view-service-container-after', enableInView: '^VLP'},
 
       {name: 'user-jwt', config: exposeJwtConfig, enabled: true, appendTo: 'prm-main-menu-after', enableInView: '^VLP|^ECB'},
