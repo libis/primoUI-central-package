@@ -62,6 +62,8 @@ import {searchAlsoBodyWorldcatConfig} from './components/prmFacetExactAfter/sear
 
 import {browzineConfig} from './components/prmSearchResultAvailabilityLineAfterController/browzine'
 
+import {filterFacetValuesConfig} from './components/prmFacetAfter/filterFacetValues'
+
 export default class AfterComponents {
 
   static get all() {
@@ -137,6 +139,9 @@ export default class AfterComponents {
      {name: 'search-also-body-worldcat', config: searchAlsoBodyWorldcatConfig, enabled: true, appendTo: 'prm-facet-exact-after', enableInView: '^KULeuven'},
 
      {name: 'browzine', config: browzineConfig, enabled: true, appendTo: 'prm-search-result-availability-line-after', enableInView: '^KULeuven|^ECB'},
+     
+     {name: 'filter-facet-values', config: filterFacetValuesConfig, enabled: true, appendTo: 'prm-facet-after', enableInView: '^JESUITS'},
+
      {name: 'search-collections', config: searchCollectionsConfig, enabled: true, appendTo: 'prm-collection-gallery-header-after', enableInView: '^KULeuven'}
     ].filter( (component) => ( component.enabled && new RegExp(component.enableInView).test(window.appConfig.vid) ) );
   }
