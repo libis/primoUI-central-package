@@ -13,8 +13,6 @@ class RequestACopyOfEsDocController {
             let serviceTitleCode = self.parentCtrl.parentCtrl.service.title;
             let appendButtonTo = $element.parent();
             let recordData = self.currentRecord;
-
-
             /*
             let TypesShowRequestACopyOfEsDoc = ['chapter', 'journal-article', 'thesis-dissertation', 'conference', 'report', 'dataset', 'c-bookreview', 'media', 'software'];
             let StatusShowRequestACopyOfEsDoc = ['published'];
@@ -34,7 +32,8 @@ class RequestACopyOfEsDocController {
                 self.display_name = self.user.display_name
                 self.email = self.user.email
 */
-                    if (user.isOnCampus || user.isLoggedIn) {
+
+                if (user.isOnCampus() || user.isLoggedIn() ) {
                         // console.log(user)
                         /* #### Check for  <scopeArchiv_fulltext>restricted</scopeArchiv_fulltext> ### */
                         var pnx = recordData.pnx
@@ -89,7 +88,8 @@ class RequestACopyOfEsDocController {
                             openurl += "&rft_dat=%3C" + encodeURI(pnx.control.sourceid[0]) + "%3E" + encodeURI(pnx.control.sourcerecordid[0]) + "%3C/" + encodeURI(pnx.control.sourceid[0]) + "%3E"
                         }
 
-                        openurl = requestACopyOfEsDocURL + "/32KUL_VLP?" + openurl + "&access_token=" + primoExploreJwt
+                        //openurl = requestACopyOfEsDocURL + "/32KUL_VLP?" + openurl + "&access_token=" + primoExploreJwt
+                        openurl = requestACopyOfEsDocURL + "/32KUL_VLP?" + openurl 
                         $window.open(openurl, '_blank');
 
                     }
