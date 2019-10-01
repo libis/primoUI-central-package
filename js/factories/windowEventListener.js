@@ -1,17 +1,31 @@
 export default class WindowEventListener {
     constructor($rootScope, $window) {
         $window.addEventListener("message", receiveMessage, false);
-
+        let possibleOriginsPerEvent = [{
+            eventId : "retrieve_user",
+            possibleOrigins : [ "http://localhost:9292","https://services.libis.be","https://sandbox-eu.alma.exlibrisgroup.com"]
+        }]
 // TODO : Maak config hash van origin en event_id =>
        
         function receiveMessage(event) {
             console.log ("receiveMessage !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-            //            console.log( $rootScope.$$childHead.$ctrl)
+
+            if ( ! event.data ){
+                console.log ("No Event data !!");
+                return;
+            }
+
+            var possibleOriginsObj = possibleOriginsPerEvent.find(function (ev) {
+                return ev.eventId === event.data.event_id;
+            });
+            console.log(possibleOriginsObj);
 
             let primoExploreJwt = $rootScope.$$childHead.$ctrl.jwtUtilService.storageUtil.sessionStorage.primoExploreJwt;
             
             if (event.data.event_id === "retrieve_user") {
-                if (event.origin !== "http://localhost:9292" && event.origin !== "https://services.libis.be/") return;
+                possibleOriginsObj.possibleOrigins 
+
+                if ( !  possibleOriginsObj.possibleOrigins.includes(event.origin)  ) return;
                 Primo.user.then(user => {
                     event.source.postMessage({
                         event_id: "retrieve_user",

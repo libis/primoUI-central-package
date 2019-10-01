@@ -52,7 +52,7 @@ let app = angular.module('centralCustom', ['ngMaterial', 'vcRecaptcha'])
   .constant('feedbackServiceURL', servicesHost + 'feedback')
   .constant('reportAProblemURL', servicesHost + 'report_a_problem')
   .constant('requestACopyURL', servicesHost + 'request_a_copy')
-  .constant('requestACopyOfEsDocURL', servicesHost + 'illform')
+  .constant('requestACopyOfEsDocURL', servicesHost + 'illjwtform')
 
   .config(($sceDelegateProvider) => {
     $sceDelegateProvider.resourceUrlWhitelist([
