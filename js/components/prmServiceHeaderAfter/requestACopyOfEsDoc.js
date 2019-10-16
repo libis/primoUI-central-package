@@ -42,14 +42,16 @@ class RequestACopyOfEsDocController {
                     /* Request button only for Archiv-material from ESVLP and available 'oncampus' OR Signed in 
                     *  Only physical or Restricted Online material can be requested
                     */
-                    if () (user.isOnCampus() || user.isLoggedIn() ) && pnx.control.sourceid.includes(["ESVLP_scopeArchiv"]) )  {
+                    if ( (user.isOnCampus() || user.isLoggedIn() ) && pnx.control.sourceid.includes("ESVLP_scopeArchiv") )  {
                        
-                        if (pnx.delivery.resdelscope.includes("RESVLP") ) {
-                            appendButton =true
-                        }
-                        
                         if (pnx.facets.toplevel.includes("print_copies") ) {
                             appendButton =true
+                        }else {
+                            if (pnx.delivery.resdelscope) {
+                                if (pnx.delivery.resdelscope.includes("RESVLP") ) {
+                                    appendButton =true
+                                }
+                            }
                         }
                     }
 
