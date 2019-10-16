@@ -33,12 +33,30 @@ class RequestACopyOfEsDocController {
                 self.email = self.user.email
 */
 
-                if (user.isOnCampus() || user.isLoggedIn() ) {
-                        // console.log(user)
-                        /* #### Check for  <scopeArchiv_fulltext>restricted</scopeArchiv_fulltext> ### */
-                        var pnx = recordData.pnx
+                    var primo_inst_code = window.appConfig['primo-view']['institution']['institution-code'] 
+                    var alma_inst_mapping =  window.appConfig['mapping-tables']['Alma Institution Codes']
+                    var alma_code = (alma_inst_mapping.filter(function (obj) { return obj.target == primo_inst_code; }) )[0].source1;
+                    var pnx = recordData.pnx;
+                    var appendButton = false;
+
+                    /* Request button only for Archiv-material from ESVLP and available 'oncampus' OR Signed in 
+                    *  Only physical or Restricted Online material can be requested
+                    */
+                    if () (user.isOnCampus() || user.isLoggedIn() ) && pnx.control.sourceid.includes(["ESVLP_scopeArchiv"]) )  {
+                       
+                        if (pnx.delivery.resdelscope.includes("RESVLP") ) {
+                            appendButton =true
+                        }
+                        
+                        if (pnx.facets.toplevel.includes("print_copies") ) {
+                            appendButton =true
+                        }
+                    }
+
+                    if (appendButton) {
                         appendButtonTo.after($compile(requestACopyOfEsDocHTML)($scope));
                     }
+
 
                     self.openUrlToILL = ($event) => {
                         /*
@@ -89,7 +107,7 @@ class RequestACopyOfEsDocController {
                         }
 
                         //openurl = requestACopyOfEsDocURL + "/32KUL_VLP?" + openurl + "&access_token=" + primoExploreJwt
-                        openurl = requestACopyOfEsDocURL + "/32KUL_VLP?" + openurl 
+                        openurl = requestACopyOfEsDocURL + "/"+ alma_code +"?" + openurl 
                         $window.open(openurl, '_blank');
 
                     }
