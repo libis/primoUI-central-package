@@ -5,7 +5,8 @@ class LanguageDependentLogoController {
     self.rootScope = $rootScope;
 
     Primo.view.then((view) => {
-      let vid = view.code;
+      //let vid = view.code;
+      let vid =  window.appConfig.vid;
 
       let locale = view.interfaceLanguage; //window.Primo.explore.helper.userSessionManagerService().i18nService.getLanguage();
 

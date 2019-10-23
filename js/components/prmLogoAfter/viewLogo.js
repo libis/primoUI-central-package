@@ -16,7 +16,8 @@ class ViewLogoController {
     });
 
     Primo.view.then((view) => {
-      let vid = view.code;
+      //let vid = view.code;
+      let vid =  window.appConfig.vid;
       let locale = view.interfaceLanguage; //window.Primo.explore.helper.userSessionManagerService().i18nService.getLanguage();
       let localeLibraryLogo = 'custom/' + vid + '/img/library-logo-' + locale + '.png';
       self.homePageLink = '/primo-explore/search?vid=' + vid + "&lang=" + locale;
