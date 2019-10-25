@@ -8,7 +8,9 @@ class HomeIconController {
     self.linktype = 'homeIcon';
 
     Primo.view.then((view) => {
-      let vid = view.code;
+      
+        //let vid = view.code;
+        let vid =  window.appConfig.vid;
       if (vid == "ECB") {
         self.linktype = "newSearchButton";
       }
