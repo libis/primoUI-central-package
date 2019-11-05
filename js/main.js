@@ -42,7 +42,7 @@ window.setTimeout(function () {
 let servicesHost = 'https://services.libis.be/';
 
 
-let app = angular.module('centralCustom', ['ngMaterial', 'vcRecaptcha'])
+let app = angular.module('centralCustom', ['ngMaterial', 'vcRecaptcha','googleAnalytics'])
   /*
   //.constant('servicesHost', 'https://services.libis.be/')
     .constant('feedbackServiceURL', 'https://services.libis.be/feedback')
@@ -119,13 +119,24 @@ let app = angular.module('centralCustom', ['ngMaterial', 'vcRecaptcha'])
   .factory('apiCallInterceptor', apiCallInterceptor)
   .config(['$httpProvider', ($httpProvider) => { $httpProvider.interceptors.push('apiCallInterceptor'); }]);
 
+  
+
 //intercept api calls for database search and change to KUL (only regional views)
 var reg_views = ["KULeuven_TMOREM", "KULeuven_TMOREK", "KULeuven_UCLL", "KULeuven_LUCA", "KULeuven_ODISEE"];
 if (reg_views.includes(window.appConfig.vid)) {
   app.config(['$httpProvider', ($httpProvider) => { $httpProvider.interceptors.push('dbSearchHttpCallInterceptor'); }]);
 }
 
-
+//enable google tag manager
+var reg_views = ["KULeuven_TMOREM", "KULeuven_TMOREK", "KULeuven_UCLL", "KULeuven_LUCA", "KULeuven_ODISEE",
+ "FARO", "UCLL", "LUCA", "ODISEE", "TMOREK" , "TMOREM", "VIVES_KATHO", "VIVES_KHBO"];
+if (reg_views.includes(window.appConfig.vid)) {
+  app.value('analyticsOptions', {
+    enabled: true,
+    siteId: 'GTM-WR259MX',
+    defaultTitle: 'Discovery Search'
+  });
+}
 
 //Contains the after component selectors that will be injected
 let afterComponents = {};
