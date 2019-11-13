@@ -65,11 +65,75 @@ class RequestACopyOfEsDocController {
                         http://services.libis.be/illform/32KUL_SERV?rft.genre=book&rft.advisor=&rft.au=&rft.aucorp=&rft.aufirst=&rft.aulast=&rft.contributor=&rft.creator=&rft.atitle=&rft.btitle=Wood&rft.jtitle=&rft.stitle=&rft.title=Wood&rft.series=&rft.degree=&rft.description=&rft.edition=&rft.identifier=&rft.eisbn=&rft.eissn=&rft.isbn=9780714873480&rft.issn=&rft.pages=&rft.part=&rft.epage=&rft.spage=&rft.ssn=&rft.tpages=&rft.year=&rft.month=&rft.day=&rft.volume=&rft.issue=&rft.date=&rft.place=&rft.pub=&rft.pubdate=2017&rft.pubday=&rft.publisher=&rft.pubyear=&locale=nl_BE
                         sid/primo.exlibrisgroup.com:primo3-Article-ESVLP_scopeArchiv&rft_val_fmt=info:ofi/fmt:kev:mtx:
                         */
+                        var config = {
+                            "rft.genre": pnx.display.type,
+                            "rft.part": pnx.display.ispartof,
+                            "rft.date": pnx.display.creationdate,
+                            "rft.au": pnx.addata.au,
+                            "rft.rights": pnx.display.rights
+                        }
+                    
+                    
+/*
+
+rft.atitle={{addata/atitle}}& => pnx.display.title[0]
+rft.jtitle={{addata/jtitle}}& => pnx.display.ispartof[0]
+rft.btitle={{addata/btitle}}& => pnx.display.ispartof[0]
+rft.btitle={{addata/adtitle}}& => pnx.addata/adtitle[0]
+
+
+rft.genre={{addata/genre}}& => pnx.display.type[0]
+rft.part={{addata/part}}& => pnx.display.ispartof[0]
+rft.date={{addata/date}}& => pnx.display.creationdate[0]
+rft.au={{addata/au}}& => pnx.addata.au[0]
+rft.dat=<{{control/sourceid}}>{{control/sourcerecordid}}</{{control/sourceid}}> => < pnx.control.sourceid[0] > pnx.control.sourcerecordid  </ pnx.control.sourceid[0] >
+
+
+??? rft.rights = pnx.display.rights[0]
+*/
+
+/*
+rft.aulast={{addata/aulast}}&
+rft.auinit={{addata/auinit}}&
+rft.auinit1={{addata/auinit1}}&
+rft.auinitm={{addata/auinitm}}&
+rft.ausuffix={{addata/ausuffix}}&
+
+rft.aucorp={{addata/aucorp}}&
+rft.volume={{addata/volume}}&
+rft.issue={{addata/issue}}&
+rft.quarter={{addata/quarter}}&
+rft.ssn={{addata/ssn}}&
+rft.spage={{addata/spage}}&
+rft.epage={{addata/epage}}&
+rft.pages={{addata/pages}}&
+rft.artnum={{addata/artnum}}&
+rft.issn={{addata/issn}}&
+rft.eissn={{addata/eissn}}&
+rft.isbn={{addata/isbn}}&
+rft.sici={{addata/sici}}&
+rft.coden={{addata/coden}}&
+rft.id=info:doi/{{addata/doi}}&
+rft.object_id={{addata/objectid}};&
+rft.eisbn={{addata/eisbn}}&
+rft.edition={{display/edition}}&
+rft.pub={{addata/pub}}&
+rft.place={{addata/cop}}&
+rft.series={{addata/seriestitle}}&
+rft.stitle={{addata/stitle}}&
+rft.bici={{addata/bici}}&
+rft.id=info:bibcode/{{addata/bibcode}}&
+rft.id=info:hdl/{{addata/hdlid}}&
+rft.id=info:lccn/{{addata/lccn}}&
+rft.id=info:oclcnum/{{addata/oclcid}}&
+rft.id=info:pmid/{{addata/pmid}}&
+rft.id=info:eric/((addata/eric}}&
+
+*/
+
 
                         var openurl = ""
-                        if (pnx.display.type) {
-                            openurl += "&rft.genre=" + encodeURI(pnx.display.type[0])
-                        }
+
                         if (pnx.display.type[0] === "article") {
                             if (pnx.display.title) {
                                 openurl += "&rft.atitle=" + encodeURI(pnx.display.title[0])
@@ -80,35 +144,21 @@ class RequestACopyOfEsDocController {
                         } else {
                             if (pnx.display.title) {
                                 openurl += "&rft.btitle=" + encodeURI(pnx.display.title[0])
+                            }else{
+                                if (pnx.addate.adtitle[0]) {
+                                    openurl += "&rft.btitle=" + encodeURI(pnx.addate.adtitl[0])
+                                }
                             }
                         }
-                        if (pnx.display.title) {
-                            openurl += "&rft.btitle=" + encodeURI(pnx.display.title[0])
-                        }
-                        if (pnx.display.lds26) {
-                            openurl += "&rft.au=" + encodeURI(pnx.display.lds26[0])
-                        }
-                        if (pnx.display.creationdate) {
-                            openurl += "&rft.date=" + encodeURI(pnx.display.creationdate[0])
+
+                        for (var param in config) {
+                            if (config[param]) {
+                                   openurl += "&" +param +"=" + encodeURI( config[param][0] )
+                           }
                         }
 
-                        /*
-                        &rft.pages=
-                        &rft.artnum=
-                        &rft.issn=
-                        &rft.eissn=
-                        &rft.isbn=
-                        &rft.sici=
-                        &rft.eisbn=
-                        &rft.coden=
-                        &rft_id=info:doi/
-                        &rft.object_id=
-                        */
-                        if (pnx.control) {
-                            openurl += "&rft_dat=%3C" + encodeURI(pnx.control.sourceid[0]) + "%3E" + encodeURI(pnx.control.sourcerecordid[0]) + "%3C/" + encodeURI(pnx.control.sourceid[0]) + "%3E"
-                        }
+                        openurl += "&rft_dat=" + "%3C" + encodeURI(pnx.control.sourceid[0]) + "%3E" + encodeURI(pnx.control.sourcerecordid[0]) + "%3C/" + encodeURI(pnx.control.sourceid[0]) + "%3E"
 
-                        //openurl = requestACopyOfEsDocURL + "/32KUL_VLP?" + openurl + "&access_token=" + primoExploreJwt
                         openurl = requestACopyOfEsDocURL + "/"+ alma_code +"?" + openurl 
                         $window.open(openurl, '_blank');
 
