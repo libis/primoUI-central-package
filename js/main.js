@@ -128,7 +128,7 @@ if (reg_views.includes(window.appConfig.vid)) {
 }
 
 //enable google tag manager
-var reg_views = ["KULeuven_TMOREM", "KULeuven_TMOREK", "KULeuven_UCLL", "KULeuven_LUCA", "KULeuven_ODISEE",
+var reg_views = ["KULeuven", "KULeuven_TMOREM", "KULeuven_TMOREK", "KULeuven_UCLL", "KULeuven_LUCA", "KULeuven_ODISEE",
  "FARO", "UCLL", "LUCA", "ODISEE", "TMOREK" , "TMOREM", "VIVES_KATHO", "VIVES_KHBO"];
 if (reg_views.includes(window.appConfig.vid)) {
   app.value('analyticsOptions', {
