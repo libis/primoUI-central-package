@@ -42,7 +42,7 @@ export default class FilterLocationsService {
                         }
                     },
                     "name": "K.U.Leuven Maurits Sabbebibliotheek",
-                    "url": "https://limo.libis.be/primo-explore/fulldisplay?docid=<#recordid>&context=L&vid=KULeuven&search_scope=ALL_CONTENT&isFrbr=true&tab=all_content_tab"
+                    "url": "https://"+document.location.host+"/primo-explore/fulldisplay?docid=<#recordid>&context=L&vid=KULeuven&search_scope=ALL_CONTENT&isFrbr=true&tab=all_content_tab"
                 },
                 "KADOC_KADOC_LIB": {
                     "id" : function (lib) { 
@@ -53,7 +53,7 @@ export default class FilterLocationsService {
                         }
                     },
                     "name": "KADOC",
-                    "url": "https://limo.libis.be/primo-explore/fulldisplay?docid=<#recordid>&context=L&vid=KADOC&search_scope=ALL_CONTENT&isFrbr=true&tab=all_content_tab"
+                    "url":  "https://"+document.location.host+"/primo-explore/fulldisplay?docid=<#recordid>&context=L&vid=KADOC&search_scope=ALL_CONTENT&isFrbr=true&tab=all_content_tab"
                 },
                 "ANET_UA-CST": {
                     "id" : function (lib) { return pnx_record.search.addsrcrecordid },
@@ -79,7 +79,8 @@ export default class FilterLocationsService {
 
             var resArr = [];
             availlibrary.filter(function(lib){
-              var i = resArr.findIndex(x => (x.name == lib.name && x.code == lib.code  && x.url == lib.url ) );
+              // var i = resArr.findIndex(x => (x.name == lib.name && x.code == lib.code  && x.url == lib.url ) );
+              var i = resArr.findIndex(x => (x.name == lib.name && x.code == lib.code) );
               if(i <= -1){
                     resArr.push(lib);
               }
