@@ -19,6 +19,8 @@ import MessageService from './factories/messageService'
 import FeedbackService from './factories/feedbackService'
 import AltmetricsService from './factories/altmetricsService'
 
+import FilterLocationsService from './factories/filterLocationsService'
+
 import WindowEventListener from './factories/windowEventListener'
 
 
@@ -113,6 +115,7 @@ let app = angular.module('centralCustom', ['ngMaterial', 'vcRecaptcha','googleAn
   .service('AltmetricsService', AltmetricsService)
   .service('MessageService', MessageService)
   .service('FeedbackService', FeedbackService)
+  .service('FilterLocationsService', FilterLocationsService)
   .service('WindowEventListener', WindowEventListener)
 
   .factory('dbSearchHttpCallInterceptor', dbSearchHttpCallInterceptor)

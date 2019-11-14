@@ -1,0 +1,6 @@
+<span style="display:none">{{$ctrl.recordid}}</span>
+<ul class="locations-for-bibliographic-view">
+        <li ng-repeat="delivery_library in ::$ctrl.delivery_library">
+                <a href="{{delivery_library.url}}" target="catalog">{{delivery_library.name}}</a>
+        </li>
+</ul>

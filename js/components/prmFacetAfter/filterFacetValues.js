@@ -1,6 +1,4 @@
-import {
-    endianness
-} from "os";
+import { endianness }  from "os";
 
 class filterFacetValuesController {
     constructor($scope) {

@@ -263,6 +263,39 @@ prm-facet-exact .section-content .md-chips .md-chip.facet-element-marker-library
   }*/
 
 
+    div#footer,
+    div#footer a {
+        color: #a9cdd6;
+    }
+
+    div#footer {
+        height: 35px;
+        width: 100%;
+        background-color: #4d6b82;
+        padding: 0 1em;
+        font-size: small;
+       align-items: center;
+    }
+
+    div#footer div#disclaimer {
+            display:flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+    
+        div#lbs-promote-login {
+            text-align: right;
+            align-items: center;
+        }
+    
+        div#lbs-promote-login md-checkbox ._md-icon {
+            transform: scale(.7);
+        }
+    
+        div#lbs-promote-login md-checkbox ._md-container {
+            top: 0px
+        }
+
 prm-full-view prm-search-result-availability-line {
   display:none;
 }
@@ -388,6 +421,29 @@ md-card md-card-content span#ContentFindLibrary::before {
     content: "location_searching";
 }
 
+ul.locations-for-bibliographic-view {
+ 
+}
+
+ul.locations-for-bibliographic-view li{
+  min-height: 1.8em;
+}
+
+ul.locations-for-bibliographic-view.brief-locations-for-bibliographic-view{ 
+  list-style-type: none;
+  margin:0.2 0 0 0;
+  padding:0;
+  margin-block-start: 0.2em;
+  margin-block-end: 0.1em;
+}
+
+ul.locations-for-bibliographic-view.brief-locations-for-bibliographic-view li{
+  min-height: auto;
+}
+ /* 
+prm-full-view-service-container ul.locations-for-bibliographic-view.brief-locations-for-bibliographic-view{
+  display:none
+}*/
 @media screen and (min-height: 700px) {
     body > div._md-select-menu-container > md-select-menu,
     body > div._md-select-menu-container > md-select-menu > md-content{
@@ -515,6 +571,24 @@ button[orderIndex='4']{
 }
 
 
+/*LocationsLinks*/
+button[aria-label='LocationsLinks'],
+button[aria-label='LocationsLinks'],
+button[aria-label='LocationsLinks'],
+button[orderIndex='2']{
+  order: 2;
+}
+
+/*LocationsLinks*/
+#locationsLinks{
+  -webkit-box-ordinal-group: 2;
+  -moz-box-ordinal-group: 2;
+  -ms-flex-order: 2;
+  -webkit-order: 2;
+  order: 2;
+}
+
+
 /*send to*/
 button[aria-label='Export'],
 button[aria-label='Send to'],
@@ -610,6 +684,8 @@ button[aria-label="altmetrics"],
 button[orderIndex='10']{
   order: 10;
 }
+
+
 
 prm-requests .unpin-button{
     display: none;

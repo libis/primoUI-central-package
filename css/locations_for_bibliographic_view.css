@@ -1,0 +1,23 @@
+ul.locations-for-bibliographic-view {
+ 
+}
+
+ul.locations-for-bibliographic-view li{
+  min-height: 1.8em;
+}
+
+ul.locations-for-bibliographic-view.brief-locations-for-bibliographic-view{ 
+  list-style-type: none;
+  margin:0.2 0 0 0;
+  padding:0;
+  margin-block-start: 0.2em;
+  margin-block-end: 0.1em;
+}
+
+ul.locations-for-bibliographic-view.brief-locations-for-bibliographic-view li{
+  min-height: auto;
+}
+ /* 
+prm-full-view-service-container ul.locations-for-bibliographic-view.brief-locations-for-bibliographic-view{
+  display:none
+}*/

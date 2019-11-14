@@ -74,6 +74,24 @@ button[orderIndex='4']{
 }
 
 
+/*LocationsLinks*/
+button[aria-label='LocationsLinks'],
+button[aria-label='LocationsLinks'],
+button[aria-label='LocationsLinks'],
+button[orderIndex='2']{
+  order: 2;
+}
+
+/*LocationsLinks*/
+#locationsLinks{
+  -webkit-box-ordinal-group: 2;
+  -moz-box-ordinal-group: 2;
+  -ms-flex-order: 2;
+  -webkit-order: 2;
+  order: 2;
+}
+
+
 /*send to*/
 button[aria-label='Export'],
 button[aria-label='Send to'],
@@ -169,3 +187,5 @@ button[aria-label="altmetrics"],
 button[orderIndex='10']{
   order: 10;
 }
+
+

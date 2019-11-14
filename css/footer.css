@@ -1,0 +1,33 @@
+
+    div#footer,
+    div#footer a {
+        color: #a9cdd6;
+    }
+
+    div#footer {
+        height: 35px;
+        width: 100%;
+        background-color: #4d6b82;
+        padding: 0 1em;
+        font-size: small;
+       align-items: center;
+    }
+
+    div#footer div#disclaimer {
+            display:flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+    
+        div#lbs-promote-login {
+            text-align: right;
+            align-items: center;
+        }
+    
+        div#lbs-promote-login md-checkbox ._md-icon {
+            transform: scale(.7);
+        }
+    
+        div#lbs-promote-login md-checkbox ._md-container {
+            top: 0px
+        }

@@ -59,7 +59,6 @@ class RequestACopyOfEsDocController {
                         appendButtonTo.after($compile(requestACopyOfEsDocHTML)($scope));
                     }
 
-
                     self.openUrlToILL = ($event) => {
                         /*
                         http://services.libis.be/illform/32KUL_SERV?rft.genre=book&rft.advisor=&rft.au=&rft.aucorp=&rft.aufirst=&rft.aulast=&rft.contributor=&rft.creator=&rft.atitle=&rft.btitle=Wood&rft.jtitle=&rft.stitle=&rft.title=Wood&rft.series=&rft.degree=&rft.description=&rft.edition=&rft.identifier=&rft.eisbn=&rft.eissn=&rft.isbn=9780714873480&rft.issn=&rft.pages=&rft.part=&rft.epage=&rft.spage=&rft.ssn=&rft.tpages=&rft.year=&rft.month=&rft.day=&rft.volume=&rft.issue=&rft.date=&rft.place=&rft.pub=&rft.pubdate=2017&rft.pubday=&rft.publisher=&rft.pubyear=&locale=nl_BE
@@ -72,7 +71,6 @@ class RequestACopyOfEsDocController {
                             "rft.au": pnx.addata.au,
                             "rft.rights": pnx.display.rights
                         }
-                    
                     
 /*
 
@@ -130,8 +128,6 @@ rft.id=info:pmid/{{addata/pmid}}&
 rft.id=info:eric/((addata/eric}}&
 
 */
-
-
                         var openurl = ""
 
                         if (pnx.display.type[0] === "article") {

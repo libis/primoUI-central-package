@@ -7,11 +7,9 @@
   KULeuven/LIBIS (c) 2017
   Mehmet Celik
 */
-import './utils'
-
+import './utils';
 /* import your component configuration*/
 import {experimentConfig} from './components/general/experiment'
-
 import {homeIconConfig} from './components/prmLogoAfter/homeIcon'
 
 import {newSearchButtonConfig} from './components/prmLogoAfter/newSearchButton'
@@ -59,10 +57,11 @@ import {searchAlsoBodyConfig} from './components/prmFacetExactAfter/searchAlsoBo
 import {searchAlsoBodyBibConfig} from './components/prmFacetExactAfter/searchAlsoBodyBib'
 import {searchAlsoBodyGoogleConfig} from './components/prmFacetExactAfter/searchAlsoBodyGoogle'
 import {searchAlsoBodyWorldcatConfig} from './components/prmFacetExactAfter/searchAlsoBodyWorldcat'
-
 import {browzineConfig} from './components/prmSearchResultAvailabilityLineAfterController/browzine'
-
 import {filterFacetValuesConfig} from './components/prmFacetAfter/filterFacetValues'
+
+import {locationsForBibliographicViewConfig} from './components/prmFullViewAfter/locationsForBibliographicView'
+import {briefLocationsForBibliographicViewConfig} from './components/prmBriefResultAfter/briefLocationsForBibliographicView'
 
 export default class AfterComponents {
 
@@ -94,6 +93,9 @@ export default class AfterComponents {
 
       {name: 'altmetrics-badge', config: altmetricsBadgeConfig, enabled: true, appendTo: 'prm-full-view-after', enableInView: '^Lirias|^KULeuven|^VDIC|^UCLL|^TMOREAM|^TMOREK|^SERV|^NBB'},
 
+      {name: 'locations-for-bibliographic-view', config: locationsForBibliographicViewConfig, enabled: true, appendTo: 'prm-full-view-after', enableInView: '^JESUITS'},
+      {name: 'brief-locations-for-bibliographic-view', config: briefLocationsForBibliographicViewConfig, enabled: true, appendTo: 'prm-search-result-availability-line-after', enableInView: '^JESUITS'},
+
       {name: 'pnx-xml', config: pnxXmlConfig, enabled: true, appendTo: 'prm-brief-result-container-after', enableInView: '.*'},
       {name: 'pay-my-fines', config: payMyFinesConfig, enabled: true, appendTo: 'prm-fines-overview-after', enableInView: '.*'},
       {name: 'feedback', config: feedbackConfig, enabled: true, appendTo: 'prm-main-menu-after', enableInView: '^(?!ECB)'},
@@ -105,7 +107,7 @@ export default class AfterComponents {
       
       {name: 'request-a-copy-head', config: requestACopyConfig, enabled: true, appendTo: 'prm-service-header-after', enableInView: '^Lirias'},
       //{name: 'request-a-copy', config: requestACopyConfig, enabled: true, appendTo: 'prm-full-view-service-container-after', enableInView: '^Lirias'},
-      {name: 'request-a-copy-es-doc', config: requestACopyOfEsDocConfig, enabled: true, appendTo: 'prm-full-view-service-container-after', enableInView: '^VLP'},
+      {name: 'request-a-copy-es-doc', config: requestACopyOfEsDocConfig, enabled: false, appendTo: 'prm-full-view-service-container-after', enableInView: '^VLP'},
 
       {name: 'user-jwt', config: exposeJwtConfig, enabled: true, appendTo: 'prm-main-menu-after', enableInView: '^VLP|^ECB'},
 
