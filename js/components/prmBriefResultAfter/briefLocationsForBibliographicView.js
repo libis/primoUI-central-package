@@ -1,8 +1,9 @@
 import briefLocationsForBibliographicViewHTML from './briefLocationsForBibliographicView.html'
 
 class BriefLocationsForBibliographicViewController {
+
     constructor($element, $compile, $scope, FilterLocationsService) {
-        var self = this;
+        self = this
         this.$element = $element;
         this.$scope = $scope;
         this.vid = window.appConfig.vid;

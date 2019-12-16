@@ -8,12 +8,25 @@ class AutoLoginCheckboxController {
     var urlParam = "clearLogin";
     urlParam = urlParam.replace(/[\[\]]/g, "\\$&");
     var regex = new RegExp("[?&]" + urlParam + "(=([^&#]*)|&|#|$)"),
-      results = regex.exec(url);
+    results = regex.exec(url);
     if (results) {
       if (decodeURIComponent(results[2].replace(/\+/g, " "))) {
         localStorage.removeItem('primoPromoteLogin');
       }
     }
+
+    self.NeverShowSignInPopup = false;
+    var urlParam = "noLogin";
+    urlParam = urlParam.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + urlParam + "(=([^&#]*)|&|#|$)"),
+    results = regex.exec(url);
+    if (results) {
+      if (decodeURIComponent(results[2].replace(/\+/g, " "))) {
+        // console.log ("Dont show login popup")
+        self.NeverShowSignInPopup = true;
+      }
+    }
+    
 
     self.alwaysSigninCheckBox = false;
     self.alwaysSignin = localStorage.getItem("primoPromoteLogin");
@@ -36,7 +49,7 @@ class PromoteLoginController {
 
     let self = this;
     let parentCtrl =  self.parentCtrl.parentCtrl
-    //console.log (self)
+    // console.log (self)
     var locale = parentCtrl.primolyticsService.userSessionManagerService.i18nService.getLanguage();
    
     parentCtrl.primolyticsService.userSessionManagerService.signInObservable.subscribe(()=> {
@@ -49,15 +62,17 @@ class PromoteLoginController {
     $scope.primoPromoteLogin = '';
     $scope.showSignInPopup = function () {
         var parentEl = angular.element(document.body);
-
-        $mdDialog.show({
-            parent: parentEl,
-            templateUrl: 'custom/CENTRAL_PACKAGE/html/templates/promote_login_' + locale + '.html',
-            locals: {
-                primoPromoteLogin:  $scope.primoPromoteLogin
-            },
-            controller: DialogController
-        });
+        if (! NeverShowSignInPopup) {
+            $mdDialog.show({
+              parent: parentEl,
+              templateUrl: 'custom/CENTRAL_PACKAGE/html/templates/promote_login_' + locale + '.html',
+              locals: {
+                  primoPromoteLogin:  $scope.primoPromoteLogin
+              },
+              controller: DialogController
+          });  
+        }
+        
 
     }
 
