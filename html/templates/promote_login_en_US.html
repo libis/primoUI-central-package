@@ -19,8 +19,9 @@
                     <div class="md-title">
                         <md-button md-autofocus class="md-raised md-primary"
                         ng-click="loginDialog()"
-                        id="mimic_signin" style="box-shadow: 0 2px 5px 0 rgba(0,0,0,.26); margin-right: 0;">Sign In</md-button>
-                    to get complete results and to request items </div>
+                        id="mimic_signin" style="box-shadow: 0 2px 5px 0 rgba(0,0,0,.26); margin-right: 0;" translate="custom.promoteLogin.signin">Sign In</md-button>
+                        <span translate="custom.promoteLogin.signinExtra">to get complete results and to request items</span>
+                     </div>
                 </div>
 
                 <div layout="row" layout-align="left center" style="padding:14px;">
@@ -33,7 +34,8 @@
                     </md-radio-group>
                 -->
 
-                    <md-checkbox ng-change="changePromoteOption()" ng-model="primoPromoteLogin" ng-true-value="'alwaysSignin'" aria-label="Always Sign In automaticaly?">
+                    <md-checkbox ng-change="changePromoteOption()" ng-model="primoPromoteLogin" ng-true-value="'alwaysSignin'" aria-label="Always Sign In automaticaly?"
+                    translate="custom.promoteLogin.alwaysSignin">
                         Next time, bring me to the Sign In page and do not show this message again.<br/>
                         (I will be automatically signed in when I am already logged in via the KU Leuven Central Login.) 
                     </md-checkbox>
@@ -42,10 +44,13 @@
 
                       </div>
                           <div>
-                    <md-button   flex class="md-primary" ng-click="closeDialog()"    style="box-shadow: 0 2px 5px 0 rgba(0,0,0,.26); margin-right: 0;">
+                    <md-button   flex class="md-primary" ng-click="closeDialog()"    style="box-shadow: 0 2px 5px 0 rgba(0,0,0,.26); margin-right: 0;"
+                    translate="custom.promoteLogin.ContinueAsGuest">
                       Continue as guest
                     </md-button>
-                     – Limited access for non-KU Leuven users
+                     – <span translate="custom.promoteLogin.limitedAccess">Limited access for non-KU Leuven users</span>
+                     
+                     
                 </div>
 
                 <md-dialog-actions>

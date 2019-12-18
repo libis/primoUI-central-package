@@ -62,7 +62,7 @@ class PromoteLoginController {
     $scope.primoPromoteLogin = '';
     $scope.showSignInPopup = function () {
         var parentEl = angular.element(document.body);
-        if (! NeverShowSignInPopup) {
+        if (! self.NeverShowSignInPopup) {
             $mdDialog.show({
               parent: parentEl,
               templateUrl: 'custom/CENTRAL_PACKAGE/html/templates/promote_login_' + locale + '.html',

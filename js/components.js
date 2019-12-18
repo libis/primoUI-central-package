@@ -120,8 +120,8 @@ export default class AfterComponents {
       {name: 'prm-dblink', config: databaseLinkConfig, enabled: false, appendTo: null, enableInView: '.*'},
 
       /* lbs-components used in html-templates of the package */
-      {name: 'auto-login-static-footer', config: autoLoginCheckboxConfig, enabled: true, appendTo: 'lbs-promote-login', enableInView:  '^KULeuven$'},
-      {name: 'promote-login', config: promoteLoginConfig, enabled: true, appendTo: 'prm-authentication-after', enableInView:  '^KULeuven$'},
+      {name: 'auto-login-static-footer', config: autoLoginCheckboxConfig, enabled: true, appendTo: 'lbs-promote-login', enableInView:  '^KULeuven|^UCLL'},
+      {name: 'promote-login', config: promoteLoginConfig, enabled: true, appendTo: 'prm-authentication-after', enableInView:  '^KULeuven|^UCLL'},
       {name: 'auto-login', config: autoLoginConfig, enabled: true, appendTo: 'prm-authentication-after', enableInView:  'KULeuven_LUCA|KULeuven_ODISEE|KULeuven_TMOREK|KULeuven_TMOREM|KULeuven_UCLL'},
 
       {name: 'ill-request-form-overview', config: illRequestFormConfig, enabled:false, appendTo: 'prm-requests-overview-after', enableInView: '.*'},
