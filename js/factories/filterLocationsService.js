@@ -58,7 +58,8 @@ export default class FilterLocationsService {
                 "ANET_UA-CST": {
                     "id" : function (lib) { return pnx_record.search.addsrcrecordid },
                     "name": "Ruusbroec Institute Library – University of Antwerp",
-                    "url": "https://anet.be/record/opacanet/<#recordid>"
+                    //"url": "https://anet.be/record/opacanet/<#recordid>"
+                    "url": "https://anet.be/record/uantwerpen/opacuantwerpen/c:lvd:<#recordid>/N"
                 }
             }
 
