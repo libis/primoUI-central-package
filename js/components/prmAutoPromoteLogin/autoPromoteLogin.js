@@ -26,8 +26,8 @@ class AutoLoginCheckboxController {
         self.NeverShowSignInPopup = true;
       }
     }
-    
 
+    
     self.alwaysSigninCheckBox = false;
     self.alwaysSignin = localStorage.getItem("primoPromoteLogin");
     if (self.alwaysSignin) {
@@ -52,6 +52,22 @@ class PromoteLoginController {
     // console.log (self)
     var locale = parentCtrl.primolyticsService.userSessionManagerService.i18nService.getLanguage();
    
+    var url = window.location.href;
+    self.NeverShowSignInPopup = false;
+    var urlParam = "noLogin";
+    urlParam = urlParam.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + urlParam + "(=([^&#]*)|&|#|$)"),
+    results = regex.exec(url);
+
+    //console.log ("NeverShowSignInPopup results "+results)
+    if (results) {
+      if (decodeURIComponent(results[2].replace(/\+/g, " "))) {
+        console.log ("Dont show login popup")
+        self.NeverShowSignInPopup = true;
+      }
+    }
+
+
     parentCtrl.primolyticsService.userSessionManagerService.signInObservable.subscribe(()=> {
       if (this.parentCtrl.parentCtrl.isLoggedIn  == true){
         $mdDialog.hide();
