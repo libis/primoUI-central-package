@@ -19,26 +19,26 @@
                     <div class="md-title">
                         <md-button md-autofocus class="md-raised md-primary"
                         ng-click="loginDialog()"
-                        id="mimic_signin" style="box-shadow: 0 2px 5px 0 rgba(0,0,0,.26); margin-right: 0;">Meld aan</md-button>
- om volledige resultaten te vinden en om documenten aan te vragen.
-
-</div>
-
+                        id="mimic_signin" style="box-shadow: 0 2px 5px 0 rgba(0,0,0,.26); margin-right: 0;" translate="custom.promoteLogin.signin">Meld aan</md-button>
+                        <span translate="custom.promoteLogin.signinExtra"> om volledige resultaten te vinden en om documenten aan te vragen</span>
+                    </div>
                 </div>
 
                 <div layout="row" layout-align="left center" style="padding:14px;">
 
-                        <md-checkbox ng-change="changePromoteOption()" ng-model="primoPromoteLogin" ng-true-value="'alwaysSignin'" aria-label="Always Sign In automaticaly?">
+                        <md-checkbox ng-change="changePromoteOption()" ng-model="primoPromoteLogin" ng-true-value="'alwaysSignin'" aria-label="Always Sign In automaticaly?"
+                        translate="custom.promoteLogin.alwaysSignin">
                                 Breng me volgende keer onmiddellijk naar de login pagina en toon deze boodschap niet meer.<br/>
                                 (Ik zal automatisch aangemeld zijn als ik reed ben ingelogd via de KU Leuven Central Login.)
                         </md-checkbox>
 
                 </div>
                 <div>
-                  <md-button  flex class="md-primary" ng-click="closeDialog()"    style="box-shadow: 0 2px 5px 0 rgba(0,0,0,.26); margin-right: 0;">
+                  <md-button  flex class="md-primary" ng-click="closeDialog()"    style="box-shadow: 0 2px 5px 0 rgba(0,0,0,.26); margin-right: 0;"
+                  translate="custom.promoteLogin.ContinueAsGuest">
                     Gebruik Limo als gast
                   </md-button>
-                    - Beperkte toegang voor niet-KU Leuvengebruikers
+                    - <span translate="custom.promoteLogin.limitedAccess">Beperkte toegang voor niet-KU Leuvengebruikers</span>
                 </div>
 
                 <md-dialog-actions>

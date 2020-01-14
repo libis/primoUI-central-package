@@ -18,7 +18,7 @@ class LocationsForBibliographicViewController {
 
         // console.log ( this.delivery_library)
 
-     
+        
         this.parentElement = this.$element.parent().parent()[0];
         this.insertLocationsLinksSection()
     }
@@ -82,7 +82,15 @@ class LocationsForBibliographicViewController {
     }
 
     insertSectionData(sectionData) {
-        this.parentCtrl.services.splice(this.parentCtrl.services.length - 1, 0, sectionData);
+        Promise.resolve( this.parentCtrl.fullViewService.getServices( this.parentCtrl.item, this.parentCtrl.originator) ).then(
+            function(services) {
+              // Add to services if not alread in the list
+              //if ( services.findIndex(service => service.scrollId === "altmetrics") < 0 ){
+                services.splice(services.length -2, 0, sectionData);
+              //}
+        })
+
+        // this.parentCtrl.services.splice(this.parentCtrl.services.length - 1, 0, sectionData);
     }
 }
 

@@ -42,7 +42,7 @@ export default class FilterLocationsService {
                         }
                     },
                     "name": "KU Leuven Maurits Sabbe Library",
-                    "url": "https://"+document.location.host+"/primo-explore/fulldisplay?docid=<#recordid>&context=L&vid=KULeuven&search_scope=ALL_CONTENT&isFrbr=true&tab=all_content_tab"
+                    "url": "https://"+document.location.host+"/primo-explore/fulldisplay?docid=<#recordid>&context=L&vid=KULeuven&search_scope=ALL_CONTENT&isFrbr=true&tab=all_content_tab&noLogin=true"
                 },
                 "KADOC_KADOC_LIB": {
                     "id" : function (lib) { 
@@ -58,7 +58,8 @@ export default class FilterLocationsService {
                 "ANET_UA-CST": {
                     "id" : function (lib) { return pnx_record.search.addsrcrecordid },
                     "name": "Ruusbroec Institute Library – University of Antwerp",
-                    "url": "https://anet.be/record/opacanet/<#recordid>"
+                    //"url": "https://anet.be/record/opacanet/<#recordid>"
+                    "url": "https://anet.be/record/uantwerpen/opacuantwerpen/c:lvd:<#recordid>/N"
                 }
             }
 
