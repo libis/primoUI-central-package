@@ -59,8 +59,9 @@ export default class FilterLocationsService {
                     "id" : function (lib) { return pnx_record.search.addsrcrecordid },
                     "name": "Ruusbroec Institute Library – University of Antwerp",
                     //"url": "https://anet.be/record/opacanet/<#recordid>"
-                    "url": "https://anet.be/record/uantwerpen/opacuantwerpen/c:lvd:<#recordid>/N"
+                    "url": "https://anet.be/record/uantwerpen/opacuantwerpen/<#recordid>/N"
                 }
+
             }
 
             availlibrary = availlibrary.filter((library) => {

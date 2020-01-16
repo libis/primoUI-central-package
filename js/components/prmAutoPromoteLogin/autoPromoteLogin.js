@@ -20,13 +20,14 @@ class AutoLoginCheckboxController {
     urlParam = urlParam.replace(/[\[\]]/g, "\\$&");
     var regex = new RegExp("[?&]" + urlParam + "(=([^&#]*)|&|#|$)"),
     results = regex.exec(url);
+
+    console.log ("NeverShowSignInPopup results "+results)
     if (results) {
       if (decodeURIComponent(results[2].replace(/\+/g, " "))) {
-        // console.log ("Dont show login popup")
+        console.log ("Dont show login popup")
         self.NeverShowSignInPopup = true;
       }
     }
-
     
     self.alwaysSigninCheckBox = false;
     self.alwaysSignin = localStorage.getItem("primoPromoteLogin");
@@ -59,7 +60,7 @@ class PromoteLoginController {
     var regex = new RegExp("[?&]" + urlParam + "(=([^&#]*)|&|#|$)"),
     results = regex.exec(url);
 
-    //console.log ("NeverShowSignInPopup results "+results)
+    console.log ("NeverShowSignInPopup results "+results)
     if (results) {
       if (decodeURIComponent(results[2].replace(/\+/g, " "))) {
         console.log ("Dont show login popup")
@@ -74,10 +75,12 @@ class PromoteLoginController {
       }
     });
 
+    console.log ("NeverShowSignInPopup = "+ self.NeverShowSignInPopup)
 
     $scope.primoPromoteLogin = '';
     $scope.showSignInPopup = function () {
         var parentEl = angular.element(document.body);
+        console.log ("NeverShowSignInPopup = "+ self.NeverShowSignInPopup)
         if (! self.NeverShowSignInPopup) {
             $mdDialog.show({
               parent: parentEl,
