@@ -85,7 +85,6 @@ export default class AfterComponents {
       {name: 'beta-switch', config: betaSwitchConfig, enabled: false, appendTo: 'prm-logo-after', enableInView: '^(?!ECB)'},
 
       {name: 'language-dependent-logo', config: languageDependentLogoConfig, enabled: true, appendTo: 'prm-logo-after', enableInView: '^(?!ECB)'},
-
       {name: 'view-logo', config: viewLogoConfig, enabled: true, appendTo: 'prm-logo-after', enableInView: '^(?!ECB)'},
 
       {name: 'source-icon', config: sourceIconConfig, enabled: true, appendTo: 'prm-brief-result-after', enableInView: '^(?!Lirias)'},
