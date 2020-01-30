@@ -31,7 +31,7 @@ class illRequestFormController {
     toIllRequestUrl() {
         if (this.institutionCode) {
             this.showLinkToIllRequest = true;
-            this.illRequestUrl = 'https://leuven-primo.hosted.exlibrisgroup.com/pds?func=sso&url=http://eu.alma.exlibrisgroup.com/view/uresolver/' + this.institutionCode + '/openurl?svc_dat=getit&svc.profile=getit&directResourceSharingRequest=true&newUI=true'
+            this.illRequestUrl = 'https://leuven-primo.hosted.exlibrisgroup.com/pds?func=sso&url=https://eu.alma.exlibrisgroup.com/view/uresolver/' + this.institutionCode + '/openurl?svc_dat=getit&svc.profile=getit&directResourceSharingRequest=true&newUI=true'
             this.window.open(this.illRequestUrl, '_freeIll');
         }
     };

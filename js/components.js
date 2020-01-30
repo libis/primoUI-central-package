@@ -62,6 +62,8 @@ import {filterFacetValuesConfig} from './components/prmFacetAfter/filterFacetVal
 
 import {locationsForBibliographicViewConfig} from './components/prmFullViewAfter/locationsForBibliographicView'
 import {briefLocationsForBibliographicViewConfig} from './components/prmBriefResultAfter/briefLocationsForBibliographicView'
+import {URLDecodeLinkLabelControllerConfig} from './components/prmFullViewServiceContainerAfter/URLDecodeLinkLabel'
+
 
 export default class AfterComponents {
 
@@ -84,7 +86,7 @@ export default class AfterComponents {
       {name: 'home-icon', config: homeIconConfig, enabled: false, appendTo: null, enableInView: ''},
       {name: 'beta-switch', config: betaSwitchConfig, enabled: false, appendTo: 'prm-logo-after', enableInView: '^(?!ECB)'},
 
-      {name: 'language-dependent-logo', config: languageDependentLogoConfig, enabled: true, appendTo: 'prm-logo-after', enableInView: '^(?!ECB)'},
+      {name: 'language-dependent-logo', config: languageDependentLogoConfig, enabled: false, appendTo: 'prm-logo-after', enableInView: '^(?!ECB)'},
       {name: 'view-logo', config: viewLogoConfig, enabled: true, appendTo: 'prm-logo-after', enableInView: '^(?!ECB)'},
 
       {name: 'source-icon', config: sourceIconConfig, enabled: true, appendTo: 'prm-brief-result-after', enableInView: '^(?!Lirias)'},
@@ -143,7 +145,11 @@ export default class AfterComponents {
      
      {name: 'filter-facet-values', config: filterFacetValuesConfig, enabled: false, appendTo: 'prm-facet-after', enableInView: '^JESUITS'},
 
-     {name: 'search-collections', config: searchCollectionsConfig, enabled: true, appendTo: 'prm-collection-gallery-header-after', enableInView: '^KULeuven'}
+     {name: 'search-collections', config: searchCollectionsConfig, enabled: true, appendTo: 'prm-collection-gallery-header-after', enableInView: '^KULeuven'},
+     {name: 'url-decode-link-label', config: URLDecodeLinkLabelControllerConfig, enabled: true, appendTo: 'prm-service-links-after', enableInView: '^KADOC'}
+
+
+
     ].filter( (component) => ( component.enabled && new RegExp(component.enableInView).test(window.appConfig.vid) ) );
   }
 }

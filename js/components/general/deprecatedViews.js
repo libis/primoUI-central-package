@@ -9,7 +9,6 @@ class DeprecatedViewsController {
             console.log ("This is an old view !!!!")
             window.location.replace ( "https://"+document.location.host )
         }
-
     }
 }
 
