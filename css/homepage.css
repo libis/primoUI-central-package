@@ -44,3 +44,7 @@ md-card md-card-content span#ContentKULLOCLink::before {
 md-card md-card-content span#ContentFindLibrary::before {
     content: "location_searching";
 }
+
+md-card md-card-content span#ReadingLists::before {
+    content: "playlist_add_check";
+}
