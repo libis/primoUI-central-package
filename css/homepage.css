@@ -12,6 +12,7 @@ md-card md-card-content span.md-headline {
     line-height: 2em;
 }
 
+md-card md-card-content span#ReadingLists::before,
 md-card md-card-content span.md-headline::before {
     font-family: 'Material Icons';
     font-weight: normal;

@@ -388,6 +388,7 @@ md-card md-card-content span.md-headline {
     line-height: 2em;
 }
 
+md-card md-card-content span#ReadingLists::before,
 md-card md-card-content span.md-headline::before {
     font-family: 'Material Icons';
     font-weight: normal;
@@ -421,6 +422,9 @@ md-card md-card-content span#ContentFindLibrary::before {
     content: "location_searching";
 }
 
+md-card md-card-content span#ReadingLists::before {
+    content: "playlist_add_check";
+}
 ul.locations-for-bibliographic-view {
  
 }
