@@ -43,9 +43,9 @@ export default class Templates {
             {
                 id: 'components/account/requests/requests.html',
                 template: prmRequestBugFixHTML,
-                enabled: true,
+                enabled: false,
                 enableInView: '.*'
-            },           
+            },         
             {
                 id: 'components/search/briefResult/briefResultContainer.html',
                 template: prmLiriasBriefResultContainerHTML,
