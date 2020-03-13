@@ -9,18 +9,20 @@ class SearchTipController {
 
     Primo.view.then(view => {
       let locale = view.interfaceLanguage;
+      //locale = window.Primo.explore.helper.userSessionManagerService().i18nService.getLanguage();
+      //console.log(locale);
       let vid = view.code;
 
       let locale_text = {
-        'nl_BE': {
+        'nl': {
           'title': 'Zoektips',
           'title_label': "Zoektips weergeven"
         },
-        'en_US': {
+        'en': {
           'title': 'Search Tips',
           'title_label': "Search Tips"
         },
-        'fr_FR': {
+        'fr': {
           'title': 'Astuces?',
           'title_label': "Astuces?"
         },

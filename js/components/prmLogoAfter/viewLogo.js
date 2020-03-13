@@ -11,7 +11,8 @@ class ViewLogoController {
       //let vid = view.code;
       let vid = window.appConfig.vid;
       let locale = view.interfaceLanguage; //window.Primo.explore.helper.userSessionManagerService().i18nService.getLanguage();
-      let localeLibraryLogo = 'custom/' + vid + '/img/library-logo-' + locale + '.png';
+      let localeLibraryLogo = 'custom/' + vid.split(':')[1] + '/img/library-logo-' + locale + '.png';
+      console.log(view);
       $translate('limo.instituteUrl').then(
         (instituteUrl) => {
           if (instituteUrl == 'http://www.libis.be/') {
