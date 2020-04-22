@@ -139,6 +139,13 @@ beta-switch md-switch[disabled] ._md-thumb {
     white-space: pre;
 }
 */
+@media screen and (min-width: 650px) {
+  .altmetric-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
 
 .collection-element prm-search-result-thumbnail-container img[src*="icon"] {
     display:none;

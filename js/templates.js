@@ -15,6 +15,7 @@ import changeLangWithoutUserAreaHTML from '../html/templates/change-lang-without
 import prmLoanBugFixHTML from '../html/templates/prm-loan-bug-fix.html'
 import prmRequestBugFixHTML from '../html/templates/prm-request-bug-fix.html'
 import prmLiriasBriefResultContainerHTML from '../html/templates/prm-lirias-brief-result-container.html'
+import prmFeaturedResultsContainerHTML from '../html/templates/featured-results.html'
 
 export default class Templates {
     static get all() {
@@ -45,12 +46,18 @@ export default class Templates {
                 template: prmRequestBugFixHTML,
                 enabled: false,
                 enableInView: '.*'
-            },         
+            },
             {
                 id: 'components/search/briefResult/briefResultContainer.html',
                 template: prmLiriasBriefResultContainerHTML,
                 enabled: true,
                 enableInView: 'Lirias'
+            },
+            {
+                id: 'components/search/searchResult/featuredResults/featured-results.html',
+                template: prmFeaturedResultsContainerHTML,
+                enabled: true,
+                enableInView: 'VLP_Archief'
             }
         ].filter((template) => (template.enabled && new RegExp(template.enableInView).test(window.appConfig.vid)));
     }
