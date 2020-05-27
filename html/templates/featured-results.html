@@ -1,25 +1,25 @@
 <div class="margin-top-medium" layout="row">
-  <div class="margin-right-medium" flex="15">
-    <h3 ng-if="$ctrl.scope == 'VLP_CATALOG'" class="normal-text">Resultaten in het Parlementair Informatiecentrum</h3>
-    <h3 ng-if="$ctrl.scope == 'VLP_ES'" class="normal-text">Resultaten in het Archief</h3>
-    <md-button ng-if="$ctrl.totalHits?($ctrl.totalHits>$ctrl.featuredResultItems.length):($ctrl.leftArrowShowing || $ctrl.isShowRightArrow)" ng-href="{{::$ctrl.searchLink()}}" ng-click="$ctrl.sendDisplayAllResultsBeacon()" class="featured-results-link button-as-link zero-margin" href><span class="bold-text">{{'featuredresults.labels.displayall'| translate}}</span></md-button>
-  </div>
-  <div class="prm-horizontal-content no-scrollbar" layout="row" flex aria-label="" ng-keyup="$ctrl.handleKeyUp($event)">
-    <div flex class="horizontal-content-container">
-      <md-button class="horizontal-content-control left-button" tabindex="0" ng-click="$ctrl.scrollContent('left')" aria-label="" ng-if="$ctrl.leftArrowShowing">
-        <prm-icon icon-type="svg" svg-icon-set="primo-ui" icon-definition="chevron-left"></prm-icon>
-        <md-tooltip><span></span></md-tooltip>
-      </md-button>
-      <div class="horizontal-content-scroller" role="list" layout="row" ng-class="{'left-button-visible': $ctrl.leftArrowShowing, 'right-button-visible': $ctrl.isShowRightArrow,'safari-hide': $ctrl.isSafari}">
-        <div class="horizontal-content-scroll-offseter" layout="row">
-          <prm-featured-result-item [featured-result-item]="item" [index]="$index" [tab]="$ctrl.tab" [format]="$ctrl.format" [scope]="$ctrl.scope" [adaptor]="$ctrl.adaptor" ng-repeat="item in $ctrl.featuredResultItems"></prm-featured-result-item>
-        </div>
+   <div class="margin-right-medium" flex="15">
+      <!--<h3 ng-if="!$ctrl.isSuprima || !$ctrl.title" class="normal-text">{{\'search-advanced.mediaType.option.\' + $ctrl.type| translate}} {{\'featuredresults.labels.in\'| translate}} {{\'scopes.option.\' + $ctrl.scope| translate}} {{\'featuredresults.labels.matching\'| translate}}</h3>
+      <h3 ng-if="$ctrl.isSuprima && $ctrl.title" class="normal-text">{{$ctrl.title | translate}}</h3>-->
+	  <h3 ng-if="$ctrl.scope == 'VLP_CATALOG'" class="normal-text">Resultaten in het Parlementair Informatiecentrum</h3>
+	  <h3 ng-if="$ctrl.scope == 'VLP_ES_SWH'" class="normal-text">Resultaten in het Archief</h3>
+      <md-button ng-if="$ctrl.totalHits?($ctrl.totalHits>$ctrl.featuredResultItems.length):($ctrl.leftArrowShowing || $ctrl.isShowRightArrow)" ng-href="{{::$ctrl.searchLink()}}" ng-click="$ctrl.sendDisplayAllResultsBeacon()" class="featured-results-link button-as-link zero-margin" href><span class="bold-text">{{\'featuredresults.labels.displayall\'| translate}}</span></md-button>
+   </div>
+   <div class="prm-horizontal-content no-scrollbar" layout="row" flex aria-label="" ng-keyup="$ctrl.handleKeyUp($event)">
+      <div flex class="horizontal-content-container">
+         <md-button class="horizontal-content-control left-button" tabindex="0" ng-click="$ctrl.scrollContent(\'left\')" aria-label="" ng-if="$ctrl.leftArrowShowing">
+            <prm-icon icon-type="svg" svg-icon-set="primo-ui" icon-definition="chevron-left"></prm-icon>
+            <md-tooltip><span></span></md-tooltip>
+         </md-button>
+         <div class="horizontal-content-scroller" role="list" layout="row" ng-class="{\'left-button-visible\': $ctrl.leftArrowShowing, \'right-button-visible\': $ctrl.isShowRightArrow,\'safari-hide\': $ctrl.isSafari}">
+            <div class="horizontal-content-scroll-offseter" layout="row"><prm-featured-result-item [featured-result-item]="item" [index]="$index" [tab]="$ctrl.tab" [format]="$ctrl.format" [scope]="$ctrl.scope" [adaptor]="$ctrl.adaptor" ng-repeat="item in $ctrl.featuredResultItems"></prm-featured-result-item></div>
+         </div>
+         <md-button class="horizontal-content-control right-button" tabindex="0" ng-click="$ctrl.scrollContent(\'right\')" aria-label="" ng-if="$ctrl.isShowRightArrow">
+            <prm-icon icon-type="svg" svg-icon-set="primo-ui" icon-definition="chevron-right"></prm-icon>
+            <md-tooltip><span></span></md-tooltip>
+         </md-button>
       </div>
-      <md-button class="horizontal-content-control right-button" tabindex="0" ng-click="$ctrl.scrollContent('right')" aria-label="" ng-if="$ctrl.isShowRightArrow">
-        <prm-icon icon-type="svg" svg-icon-set="primo-ui" icon-definition="chevron-right"></prm-icon>
-        <md-tooltip><span></span></md-tooltip>
-      </md-button>
-    </div>
-  </div>
+   </div>
 </div>
-  <prm-featured-results-after parent-ctrl="$ctrl"></prm-featured-results-after>
+<prm-featured-results-after parent-ctrl="$ctrl"></prm-featured-results-after>
