@@ -68,7 +68,6 @@ class PromoteLoginController {
       }
     }
 
-
     parentCtrl.primolyticsService.userSessionManagerService.signInObservable.subscribe(()=> {
       if (this.parentCtrl.parentCtrl.isLoggedIn  == true){
         $mdDialog.hide();
@@ -91,8 +90,6 @@ class PromoteLoginController {
               controller: DialogController
           });  
         }
-        
-
     }
 
     function DialogController($scope, $mdDialog) {
@@ -114,35 +111,43 @@ class PromoteLoginController {
     }
   
     /* Ignore this in prm-login-alma-mashup, only if parent is prm-user-area*/
-    if ( ($element.nativeElement).closest('prm-user-area') ) {
-        if (!parentCtrl.isLoggedIn) {
-            if (localStorage['primoPromoteLogin'] === 'alwaysSignin') {
-                /* Sreiderict to login */;
-                parentCtrl.loginService.handleLoginClick();
-            } else {
-                if (!sessionStorage['primoPromoteLogin'] && !localStorage['primoPromoteLogin']) {
-                    $scope.showSignInPopup();
-                    sessionStorage.setItem('primoPromoteLogin', 'SignInPopup');
-                }
+
+    Primo.user.then(user => {
+      self.user = user;
+      self.isLoggedIn = self.user.isLoggedIn();
+      
+      if ( !user.isLoggedIn() ) {
+        if (localStorage['primoPromoteLogin'] === 'alwaysSignin') {
+          /* Sreiderict to login */;
+          parentCtrl.loginService.handleLoginClick();
+        } else {
+            if (!sessionStorage['primoPromoteLogin'] && !localStorage['primoPromoteLogin']) {
+                $scope.showSignInPopup();
+                sessionStorage.setItem('primoPromoteLogin', 'SignInPopup');
             }
         }
-     }
+      }
+    })
 
   }
 }
 
 class AutoLoginController {
   constructor($element) {
+    
     var self = this;
-    let parentCtrl =  self.parentCtrl.parentCtrl
-    // Ignore this in prm-login-alma-mashup, only if parent is prm-user-area
-    if (($element.nativeElement).closest('prm-user-area')) {
-        if (!parentCtrl.isLoggedIn) {
-            var auth = window.appConfig.authentication[0];
-            var loginUrl = parentCtrl.loginService.loginUrl(auth['profile-name'], auth['authentication-system']);
-            document.location.href = loginUrl.replace(/institution=([^&])*/, "institution=KUL");
-        }
-    }
+    let auth = window.appConfig.authentication[0];
+    let parentCtrl =  self.parentCtrl.parentCtrl;
+
+    Primo.user.then(user => {
+      self.user = user;
+      self.isLoggedIn = self.user.isLoggedIn();
+      
+      if ( !user.isLoggedIn() ) {
+        var loginUrl = parentCtrl.loginService.loginUrl(auth['profile-name'], auth['authentication-system']);
+        document.location.href = loginUrl.replace(/institution=([^&])*/, "institution=KUL");
+      }
+    })
   }
 }
 
