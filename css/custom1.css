@@ -185,6 +185,14 @@ md-dialog[aria-label="Disclaimer"] md-content h3{
     margin-top: .8em;
     margin-bottom: .3em;
 }
+prm-logo .product-logo{
+  display:none !important;
+}
+
+prm-logo-after .product-logo{
+  display:inline-block !important;
+}
+
 /* Facets on the Left Side */
 /* Is nu een configuration optie in de Backend :
    https://knowledge.exlibrisgroup.com/Primo/Product_Documentation/New_Primo_User_Interface/New_UI_Customization_-_Best_Practices#Moving_the_Facets_to_the_Left_Side
@@ -455,6 +463,58 @@ ul.locations-for-bibliographic-view.brief-locations-for-bibliographic-view li{
 prm-full-view-service-container ul.locations-for-bibliographic-view.brief-locations-for-bibliographic-view{
   display:none
 }*/
+@font-face {
+    font-family: "Material Icons";
+    font-style: normal;
+    font-weight: 400;
+    src: url(//fonts.gstatic.com/s/materialicons/v21/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2) format("woff2"), url(//stijl.kuleuven.be/2016tmp/fonts/MaterialIcons-Regular.woff) format("woff")
+}
+
+
+.material-icons,
+html {
+    -webkit-font-smoothing: antialiased
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    word-wrap: normal;
+    -moz-font-feature-settings: 'liga';
+    font-feature-settings: 'liga';
+    -webkit-font-feature-settings: 'liga'
+}
+
+i.material-icons {
+    font-size: inherit;
+    line-height: 1.2;
+    vertical-align: middle;
+    position: relative;
+    top: -1px
+}
+
+
+.mdl-button--icon .material-icons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-12px, -12px);
+    transform: translate(-12px, -12px);
+    line-height: 24px;
+    width: 24px
+}
+
+.mdl-button--icon.mdl-button--mini-icon .material-icons {
+    top: 0;
+    left: 0
+}
+
 @media screen and (min-height: 700px) {
     body > div._md-select-menu-container > md-select-menu,
     body > div._md-select-menu-container > md-select-menu > md-content{

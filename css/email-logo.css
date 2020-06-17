@@ -1,0 +1,7 @@
+prm-logo .product-logo{
+  display:none !important;
+}
+
+prm-logo-after .product-logo{
+  display:inline-block !important;
+}

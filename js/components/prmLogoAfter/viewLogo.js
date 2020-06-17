@@ -5,12 +5,13 @@ class ViewLogoController {
     let self = this;
     self.scope = $scope;
     self.rootScope = $rootScope;
-    $element.parent().parent()[0].firstChild.parentNode.removeChild($element.parent().parent()[0].firstChild);
+    //$element.parent().parent()[0].firstChild.parentNode.removeChild($element.parent().parent()[0].firstChild);
 
     Primo.view.then((view) => {
       //let vid = view.code;
       let vid = window.appConfig.vid;
-      let locale = view.interfaceLanguage; //window.Primo.explore.helper.userSessionManagerService().i18nService.getLanguage();
+      let locale = view.interfaceLanguage;
+
       let localeLibraryLogo = 'custom/' + vid + '/img/library-logo-' + locale + '.png';
       $translate('limo.instituteUrl').then(
         (instituteUrl) => {
