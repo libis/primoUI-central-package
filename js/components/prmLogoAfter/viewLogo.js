@@ -5,6 +5,7 @@ class ViewLogoController {
     let self = this;
     self.scope = $scope;
     self.rootScope = $rootScope;
+    self.localeLibraryLogo = window.appConfig.customization.libraryLogo;
     //$element.parent().parent()[0].firstChild.parentNode.removeChild($element.parent().parent()[0].firstChild);
 
     Primo.view.then((view) => {
@@ -21,8 +22,7 @@ class ViewLogoController {
             self.homePageLink = instituteUrl
           }
         });
-      self.localeLibraryLogo = window.appConfig.customization.libraryLogo;
-
+      
       if (self.localeLibraryLogo !== localeLibraryLogo) {
         $http({
           method: 'GET',

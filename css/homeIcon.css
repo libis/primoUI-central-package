@@ -18,3 +18,7 @@ prm-logo .product-logo a:hover{
     box-shadow: none;
     background-color: transparent;
 }
+
+prm-logo prm-logo-after img.logo-image {
+    height: 100%
+}
