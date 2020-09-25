@@ -75,7 +75,7 @@ class LocationsForBibliographicViewController {
             (newVal, oldVal) => {
                 if (newVal) {
                     this.insertSectionData(sectionData);
-                    unbindWatcher();
+                    // unbindWatcher();
                 }
             }
         );
