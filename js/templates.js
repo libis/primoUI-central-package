@@ -38,7 +38,7 @@ export default class Templates {
             {
                 id: 'components/account/loans/loan.html',
                 template: prmLoanBugFixHTML,
-                enabled: true,
+                enabled: false,
                 enableInView: '.*'
             },
             {
