@@ -57,7 +57,7 @@ export default class Templates {
                 id: 'components/search/searchResult/featuredResults/featured-results.html',
                 template: prmFeaturedResultsContainerHTML,
                 enabled: true,
-                enableInView: 'VLP_Archief'
+                enableInView: 'VLP_PIA'
             }
         ].filter((template) => (template.enabled && new RegExp(template.enableInView).test(window.appConfig.vid)));
     }
