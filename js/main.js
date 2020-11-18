@@ -79,6 +79,11 @@ let app = angular.module('centralCustom', ['ngMaterial', 'vcRecaptcha','googleAn
           articleBrowZineWebLinkText: "View Issue Contents",
           articlePDFDownloadLinkEnabled: true,
           articlePDFDownloadLinkText: "Download PDF",
+          articleLinkEnabled: true,
+          articleLinkText: "Read Article",
+          unpaywallEmailAddressKey: "helpdesk@libisnet.be",
+          articlePDFDownloadViaUnpaywallEnabled: true,
+          articlePDFDownloadViaUnpaywallText: "Download PDF (via Unpaywall)",
         };
       }
 
@@ -122,7 +127,7 @@ let app = angular.module('centralCustom', ['ngMaterial', 'vcRecaptcha','googleAn
   .factory('apiCallInterceptor', apiCallInterceptor)
   .config(['$httpProvider', ($httpProvider) => { $httpProvider.interceptors.push('apiCallInterceptor'); }]);
 
-  
+
 
 //intercept api calls for database search and change to KUL (only regional views)
 var reg_views = ["KULeuven", "KULeuven_TMOREM", "KULeuven_TMOREK", "KULeuven_UCLL", "KULeuven_LUCA", "KULeuven_ODISEE"];
