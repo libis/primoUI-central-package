@@ -38,6 +38,10 @@ import {reportAProblemConfig} from './components/prmServiceHeaderAfter/reportAPr
 import {requestACopyConfig} from './components/prmServiceHeaderAfter/requestACopy'
 import {requestACopyOfEsDocConfig} from './components/prmServiceHeaderAfter/requestACopyOfEsDoc'
 
+import {replaceViewOnlineWithRequestConfig} from './components/prmFullViewAfter/replaceViewOnlineWithRequest'
+
+
+
 import {finesMessageConfig as payMyFinesMessageConfig} from './components/prmTopBarBefore/finesMessage'
 import {announcementsConfig} from './components/prmTopBarBefore/announcements'
 import {autoLoginCheckboxConfig,autoLoginConfig,promoteLoginConfig} from './components/prmAutoPromoteLogin/autoPromoteLogin'
@@ -59,6 +63,8 @@ import {searchAlsoBodyGoogleConfig} from './components/prmFacetExactAfter/search
 import {searchAlsoBodyWorldcatConfig} from './components/prmFacetExactAfter/searchAlsoBodyWorldcat'
 import {browzineConfig} from './components/prmSearchResultAvailabilityLineAfterController/browzine'
 import {filterFacetValuesConfig} from './components/prmFacetAfter/filterFacetValues'
+import {briefReplaceViewOnlineWithRequestConfig} from './components/prmSearchResultAvailabilityLineAfterController/replaceViewOnlineWithRequest'
+
 
 import {locationsForBibliographicViewConfig} from './components/prmFullViewAfter/locationsForBibliographicView'
 import {briefLocationsForBibliographicViewConfig} from './components/prmBriefResultAfter/briefLocationsForBibliographicView'
@@ -108,7 +114,10 @@ export default class AfterComponents {
       
       {name: 'request-a-copy-head', config: requestACopyConfig, enabled: true, appendTo: 'prm-service-header-after', enableInView: '^Lirias'},
       //{name: 'request-a-copy', config: requestACopyConfig, enabled: true, appendTo: 'prm-full-view-service-container-after', enableInView: '^Lirias'},
-      {name: 'request-a-copy-es-doc', config: requestACopyOfEsDocConfig, enabled: false, appendTo: 'prm-full-view-service-container-after', enableInView: '^VLP'},
+      {name: 'request-a-copy-es-doc', config: requestACopyOfEsDocConfig, enabled: false, appendTo: 'prm-full-view-service-container-after', enableInView: '^VLP_PIA'},
+      {name: 'replace-view-online-request', config: replaceViewOnlineWithRequestConfig, enabled: true, appendTo: 'prm-full-view-after', enableInView: '^VLP_PIA'},
+      {name: 'brief-replace-view-online-request', config: briefReplaceViewOnlineWithRequestConfig, enabled: true, appendTo: 'prm-search-result-availability-line-after', enableInView: '^VLP_PIA'},
+      
 
       {name: 'user-jwt', config: exposeJwtConfig, enabled: true, appendTo: 'prm-main-menu-after', enableInView: '^VLP|^ECB'},
 

@@ -7,18 +7,23 @@ class RequestACopyOfEsDocController {
         self.WindowEventListener = WindowEventListener;
         // If you want to add the button to the title (like report a problem)
         //let serviceTitleCode = self.parentCtrl.parentCtrl.title
-        //let appendButtonTo = $element.parent().parent().find('h4');
+        //let appendButtonTo   = $element.parent().parent().find('h4');
+
 
         if (self.parentCtrl.parentCtrl.service) {
             let serviceTitleCode = self.parentCtrl.parentCtrl.service.title;
             let appendButtonTo = $element.parent();
             let recordData = self.currentRecord;
+
+
+            // console.log (appendButtonTo)
+
             /*
             let TypesShowRequestACopyOfEsDoc = ['chapter', 'journal-article', 'thesis-dissertation', 'conference', 'report', 'dataset', 'c-bookreview', 'media', 'software'];
             let StatusShowRequestACopyOfEsDoc = ['published'];
             */
-
-            if (/^nui\.getit\./.test(serviceTitleCode)) {
+           
+            if (/^nui\.brief\.results\.tabs\.links/.test(serviceTitleCode)) {
                 //console.log( self )
                 //console.log($scope)
                 let primoExploreJwt = self.$rootScope.$$childHead.$ctrl.jwtUtilService.storageUtil.sessionStorage.primoExploreJwt;
@@ -43,7 +48,7 @@ class RequestACopyOfEsDocController {
                     *  Only physical or Restricted Online material can be requested
                     */
                     if ( (user.isOnCampus() || user.isLoggedIn() ) && pnx.control.sourceid.includes("ESVLP_scopeArchiv") )  {
-                       
+                        appendButton =true
                         if (pnx.facets.toplevel.includes("print_copies") ) {
                             appendButton =true
                         }else {
