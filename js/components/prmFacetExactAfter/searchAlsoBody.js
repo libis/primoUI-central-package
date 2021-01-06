@@ -1,14 +1,14 @@
 import searchAlsoBodyHTML from './searchAlsoBody.html'
 
 class SearchAlsoBodyController {
-  constructor($location){
+  constructor($location, proxyUrl){
     this.location = $location;
     let url ="";
     Primo.user.then(user => {
       let campus = '';
       campus = user.isOnCampus();
       if(!campus){
-        url = 'http://kuleuven.ezproxy.kuleuven.be/login?url=';
+        url = proxyUrl +'/login?url=';
       }
       this.targets = this._targets(url);
     });
@@ -38,7 +38,7 @@ class SearchAlsoBodyController {
   }
 }
 
-SearchAlsoBodyController.$inject = ['$location'];
+SearchAlsoBodyController.$inject = ['$location', 'proxyUrl'];
 
 export let searchAlsoBodyConfig = {
   bindings: {parentCtrl: '<'},

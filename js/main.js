@@ -43,6 +43,22 @@ window.setTimeout(function () {
 //let servicesHost = 'http://localhost:9292/';
 let servicesHost = 'https://services.libis.be/';
 
+let proxies = {
+  "HUB"    : "http://odisee.ezproxy.kuleuven.be",
+  "KUL"    : "http://kuleuven.ezproxy.kuleuven.be",
+  "LUCA"   : "http://luca.ezproxy.kuleuven.be",
+  "KHK"    : "http://k.thomasmore.ezproxy.kuleuven.be",
+  "TMOREM" : "http://am.thomasmore.ezproxy.kuleuven.be",
+  "UCLL"   : "http://khleuven.ezproxy.kuleuven.be",
+  "KATHO"  : "http://zuid.vives.ezproxy.kuleuven.be"
+};
+
+var proxyUrl = "http://kuleuven.ezproxy.kuleuven.be"
+
+if (window.appConfig["primo-view"]["institution"]["institution-code"] in proxies) {
+  proxyUrl = proxies[ window.appConfig["primo-view"]["institution"]["institution-code"]  ];
+}
+
 
 let app = angular.module('centralCustom', ['ngMaterial', 'vcRecaptcha','googleAnalytics'])
   /*
@@ -55,6 +71,7 @@ let app = angular.module('centralCustom', ['ngMaterial', 'vcRecaptcha','googleAn
   .constant('reportAProblemURL', servicesHost + 'report_a_problem')
   .constant('requestACopyURL', servicesHost + 'request_a_copy')
   .constant('requestACopyOfEsDocURL', servicesHost + 'illjwtform')
+  .constant('proxyUrl', proxyUrl)
 
   .config(($sceDelegateProvider) => {
     $sceDelegateProvider.resourceUrlWhitelist([
