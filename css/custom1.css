@@ -179,7 +179,7 @@ prm-gallery-item:nth-of-type(7n) prm-search-result-thumbnail-container {backgrou
 
 .md-dialog-container.fixed-container {
     background: transparent !important;
-}	
+}
 
 
 md-dialog[aria-label="Disclaimer"] md-content{

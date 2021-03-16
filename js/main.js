@@ -206,3 +206,7 @@ Object.keys(afterComponents).forEach((component, i) => {
     template: subComponents.map(m => `<${m.name} parent-ctrl="$ctrl"></${m.name}>`).join("")
   });
 });
+
+//add robotsMeta workaround exlibris
+app.robotsMeta = angular.element(document.getElementsByName('robots'))[0];
+app.robotsMeta.content = 'all';
