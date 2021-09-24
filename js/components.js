@@ -64,6 +64,9 @@ import {locationsForBibliographicViewConfig} from './components/prmFullViewAfter
 import {briefLocationsForBibliographicViewConfig} from './components/prmBriefResultAfter/briefLocationsForBibliographicView'
 import {URLDecodeLinkLabelControllerConfig} from './components/prmFullViewServiceContainerAfter/URLDecodeLinkLabel'
 
+import {externalLinksInDetailsConfig} from './components/prmFullViewAfter/externalLinksInDetails'
+
+
 
 export default class AfterComponents {
 
@@ -95,6 +98,9 @@ export default class AfterComponents {
       {name: 'altmetrics-badge', config: altmetricsBadgeConfig, enabled: true, appendTo: 'prm-full-view-after', enableInView: '^Lirias|^KULeuven|^VDIC|^UCLL|^TMOREAM|^TMOREK|^SERV|^NBB'},
 
       {name: 'locations-for-bibliographic-view', config: locationsForBibliographicViewConfig, enabled: true, appendTo: 'prm-full-view-after', enableInView: '^JESUITS'},
+
+      {name: 'external-links-in-details', config: externalLinksInDetailsConfig, enabled: true, appendTo: 'prm-service-details-after', enableInView: '^Lirias'},      
+
       {name: 'brief-locations-for-bibliographic-view', config: briefLocationsForBibliographicViewConfig, enabled: true, appendTo: 'prm-search-result-availability-line-after', enableInView: '^JESUITS'},
 
       {name: 'pnx-xml', config: pnxXmlConfig, enabled: true, appendTo: 'prm-brief-result-container-after', enableInView: '.*'},
