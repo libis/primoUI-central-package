@@ -9,12 +9,12 @@ class ExternalLinksInDetailsController {
     
     createExternalLinks() {
 
-        console.log( self.parentCtrl.details )
+        // console.log( self.parentCtrl.details )
 
         let identifiers = self.parentCtrl.details.filter(function (d) {
             return d.label === "identifier";
         });
-        console.log( identifiers[0].values[0].values );
+        // console.log( identifiers[0].values[0].values );
 
         var newIdentifiers = identifiers[0].values[0].values.map(i => {
             if (new RegExp(" \\$\\$CDOI: ").test(i)) {
@@ -24,14 +24,10 @@ class ExternalLinksInDetailsController {
             }
         });
         
-        console.log( newIdentifiers );
-
-
-        // appendButtonTo.after($compile(requestACopyOfEsDocHTML)($scope));
+        //console.log( newIdentifiers );
         
         identifiers[0].values[0].values = newIdentifiers
 
-        console.log( "TEST ");
     }
 
 
