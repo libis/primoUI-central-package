@@ -136,10 +136,10 @@ class AutoLoginController {
     let parentCtrl =  self.parentCtrl.parentCtrl
     // Ignore this in prm-login-alma-mashup, only if parent is prm-user-area
     Primo.user.then(view => {
-      if (!parentCtrl.isLoggedIn) {
-              var auth = window.appConfig.authentication[0];
-              var loginUrl = parentCtrl.loginService.loginUrl(auth['profile-name'], auth['authentication-system']);
-              document.location.href = loginUrl.replace(/institution=([^&])*/, "institution=KUL");
+      if (!user.isLoggedIn() ){
+        var auth = window.appConfig.authentication[0];
+        var loginUrl = parentCtrl.loginService.loginUrl(auth['profile-name'], auth['authentication-system']);
+        document.location.href = loginUrl.replace(/institution=([^&])*/, "institution=KUL");
       }
     })
   }
