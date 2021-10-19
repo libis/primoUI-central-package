@@ -44,13 +44,13 @@ window.setTimeout(function () {
 let servicesHost = 'https://services.libis.be/';
 
 let proxies = {
-  "HUB"    : "http://odisee.ezproxy.kuleuven.be",
+  "HUB"    : "http://odisee.e-bronnen.be",
   "KUL"    : "http://kuleuven.e-bronnen.be",
-  "LUCA"   : "http://luca.ezproxy.kuleuven.be",
-  "KHK"    : "http://k.thomasmore.ezproxy.kuleuven.be",
-  "TMOREM" : "http://am.thomasmore.ezproxy.kuleuven.be",
-  "UCLL"   : "http://khleuven.ezproxy.kuleuven.be",
-  "KATHO"  : "http://zuid.vives.ezproxy.kuleuven.be"
+  "LUCA"   : "http://luca.e-bronnen.be",
+  "KHK"    : "http://k.thomasmore.e-bronnen.be",
+  "TMOREM" : "http://am.thomasmore.e-bronnen.be",
+  "UCLL"   : "http://khleuven.e-bronnen.be",
+  "KATHO"  : "http://zuid.vives.e-bronnen.be"
 };
 
 var proxyUrl = "http://kuleuven.e-bronnen.be"
