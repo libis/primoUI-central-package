@@ -22,6 +22,8 @@ import {betaSwitchConfig} from './components/prmLogoAfter/betaSwitch'
 import {sourceIconConfig} from './components/prmBriefResultAfter/sourceIcon'
 import {altmetricConfig} from './components/prmBriefResultAfter/altmetric'
 import {altmetricsBadgeConfig} from './components/prmFullViewAfter/altmetricsBadge'
+import {externalLinksInDetailsConfig} from './components/prmFullViewAfter/externalLinksInDetails'
+
 
 import {pnxXmlConfig} from './components/prmSearchResultThumbnailContainerAfter/pnxXml'
 import {payMyFinesConfig} from './components/prmFinesOverviewAfter/payMyFines'
@@ -71,6 +73,10 @@ import {briefLocationsForBibliographicViewConfig} from './components/prmBriefRes
 import {URLDecodeLinkLabelControllerConfig} from './components/prmFullViewServiceContainerAfter/URLDecodeLinkLabel'
 
 
+
+
+
+
 export default class AfterComponents {
 
   static get all() {
@@ -99,6 +105,8 @@ export default class AfterComponents {
       {name: 'altmetric', config: altmetricConfig, enabled: true, appendTo: 'prm-brief-result-after', enableInView: '^Lirias|^KULeuven|^VDIC|^UCLL|^TMOREAM|^TMOREK|^SERV|^NBB'},
 
       {name: 'altmetrics-badge', config: altmetricsBadgeConfig, enabled: true, appendTo: 'prm-full-view-after', enableInView: '^Lirias|^KULeuven|^VDIC|^UCLL|^TMOREAM|^TMOREK|^SERV|^NBB'},
+      {name: 'external-links-in-details', config: externalLinksInDetailsConfig, enabled: true, appendTo: 'prm-full-view-after', enableInView: '^Lirias'},
+     
 
       {name: 'locations-for-bibliographic-view', config: locationsForBibliographicViewConfig, enabled: true, appendTo: 'prm-full-view-after', enableInView: '^JESUITS'},
       {name: 'brief-locations-for-bibliographic-view', config: briefLocationsForBibliographicViewConfig, enabled: true, appendTo: 'prm-search-result-availability-line-after', enableInView: '^JESUITS'},
