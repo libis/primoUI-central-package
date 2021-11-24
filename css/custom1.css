@@ -181,6 +181,9 @@ prm-gallery-item:nth-of-type(7n) prm-search-result-thumbnail-container {backgrou
     background: transparent !important;
 }
 
+.course-info-mark{
+    display:none;
+}
 
 md-dialog[aria-label="Disclaimer"] md-content{
     padding: 1em;
