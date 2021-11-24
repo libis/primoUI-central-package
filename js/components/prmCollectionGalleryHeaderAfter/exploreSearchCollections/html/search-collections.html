@@ -1,4 +1,4 @@
-<a ng-if="$ctrl.getCollection().includes('Parochieblad')" class="md-button md-primoExplore-theme md-ink-ripple" href="/primo-explore/search?tab=kadoc_parochiebladen&search_scope=KADOC_PAROCHIEBLADEN&vid=KADOC">
+<a ng-if="$ctrl.getCollection().includes('Parochieblad') || $ctrl.getCollection().length == 1" class="md-button md-primoExplore-theme md-ink-ripple" href="/primo-explore/search?tab=kadoc_parochiebladen&search_scope=KADOC_PAROCHIEBLADEN&vid=KADOC">
   <span translate="lbs.nui.search.collections.button">Zoek full text in alle parochiebladen</span></a>
   <!--<div style="position:absolute;bottom:0.5em;right:17%;color:white;font-weight:200;margin:5px 5px 0 5px;/*! background: rgba(red,0.1); */border: 1px solid #53738c;padding: 0px 3px 0 1px;background: #53738c;border-radius: 5px;">
     <strong>We are currently improving the performance of our systems. Images may take somewhat longer to be displayed.</strong>

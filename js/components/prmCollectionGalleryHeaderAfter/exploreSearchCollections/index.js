@@ -17,7 +17,8 @@ class SearchCollectionsController {
 
   getCollection() {
     if(!this.isGalleryLobby && this.parentCtrl.parentCtrl.currentCollection != undefined){
-      if(this.parentCtrl.parentCtrl.currentCollection.name.includes("Parochie")){
+      console.log(this.parentCtrl.parentCtrl.currentCollection);
+      if(this.parentCtrl.parentCtrl.currentCollection.name.includes("Parochie") || this.parentCtrl.parentCtrl.currentCollection.name.length == 1){
         document.getElementsByClassName("search-within")[0].style.visibility = 'hidden';
       }
       return this.parentCtrl.parentCtrl.currentCollection.name;

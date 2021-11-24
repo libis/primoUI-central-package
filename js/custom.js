@@ -1142,7 +1142,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var searchCollectionsHTML = "<a ng-if=\"$ctrl.getCollection().includes('Parochieblad')\" class=\"md-button md-primoExplore-theme md-ink-ripple\" href=\"/primo-explore/search?tab=kadoc_parochiebladen&search_scope=KADOC_PAROCHIEBLADEN&vid=KADOC\">\r\n  <span translate=\"lbs.nui.search.collections.button\">Zoek full text in alle parochiebladen</span></a>\r\n  <!--<div style=\"position:absolute;bottom:0.5em;right:17%;color:white;font-weight:200;margin:5px 5px 0 5px;/*! background: rgba(red,0.1); */border: 1px solid #53738c;padding: 0px 3px 0 1px;background: #53738c;border-radius: 5px;\">\r\n    <strong>We are currently improving the performance of our systems. Images may take somewhat longer to be displayed.</strong>\r\n  </div>-->\r\n<!--<a ng-if=\"!$ctrl.isGalleryLobby\" class=\"md-button md-primoExplore-theme md-ink-ripple\" href=\"/primo-explore/search?query=title,contains,{{$ctrl.getCollection()}}&search_scope=KULEUVEN_COLLECTIONS&sortby=rank&vid=KULeuven&offset=0\" title=\"Search {{$ctrl.getCollection()}}\">Search this collection</a>\r\n<!-- &facet=local4,include,Corble%20fencing%20collection$$IKUL -->\r\n";
+var searchCollectionsHTML = "<a ng-if=\"$ctrl.getCollection().includes('Parochieblad') || $ctrl.getCollection().length == 1\" class=\"md-button md-primoExplore-theme md-ink-ripple\" href=\"/primo-explore/search?tab=kadoc_parochiebladen&search_scope=KADOC_PAROCHIEBLADEN&vid=KADOC\">\r\n  <span translate=\"lbs.nui.search.collections.button\">Zoek full text in alle parochiebladen</span></a>\r\n  <!--<div style=\"position:absolute;bottom:0.5em;right:17%;color:white;font-weight:200;margin:5px 5px 0 5px;/*! background: rgba(red,0.1); */border: 1px solid #53738c;padding: 0px 3px 0 1px;background: #53738c;border-radius: 5px;\">\r\n    <strong>We are currently improving the performance of our systems. Images may take somewhat longer to be displayed.</strong>\r\n  </div>-->\r\n<!--<a ng-if=\"!$ctrl.isGalleryLobby\" class=\"md-button md-primoExplore-theme md-ink-ripple\" href=\"/primo-explore/search?query=title,contains,{{$ctrl.getCollection()}}&search_scope=KULEUVEN_COLLECTIONS&sortby=rank&vid=KULeuven&offset=0\" title=\"Search {{$ctrl.getCollection()}}\">Search this collection</a>\r\n<!-- &facet=local4,include,Corble%20fencing%20collection$$IKUL -->\r\n";
 
 var SearchCollectionsController = function () {
   function SearchCollectionsController($scope) {
@@ -1166,7 +1166,8 @@ var SearchCollectionsController = function () {
     key: "getCollection",
     value: function getCollection() {
       if (!this.isGalleryLobby && this.parentCtrl.parentCtrl.currentCollection != undefined) {
-        if (this.parentCtrl.parentCtrl.currentCollection.name.includes("Parochie")) {
+        console.log(this.parentCtrl.parentCtrl.currentCollection);
+        if (this.parentCtrl.parentCtrl.currentCollection.name.includes("Parochie") || this.parentCtrl.parentCtrl.currentCollection.name.length == 1) {
           document.getElementsByClassName("search-within")[0].style.visibility = 'hidden';
         }
         return this.parentCtrl.parentCtrl.currentCollection.name;
