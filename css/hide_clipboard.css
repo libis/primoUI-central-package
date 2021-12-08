@@ -1,0 +1,5 @@
+.md-button.button-confirm, .service-form-static-panel button.button-confirm prm-icon+span, .service-form-static-panel button.button-confirm prm-icon svg path {
+    display: none
+}
+
+prm-copy-clipboard-btn { display: none !important; }
