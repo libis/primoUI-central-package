@@ -334,6 +334,7 @@ prm-main-menu a[aria-label="Browse"].md-button.flex-button {
       display:none;
     }
 }
+prm-citation prm-copy-clipboard-btn { display: none !important; }
 #advanced-search div.date-range-inputs  md-input-container md-select {
   display:none;
 }
